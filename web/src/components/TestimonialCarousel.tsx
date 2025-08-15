@@ -75,7 +75,7 @@ export function TestimonialCarousel() {
               transition={{ duration: 0.5 }}
             >
               <div className="mx-auto max-w-2xl text-center">
-                <div className="mx-auto size-14 rounded-full overflow-hidden glass flex items-center justify-center">
+                <div className="mx-auto size-14 rounded-full overflow-hidden glass-no-shine flex items-center justify-center">
                   <Image src={t.avatar} alt="" width={48} height={48} className="opacity-90" />
                 </div>
                 <blockquote className="mt-5 text-lg md:text-xl text-foreground/90">“{t.quote}”</blockquote>
