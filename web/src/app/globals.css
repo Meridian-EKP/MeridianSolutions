@@ -194,15 +194,83 @@ body {
 .btn-primary {
   background: linear-gradient(90deg, color(display-p3 0.36 0.8 1) 0%, color(display-p3 0.6 0.45 1) 100%);
   color: #0a0a0a;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
 .btn-primary:hover {
   box-shadow: 0 0 24px color(display-p3 0.36 0.8 1 / 0.4), 0 0 48px color(display-p3 0.6 0.45 1 / 0.3);
+  transform: translateY(-1px);
 }
 
 /* Parallax helper */
 .parallax {
   transform-style: preserve-3d;
   will-change: transform;
+}
+
+/* Enhanced glass effect */
+.glass {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  transition: all 0.3s ease;
+}
+
+.glass:hover {
+  backdrop-filter: blur(20px) saturate(200%);
+  -webkit-backdrop-filter: blur(20px) saturate(200%);
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card {
+    border-width: 2px;
+    border-color: var(--accent-blue);
+  }
+  
+  .text-muted {
+    color: var(--foreground);
+  }
 }
 
 /* Reduce motion respect */

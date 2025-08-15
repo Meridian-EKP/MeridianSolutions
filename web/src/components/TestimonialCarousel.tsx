@@ -14,22 +14,34 @@ type Testimonial = {
 
 const testimonials: Testimonial[] = [
   {
-    quote: "Game‑changing local results. We saw calls and bookings spike in week one.",
-    author: "Alex Turner",
-    role: "Cafe Owner",
-    avatar: "/vercel.svg",
+    quote: "MeridianDigital completely transformed our business. We went from 5-10 customers per day to being fully booked weeks in advance. Their local SEO strategy got us ranking #1 for every coffee shop search in our area.",
+    author: "Sarah Mitchell",
+    role: "Owner, Sunrise Coffee Roasters",
+    avatar: "/window.svg",
   },
   {
-    quote: "Design that actually converts—clean, fast, and built for local search.",
-    author: "Priya Singh",
-    role: "Clinic Manager",
+    quote: "The website they built for our medical practice is incredible. Professional, fast, and optimized for local search. We're getting 4x more appointment bookings than before, and patients love the online scheduling system.",
+    author: "Dr. James Chen",
+    role: "Family Medicine Practice",
     avatar: "/globe.svg",
   },
   {
-    quote: "Reliable, strategic, and effective. Our best campaign to date.",
-    author: "Marco Ruiz",
-    role: "Contractor",
-    avatar: "/window.svg",
+    quote: "Working with MeridianDigital was the best business decision we've made. Their Google Business Profile optimization and local marketing strategy increased our service calls by 250%. We had to hire additional staff to keep up!",
+    author: "Roberto Martinez",
+    role: "Martinez Plumbing & HVAC",
+    avatar: "/vercel.svg",
+  },
+  {
+    quote: "They don't just build websites—they build growth engines. Our new site combined with their SEO work has brought in over $300K in new business this year. The ROI is incredible.",
+    author: "Lisa Thompson",
+    role: "Thompson Legal Services",
+    avatar: "/file.svg",
+  },
+  {
+    quote: "Professional, knowledgeable, and results-driven. Our restaurant went from struggling during the pandemic to having a 6-week waitlist. Their digital strategy literally saved our business.",
+    author: "Michael Park",
+    role: "Owner, Park's Korean BBQ",
+    avatar: "/next.svg",
   },
 ];
 
