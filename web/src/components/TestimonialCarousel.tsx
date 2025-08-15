@@ -20,13 +20,13 @@ const testimonials: Testimonial[] = [
     avatar: "/window.svg",
   },
   {
-    quote: "The website they built for our medical practice is incredible. Professional, fast, and optimized for local search. We're getting 4x more appointment bookings than before, and patients love the online scheduling system.",
+    quote: "The website they built for our medical practice is incredible. Professional, fast, and optimised for local search. We're getting 4x more appointment bookings than before, and patients love the online scheduling system.",
     author: "Dr. James Chen",
     role: "Family Medicine Practice",
     avatar: "/globe.svg",
   },
   {
-    quote: "Working with MeridianDigital was the best business decision we've made. Their Google Business Profile optimization and local marketing strategy increased our service calls by 250%. We had to hire additional staff to keep up!",
+    quote: "Working with MeridianDigital was the best business decision we've made. Their Google Business Profile optimisation and local marketing strategy increased our service calls by 250%. We had to hire additional staff to keep up!",
     author: "Roberto Martinez",
     role: "Martinez Plumbing & HVAC",
     avatar: "/vercel.svg",

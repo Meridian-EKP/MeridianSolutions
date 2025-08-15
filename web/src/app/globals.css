@@ -273,6 +273,55 @@ html {
   }
 }
 
+/* Scroll Animation Classes */
+.fade-rise-in {
+  opacity: 0;
+  transform: translateY(25px);
+  will-change: opacity, transform;
+}
+
+.fade-rise-in.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Performance optimisations for animations */
+.scroll-animate {
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  transform: translateZ(0); /* Force hardware acceleration */
+}
+
+/* GSAP performance optimisations */
+.gsap-element {
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Mobile performance optimisations */
+@media (max-width: 768px) {
+  .scroll-animate,
+  .gsap-element {
+    will-change: auto; /* Reduce GPU usage on mobile */
+  }
+}
+
+/* Ensure content is accessible before animation */
+@media (prefers-reduced-motion: reduce) {
+  .fade-rise-in {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  /* Disable GSAP animations for users who prefer reduced motion */
+  .gsap-element {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* Reduce motion respect */
 @media (prefers-reduced-motion: reduce) {
   .gradient-mesh {

@@ -59,7 +59,7 @@ export default function StructuredData() {
           "itemOffered": {
             "@type": "Service",
             "name": "Website Development",
-            "description": "Custom, conversion-optimized websites for local businesses"
+            "description": "Custom, conversion-optimised websites for local businesses"
           }
         },
         {
@@ -74,8 +74,8 @@ export default function StructuredData() {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Google Business Profile Optimization",
-            "description": "Complete optimization of Google Business Profile for local search"
+            "name": "Google Business Profile Optimisation",
+            "description": "Complete optimisation of Google Business Profile for local search"
           }
         },
         {

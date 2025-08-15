@@ -26,11 +26,11 @@ export const metadata: Metadata = {
     "local business marketing",
     "website development",
     "local SEO",
-    "Google Business Profile optimization",
+    "Google Business Profile optimisation",
     "digital marketing agency",
     "small business websites",
     "local search marketing",
-    "conversion optimization",
+    "conversion optimisation",
     "business growth",
     "digital presence"
   ],
