@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
 import ClientShell from "@/components/ClientShell";
 import StructuredData from "@/components/StructuredData";
+import Navigation from "@/components/Navigation";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,6 +13,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -88,17 +95,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased bg-background text-foreground`}
       >
         <div className="gradient-mesh" aria-hidden />
+        <Navigation />
         <div className="relative">
           {/* Place the glow field under content but above base gradient */}
           <div className="absolute inset-0 overflow-visible">
             <ClientShell>{null}</ClientShell>
           </div>
-          <div className="relative z-10">
+          <main className="relative z-10 main-content">
             {children}
-          </div>
+          </main>
         </div>
         <StructuredData />
       </body>

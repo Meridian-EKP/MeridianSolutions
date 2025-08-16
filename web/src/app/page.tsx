@@ -94,7 +94,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative overflow-x-clip">
+    <div id="top" className="relative overflow-x-clip">
       {/* HERO */}
       <section ref={heroRef} className="relative min-h-[100svh] flex items-center">
         <div className="absolute inset-0 pointer-events-none">
