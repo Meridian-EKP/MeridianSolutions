@@ -379,6 +379,22 @@ html {
   align-items: stretch;
 }
 
+/* Service card expandable content */
+.service-card-content {
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+}
+
+.service-card-content.collapsed {
+  max-height: 0;
+  opacity: 0;
+}
+
+.service-card-content.expanded {
+  max-height: 1000px; /* Large enough to accommodate content */
+  opacity: 1;
+}
+
 /* Focus styles for accessibility */
 *:focus-visible {
   outline: 2px solid var(--accent-blue);

@@ -1,14 +1,16 @@
 "use client";
 
-import BackgroundGlows from "@/components/BackgroundGlows";
+import BackgroundGlows from "./BackgroundGlows";
 
-export default function ClientShell({ children }: { children: React.ReactNode }) {
-	return (
-		<>
-			<BackgroundGlows />
-			{children}
-		</>
-	);
+interface ClientShellProps {
+  children: React.ReactNode;
 }
 
-
+export default function ClientShell({ children }: ClientShellProps) {
+  return (
+    <>
+      <BackgroundGlows />
+      {children}
+    </>
+  );
+}

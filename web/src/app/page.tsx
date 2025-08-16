@@ -46,8 +46,7 @@ export default function Home() {
   ]);
 
   const servicesAnimRef = useStaggeredScrollAnimation([
-    { selector: ".services-header", options: { delay: 0, duration: 0.5, yOffset: 30 } },
-    { selector: ".service-card", options: { delay: 0.1, duration: 0.5, yOffset: 30, stagger: 0.06 } }
+    { selector: ".services-header", options: { delay: 0, duration: 0.6, yOffset: 30 } }
   ]);
 
   const caseStudiesAnimRef = useStaggeredScrollAnimation([
@@ -163,7 +162,7 @@ export default function Home() {
             {/* SERVICES */}
       <section id="services" className="relative py-24 md:py-32">
         <div ref={servicesAnimRef} className="mx-auto w-full max-w-7xl px-6 md:px-10">
-          <div className="services-header max-w-3xl">
+          <div className="services-header max-w-3xl fade-rise-in">
             <h2 className="text-2xl md:text-4xl font-semibold">Complete Digital Growth Solutions</h2>
             <p className="mt-3 text-muted text-lg">Everything your local business needs to dominate your market and drive consistent growth.</p>
           </div>
@@ -241,7 +240,8 @@ export default function Home() {
               <div className="card-accents" style={accentStyleFor(i)} aria-hidden />
               <div className="card-sheen" aria-hidden />
               
-              <div className="relative z-10 p-6 flex flex-col flex-1">
+              {/* Main card content with fixed padding */}
+              <div className="relative z-10 p-6">
                 {/* Header */}
                 <div className="flex items-start gap-4 mb-4">
                   <div className="p-3 rounded-xl bg-white/5 border border-white/10 group-hover:border-accent/30 transition-colors">
@@ -277,58 +277,58 @@ export default function Home() {
                     </div>
                   </>
                 )}
+              </div>
 
-                {/* Expanded content */}
-                {expandedService === i && (
-                  <div className="space-y-6"
-                       style={{ 
-                         animation: 'fadeIn 0.4s ease-out'
-                       }}>
-                    {/* Detailed description */}
-                    <div className="space-y-3">
-                      {card.detailedDesc.split('\n\n').map((paragraph, idx) => (
-                        <p key={idx} className="text-muted leading-relaxed">
-                          {paragraph}
-                        </p>
-                      ))}
-                    </div>
+              {/* Expandable content - outside main card content, at true bottom */}
+              <div className={`service-card-content ${expandedService === i ? 'expanded' : 'collapsed'}`}>
+                <div className="px-6 pb-6 space-y-6">
+                  {/* Separator line */}
+                  <div className="border-t border-white/10"></div>
+                  
+                  {/* Detailed description */}
+                  <div className="space-y-3">
+                    {card.detailedDesc.split('\n\n').map((paragraph, idx) => (
+                      <p key={idx} className="text-muted leading-relaxed">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
 
-                    {/* Pricing */}
-                    <div className="p-4 rounded-xl bg-white/5 border border-accent/20">
-                      <div className="flex items-center justify-between">
-                        <span className="text-lg font-semibold text-accent">Investment</span>
-                        <span className="text-2xl font-bold">{card.pricing}</span>
-                      </div>
-                    </div>
-
-                    {/* Benefits */}
-                    <div className="space-y-3">
-                      <h4 className="font-semibold text-accent">What's Included:</h4>
-                      <ul className="space-y-2">
-                        {card.benefits.map((benefit, idx) => (
-                          <li key={idx} className="flex items-center gap-3 text-muted">
-                            <CheckCircle className="size-4 text-green-400 flex-shrink-0" />
-                            <span>{benefit}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* CTA Button */}
-                    <div className="pt-4 border-t border-white/10">
-                      <button 
-                        className="w-full btn-primary rounded-xl py-3 px-6 font-medium transition-all duration-500 ease-out hover:scale-[1.01] hover:shadow-lg hover:shadow-accent/30"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          // Scroll to contact form
-                          document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
-                        }}
-                      >
-                        Book Now - {card.title}
-                      </button>
+                  {/* Pricing */}
+                  <div className="p-4 rounded-xl bg-white/5 border border-accent/20">
+                    <div className="flex items-center justify-between">
+                      <span className="text-lg font-semibold text-accent">Investment</span>
+                      <span className="text-2xl font-bold">{card.pricing}</span>
                     </div>
                   </div>
-                )}
+
+                  {/* Benefits */}
+                  <div className="space-y-3">
+                    <h4 className="font-semibold text-accent">What's Included:</h4>
+                    <ul className="space-y-2">
+                      {card.benefits.map((benefit, idx) => (
+                        <li key={idx} className="flex items-center gap-3 text-muted">
+                          <CheckCircle className="size-4 text-green-400 flex-shrink-0" />
+                          <span>{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* CTA Button */}
+                  <div className="pt-4 border-t border-white/10">
+                    <button 
+                      className="w-full btn-primary rounded-xl py-3 px-6 font-medium transition-all duration-500 ease-out hover:scale-[1.01] hover:shadow-lg hover:shadow-accent/30"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        // Scroll to contact form
+                        document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                    >
+                      Book Now - {card.title}
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
