@@ -47,7 +47,6 @@
 
 html,
 body {
-  height: 100%;
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
@@ -60,7 +59,6 @@ html {
 body {
   background: radial-gradient(1200px 800px at 100% 0%, #0d1220 0%, #070a0f 60% 100%), #070a0f;
   color: var(--foreground);
-  min-height: 100vh;
 }
 
 /* Futuristic animated gradient mesh background */
@@ -384,20 +382,9 @@ html {
 }
 
 /* Page layout fixes - prevent extra scrollable space */
-#__next {
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
 .page-container {
   position: relative;
   overflow-x: hidden;
-}
-
-/* Ensure background elements don't extend page height */
-.glow-field {
-  max-height: 100vh;
-  overflow: hidden;
 }
 
 /* Footer specific styles */
