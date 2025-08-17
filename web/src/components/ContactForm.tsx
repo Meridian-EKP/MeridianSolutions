@@ -10,6 +10,7 @@ interface FormData {
   email: string;
   phone: string;
   message: string;
+  honeypot: string; // Hidden field for spam prevention
 }
 
 interface FormErrors {
@@ -23,6 +24,7 @@ export default function ContactForm() {
     email: "",
     phone: "",
     message: "",
+    honeypot: "", // Hidden honeypot field
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -68,25 +70,42 @@ export default function ContactForm() {
     }
 
     setIsSubmitting(true);
+    setErrors({}); // Clear any previous errors
 
     try {
-      // Simulate API call - replace with actual implementation
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      console.log("Form submitted:", formData);
-      setIsSubmitted(true);
-      
-      // Reset form
-      setFormData({
-        name: "",
-        businessName: "",
-        email: "",
-        phone: "",
-        message: "",
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSubmitted(true);
+        
+        // Reset form
+        setFormData({
+          name: "",
+          businessName: "",
+          email: "",
+          phone: "",
+          message: "",
+          honeypot: "",
+        });
+      } else {
+        // Handle validation errors from server
+        if (data.errors && Array.isArray(data.errors)) {
+          setErrors({ submit: data.errors.join(', ') });
+        } else {
+          setErrors({ submit: data.error || "Something went wrong. Please try again." });
+        }
+      }
     } catch (error) {
       console.error("Form submission error:", error);
-      setErrors({ submit: "Something went wrong. Please try again." });
+      setErrors({ submit: "Unable to send your request. Please check your connection and try again." });
     } finally {
       setIsSubmitting(false);
     }
@@ -113,7 +132,7 @@ export default function ContactForm() {
           <CheckCircle className="size-16 text-green-500 mx-auto mb-4" />
           <h3 className="text-2xl font-semibold mb-2">Thank You!</h3>
           <p className="text-muted text-lg max-w-md mx-auto">
-            We've received your request and will be in touch within 24 hours with your custom digital health check.
+            Your request has been received. We'll be in touch shortly to discuss your digital health check and growth strategy.
           </p>
         </div>
         <button
@@ -140,6 +159,16 @@ export default function ContactForm() {
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Honeypot field for spam prevention - hidden from users */}
+        <input
+          type="text"
+          name="honeypot"
+          value={formData.honeypot}
+          onChange={handleChange}
+          style={{ display: 'none' }}
+          tabIndex={-1}
+          autoComplete="off"
+        />
         <div className="grid md:grid-cols-2 gap-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium mb-2">
