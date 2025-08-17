@@ -133,18 +133,28 @@ export default function Home() {
 
       {/* ABOUT */}
       <section id="about" className="relative py-24 md:py-32">
-        <div className="mx-auto w-full max-w-7xl px-6 md:px-10 grid md:grid-cols-2 gap-10 items-center">
-          <div className="about-content">
+        <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
+          <div className="grid md:grid-cols-2 gap-10 items-start">
+          <div className="about-content space-y-6">
+            <h2 className="text-2xl md:text-4xl font-semibold">Why Meridian?</h2>
             <div className="glass rounded-3xl p-6 md:p-10 border border-white/10 transition-transform duration-300 hover:scale-105">
-
               <div className="relative z-10">
-                <h2 className="text-2xl md:text-4xl font-semibold">Why Meridian?</h2>
-                <p className="mt-4 text-muted">
+                <p className="text-muted">
                   MeridianDigital specialises in turning local businesses into digital leaders. We don't just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
                 </p>
-                <p className="mt-3 text-muted">
+                <p className="mt-4 text-muted">
                   Every project combines cutting-edge technology with proven marketing psychology to deliver measurable results. Our clients typically see 40-60% increases in qualified leads within 90 days.
                 </p>
+                
+                <div className="mt-6 pt-6 border-t border-white/10">
+                  <h3 className="text-lg font-semibold text-accent mb-3">You Stay in Control</h3>
+                  <p className="text-muted">
+                    Your business, your vision, your decisions. We believe in complete transparency and collaboration throughout every project. You maintain full control over what gets implemented, when it happens, and how your brand is represented.
+                  </p>
+                  <p className="mt-3 text-muted">
+                    Monthly strategy sessions ensure we're always aligned with your goals. We discuss progress, review performance data, and adjust our approach based on your feedback and changing business needs.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -198,6 +208,7 @@ export default function Home() {
                 );
               })}
             </div>
+          </div>
           </div>
         </div>
       </section>
