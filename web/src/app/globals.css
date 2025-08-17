@@ -129,6 +129,12 @@ body {
     radial-gradient(260px 200px at 92% 15%, color-mix(in oklab, var(--accent-pink-2) 55%, transparent), transparent 65%),
     radial-gradient(340px 260px at 40% 0%, color-mix(in oklab, var(--accent-blue) 55%, transparent), transparent 60%);
 }
+.card-accents.accent-d {
+  background:
+    radial-gradient(300px 220px at 75% 25%, color-mix(in oklab, var(--accent-pink) 55%, transparent), transparent 60%),
+    radial-gradient(280px 240px at 15% 75%, color-mix(in oklab, var(--accent-blue-2) 55%, transparent), transparent 65%),
+    radial-gradient(320px 200px at 60% 0%, color-mix(in oklab, #00ff95 55%, transparent), transparent 60%);
+}
 
 .card-sheen {
   position: absolute;
@@ -363,6 +369,39 @@ html {
   }
 }
 
+/* Fade in animation for card content transitions */
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Prevent transform effects on specific cards */
+.transform-none {
+  transform: none !important;
+}
+
+.transform-none:hover {
+  transform: none !important;
+}
+
+/* Enhanced futuristic card styling */
+.card.card-shine {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 4px 20px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.card.card-shine:hover {
+  box-shadow: 
+    0 0 0 1px rgba(var(--accent-rgb), 0.2),
+    0 8px 32px rgba(0, 0, 0, 0.25),
+    0 0 24px rgba(var(--accent-rgb), 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+
+
 /* Service card expansion - grow from bottom */
 .service-card {
   align-self: flex-start; /* Keeps cards anchored to top of grid cell */
@@ -427,17 +466,7 @@ html {
   }
 }
 
-/* Scroll Animation Classes */
-.fade-rise-in {
-  opacity: 0;
-  transform: translateY(25px);
-  will-change: opacity, transform;
-}
-
-.fade-rise-in.animated {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* Removed scroll animations for bug-free experience */
 
 /* Performance optimisations for animations */
 .scroll-animate {
@@ -464,10 +493,7 @@ html {
 
 /* Ensure content is accessible before animation */
 @media (prefers-reduced-motion: reduce) {
-  .fade-rise-in {
-    opacity: 1 !important;
-    transform: none !important;
-  }
+
   
   /* Disable GSAP animations for users who prefer reduced motion */
   .gsap-element {
@@ -576,7 +602,7 @@ html {
 
 /* Ensure content doesn't overlap with fixed navbar */
 .main-content {
-  padding-top: 5rem; /* 80px navbar height */
+  /* Remove padding-top to start at top of viewport */
 }
 
 /* Reduce motion respect */

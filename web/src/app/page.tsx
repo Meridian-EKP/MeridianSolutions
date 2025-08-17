@@ -6,7 +6,7 @@ import { useRef, useState } from "react";
 import { ArrowRight, Sparkles, Quote, Globe, MapPin, Share2, Search, Target, Megaphone, X, CheckCircle } from "lucide-react";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import ContactForm from "@/components/ContactForm";
-import { useStaggeredScrollAnimation, useFadeInAnimation } from "@/hooks/useScrollAnimation";
+// Removed scroll animations for bug-free experience
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -15,6 +15,41 @@ export default function Home() {
   
   // State for expanded service card
   const [expandedService, setExpandedService] = useState<number | null>(null);
+  
+  // State for hovered cycle card
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  
+  // Cycle cards data with detailed information
+  const cycleCards = [
+    {
+      id: 1,
+      title: "Discover",
+      subtitle: "Analyze & Strategy",
+      detailedTitle: "Deep Market Analysis",
+      detailedContent: "We analyze your market, competitors, and customer behavior to identify the best opportunities for growth and develop a data-driven strategy."
+    },
+    {
+      id: 2,
+      title: "Design", 
+      subtitle: "Build & Optimize",
+      detailedTitle: "Custom Development",
+      detailedContent: "Our team creates beautiful, high-performance websites and digital assets optimized for conversions and user experience."
+    },
+    {
+      id: 3,
+      title: "Deploy",
+      subtitle: "Launch & Monitor", 
+      detailedTitle: "Strategic Launch",
+      detailedContent: "We launch your digital presence with precision, implementing tracking systems and monitoring performance to ensure everything works perfectly."
+    },
+    {
+      id: 4,
+      title: "Dominate",
+      subtitle: "Scale & Grow",
+      detailedTitle: "Continuous Growth",
+      detailedContent: "Through ongoing optimization, data analysis, and strategic adjustments, we help you dominate your local market and scale sustainably."
+    }
+  ];
   
   // Handle service card expansion
   const toggleServiceExpansion = (index: number) => {
@@ -32,38 +67,7 @@ export default function Home() {
     }
   };
 
-  // Animation refs for different sections
-  const heroAnimRef = useStaggeredScrollAnimation([
-    { selector: ".hero-badge", options: { delay: 0.1, duration: 0.5, yOffset: 25 } },
-    { selector: ".hero-title", options: { delay: 0.2, duration: 0.6, yOffset: 30 } },
-    { selector: ".hero-subtitle", options: { delay: 0.3, duration: 0.5, yOffset: 25 } },
-    { selector: ".hero-buttons", options: { delay: 0.4, duration: 0.5, yOffset: 25 } }
-  ]);
-
-  const aboutAnimRef = useStaggeredScrollAnimation([
-    { selector: ".about-content", options: { delay: 0, duration: 0.5, yOffset: 30 } },
-    { selector: ".about-image", options: { delay: 0.15, duration: 0.5, yOffset: 30 } }
-  ]);
-
-  const servicesAnimRef = useStaggeredScrollAnimation([
-    { selector: ".services-header", options: { delay: 0, duration: 0.6, yOffset: 30 } }
-  ]);
-
-  const caseStudiesAnimRef = useStaggeredScrollAnimation([
-    { selector: ".case-studies-header", options: { delay: 0, duration: 0.5, yOffset: 30 } },
-    { selector: ".case-study-card", options: { delay: 0.1, duration: 0.5, yOffset: 30, stagger: 0.08 } }
-  ]);
-
-  const testimonialsAnimRef = useFadeInAnimation({ delay: 0, duration: 0.5, yOffset: 30 });
-
-  const ctaAnimRef = useStaggeredScrollAnimation([
-    { selector: ".cta-title", options: { delay: 0, duration: 0.5, yOffset: 30 } },
-    { selector: ".cta-subtitle", options: { delay: 0.15, duration: 0.5, yOffset: 25 } },
-    { selector: ".cta-buttons", options: { delay: 0.3, duration: 0.5, yOffset: 25 } },
-    { selector: ".cta-features", options: { delay: 0.45, duration: 0.5, yOffset: 20 } }
-  ]);
-
-  const contactAnimRef = useFadeInAnimation({ delay: 0, duration: 0.5, yOffset: 30 });
+  // Removed all scroll animations for clean, bug-free experience
 
   // Deterministic accent generator so each service card has a unique formation
   const accentStyleFor = (idx: number): React.CSSProperties => {
@@ -96,25 +100,25 @@ export default function Home() {
   return (
     <div id="top" className="relative overflow-x-clip">
       {/* HERO */}
-      <section ref={heroRef} className="relative min-h-[100svh] flex items-center">
+      <section ref={heroRef} className="relative min-h-[100svh] flex items-center pt-20">
         <div className="absolute inset-0 pointer-events-none">
           <motion.div style={{ y: yParallax }} className="h-full w-full">
             <div className="absolute inset-0 gradient-mesh" aria-hidden />
           </motion.div>
         </div>
 
-        <div ref={heroAnimRef} className="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-10">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-10">
           <div className="max-w-3xl">
-            <p className="hero-badge text-accent tracking-widest uppercase text-xs md:text-sm flex items-center gap-2">
+            <p className="text-accent tracking-widest uppercase text-xs md:text-sm flex items-center gap-2">
               <Sparkles className="size-4" /> MeridianDigital
             </p>
-            <h1 className="hero-title mt-4 text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05]">
+            <h1 className="mt-4 text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05]">
               Transform Your Local Business Into a Digital Powerhouse
             </h1>
-            <p className="hero-subtitle mt-6 text-muted max-w-2xl text-base md:text-lg">
+            <p className="mt-6 text-muted max-w-2xl text-base md:text-lg">
               We build conversion-driven websites and data-powered local marketing systems that turn your digital presence into your strongest sales channel. Get more leads, customers, and revenue with our proven modern approach.
             </p>
-            <div className="hero-buttons mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-wrap gap-4">
               <a href="#contact-form" className="btn-primary glow-ring inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-medium">
                 Get Your Free Digital Health Check
                 <ArrowRight className="size-4" />
@@ -129,19 +133,12 @@ export default function Home() {
 
       {/* ABOUT */}
       <section id="about" className="relative py-24 md:py-32">
-        <div ref={aboutAnimRef} className="mx-auto w-full max-w-7xl px-6 md:px-10 grid md:grid-cols-2 gap-10 items-center">
+        <div className="mx-auto w-full max-w-7xl px-6 md:px-10 grid md:grid-cols-2 gap-10 items-center">
           <div className="about-content">
-            <div className="card card-shine rounded-2xl p-6 md:p-8 overflow-hidden">
-              <div className="card-accents" style={{
-                background: [
-                  'radial-gradient(300px 220px at 12% 22%, color-mix(in oklab, var(--accent-blue-2) 55%, transparent), transparent 60%)',
-                  'radial-gradient(260px 200px at 88% 20%, color-mix(in oklab, var(--accent-pink-2) 55%, transparent), transparent 60%)',
-                  'radial-gradient(320px 220px at 45% 98%, color-mix(in oklab, #00ff95 55%, transparent), transparent 65%)'
-                ].join(',')
-              }} aria-hidden />
-              <div className="card-sheen" aria-hidden />
+            <div className="glass rounded-3xl p-6 md:p-10 border border-white/10 transition-transform duration-300 hover:scale-105">
+
               <div className="relative z-10">
-                <h2 className="text-2xl md:text-4xl font-semibold">Why Choose Us?</h2>
+                <h2 className="text-2xl md:text-4xl font-semibold">Why Meridian?</h2>
                 <p className="mt-4 text-muted">
                   MeridianDigital specialises in turning local businesses into digital leaders. We don't just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
                 </p>
@@ -152,8 +149,54 @@ export default function Home() {
             </div>
           </div>
           <div className="about-image">
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden glow-ring shine-effect">
-              <Image src="/window.svg" alt="About" fill className="object-cover opacity-80 mix-blend-screen" />
+            <div className="grid grid-cols-2 gap-4">
+              {cycleCards.map((card, index) => {
+                const accentClass = ['accent-a', 'accent-b', 'accent-c', 'accent-d'][index];
+                const gradientClass = [
+                  'from-accent to-accent-2',
+                  'from-accent-2 to-accent-3',
+                  'from-accent-3 to-accent',
+                  'from-accent to-accent-2'
+                ][index];
+                
+                return (
+                  <div 
+                    key={card.id}
+                    className="card card-shine rounded-2xl p-8 text-center cursor-pointer h-[300px] flex flex-col justify-center transform-none relative overflow-hidden border border-white/5 bg-gradient-to-br from-white/[0.02] to-white/[0.08] backdrop-blur-xl hover:bg-white/[0.06] transition-all duration-300"
+                    onMouseEnter={() => setHoveredCard(card.id)}
+                    onMouseLeave={() => setHoveredCard(null)}
+                  >
+                    <div className={`card-accents ${accentClass}`} aria-hidden />
+                    <div className="card-sheen" aria-hidden />
+                    <div className="relative z-10">
+                                                        {hoveredCard === card.id ? (
+                                    // Detailed view on hover - Clean and minimal
+                                    <div className="animate-fade-in text-left">
+                                      <div className="mb-6">
+                                        <span className="text-xs font-mono text-accent/60 uppercase tracking-widest">Step {card.id}</span>
+                                      </div>
+                                      <h3 className="text-xl font-medium text-white mb-4 leading-tight">{card.detailedTitle}</h3>
+                                      <p className="text-muted leading-relaxed">{card.detailedContent}</p>
+                                    </div>
+                                  ) : (
+                                    // Default view - Minimal and modern
+                                    <div className="animate-fade-in">
+                                      {/* Clean number */}
+                                      <div className="mb-8">
+                                        <span className="text-6xl font-light text-accent/40 leading-none">{card.id}</span>
+                                      </div>
+                                      
+                                      {/* Clean title */}
+                                      <div className="space-y-3">
+                                        <h3 className="text-lg font-medium text-white">{card.title}</h3>
+                                        <p className="text-sm text-muted/80">{card.subtitle}</p>
+                                      </div>
+                                    </div>
+                                  )}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -161,8 +204,8 @@ export default function Home() {
 
             {/* SERVICES */}
       <section id="services" className="relative py-24 md:py-32">
-        <div ref={servicesAnimRef} className="mx-auto w-full max-w-7xl px-6 md:px-10">
-          <div className="services-header max-w-3xl fade-rise-in">
+        <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
+          <div className="max-w-3xl">
             <h2 className="text-2xl md:text-4xl font-semibold">Complete Digital Growth Solutions</h2>
             <p className="mt-3 text-muted text-lg">Everything your local business needs to dominate your market and drive consistent growth.</p>
           </div>
@@ -338,7 +381,7 @@ export default function Home() {
 
       {/* CASE STUDIES */}
       <section id="work" className="relative py-24 md:py-32">
-        <div ref={caseStudiesAnimRef} className="mx-auto w-full max-w-7xl px-6 md:px-10">
+        <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
           <div className="case-studies-header max-w-3xl">
             <h2 className="text-2xl md:text-4xl font-semibold">Real Results for Real Businesses</h2>
             <p className="mt-3 text-muted text-lg">See how we've transformed local businesses into market leaders with measurable growth.</p>
@@ -400,7 +443,7 @@ export default function Home() {
 
             {/* TESTIMONIALS */}
       <section id="testimonials" className="relative py-24 md:py-32">
-        <div ref={testimonialsAnimRef} className="mx-auto w-full max-w-7xl px-6 md:px-10">
+        <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
           <div className="max-w-3xl">
             <h2 className="text-2xl md:text-4xl font-semibold">What Our Clients Say</h2>
             <p className="mt-3 text-muted text-lg">Don't just take our word for it—hear from local business owners who've experienced real growth.</p>
@@ -413,14 +456,14 @@ export default function Home() {
 
       {/* CTA */}
       <section id="contact" className="relative py-24 md:py-32">
-        <div ref={ctaAnimRef} className="mx-auto w-full max-w-5xl px-6 md:px-10 text-center">
-          <div className="glass rounded-3xl p-10 md:p-16 glow-ring">
-            <h2 className="cta-title text-2xl md:text-4xl font-semibold">Ready to Dominate Your Local Market?</h2>
-            <p className="cta-subtitle mt-4 text-white max-w-3xl mx-auto text-lg">
+        <div className="mx-auto w-full max-w-5xl px-6 md:px-10 text-center">
+          <div className="glass rounded-3xl p-10 md:p-16">
+            <h2 className="text-2xl md:text-4xl font-semibold">Ready to Dominate Your Local Market?</h2>
+            <p className="mt-4 text-white max-w-3xl mx-auto text-lg">
               Get your free digital health check and discover exactly how to turn your digital presence into your most powerful growth engine. 
               <span className="font-medium"> No obligation, just actionable insights.</span>
             </p>
-            <div className="cta-buttons mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <a href="#contact-form" className="btn-primary inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-medium">
                 Get Your Free Digital Health Check
                 <ArrowRight className="size-5" />
@@ -429,14 +472,14 @@ export default function Home() {
                 Call Now: (123) 456-7890
               </a>
             </div>
-            <p className="cta-features mt-4 text-sm text-muted">✓ 30-minute strategy session ✓ Custom growth roadmap ✓ No sales pressure</p>
+            <p className="mt-4 text-sm text-muted">✓ 30-minute strategy session ✓ Custom growth roadmap ✓ No sales pressure</p>
           </div>
         </div>
       </section>
 
       {/* CONTACT FORM */}
       <section id="contact-form" className="relative py-24 md:py-32 bg-black/20">
-        <div ref={contactAnimRef} className="mx-auto w-full max-w-7xl px-6 md:px-10">
+        <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
           <ContactForm />
         </div>
       </section>

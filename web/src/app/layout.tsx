@@ -108,6 +108,20 @@ export default function RootLayout({
             {children}
           </main>
         </div>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            if (typeof window !== 'undefined') {
+              window.addEventListener('beforeunload', function () {
+                window.scrollTo(0, 0);
+              });
+              
+              window.addEventListener('load', function () {
+                window.scrollTo(0, 0);
+                setTimeout(() => window.scrollTo(0, 0), 100);
+              });
+            }
+          `
+        }} />
         <StructuredData />
       </body>
     </html>
