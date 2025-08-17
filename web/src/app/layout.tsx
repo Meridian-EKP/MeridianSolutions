@@ -108,20 +108,58 @@ export default function RootLayout({
             {children}
           </main>
         </div>
-        <script dangerouslySetInnerHTML={{
-          __html: `
-            if (typeof window !== 'undefined') {
-              window.addEventListener('beforeunload', function () {
-                window.scrollTo(0, 0);
-              });
-              
-              window.addEventListener('load', function () {
-                window.scrollTo(0, 0);
-                setTimeout(() => window.scrollTo(0, 0), 100);
-              });
-            }
-          `
-        }} />
+                            <script dangerouslySetInnerHTML={{
+                      __html: `
+                        // Force scroll to top on page load/refresh
+                        if (typeof window !== 'undefined') {
+                          // Immediately scroll to top
+                          window.scrollTo(0, 0);
+                          document.documentElement.scrollTop = 0;
+                          document.body.scrollTop = 0;
+                          
+                          // Before page unload
+                          window.addEventListener('beforeunload', function () {
+                            window.scrollTo(0, 0);
+                            document.documentElement.scrollTop = 0;
+                            document.body.scrollTop = 0;
+                          });
+                          
+                          // When page loads
+                          window.addEventListener('load', function () {
+                            window.scrollTo(0, 0);
+                            document.documentElement.scrollTop = 0;
+                            document.body.scrollTop = 0;
+                            
+                            // Multiple fallbacks to ensure it works
+                            setTimeout(() => {
+                              window.scrollTo(0, 0);
+                              document.documentElement.scrollTop = 0;
+                              document.body.scrollTop = 0;
+                            }, 50);
+                            
+                            setTimeout(() => {
+                              window.scrollTo(0, 0);
+                              document.documentElement.scrollTop = 0;
+                              document.body.scrollTop = 0;
+                            }, 200);
+                          });
+                          
+                          // DOM content loaded
+                          document.addEventListener('DOMContentLoaded', function() {
+                            window.scrollTo(0, 0);
+                            document.documentElement.scrollTop = 0;
+                            document.body.scrollTop = 0;
+                          });
+                          
+                          // React hydration might interfere, so also do it after a delay
+                          setTimeout(() => {
+                            window.scrollTo(0, 0);
+                            document.documentElement.scrollTop = 0;
+                            document.body.scrollTop = 0;
+                          }, 500);
+                        }
+                      `
+                    }} />
         <StructuredData />
       </body>
     </html>

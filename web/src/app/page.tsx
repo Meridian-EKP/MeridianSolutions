@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import { ArrowRight, Sparkles, Quote, Globe, MapPin, Share2, Search, Target, Megaphone, X, CheckCircle } from "lucide-react";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import ContactForm from "@/components/ContactForm";
+import Footer from "@/components/Footer";
 // Removed scroll animations for bug-free experience
 
 export default function Home() {
@@ -98,7 +99,7 @@ export default function Home() {
   };
 
   return (
-    <div id="top" className="relative overflow-x-clip">
+    <div id="top" className="page-container relative overflow-x-clip">
       {/* HERO */}
       <section ref={heroRef} className="relative min-h-[100svh] flex items-center pt-20">
         <div className="absolute inset-0 pointer-events-none">
@@ -137,7 +138,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-10 items-start">
           <div className="about-content space-y-6">
             <h2 className="text-2xl md:text-4xl font-semibold">Why Meridian?</h2>
-            <div className="glass rounded-3xl p-6 md:p-10 border border-white/10 transition-transform duration-300 hover:scale-105">
+            <div className="glass-no-shine rounded-3xl p-6 md:p-10 border border-white/10 transition-transform duration-300 hover:scale-105">
               <div className="relative z-10">
                 <p className="text-muted">
                   MeridianDigital specialises in turning local businesses into digital leaders. We don't just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
@@ -468,7 +469,7 @@ export default function Home() {
       {/* CTA */}
       <section id="contact" className="relative py-24 md:py-32">
         <div className="mx-auto w-full max-w-5xl px-6 md:px-10 text-center">
-          <div className="glass rounded-3xl p-10 md:p-16">
+          <div className="glass-no-shine rounded-3xl p-10 md:p-16 transition-transform duration-300 hover:scale-105">
             <h2 className="text-2xl md:text-4xl font-semibold">Ready to Dominate Your Local Market?</h2>
             <p className="mt-4 text-white max-w-3xl mx-auto text-lg">
               Get your free digital health check and discover exactly how to turn your digital presence into your most powerful growth engine. 
@@ -495,19 +496,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="relative border-t border-white/10 py-10">
-        <div className="mx-auto w-full max-w-7xl px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="text-sm text-muted">© {new Date().getFullYear()} MeridianDigital</div>
-          <nav className="flex items-center gap-6 text-sm">
-            <a className="hover:text-accent transition shine-effect px-2 py-1 rounded" href="#about">About</a>
-            <a className="hover:text-accent transition shine-effect px-2 py-1 rounded" href="#services">Services</a>
-            <a className="hover:text-accent transition shine-effect px-2 py-1 rounded" href="#work">Work</a>
-            <a className="hover:text-accent transition shine-effect px-2 py-1 rounded" href="#testimonials">Testimonials</a>
-            <a className="hover:text-accent transition shine-effect px-2 py-1 rounded" href="#contact">Contact</a>
-          </nav>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

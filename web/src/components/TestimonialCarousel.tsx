@@ -62,7 +62,7 @@ export function TestimonialCarousel() {
   }, [autoScroll]);
 
   return (
-    <div className="glass rounded-3xl p-6 md:p-10 border border-white/10">
+    <div className="glass-no-shine rounded-3xl p-6 md:p-10 border border-white/10 transition-transform duration-300 hover:scale-105">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {testimonials.map((t, i) => (
