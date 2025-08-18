@@ -20,6 +20,43 @@ export default function Home() {
   // State for hovered cycle card
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   
+  // State for shine direction
+  const [shineDirection, setShineDirection] = useState<{[key: number]: string}>({});
+  
+  // Function to detect mouse direction based on entry/exit point
+  const getShineDirection = (e: React.MouseEvent, element: HTMLElement, isEntering: boolean) => {
+    const rect = element.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const w = rect.width;
+    const h = rect.height;
+    
+    // Calculate distances from each edge
+    const distFromTop = y;
+    const distFromBottom = h - y;
+    const distFromLeft = x;
+    const distFromRight = w - x;
+    
+    // Find which edge is closest (where mouse entered/exited)
+    const minDist = Math.min(distFromTop, distFromBottom, distFromLeft, distFromRight);
+    
+    if (isEntering) {
+      // Entrance: shine goes FROM the entry edge to the opposite side
+      if (minDist === distFromTop) return 'shine-top-to-bottom';
+      if (minDist === distFromBottom) return 'shine-bottom-to-top';
+      if (minDist === distFromLeft) return 'shine-left-to-right';
+      if (minDist === distFromRight) return 'shine-right-to-left';
+    } else {
+      // Exit: shine goes TO the exit edge (reverse direction)
+      if (minDist === distFromTop) return 'shine-bottom-to-top'; // towards top
+      if (minDist === distFromBottom) return 'shine-top-to-bottom'; // towards bottom
+      if (minDist === distFromLeft) return 'shine-right-to-left'; // towards left
+      if (minDist === distFromRight) return 'shine-left-to-right'; // towards right
+    }
+    
+    return 'shine-left-to-right'; // fallback
+  };
+  
   // Cycle cards data with detailed information
   const cycleCards = [
     {
@@ -173,12 +210,27 @@ export default function Home() {
                 return (
                   <div 
                     key={card.id}
-                    className="card card-shine rounded-2xl p-8 text-center cursor-pointer h-[300px] flex flex-col justify-center transform-none relative overflow-hidden border border-white/5 bg-gradient-to-br from-white/[0.02] to-white/[0.08] backdrop-blur-xl hover:bg-white/[0.06] transition-all duration-300"
-                    onMouseEnter={() => setHoveredCard(card.id)}
-                    onMouseLeave={() => setHoveredCard(null)}
+                    className="card rounded-2xl p-8 text-center cursor-pointer h-[300px] flex flex-col justify-center transform-none relative overflow-hidden border border-white/5 bg-gradient-to-br from-white/[0.02] to-white/[0.08] backdrop-blur-xl hover:bg-white/[0.06] transition-all duration-300"
+                    onMouseEnter={(e) => {
+                      setHoveredCard(card.id);
+                      const direction = getShineDirection(e, e.currentTarget as HTMLElement, true);
+                      console.log(`Mouse entered card ${card.id} - Direction: ${direction}`);
+                      setShineDirection(prev => ({ ...prev, [card.id]: direction }));
+                    }}
+                    onMouseLeave={(e) => {
+                      setHoveredCard(null);
+                      const direction = getShineDirection(e, e.currentTarget as HTMLElement, false);
+                      console.log(`Mouse left card ${card.id} - Direction: ${direction}`);
+                      // Clear any existing direction first to reset animation
+                      setShineDirection(prev => ({ ...prev, [card.id]: '' }));
+                      // Set new direction after a brief delay to trigger exit animation
+                      setTimeout(() => {
+                        setShineDirection(prev => ({ ...prev, [card.id]: direction }));
+                      }, 50);
+                    }}
                   >
                     <div className={`card-accents ${accentClass}`} aria-hidden />
-                    <div className="card-sheen" aria-hidden />
+                    <div className={`card-sheen ${shineDirection[card.id] || ''}`} aria-hidden />
                     <div className="relative z-10">
                                                         {hoveredCard === card.id ? (
                                     // Detailed view on hover - Clean and minimal
@@ -280,7 +332,7 @@ export default function Home() {
                     ].map((card, i) => (
             <div
               key={card.title}
-              className={`service-card group relative rounded-2xl card card-shine overflow-hidden cursor-pointer transition-all duration-300 ease-out ${
+              className={`service-card group relative rounded-2xl card overflow-hidden cursor-pointer transition-all duration-300 ease-out ${
                 expandedService === i 
                   ? 'ring-2 ring-accent/50 shadow-2xl shadow-accent/20' 
                   : 'hover:scale-[1.01]'

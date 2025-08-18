@@ -145,8 +145,7 @@ body {
 
 .card-sheen {
   position: absolute;
-  inset: -20% -60% auto -60%;
-  height: 2px;
+  inset: 0;
   background: linear-gradient(90deg,
     transparent 0%,
     color-mix(in oklab, var(--accent-blue-2) 55%, transparent) 25%,
@@ -154,14 +153,60 @@ body {
     color-mix(in oklab, var(--accent-pink-2) 55%, transparent) 75%,
     transparent 100%
   );
-  filter: blur(6px) saturate(140%);
-  transform: rotate(8deg) translateX(-20%);
-  animation: panSheen 12s linear infinite;
+  filter: blur(8px) saturate(140%);
+  opacity: 0;
   pointer-events: none;
+  /* Removed transition to prevent unwanted animations when class is removed */
 }
-@keyframes panSheen {
-  0% { transform: rotate(8deg) translateX(-20%); }
-  100% { transform: rotate(8deg) translateX(120%); }
+/* Removed panSheen animation */
+
+/* Simple directional shine using transform and opacity */
+.card-sheen.shine-left-to-right {
+  background: linear-gradient(90deg, transparent 0%, rgba(102, 126, 234, 0.4) 50%, transparent 100%);
+  transform: translateX(-100%);
+  opacity: 1;
+  animation: slideLeftToRight 0.8s ease-out forwards;
+}
+
+.card-sheen.shine-right-to-left {
+  background: linear-gradient(90deg, transparent 0%, rgba(102, 126, 234, 0.4) 50%, transparent 100%);
+  transform: translateX(100%);
+  opacity: 1;
+  animation: slideRightToLeft 0.8s ease-out forwards;
+}
+
+.card-sheen.shine-top-to-bottom {
+  background: linear-gradient(180deg, transparent 0%, rgba(102, 126, 234, 0.4) 50%, transparent 100%);
+  transform: translateY(-100%);
+  opacity: 1;
+  animation: slideTopToBottom 0.8s ease-out forwards;
+}
+
+.card-sheen.shine-bottom-to-top {
+  background: linear-gradient(180deg, transparent 0%, rgba(102, 126, 234, 0.4) 50%, transparent 100%);
+  transform: translateY(100%);
+  opacity: 1;
+  animation: slideBottomToTop 0.8s ease-out forwards;
+}
+
+@keyframes slideLeftToRight {
+  0% { transform: translateX(-100%); opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes slideRightToLeft {
+  0% { transform: translateX(100%); opacity: 1; }
+  100% { transform: translateX(-100%); opacity: 0; }
+}
+
+@keyframes slideTopToBottom {
+  0% { transform: translateY(-100%); opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+@keyframes slideBottomToTop {
+  0% { transform: translateY(100%); opacity: 1; }
+  100% { transform: translateY(-100%); opacity: 0; }
 }
 
 /* Full-page glow field with many floating dots */
@@ -284,7 +329,7 @@ body {
   -webkit-backdrop-filter: blur(20px) saturate(200%);
 }
 
-/* Card shine effect */
+/* Card shine effect - DISABLED for directional shine */
 .card-shine {
   position: relative;
   overflow: hidden;
@@ -292,24 +337,15 @@ body {
 }
 
 .card-shine::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-  transition: left 0.7s ease;
-  z-index: 2;
-  pointer-events: none;
+  display: none !important; /* Disabled old shine effect */
 }
 
 .card-shine:hover::before {
-  left: 100%;
+  display: none !important; /* Disabled old shine effect */
 }
 
 .card-shine:hover {
-  transform: translateY(-2px);
+  /* Removed translateY animation that interfered */
 }
 
 /* Generic shine effect for any element */
