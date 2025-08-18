@@ -56,7 +56,7 @@ export default function Footer() {
     >
       {/* Main Footer Content */}
       <div className="glass-no-shine border-t border-accent/20 backdrop-blur-xl">
-        <div className="mx-auto w-full max-w-7xl px-6 md:px-10 py-16">
+        <div className="mx-auto w-full max-w-7xl px-6 md:px-10 pt-8 pb-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             
             {/* Column 1: Brand */}

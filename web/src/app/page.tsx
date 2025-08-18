@@ -114,10 +114,10 @@ export default function Home() {
               <Sparkles className="size-4" /> MeridianDigital
             </p>
             <h1 className="mt-4 text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05]">
-              Transform Your Local Business Into a Digital Powerhouse
+              We Build Digital Solutions That Bring You Results
             </h1>
             <p className="mt-6 text-muted max-w-2xl text-base md:text-lg">
-              We build conversion-driven websites and data-powered local marketing systems that turn your digital presence into your strongest sales channel. Get more leads, customers, and revenue with our proven modern approach.
+              Create complete digital strategies that turn your digital presence into your strongest sales channel. Get more leads, customers, and revenue with our proven modern approach.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a href="#contact-form" className="btn-primary glow-ring inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-medium">
@@ -467,7 +467,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section id="contact" className="relative py-24 md:py-32">
+      <section id="contact" className="relative pt-24 md:pt-32 pb-32 md:pb-48 min-h-screen flex items-center">
         <div className="mx-auto w-full max-w-5xl px-6 md:px-10 text-center">
           <div className="glass-no-shine rounded-3xl p-10 md:p-16 transition-transform duration-300 hover:scale-105">
             <h2 className="text-2xl md:text-4xl font-semibold">Ready to Dominate Your Local Market?</h2>
@@ -490,7 +490,7 @@ export default function Home() {
       </section>
 
       {/* CONTACT FORM */}
-      <section id="contact-form" className="relative py-24 md:py-32 bg-black/20">
+      <section id="contact-form" className="relative pt-24 md:pt-32 pb-32 md:pb-48 bg-black/20 min-h-screen">
         <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
           <ContactForm />
         </div>
