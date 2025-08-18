@@ -25,16 +25,16 @@ export default function Home() {
     {
       id: 1,
       title: "Discover",
-      subtitle: "Analyze & Strategy",
+      subtitle: "Analyse & Strategy",
       detailedTitle: "Deep Market Analysis",
-      detailedContent: "We analyze your market, competitors, and customer behavior to identify the best opportunities for growth and develop a data-driven strategy."
+      detailedContent: "We analyse your market, competitors, and customer behaviour to identify the best opportunities for growth and develop a data-driven strategy."
     },
     {
       id: 2,
       title: "Design", 
-      subtitle: "Build & Optimize",
+      subtitle: "Build & Optimise",
       detailedTitle: "Custom Development",
-      detailedContent: "Our team creates beautiful, high-performance websites and digital assets optimized for conversions and user experience."
+      detailedContent: "Our team creates beautiful, high-performance websites and digital assets optimised for conversions and user experience."
     },
     {
       id: 3,
@@ -48,7 +48,7 @@ export default function Home() {
       title: "Dominate",
       subtitle: "Scale & Grow",
       detailedTitle: "Continuous Growth",
-      detailedContent: "Through ongoing optimization, data analysis, and strategic adjustments, we help you dominate your local market and scale sustainably."
+      detailedContent: "Through ongoing optimisation, data analysis, and strategic adjustments, we help you dominate your local market and scale sustainably."
     }
   ];
   
@@ -225,7 +225,7 @@ export default function Home() {
           {[
             { 
               title: "Website Development", 
-              desc: "Lightning-fast, conversion-optimised websites that turn visitors into customers.",
+              desc: "Professional websites designed for performance, conversions, and business growth.",
               fullDesc: "Custom-built using modern frameworks with mobile-first design, SEO optimisation, and conversion psychology.",
               detailedDesc: "We create stunning, high-performance websites that don't just look amazing—they drive real business results. Every site is built with conversion psychology, advanced SEO, and lightning-fast loading speeds.\n\nOur websites are fully responsive, accessible, and optimised for search engines from day one. You'll get a complete digital presence that turns visitors into customers and grows with your business.",
               pricing: "From £2,497",
@@ -234,7 +234,7 @@ export default function Home() {
             },
             { 
               title: "Google Business Profile", 
-              desc: "Dominate local search results and convert map searches into paying customers.",
+              desc: "Complete Google Business Profile management for maximum local visibility.",
               fullDesc: "Complete GBP optimisation, review management, and local ranking strategies that get you found first.",
               detailedDesc: "Transform your Google Business Profile into a powerful lead generation machine. We optimise every element to dominate local search results and convert map searches into paying customers.\n\nOur comprehensive GBP strategy includes review management, post scheduling, local keyword optimisation, and ongoing monitoring to ensure you stay ahead of competitors.",
               pricing: "From £497/month",
@@ -243,7 +243,7 @@ export default function Home() {
             },
             { 
               title: "Social Media Management", 
-              desc: "Strategic content that builds authority and drives local engagement.",
+              desc: "Professional social media management that builds brand authority and engagement.",
               fullDesc: "Platform-specific content strategies, community management, and local audience targeting that converts.",
               detailedDesc: "Build authority and drive meaningful engagement with strategic social media management. We create platform-specific content that resonates with your local audience and converts followers into customers.\n\nFrom content creation to community management, we handle everything while maintaining your authentic brand voice and driving measurable business results.",
               pricing: "From £797/month",
@@ -252,7 +252,7 @@ export default function Home() {
             },
             { 
               title: "Local SEO", 
-              desc: "Rank #1 for high-intent local searches in your area.",
+              desc: "Comprehensive local search optimisation to dominate your market area.",
               fullDesc: "Technical SEO, local citations, keyword targeting, and ongoing optimisation for sustainable growth.",
               detailedDesc: "Dominate local search results with our comprehensive Local SEO strategy. We target high-intent local keywords and optimise your entire digital presence to attract customers who are ready to buy.\n\nOur proven approach includes technical SEO, local citations, Google My Business optimisation, and ongoing content strategy to ensure sustainable, long-term growth.",
               pricing: "From £697/month",
@@ -261,7 +261,7 @@ export default function Home() {
             },
             { 
               title: "Growth Consulting", 
-              desc: "Data-driven strategies and roadmaps for rapid business expansion.",
+              desc: "Expert business consulting with actionable strategies for sustainable growth.",
               fullDesc: "Comprehensive audits, competitive analysis, and custom growth plans tailored to your market.",
               detailedDesc: "Get expert guidance with our comprehensive growth consulting service. We analyse your entire business, identify untapped opportunities, and create a custom roadmap for rapid, sustainable expansion.\n\nOur data-driven approach includes competitive analysis, market research, and actionable strategies that deliver measurable results within 90 days.",
               pricing: "From £297/session",
@@ -270,7 +270,7 @@ export default function Home() {
             },
             { 
               title: "Marketing Campaigns", 
-              desc: "High-ROI campaigns that generate immediate results.",
+              desc: "Multi-channel marketing campaigns designed for maximum return on investment.",
               fullDesc: "Multi-channel campaigns with advanced tracking, A/B testing, and continuous optimisation.",
               detailedDesc: "Launch high-impact marketing campaigns that deliver immediate, measurable results. We create multi-channel strategies with advanced tracking and continuous optimisation to maximise your ROI.\n\nFrom PPC advertising to email marketing, we handle the entire campaign lifecycle while providing transparent reporting and ongoing optimisation for sustained growth.",
               pricing: "From £997/month",
@@ -328,7 +328,7 @@ export default function Home() {
                       </p>
                     </div>
                     <div className="mt-5 inline-flex items-center gap-2 text-accent group-hover:translate-x-1 transition-transform">
-                      Learn more <ArrowRight className="size-4" />
+                      See more <ArrowRight className="size-4" />
                     </div>
                   </>
                 )}
@@ -340,9 +340,9 @@ export default function Home() {
                   {/* Separator line */}
                   <div className="border-t border-white/10"></div>
                   
-                  {/* Detailed description */}
+                  {/* Detailed description - Skip first two paragraphs */}
                   <div className="space-y-3">
-                    {card.detailedDesc.split('\n\n').map((paragraph, idx) => (
+                    {card.detailedDesc.split('\n\n').slice(2).map((paragraph, idx) => (
                       <p key={idx} className="text-muted leading-relaxed">
                         {paragraph}
                       </p>
@@ -353,7 +353,7 @@ export default function Home() {
                   <div className="p-4 rounded-xl bg-white/5 border border-accent/20">
                     <div className="flex items-center justify-between">
                       <span className="text-lg font-semibold text-accent">Investment</span>
-                      <span className="text-2xl font-bold">{card.pricing}</span>
+                      <span className="text-lg font-bold">{card.pricing}</span>
                     </div>
                   </div>
 

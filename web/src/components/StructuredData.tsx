@@ -67,7 +67,7 @@ export default function StructuredData() {
           "itemOffered": {
             "@type": "Service",
             "name": "Local SEO",
-            "description": "Search engine optimization for local business visibility"
+            "description": "Search engine optimisation for local business visibility"
           }
         },
         {
