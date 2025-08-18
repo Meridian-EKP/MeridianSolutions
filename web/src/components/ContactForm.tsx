@@ -8,6 +8,7 @@ interface FormData {
   name: string;
   businessName: string;
   email: string;
+  phoneCountry: string;
   phone: string;
   message: string;
   honeypot: string; // Hidden field for spam prevention
@@ -17,11 +18,40 @@ interface FormErrors {
   [key: string]: string;
 }
 
+// Common country codes
+const countryCodes = [
+  { code: "+1", country: "US/CA", flag: "🇺🇸" },
+  { code: "+44", country: "UK", flag: "🇬🇧" },
+  { code: "+61", country: "AU", flag: "🇦🇺" },
+  { code: "+33", country: "FR", flag: "🇫🇷" },
+  { code: "+49", country: "DE", flag: "🇩🇪" },
+  { code: "+34", country: "ES", flag: "🇪🇸" },
+  { code: "+39", country: "IT", flag: "🇮🇹" },
+  { code: "+31", country: "NL", flag: "🇳🇱" },
+  { code: "+46", country: "SE", flag: "🇸🇪" },
+  { code: "+47", country: "NO", flag: "🇳🇴" },
+  { code: "+45", country: "DK", flag: "🇩🇰" },
+  { code: "+41", country: "CH", flag: "🇨🇭" },
+  { code: "+43", country: "AT", flag: "🇦🇹" },
+  { code: "+32", country: "BE", flag: "🇧🇪" },
+  { code: "+353", country: "IE", flag: "🇮🇪" },
+  { code: "+351", country: "PT", flag: "🇵🇹" },
+  { code: "+91", country: "IN", flag: "🇮🇳" },
+  { code: "+86", country: "CN", flag: "🇨🇳" },
+  { code: "+81", country: "JP", flag: "🇯🇵" },
+  { code: "+82", country: "KR", flag: "🇰🇷" },
+  { code: "+55", country: "BR", flag: "🇧🇷" },
+  { code: "+52", country: "MX", flag: "🇲🇽" },
+  { code: "+27", country: "ZA", flag: "🇿🇦" },
+  { code: "+971", country: "AE", flag: "🇦🇪" }
+];
+
 export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     businessName: "",
     email: "",
+    phoneCountry: "+1", // Default to US
     phone: "",
     message: "",
     honeypot: "", // Hidden honeypot field
@@ -50,8 +80,13 @@ export default function ContactForm() {
 
     if (!formData.phone.trim()) {
       newErrors.phone = "Phone number is required";
-    } else if (!/^[\+]?[1-9][\d]{0,15}$/.test(formData.phone.replace(/[\s\-\(\)]/g, ""))) {
-      newErrors.phone = "Please enter a valid phone number";
+    } else {
+      // Remove spaces, hyphens, parentheses, and dots for validation
+      const cleanPhone = formData.phone.replace(/[\s\-\(\)\.]/g, "");
+      // Phone should be 6-15 digits (international standard)
+      if (!/^[0-9]{6,15}$/.test(cleanPhone)) {
+        newErrors.phone = "Please enter a valid phone number (6-15 digits)";
+      }
     }
 
     if (!formData.message.trim()) {
@@ -91,6 +126,7 @@ export default function ContactForm() {
           name: "",
           businessName: "",
           email: "",
+          phoneCountry: "+1",
           phone: "",
           message: "",
           honeypot: "",
@@ -180,9 +216,13 @@ export default function ContactForm() {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className={`w-full px-4 py-3 rounded-xl bg-white/5 border transition-colors focus:outline-none focus:ring-2 focus:ring-accent/50 ${
-                errors.name ? "border-red-500" : "border-white/10 focus:border-accent/30"
+              className={`w-full px-4 py-3 rounded-xl bg-white/5 border backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-white/10 hover:bg-white/8 ${
+                errors.name ? "border-red-500/50" : "border-white/10 focus:border-accent/30"
               }`}
+              style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                backdropFilter: 'blur(12px)'
+              }}
               placeholder="John Smith"
             />
             {errors.name && (
@@ -203,9 +243,13 @@ export default function ContactForm() {
               name="businessName"
               value={formData.businessName}
               onChange={handleChange}
-              className={`w-full px-4 py-3 rounded-xl bg-white/5 border transition-colors focus:outline-none focus:ring-2 focus:ring-accent/50 ${
-                errors.businessName ? "border-red-500" : "border-white/10 focus:border-accent/30"
+              className={`w-full px-4 py-3 rounded-xl bg-white/5 border backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-white/10 hover:bg-white/8 ${
+                errors.businessName ? "border-red-500/50" : "border-white/10 focus:border-accent/30"
               }`}
+              style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                backdropFilter: 'blur(12px)'
+              }}
               placeholder="Your Business Name"
             />
             {errors.businessName && (
@@ -228,9 +272,13 @@ export default function ContactForm() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className={`w-full px-4 py-3 rounded-xl bg-white/5 border transition-colors focus:outline-none focus:ring-2 focus:ring-accent/50 ${
-                errors.email ? "border-red-500" : "border-white/10 focus:border-accent/30"
+              className={`w-full px-4 py-3 rounded-xl bg-white/5 border backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-white/10 hover:bg-white/8 ${
+                errors.email ? "border-red-500/50" : "border-white/10 focus:border-accent/30"
               }`}
+              style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                backdropFilter: 'blur(12px)'
+              }}
               placeholder="john@yourbusiness.com"
             />
             {errors.email && (
@@ -245,17 +293,45 @@ export default function ContactForm() {
             <label htmlFor="phone" className="block text-sm font-medium mb-2">
               Phone Number *
             </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              className={`w-full px-4 py-3 rounded-xl bg-white/5 border transition-colors focus:outline-none focus:ring-2 focus:ring-accent/50 ${
-                errors.phone ? "border-red-500" : "border-white/10 focus:border-accent/30"
-              }`}
-              placeholder="(555) 123-4567"
-            />
+            <div className="flex gap-3">
+              <select
+                name="phoneCountry"
+                value={formData.phoneCountry}
+                onChange={handleChange}
+                className={`phone-country-select px-4 py-3 rounded-xl bg-white/5 border backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-white/10 hover:bg-white/8 ${
+                  errors.phone ? "border-red-500/50" : "border-white/10 focus:border-accent/30"
+                }`}
+                style={{
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  backdropFilter: 'blur(12px)',
+                  minWidth: '120px'
+                }}
+              >
+                {countryCodes.map((country) => (
+                  <option 
+                    key={country.code} 
+                    value={country.code}
+                  >
+                    {country.flag} {country.code} {country.country}
+                  </option>
+                ))}
+              </select>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className={`flex-1 px-4 py-3 rounded-xl bg-white/5 border backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-white/10 hover:bg-white/8 ${
+                  errors.phone ? "border-red-500/50" : "border-white/10 focus:border-accent/30"
+                }`}
+                style={{
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  backdropFilter: 'blur(12px)'
+                }}
+                placeholder="123 456 7890"
+              />
+            </div>
             {errors.phone && (
               <div className="flex items-center gap-1 mt-1 text-red-400 text-sm">
                 <AlertCircle className="size-4" />
@@ -275,9 +351,13 @@ export default function ContactForm() {
             value={formData.message}
             onChange={handleChange}
             rows={4}
-            className={`w-full px-4 py-3 rounded-xl bg-white/5 border transition-colors focus:outline-none focus:ring-2 focus:ring-accent/50 resize-none ${
-              errors.message ? "border-red-500" : "border-white/10 focus:border-accent/30"
+            className={`w-full px-4 py-3 rounded-xl bg-white/5 border backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-white/10 hover:bg-white/8 resize-none ${
+              errors.message ? "border-red-500/50" : "border-white/10 focus:border-accent/30"
             }`}
+            style={{
+              background: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(12px)'
+            }}
             placeholder="What are your main business challenges? What growth goals do you have? Any specific areas you'd like us to focus on?"
           />
           {errors.message && (

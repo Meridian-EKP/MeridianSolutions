@@ -5,6 +5,7 @@ interface FormData {
   name: string;
   businessName: string;
   email: string;
+  phoneCountry: string;
   phone: string;
   message: string;
   honeypot?: string; // For spam prevention
@@ -12,12 +13,24 @@ interface FormData {
 
 // Configure the email transporter
 const createTransporter = () => {
-  return nodemailer.createTransporter({
+  console.log('Creating transporter with:', {
+    user: process.env.EMAIL_USER,
+    passLength: process.env.EMAIL_PASS?.length || 0
+  });
+  
+  return nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
     },
+    debug: true, // Add debug logging
+    logger: true, // Add logging
+    tls: {
+      rejectUnauthorized: false // Accept self-signed certificates
+    },
+    secure: true, // Use TLS
+    requireTLS: true // Require TLS
   });
 };
 
@@ -41,8 +54,17 @@ const validateFormData = (data: FormData): { isValid: boolean; errors: string[] 
 
   if (!data.phone?.trim()) {
     errors.push('Phone number is required');
-  } else if (!/^[\+]?[1-9][\d]{0,15}$/.test(data.phone.replace(/[\s\-\(\)]/g, ""))) {
-    errors.push('Invalid phone number format');
+  } else {
+    // Remove spaces, hyphens, parentheses, and dots for validation
+    const cleanPhone = data.phone.replace(/[\s\-\(\)\.]/g, "");
+    // Phone should be 6-15 digits (international standard)
+    if (!/^[0-9]{6,15}$/.test(cleanPhone)) {
+      errors.push('Invalid phone number format (6-15 digits required)');
+    }
+  }
+
+  if (!data.phoneCountry?.trim()) {
+    errors.push('Country code is required');
   }
 
   if (!data.message?.trim()) {
@@ -104,7 +126,7 @@ const createEmailHTML = (data: FormData): string => {
                 <div class="field">
                     <div class="field-label">Phone Number:</div>
                     <div class="field-value">
-                        <a href="tel:${data.phone}">${data.phone}</a>
+                        <a href="tel:${data.phoneCountry}${data.phone}">${data.phoneCountry} ${data.phone}</a>
                     </div>
                 </div>
                 
@@ -125,12 +147,21 @@ const createEmailHTML = (data: FormData): string => {
 };
 
 export async function POST(request: NextRequest) {
+  console.log('POST /api/contact called');
+  
   try {
     const data: FormData = await request.json();
+    console.log('Form data received:', { 
+      name: data.name, 
+      email: data.email, 
+      phone: data.phone,
+      businessName: data.businessName 
+    });
 
     // Validate the form data
     const validation = validateFormData(data);
     if (!validation.isValid) {
+      console.log('Validation failed:', validation.errors);
       return NextResponse.json(
         { success: false, errors: validation.errors },
         { status: 400 }
@@ -138,8 +169,14 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if required environment variables are set
+    console.log('Checking environment variables:', {
+      hasEmailUser: !!process.env.EMAIL_USER,
+      hasEmailPass: !!process.env.EMAIL_PASS,
+      emailUser: process.env.EMAIL_USER
+    });
+    
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-      console.error('Email configuration missing');
+      console.error('Email configuration missing - EMAIL_USER or EMAIL_PASS not set');
       return NextResponse.json(
         { success: false, error: 'Email service temporarily unavailable' },
         { status: 500 }
@@ -151,11 +188,23 @@ export async function POST(request: NextRequest) {
 
     // Verify transporter configuration
     try {
+      console.log('Verifying transporter...');
       await transporter.verify();
+      console.log('Transporter verified successfully');
     } catch (verifyError) {
       console.error('Email transporter verification failed:', verifyError);
+      console.error('Verify error details:', {
+        message: verifyError instanceof Error ? verifyError.message : 'Unknown error',
+        code: (verifyError as any)?.code,
+        response: (verifyError as any)?.response,
+        responseCode: (verifyError as any)?.responseCode
+      });
       return NextResponse.json(
-        { success: false, error: 'Email service configuration error' },
+        { 
+          success: false, 
+          error: 'Email service configuration error',
+          details: verifyError instanceof Error ? verifyError.message : 'Unknown verification error'
+        },
         { status: 500 }
       );
     }
@@ -168,7 +217,7 @@ New Digital Health Check Request
 Full Name: ${data.name}
 Business Name: ${data.businessName}
 Email: ${data.email}
-Phone: ${data.phone}
+Phone: ${data.phoneCountry} ${data.phone}
 
 Business Goals:
 ${data.message}
@@ -199,11 +248,16 @@ Source: MeridianDigital Contact Form
 
   } catch (error) {
     console.error('Form submission error:', error);
+    console.error('Error details:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : 'No stack trace'
+    });
     
     return NextResponse.json(
       { 
         success: false, 
-        error: 'An unexpected error occurred. Please try again or contact us directly.' 
+        error: 'An unexpected error occurred. Please try again or contact us directly.',
+        details: error instanceof Error ? error.message : 'Unknown error'
       },
       { status: 500 }
     );

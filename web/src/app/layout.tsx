@@ -101,7 +101,7 @@ export default function RootLayout({
         <Navigation />
         <div className="relative">
           {/* Place the glow field under content but above base gradient */}
-          <div className="absolute inset-0 overflow-visible">
+          <div className="absolute inset-0 overflow-hidden">
             <ClientShell>{null}</ClientShell>
           </div>
           <main className="relative z-10 main-content">
