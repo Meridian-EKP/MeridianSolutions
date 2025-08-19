@@ -1,4 +1,12 @@
-"use client";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { termsOfServiceMetadata } from "@/lib/metadata";
+
+/**
+ * Terms of Service Page Metadata
+ */
+export const metadata: Metadata = termsOfServiceMetadata;
 
 /**
  * Terms of Service Page
@@ -7,10 +15,9 @@
  * and conditions for using our services and website.
  */
 
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
-
 export default function TermsOfService() {
+  const currentDate = new Date().toLocaleDateString('en-GB');
+  
   return (
     <div className="min-h-screen bg-gray-900">
       {/* Header */}
@@ -26,7 +33,7 @@ export default function TermsOfService() {
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
             Terms of Service
           </h1>
-          <p className="text-gray-400 text-lg">Last updated: {new Date().toLocaleDateString('en-GB')}</p>
+          <p className="text-gray-400 text-lg">Last updated: {currentDate}</p>
         </div>
       </div>
 

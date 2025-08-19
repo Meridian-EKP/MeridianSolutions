@@ -1,14 +1,21 @@
-import type { MetadataRoute } from "next";
+import { MetadataRoute } from 'next'
+
+/**
+ * Robots.txt Generation
+ * 
+ * This file generates a robots.txt file that provides crawling instructions
+ * to search engine bots for the MeridianDigital website.
+ */
 
 export default function robots(): MetadataRoute.Robots {
-  const url = "https://meridiandigital.example";
   return {
     rules: {
-      userAgent: "*",
-      allow: "/",
+      userAgent: '*',
+      allow: '/',
+      disallow: ['/api/', '/_next/', '/admin/'],
     },
-    sitemap: `${url}/sitemap.xml`,
-  };
+    sitemap: 'https://meridiandigital.com/sitemap.xml',
+  }
 }
 
 

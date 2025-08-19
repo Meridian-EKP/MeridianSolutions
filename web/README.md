@@ -9,6 +9,7 @@ A modern, futuristic website for MeridianDigital - a digital marketing agency sp
 - **Contact Form**: Comprehensive form with validation, spam prevention, and international phone support
 - **Responsive Design**: Optimized for all device sizes
 - **Performance Optimized**: Efficient animations and smooth scrolling
+- **SEO Optimized**: Comprehensive metadata, sitemap, and structured data
 
 ## 📁 Project Structure
 
@@ -38,9 +39,30 @@ web/
 │       ├── accentStyles.ts    # Accent style generation
 │       ├── shineDirection.ts  # Shine effect direction logic
 │       └── validation.ts      # Form validation utilities
+│   └── lib/                   # Library and configuration files
+│       └── metadata.ts        # Centralized metadata configuration
 ├── public/                    # Static assets
 ├── package.json
 └── README.md
+
+## 🔍 SEO Implementation
+
+### Metadata Management
+- **Centralized Configuration**: All metadata managed in `src/lib/metadata.ts`
+- **Page-Specific Metadata**: Each page has optimized titles, descriptions, and keywords
+- **Social Media Tags**: Open Graph and Twitter Card support
+- **Canonical URLs**: Proper canonical URL implementation
+
+### SEO Files
+- **sitemap.ts**: Dynamic sitemap generation for search engine indexing
+- **robots.ts**: Crawling instructions for search engine bots
+- **StructuredData.tsx**: JSON-LD structured data for rich snippets
+
+### Metadata Features
+- **Homepage**: Optimized for "digital marketing agency" and "local business growth"
+- **Privacy Policy**: Focused on data protection and GDPR compliance
+- **Terms of Service**: Legal terms and service agreements
+- **Keywords**: Comprehensive keyword targeting for local business marketing
 ```
 
 ## 🛠️ Key Components

@@ -1,15 +1,35 @@
-import type { MetadataRoute } from "next";
+import { MetadataRoute } from 'next'
+
+/**
+ * Dynamic Sitemap Generation
+ * 
+ * This file generates a sitemap.xml for the MeridianDigital website,
+ * helping search engines discover and index all pages efficiently.
+ */
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://meridiandigital.example";
+  const baseUrl = 'https://meridiandigital.com'
+  
   return [
     {
-      url: `${baseUrl}`,
+      url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: 'weekly',
       priority: 1,
     },
-  ];
+    {
+      url: `${baseUrl}/privacy-policy`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/terms-of-service`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.3,
+    },
+  ]
 }
 
 
