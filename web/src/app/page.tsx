@@ -1,5 +1,23 @@
 "use client";
 
+/**
+ * Main Home Page Component
+ * 
+ * This component renders the complete MeridianDigital website homepage including:
+ * - Hero section with parallax background
+ * - About section with interactive cycle cards
+ * - Services section with expandable cards
+ * - Case studies showcase
+ * - Testimonials carousel
+ * - Contact form and CTA sections
+ * 
+ * Key Features:
+ * - Directional shine effects on cycle cards
+ * - Expandable service cards with detailed information
+ * - Responsive design with glassmorphism effects
+ * - Accessibility features (keyboard navigation, ARIA labels)
+ */
+
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef, useState } from "react";
@@ -7,7 +25,6 @@ import { ArrowRight, Sparkles, Quote, Globe, MapPin, Share2, Search, Target, Meg
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
-// Removed scroll animations for bug-free experience
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -20,22 +37,33 @@ export default function Home() {
   // State for hovered cycle card
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   
-  // State for shine direction
+  // State for shine direction - tracks which direction the shine effect should animate for each card
   const [shineDirection, setShineDirection] = useState<{[key: number]: string}>({});
   
-  // Function to detect mouse direction based on entry/exit point
+  /**
+   * Determines the direction of the shine effect based on mouse entry/exit point
+   * 
+   * This function calculates which edge of the card the mouse entered/exited from
+   * and returns the appropriate CSS class for the directional shine animation.
+   * 
+   * @param e - Mouse event containing clientX and clientY coordinates
+   * @param element - The card element to calculate relative positions
+   * @param isEntering - Boolean indicating if this is an entry (true) or exit (false) event
+   * @returns CSS class name for the directional shine animation
+   */
   const getShineDirection = (e: React.MouseEvent, element: HTMLElement, isEntering: boolean) => {
+    // Get the card's position and dimensions relative to the viewport
     const rect = element.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const w = rect.width;
-    const h = rect.height;
+    const x = e.clientX - rect.left; // Mouse X position relative to card left edge
+    const y = e.clientY - rect.top;  // Mouse Y position relative to card top edge
+    const w = rect.width;  // Card width
+    const h = rect.height; // Card height
     
-    // Calculate distances from each edge
-    const distFromTop = y;
-    const distFromBottom = h - y;
-    const distFromLeft = x;
-    const distFromRight = w - x;
+    // Calculate distances from each edge to determine closest edge
+    const distFromTop = y;                    // Distance from top edge
+    const distFromBottom = h - y;             // Distance from bottom edge
+    const distFromLeft = x;                   // Distance from left edge
+    const distFromRight = w - x;              // Distance from right edge
     
     // Find which edge is closest (where mouse entered/exited)
     const minDist = Math.min(distFromTop, distFromBottom, distFromLeft, distFromRight);
@@ -48,13 +76,14 @@ export default function Home() {
       if (minDist === distFromRight) return 'shine-right-to-left';
     } else {
       // Exit: shine goes TO the exit edge (reverse direction)
+      // Note: Exit animations are currently disabled per user request
       if (minDist === distFromTop) return 'shine-bottom-to-top'; // towards top
       if (minDist === distFromBottom) return 'shine-top-to-bottom'; // towards bottom
       if (minDist === distFromLeft) return 'shine-right-to-left'; // towards left
       if (minDist === distFromRight) return 'shine-left-to-right'; // towards right
     }
     
-    return 'shine-left-to-right'; // fallback
+    return 'shine-left-to-right'; // fallback direction
   };
   
   // Cycle cards data with detailed information
@@ -107,18 +136,45 @@ export default function Home() {
 
   // Removed all scroll animations for clean, bug-free experience
 
-  // Deterministic accent generator so each service card has a unique formation
+  /**
+   * Generates deterministic accent styles for service cards
+   * 
+   * This function creates unique, visually appealing background patterns for each service card
+   * using a deterministic pseudo-random number generator. This ensures each card gets a
+   * consistent, unique pattern every time while maintaining visual variety.
+   * 
+   * @param idx - Index of the service card (0-based)
+   * @returns CSS properties object with background gradient
+   */
   const accentStyleFor = (idx: number): React.CSSProperties => {
+    /**
+     * Deterministic pseudo-random number generator
+     * Uses sine function with large multiplier for pseudo-random distribution
+     * Returns value between 0 and 1
+     */
     const rand = (n: number) => {
       const x = Math.sin((idx + 1) * (n + 1) * 12.9898) * 43758.5453;
       return x - Math.floor(x);
     };
-    const pct = (n: number) => `${Math.round(rand(n) * 100)}%`;
-    const sz = (n: number, min: number, max: number) => `${Math.round(min + rand(n) * (max - min))}px`;
-    // Three-color palette (blue, green, pink)
-    const c1 = 'var(--accent-blue-2)';
-    const c2 = '#00ff95';
-    const c3 = 'var(--accent-pink-2)';
+    
+    // Helper functions for generating CSS values
+    const pct = (n: number) => `${Math.round(rand(n) * 100)}%`; // Percentage for positioning
+    const sz = (n: number, min: number, max: number) => `${Math.round(min + rand(n) * (max - min))}px`; // Size within range
+    
+    // Three-color palette for visual variety
+    const c1 = 'var(--accent-blue-2)';  // Light blue
+    const c2 = '#00ff95';               // Bright green
+    const c3 = 'var(--accent-pink-2)';  // Light pink
+    
+    /**
+     * Creates a radial gradient string with specified parameters
+     * @param w - Width of the gradient
+     * @param h - Height of the gradient
+     * @param atX - X position (percentage)
+     * @param atY - Y position (percentage)
+     * @param col - Color of the gradient
+     * @param stop - Where the gradient stops (default 60%)
+     */
     const g = (
       w: string,
       h: string,
@@ -127,11 +183,14 @@ export default function Home() {
       col: string,
       stop = '60%'
     ) => `radial-gradient(${w} ${h} at ${atX} ${atY}, ${col}, transparent ${stop})`;
+    
+    // Generate three overlapping radial gradients for complex visual effect
     const bg = [
-      g(sz(1, 240, 340), sz(2, 180, 280), pct(3), pct(4), c1),
-      g(sz(5, 220, 320), sz(6, 160, 260), pct(7), pct(8), c2, '65%'),
-      g(sz(9, 240, 340), sz(10, 180, 260), pct(11), pct(12), c3, '62%'),
+      g(sz(1, 240, 340), sz(2, 180, 280), pct(3), pct(4), c1),      // Large blue gradient
+      g(sz(5, 220, 320), sz(6, 160, 260), pct(7), pct(8), c2, '65%'), // Medium green gradient
+      g(sz(9, 240, 340), sz(10, 180, 260), pct(11), pct(12), c3, '62%'), // Large pink gradient
     ].join(',');
+    
     return { background: bg };
   };
 

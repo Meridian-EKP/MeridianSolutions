@@ -1,5 +1,21 @@
 "use client";
 
+/**
+ * Contact Form Component
+ * 
+ * A comprehensive contact form for the "Free Digital Health Check" feature.
+ * Includes form validation, spam prevention (honeypot), international phone support,
+ * and submission handling with user feedback.
+ * 
+ * Features:
+ * - Client-side validation with real-time error display
+ * - International phone number support with country code selection
+ * - Honeypot field for basic spam prevention
+ * - Loading states and success/error feedback
+ * - Responsive design with glassmorphism styling
+ * - Accessibility features (ARIA labels, keyboard navigation)
+ */
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, AlertCircle } from "lucide-react";
@@ -61,9 +77,21 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  /**
+   * Validates the form data and sets error messages
+   * 
+   * Performs comprehensive validation including:
+   * - Required field checks
+   * - Email format validation using regex
+   * - Phone number validation (international format, 6-15 digits)
+   * - Honeypot field validation (should be empty)
+   * 
+   * @returns boolean - true if form is valid, false otherwise
+   */
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
+    // Required field validation
     if (!formData.name.trim()) {
       newErrors.name = "Name is required";
     }
@@ -72,18 +100,20 @@ export default function ContactForm() {
       newErrors.businessName = "Business name is required";
     }
 
+    // Email validation with regex pattern
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
     }
 
+    // Phone number validation (international format)
     if (!formData.phone.trim()) {
       newErrors.phone = "Phone number is required";
     } else {
-      // Remove spaces, hyphens, parentheses, and dots for validation
+      // Remove common formatting characters for validation
       const cleanPhone = formData.phone.replace(/[\s\-\(\)\.]/g, "");
-      // Phone should be 6-15 digits (international standard)
+      // Validate against international standard (6-15 digits)
       if (!/^[0-9]{6,15}$/.test(cleanPhone)) {
         newErrors.phone = "Please enter a valid phone number (6-15 digits)";
       }
@@ -91,6 +121,12 @@ export default function ContactForm() {
 
     if (!formData.message.trim()) {
       newErrors.message = "Please tell us about your business goals";
+    }
+
+    // Honeypot validation - if this field is filled, it's likely spam
+    if (formData.honeypot.trim()) {
+      // Silently fail for spam prevention
+      return false;
     }
 
     setErrors(newErrors);
