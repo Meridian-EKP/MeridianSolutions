@@ -228,17 +228,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PAGE BREAK */}
-      <div className="relative py1">
-        <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
-          <div className="relative">
-            {/* Main accent line */}
-            <div className="h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent"></div>
-            {/* Subtle glow effect */}
-            <div className="absolute inset-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent blur-sm"></div>
-          </div>
-        </div>
-      </div>
+
 
       {/* ABOUT */}
       <section id="about" className="relative py-24 md:py-32">

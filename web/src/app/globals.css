@@ -59,33 +59,12 @@ html {
 body {
   background: radial-gradient(1200px 800px at 100% 0%, #0d1220 0%, #070a0f 60% 100%), #070a0f;
   color: var(--foreground);
+  overflow-x: hidden;
 }
 
-/* Futuristic animated gradient mesh background */
-.gradient-mesh {
-  position: fixed;
-  inset: -20% -20% -10% -20%;
-  z-index: -2;
-  pointer-events: none;
-  background: radial-gradient(600px 400px at 20% 10%, color(display-p3 0.36 0.8 1 / 0.18), transparent 60%),
-    radial-gradient(500px 400px at 80% 20%, color(display-p3 0.6 0.45 1 / 0.18), transparent 60%),
-    radial-gradient(500px 500px at 30% 80%, color(display-p3 0 0.76 1 / 0.16), transparent 60%);
-  filter: blur(60px) saturate(140%);
-  animation: floatMesh 18s ease-in-out infinite alternate;
-  pointer-events: none;
-}
+/* Removed gradient mesh background - user will implement new background style */
 
-@keyframes floatMesh {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(2%, -2%, 0) scale(1.05);
-  }
-  100% {
-    transform: translate3d(-2%, 2%, 0) scale(1.02);
-  }
-}
+/* Removed floatMesh animation - user will implement new background style */
 
 /* Glassmorphism utility */
 .glass {
@@ -209,30 +188,8 @@ body {
   100% { transform: translateY(-100%); opacity: 0; }
 }
 
-/* Full-page glow field with many floating dots */
-.glow-field {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-.glow-dot {
-  position: absolute;
-  border-radius: 9999px;
-  background: radial-gradient(circle at 50% 50%, color-mix(in oklab, var(--dot-color) 70%, transparent), transparent 60%);
-  animation: floatDot var(--dur, 18s) ease-in-out var(--delay, 0s) infinite alternate;
-  will-change: transform, opacity;
-}
-@keyframes floatDot {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(2%, var(--float-y, 16px), 0) scale(1.04);
-  }
-  100% {
-    transform: translate3d(-2%, calc(var(--float-y, 16px) * -1), 0) scale(1.02);
-  }
-}
+/* Removed glow dot styles - user will implement new background style */
+/* Removed floatDot animation - user will implement new background style */
 
 /* Neon glow ring */
 .glow-ring {
@@ -407,9 +364,28 @@ body {
 /* Prevent background elements from extending page height */
 .glow-field {
   position: absolute;
-  max-height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   pointer-events: none;
+  z-index: -1;
+}
+
+/* Manual glow dots */
+.glow-dot {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.blue-dot {
+  background: radial-gradient(circle, rgba(94, 231, 255, 0.6) 0%, rgba(94, 231, 255, 0.2) 40%, transparent 70%);
+}
+
+.purple-dot {
+  background: radial-gradient(circle, rgba(138, 92, 255, 0.6) 0%, rgba(138, 92, 255, 0.2) 40%, transparent 70%);
 }
 
 /* Ensure footer is truly the last element */

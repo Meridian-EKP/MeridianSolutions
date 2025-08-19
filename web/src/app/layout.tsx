@@ -34,11 +34,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased bg-background text-foreground`}
       >
-        <div className="gradient-mesh" aria-hidden />
+        {/* Removed gradient mesh - user will implement new background style */}
         <Navigation />
         <div className="relative">
           {/* Place the glow field under content but above base gradient */}
-          <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0">
             <ClientShell>{null}</ClientShell>
           </div>
           <main className="relative z-10 main-content">
