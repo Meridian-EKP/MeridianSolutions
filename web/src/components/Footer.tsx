@@ -1,6 +1,6 @@
 "use client";
 
-
+import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
 
 export default function Footer() {
@@ -99,20 +99,20 @@ export default function Footer() {
               <p className="text-sm text-muted/60">
                 © {currentYear} MeridianDigital. All Rights Reserved.
               </p>
-              <div className="flex gap-6">
-                <button 
-                  className="text-sm text-muted/60 hover:text-accent transition-colors duration-300"
-                  onClick={() => {/* Add Privacy Policy handler */}}
-                >
-                  Privacy Policy
-                </button>
-                <button 
-                  className="text-sm text-muted/60 hover:text-accent transition-colors duration-300"
-                  onClick={() => {/* Add Terms handler */}}
-                >
-                  Terms of Service
-                </button>
-              </div>
+                             <div className="flex gap-6">
+                 <Link 
+                   href="/privacy-policy"
+                   className="text-sm text-muted/60 hover:text-accent transition-colors duration-300"
+                 >
+                   Privacy Policy
+                 </Link>
+                 <Link 
+                   href="/terms-of-service"
+                   className="text-sm text-muted/60 hover:text-accent transition-colors duration-300"
+                 >
+                   Terms of Service
+                 </Link>
+               </div>
             </div>
           </div>
         </div>
