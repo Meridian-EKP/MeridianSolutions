@@ -2,10 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,12 +47,21 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-full">
           {/* Logo/Brand */}
           <div className="flex items-center">
-            <button
-              onClick={() => scrollToSection("#top")}
-              className="text-xl md:text-2xl font-bold bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
-            >
-              MeridianDigital
-            </button>
+            {isHomePage ? (
+              <button
+                onClick={() => scrollToSection("#top")}
+                className="text-xl md:text-2xl font-bold bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
+              >
+                MeridianDigital
+              </button>
+            ) : (
+              <Link
+                href="/"
+                className="text-xl md:text-2xl font-bold bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
+              >
+                MeridianDigital
+              </Link>
+            )}
           </div>
 
           {/* Desktop Navigation */}

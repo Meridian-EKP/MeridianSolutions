@@ -2,10 +2,13 @@
 
 import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
 
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   const navLinks = [
     { href: "#about", label: "About" },
@@ -34,12 +37,29 @@ export default function Footer() {
         <div className="mx-auto w-full max-w-7xl px-6 md:px-10 pt-8 pb-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
             
-            {/* Column 1: Brand */}
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent">
-                  MeridianDigital
-                </h3>
+                         {/* Column 1: Brand */}
+             <div className="space-y-4">
+               <div>
+                 {isHomePage ? (
+                   <button
+                     onClick={() => {
+                       const element = document.querySelector("#top");
+                       if (element) {
+                         element.scrollIntoView({ behavior: "smooth" });
+                       }
+                     }}
+                     className="text-2xl font-bold bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 cursor-pointer"
+                   >
+                     MeridianDigital
+                   </button>
+                 ) : (
+                   <Link
+                     href="/"
+                     className="text-2xl font-bold bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 cursor-pointer"
+                   >
+                     MeridianDigital
+                   </Link>
+                 )}
                 <p className="mt-2 text-sm text-muted/80 leading-relaxed">
                   The Future of Local Digital Presence
                 </p>
