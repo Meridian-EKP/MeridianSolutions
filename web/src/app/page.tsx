@@ -169,6 +169,18 @@ export default function Home() {
         </div>
       </section>
 
+      {/* PAGE BREAK */}
+      <div className="relative py1">
+        <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
+          <div className="relative">
+            {/* Main accent line */}
+            <div className="h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent"></div>
+            {/* Subtle glow effect */}
+            <div className="absolute inset-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent blur-sm"></div>
+          </div>
+        </div>
+      </div>
+
       {/* ABOUT */}
       <section id="about" className="relative py-24 md:py-32">
         <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
@@ -219,14 +231,8 @@ export default function Home() {
                     }}
                     onMouseLeave={(e) => {
                       setHoveredCard(null);
-                      const direction = getShineDirection(e, e.currentTarget as HTMLElement, false);
-                      console.log(`Mouse left card ${card.id} - Direction: ${direction}`);
-                      // Clear any existing direction first to reset animation
+                      // Remove exit animation - just clear the shine direction
                       setShineDirection(prev => ({ ...prev, [card.id]: '' }));
-                      // Set new direction after a brief delay to trigger exit animation
-                      setTimeout(() => {
-                        setShineDirection(prev => ({ ...prev, [card.id]: direction }));
-                      }, 50);
                     }}
                   >
                     <div className={`card-accents ${accentClass}`} aria-hidden />
@@ -388,12 +394,9 @@ export default function Home() {
 
               {/* Expandable content - outside main card content, at true bottom */}
               <div className={`service-card-content ${expandedService === i ? 'expanded' : 'collapsed'}`}>
-                <div className="px-6 pb-6 space-y-6">
-                  {/* Separator line */}
-                  <div className="border-t border-white/10"></div>
-                  
+                <div className="px-6 pb-6 space-y-4">
                   {/* Detailed description - Skip first two paragraphs */}
-                  <div className="space-y-3">
+                  <div className="space-y-2">
                     {card.detailedDesc.split('\n\n').slice(2).map((paragraph, idx) => (
                       <p key={idx} className="text-muted leading-relaxed">
                         {paragraph}
@@ -532,14 +535,26 @@ export default function Home() {
                 Get Your Free Digital Health Check
                 <ArrowRight className="size-5" />
               </a>
-              <a href="tel:+1234567890" className="glass inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-medium border border-white/10 hover:border-white/20 transition">
-                Call Now: (123) 456-7890
+              <a href="tel:+447541516344" className="glass inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-medium border border-white/10 hover:border-white/20 transition">
+                Call Now: (+44) 7541 516 344
               </a>
             </div>
             <p className="mt-4 text-sm text-muted">✓ 30-minute strategy session ✓ Custom growth roadmap ✓ No sales pressure</p>
           </div>
         </div>
       </section>
+
+      {/* PAGE BREAK */}
+      <div className="relative py1">
+        <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
+          <div className="relative">
+            {/* Main accent line */}
+            <div className="h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent"></div>
+            {/* Subtle glow effect */}
+            <div className="absolute inset-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent blur-sm"></div>
+          </div>
+        </div>
+      </div>
 
       {/* CONTACT FORM */}
       <section id="contact-form" className="relative pt-24 md:pt-32 pb-32 md:pb-48 bg-black/20 min-h-screen">

@@ -249,34 +249,7 @@ body {
   z-index: -1;
 }
 
-/* Button glow */
-.btn-primary {
-  background: linear-gradient(90deg, color(display-p3 0.36 0.8 1) 0%, color(display-p3 0.6 0.45 1) 100%);
-  color: #0a0a0a;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
 
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.5s;
-}
-
-.btn-primary:hover::before {
-  left: 100%;
-}
-
-.btn-primary:hover {
-  box-shadow: 0 0 24px color(display-p3 0.36 0.8 1 / 0.4), 0 0 48px color(display-p3 0.6 0.45 1 / 0.3);
-  transform: translateY(-1px);
-}
 
 /* Parallax helper */
 .parallax {
@@ -701,7 +674,7 @@ footer {
 
 /* Enhanced button styles for navigation */
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background: linear-gradient(90deg, #5ee7ff 0%, #8a5cff 100%);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--background);
   font-weight: 600;

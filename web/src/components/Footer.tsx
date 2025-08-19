@@ -1,28 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram } from "lucide-react";
+
+import { Mail, Phone } from "lucide-react";
 
 export default function Footer() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const footerElement = document.getElementById('footer');
-    if (footerElement) {
-      observer.observe(footerElement);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   const currentYear = new Date().getFullYear();
 
@@ -34,11 +15,7 @@ export default function Footer() {
     { href: "#contact", label: "Contact" }
   ];
 
-  const socialLinks = [
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn", hoverColor: "hover:text-blue-400" },
-    { icon: Facebook, href: "https://facebook.com", label: "Facebook", hoverColor: "hover:text-blue-500" },
-    { icon: Instagram, href: "https://instagram.com", label: "Instagram", hoverColor: "hover:text-pink-400" }
-  ];
+
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -50,14 +27,12 @@ export default function Footer() {
   return (
     <footer 
       id="footer"
-      className={`relative bg-black/20 transition-all duration-1000 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-      }`}
+      className="relative bg-black/20"
     >
       {/* Main Footer Content */}
       <div className="glass-no-shine border-t border-accent/20 backdrop-blur-xl">
         <div className="mx-auto w-full max-w-7xl px-6 md:px-10 pt-8 pb-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
             
             {/* Column 1: Brand */}
             <div className="space-y-4">
@@ -99,46 +74,20 @@ export default function Footer() {
               <h4 className="text-lg font-semibold text-white">Contact</h4>
               <div className="space-y-3">
                 <a 
-                  href="mailto:hello@meridiandigital.com"
+                  href="mailto:edkemppotter@gmail.com"
                   className="footer-contact-item flex items-center gap-3 text-sm text-muted hover:text-accent transition-all duration-300 group"
                 >
                   <Mail className="size-4 text-accent/60 group-hover:text-accent transition-colors duration-300" />
-                  <span>hello@meridiandigital.com</span>
+                  <span>edkemppotter@gmail.com</span>
                 </a>
                 <a 
-                  href="tel:+1234567890"
+                  href="tel:+447541516344"
                   className="footer-contact-item flex items-center gap-3 text-sm text-muted hover:text-accent transition-all duration-300 group"
                 >
                   <Phone className="size-4 text-accent/60 group-hover:text-accent transition-colors duration-300" />
-                  <span>(123) 456-7890</span>
+                  <span>(+44) 7541 516 344</span>
                 </a>
-                <div className="flex items-center gap-3 text-sm text-muted/60">
-                  <MapPin className="size-4 text-accent/40" />
-                  <span>Available Nationwide</span>
-                </div>
               </div>
-            </div>
-
-            {/* Column 4: Social Media */}
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold text-white">Connect</h4>
-              <div className="flex gap-4">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                    className={`footer-social-link p-3 rounded-xl bg-white/5 border border-white/10 text-muted/60 hover:text-white ${social.hoverColor} hover:border-accent/30 hover:bg-white/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-accent/20`}
-                  >
-                    <social.icon className="size-5" />
-                  </a>
-                ))}
-              </div>
-              <p className="text-xs text-muted/60">
-                Follow us for insights and updates
-              </p>
             </div>
           </div>
         </div>
