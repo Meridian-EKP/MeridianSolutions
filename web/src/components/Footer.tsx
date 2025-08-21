@@ -34,8 +34,8 @@ export default function Footer() {
     >
       {/* Main Footer Content */}
       <div className="glass-no-shine border-t border-accent/20 backdrop-blur-xl">
-        <div className="mx-auto w-full max-w-7xl px-6 md:px-10 pt-8 pb-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+        <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10 pt-8 pb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-24">
             
                          {/* Column 1: Brand */}
              <div className="space-y-4">
@@ -70,7 +70,7 @@ export default function Footer() {
             </div>
 
             {/* Column 2: Navigation */}
-            <div className="space-y-4">
+            <div className="space-y-4 lg:justify-self-end lg:text-right">
               <h4 className="text-lg font-semibold text-white">Navigation</h4>
               <nav>
                 <ul className="space-y-3">
@@ -90,7 +90,7 @@ export default function Footer() {
             </div>
 
             {/* Column 3: Contact Info */}
-            <div className="space-y-4">
+            <div className="space-y-4 lg:justify-self-end lg:text-right">
               <h4 className="text-lg font-semibold text-white">Contact</h4>
               <div className="space-y-3">
                 <a 
@@ -114,7 +114,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-accent/10">
-          <div className="mx-auto w-full max-w-7xl px-6 md:px-10 py-6">
+          <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-sm text-muted/60">
                 © {currentYear} MeridianDigital. All Rights Reserved.

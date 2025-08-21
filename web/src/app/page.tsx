@@ -204,11 +204,9 @@ export default function Home() {
           </motion.div>
         </div>
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 md:px-10">
+        <div className="relative z-10 mx-auto w-full max-w-screen-2xl px-6 md:px-10">
           <div className="max-w-3xl">
-            <p className="text-accent tracking-widest uppercase text-xs md:text-sm flex items-center gap-2">
-              <Sparkles className="size-4" /> MeridianDigital
-            </p>
+
             <h1 className="mt-4 text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05]">
               We Build Digital Solutions That Bring You Results
             </h1>
@@ -232,7 +230,7 @@ export default function Home() {
 
       {/* ABOUT */}
       <section id="about" className="relative py-24 md:py-32">
-        <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
+        <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10">
           <div className="grid md:grid-cols-2 gap-10 items-start">
           <div className="about-content space-y-6">
             <h2 className="text-2xl md:text-4xl font-semibold">Why Meridian?</h2>
@@ -323,7 +321,7 @@ export default function Home() {
 
             {/* SERVICES */}
       <section id="services" className="relative py-24 md:py-32">
-        <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
+        <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10">
           <div className="max-w-3xl">
             <h2 className="text-2xl md:text-4xl font-semibold">Complete Digital Growth Solutions</h2>
             <p className="mt-3 text-muted text-lg">Everything your local business needs to dominate your market and drive consistent growth.</p>
@@ -503,7 +501,7 @@ export default function Home() {
 
       {/* CASE STUDIES */}
       <section id="work" className="relative py-24 md:py-32">
-        <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
+        <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10">
           <div className="case-studies-header max-w-3xl">
             <h2 className="text-2xl md:text-4xl font-semibold">Real Results for Real Businesses</h2>
             <p className="mt-3 text-muted text-lg">See how we've transformed local businesses into market leaders with measurable growth.</p>
@@ -567,7 +565,7 @@ export default function Home() {
 
       {/* CTA */}
       <section id="contact" className="relative pt-24 md:pt-32 pb-32 md:pb-48 min-h-screen flex items-center">
-        <div className="mx-auto w-full max-w-5xl px-6 md:px-10 text-center">
+        <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10 text-center">
           <div className="glass-no-shine rounded-3xl p-10 md:p-16 transition-transform duration-300 hover:scale-105">
             <h2 className="text-2xl md:text-4xl font-semibold">Ready to Dominate Your Local Market?</h2>
             <p className="mt-4 text-white max-w-3xl mx-auto text-lg">
@@ -590,7 +588,7 @@ export default function Home() {
 
       {/* PAGE BREAK */}
       <div className="relative py1">
-        <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
+        <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10">
           <div className="relative">
             {/* Main accent line */}
             <div className="h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent"></div>
@@ -602,7 +600,7 @@ export default function Home() {
 
       {/* CONTACT FORM */}
       <section id="contact-form" className="relative pt-24 md:pt-32 pb-32 md:pb-48 bg-black/20 min-h-screen">
-        <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
+        <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10">
           <ContactForm />
         </div>
       </section>

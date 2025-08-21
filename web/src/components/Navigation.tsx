@@ -43,7 +43,7 @@ const Navigation = () => {
           : "h-20 bg-background/95 border-b border-black"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-6 md:px-10 h-full">
+      <div className="mx-auto max-w-screen-2xl px-6 md:px-10 h-full">
         <div className="flex items-center justify-between h-full">
           {/* Logo/Brand */}
           <div className="flex items-center">
@@ -79,7 +79,7 @@ const Navigation = () => {
             
             {/* CTA Button */}
             <button
-              onClick={() => scrollToSection("#contact")}
+              onClick={() => scrollToSection("#contact-form")}
               className="btn-primary px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/30"
             >
               Get Started
@@ -110,7 +110,7 @@ const Navigation = () => {
         }`}
       >
         <div className="navbar-glass border-t border-black shadow-xl shadow-black/20">
-          <div className="mx-auto max-w-7xl px-6 py-6">
+          <div className="mx-auto max-w-screen-2xl px-6 py-6">
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <button
@@ -122,7 +122,7 @@ const Navigation = () => {
                 </button>
               ))}
               <button
-                onClick={() => scrollToSection("#contact")}
+                onClick={() => scrollToSection("#contact-form")}
                 className="mt-4 btn-primary px-6 py-3 rounded-full font-medium transition-all duration-300"
               >
                 Get Started
