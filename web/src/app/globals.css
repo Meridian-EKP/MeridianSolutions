@@ -421,7 +421,7 @@ body {
 }
 
 .pulse-dot {
-  animation: pulse 5s ease-in-out infinite !important;
+  animation: pulse 3s ease-in-out infinite !important;
   transform-origin: center !important;
 }
 
@@ -551,17 +551,29 @@ footer {
 /* Service card expandable content */
 .service-card-content {
   overflow: hidden;
-  transition: all 0.3s ease-out;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: max-height, opacity;
 }
 
 .service-card-content.collapsed {
   max-height: 0;
   opacity: 0;
+  transition: max-height 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .service-card-content.expanded {
-  max-height: 1000px; /* Large enough to accommodate content */
+  max-height: 800px;
   opacity: 1;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Collapsed content fade animation */
+.service-card .text-muted {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.service-card .inline-flex {
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 /* Focus styles for accessibility */

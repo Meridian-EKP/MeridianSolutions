@@ -443,7 +443,7 @@ export default function Home() {
 
               {/* Expandable content - outside main card content, at true bottom */}
               <div className={`service-card-content ${expandedService === i ? 'expanded' : 'collapsed'}`}>
-                <div className="px-6 pb-6 space-y-4">
+                <div className="px-6 pb-6 space-y-2">
                   {/* Detailed description - Skip first two paragraphs */}
                   <div className="space-y-2">
                     {card.detailedDesc.split('\n\n').slice(2).map((paragraph, idx) => (
@@ -451,14 +451,6 @@ export default function Home() {
                         {paragraph}
                       </p>
                     ))}
-                  </div>
-
-                  {/* Pricing */}
-                  <div className="p-4 rounded-xl bg-white/5 border border-accent/20">
-                    <div className="flex items-center justify-between">
-                      <span className="text-lg font-semibold text-accent">Investment</span>
-                      <span className="text-lg font-bold">{card.pricing}</span>
-                    </div>
                   </div>
 
                   {/* Benefits */}
@@ -473,22 +465,36 @@ export default function Home() {
                       ))}
                     </ul>
                   </div>
-
-                  {/* CTA Button */}
-                  <div className="pt-4 border-t border-white/10">
-                    <button 
-                      className="w-full btn-primary rounded-xl py-3 px-6 font-medium transition-all duration-500 ease-out hover:scale-[1.01] hover:shadow-lg hover:shadow-accent/30"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        // Scroll to contact form
-                        document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                    >
-                      Book Now - {card.title}
-                    </button>
-                  </div>
                 </div>
               </div>
+
+              {/* Investment Box - Outside expandable content to prevent animation issues */}
+              {expandedService === i && (
+                <div className="px-6 pb-4">
+                  <div className="p-4 rounded-xl bg-white/5 border border-accent/20">
+                    <div className="flex items-center justify-between">
+                      <span className="text-lg font-semibold text-accent">Investment</span>
+                      <span className="text-lg font-bold">{card.pricing}</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* CTA Button - Outside expandable content to prevent animation issues */}
+              {expandedService === i && (
+                <div className="px-6 pb-6 pt-4 border-t border-white/10">
+                  <button 
+                    className="w-full btn-primary rounded-xl py-3 px-6 font-medium transition-all duration-500 ease-out hover:scale-[1.01] hover:shadow-lg hover:shadow-accent/30"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      // Scroll to contact form
+                      document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
+                    Book Now - {card.title}
+                  </button>
+                </div>
+              )}
             </div>
           ))}
         </div>

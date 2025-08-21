@@ -12,6 +12,7 @@ export default function BackgroundGlows() {
           width: "520px",
           height: "520px",
           filter: "blur(90px)",
+          animationDelay: "0s",
         }}
       />
       
@@ -23,6 +24,7 @@ export default function BackgroundGlows() {
           width: "380px",
           height: "380px",
           filter: "blur(75px)",
+          animationDelay: "0.5s",
         }}
       />
       
@@ -34,6 +36,7 @@ export default function BackgroundGlows() {
           width: "520px",
           height: "520px",
           filter: "blur(105px)",
+          animationDelay: "1s",
         }}
       />
       
@@ -45,6 +48,7 @@ export default function BackgroundGlows() {
           width: "420px",
           height: "420px",
           filter: "blur(85px)",
+          animationDelay: "1.5s",
         }}
       />
       
@@ -56,6 +60,7 @@ export default function BackgroundGlows() {
           width: "480px",
           height: "480px",
           filter: "blur(95px)",
+          animationDelay: "2s",
         }}
       />
       
@@ -68,6 +73,7 @@ export default function BackgroundGlows() {
           width: "1400px",
           height: "1400px",
           filter: "blur(100px)",
+          animationDelay: "0.25s",
         }}
       />
       
@@ -79,6 +85,7 @@ export default function BackgroundGlows() {
           width: "340px",
           height: "340px",
           filter: "blur(70px)",
+          animationDelay: "0.75s",
         }}
       />
       
@@ -90,6 +97,7 @@ export default function BackgroundGlows() {
           width: "460px",
           height: "460px",
           filter: "blur(90px)",
+          animationDelay: "1.25s",
         }}
       />
       
@@ -101,6 +109,7 @@ export default function BackgroundGlows() {
           width: "400px",
           height: "400px",
           filter: "blur(80px)",
+          animationDelay: "1.75s",
         }}
       />
       
@@ -112,6 +121,7 @@ export default function BackgroundGlows() {
           width: "440px",
           height: "440px",
           filter: "blur(88px)",
+          animationDelay: "2.25s",
         }}
       />
     </div>

@@ -40,7 +40,7 @@ const Navigation = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out font-nav ${
         isScrolled
           ? "h-16 navbar-glass shadow-lg shadow-accent/10"
-          : "h-20 bg-background/95 border-b border-white/10"
+          : "h-20 bg-background/95 border-b border-black"
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 md:px-10 h-full">
@@ -89,7 +89,7 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg glass border border-white/10 hover:border-accent/30 transition-colors"
+            className="lg:hidden p-2 rounded-lg glass border border-black hover:border-accent/30 transition-colors"
             aria-label="Toggle mobile menu"
           >
             {isMobileMenuOpen ? (
@@ -109,7 +109,7 @@ const Navigation = () => {
             : "opacity-0 -translate-y-4 pointer-events-none"
         }`}
       >
-        <div className="navbar-glass border-t border-white/10 shadow-xl shadow-black/20">
+        <div className="navbar-glass border-t border-black shadow-xl shadow-black/20">
           <div className="mx-auto max-w-7xl px-6 py-6">
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
