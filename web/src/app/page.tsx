@@ -22,7 +22,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { ArrowRight, Sparkles, Quote, Globe, MapPin, Share2, Search, Target, Megaphone, X, CheckCircle } from "lucide-react";
-import { TestimonialCarousel } from "@/components/TestimonialCarousel";
+
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
@@ -563,18 +563,7 @@ export default function Home() {
         </div>
       </section>
 
-            {/* TESTIMONIALS */}
-      <section id="testimonials" className="relative py-24 md:py-32">
-        <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
-          <div className="max-w-3xl">
-            <h2 className="text-2xl md:text-4xl font-semibold">What Our Clients Say</h2>
-            <p className="mt-3 text-muted text-lg">Don't just take our word for it—hear from local business owners who've experienced real growth.</p>
-          </div>
-          <div className="mt-10">
-            <TestimonialCarousel />
-          </div>
-        </div>
-      </section>
+
 
       {/* CTA */}
       <section id="contact" className="relative pt-24 md:pt-32 pb-32 md:pb-48 min-h-screen flex items-center">
