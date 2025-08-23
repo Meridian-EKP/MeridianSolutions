@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 /**
  * Centralized Metadata Configuration
  * 
- * This file contains all metadata configurations for the MeridianDigital website.
+ * This file contains all metadata configurations for the MeridianSolutions website.
  * It provides consistent SEO optimization across all pages with proper titles,
  * descriptions, and social media tags.
  */
 
-const baseUrl = "https://meridiandigital.com";
+const baseUrl = "https://meridiansolutions.com";
 
 /**
  * Base metadata configuration shared across all pages
@@ -16,8 +16,8 @@ const baseUrl = "https://meridiandigital.com";
 export const baseMetadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "MeridianDigital - Innovative Service Agency",
-    template: "%s | MeridianDigital",
+      default: "MeridianSolutions - Innovative Service Agency",
+  template: "%s | MeridianSolutions",
   },
   description:
     "Complete digital growth solutions for local businesses. Website development, SEO, PPC, and marketing campaigns that turn your digital presence into your strongest sales channel. Get more leads, customers, and revenue with our proven modern approach.",
@@ -39,9 +39,9 @@ export const baseMetadata: Metadata = {
     "lead generation",
     "customer acquisition"
   ],
-  authors: [{ name: "MeridianDigital" }],
-  creator: "MeridianDigital",
-  publisher: "MeridianDigital",
+  authors: [{ name: "MeridianSolutions" }],
+  creator: "MeridianSolutions",
+  publisher: "MeridianSolutions",
   formatDetection: {
     email: false,
     address: false,
@@ -77,24 +77,24 @@ export const homeMetadata: Metadata = {
     canonical: baseUrl,
   },
   openGraph: {
-    title: "MeridianDigital - Innovative Service Agency",
+    title: "MeridianSolutions - Innovative Service Agency",
     description:
       "Complete digital growth solutions for local businesses. Website development, SEO, PPC, and marketing campaigns that turn your digital presence into your strongest sales channel. Proven results for local businesses.",
     url: baseUrl,
-    siteName: "MeridianDigital",
+    siteName: "MeridianSolutions",
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "MeridianDigital - Complete Digital Growth Solutions for Local Businesses",
+        alt: "MeridianSolutions - Complete Digital Growth Solutions for Local Businesses",
         type: "image/png",
       },
       {
         url: "/og-square.png",
         width: 600,
         height: 600,
-        alt: "MeridianDigital Logo",
+        alt: "MeridianSolutions Logo",
         type: "image/png",
       }
     ],
@@ -107,12 +107,12 @@ export const homeMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MeridianDigital - Innovative Service Agency",
+    title: "MeridianSolutions - Innovative Service Agency",
     description:
       "Complete digital growth solutions for local businesses. Website development, SEO, PPC, and marketing campaigns. Get more leads, customers, and revenue with our proven approach.",
     images: ["/og.png"],
-    creator: "@meridiandigital",
-    site: "@meridiandigital",
+    creator: "@meridiansolutions",
+    site: "@meridiansolutions",
   },
 };
 
@@ -122,25 +122,25 @@ export const homeMetadata: Metadata = {
 export const privacyPolicyMetadata: Metadata = {
   ...baseMetadata,
   title: "Privacy Policy",
-  description: "Learn how MeridianDigital collects, uses, and protects your personal information. Our privacy policy outlines data practices, security measures, and your rights regarding personal data.",
+  description: "Learn how MeridianSolutions collects, uses, and protects your personal information. Our privacy policy outlines data practices, security measures, and your rights regarding personal data.",
   keywords: [
     "privacy policy",
     "data protection",
     "personal information",
     "GDPR compliance",
     "data security",
-    "MeridianDigital privacy",
+    "MeridianSolutions privacy",
     "user data protection",
     "privacy rights"
   ],
   openGraph: {
-    title: "Privacy Policy | MeridianDigital",
-    description: "Learn how MeridianDigital collects, uses, and protects your personal information. Our privacy policy outlines data practices, security measures, and your rights.",
+    title: "Privacy Policy | MeridianSolutions",
+    description: "Learn how MeridianSolutions collects, uses, and protects your personal information. Our privacy policy outlines data practices, security measures, and your rights.",
     url: `${baseUrl}/privacy-policy`,
   },
   twitter: {
-    title: "Privacy Policy | MeridianDigital",
-    description: "Learn how MeridianDigital collects, uses, and protects your personal information. Our privacy policy outlines data practices, security measures, and your rights.",
+    title: "Privacy Policy | MeridianSolutions",
+    description: "Learn how MeridianSolutions collects, uses, and protects your personal information. Our privacy policy outlines data practices, security measures, and your rights.",
   },
   alternates: {
     canonical: `${baseUrl}/privacy-policy`,
@@ -153,25 +153,25 @@ export const privacyPolicyMetadata: Metadata = {
 export const termsOfServiceMetadata: Metadata = {
   ...baseMetadata,
   title: "Terms of Service",
-  description: "Read MeridianDigital's terms of service and conditions for using our digital marketing services. Learn about our service agreements, payment terms, and user responsibilities.",
+  description: "Read MeridianSolutions's terms of service and conditions for using our digital marketing services. Learn about our service agreements, payment terms, and user responsibilities.",
   keywords: [
     "terms of service",
     "terms and conditions",
     "service agreement",
     "digital marketing terms",
-    "MeridianDigital terms",
+    "MeridianSolutions terms",
     "user agreement",
     "service conditions",
     "legal terms"
   ],
   openGraph: {
-    title: "Terms of Service | MeridianDigital",
-    description: "Read MeridianDigital's terms of service and conditions for using our digital marketing services. Learn about our service agreements, payment terms, and user responsibilities.",
+    title: "Terms of Service | MeridianSolutions",
+    description: "Read MeridianSolutions's terms of service and conditions for using our digital marketing services. Learn about our service agreements, payment terms, and user responsibilities.",
     url: `${baseUrl}/terms-of-service`,
   },
   twitter: {
-    title: "Terms of Service | MeridianDigital",
-    description: "Read MeridianDigital's terms of service and conditions for using our digital marketing services. Learn about our service agreements, payment terms, and user responsibilities.",
+    title: "Terms of Service | MeridianSolutions",
+    description: "Read MeridianSolutions's terms of service and conditions for using our digital marketing services. Learn about our service agreements, payment terms, and user responsibilities.",
   },
   alternates: {
     canonical: `${baseUrl}/terms-of-service`,
@@ -193,12 +193,12 @@ export function generatePageMetadata(
     description,
     keywords: [...baseMetadata.keywords!, ...keywords],
     openGraph: {
-      title: `${title} | MeridianDigital`,
+      title: `${title} | MeridianSolutions`,
       description,
       url: `${baseUrl}${path}`,
     },
     twitter: {
-      title: `${title} | MeridianDigital`,
+      title: `${title} | MeridianSolutions`,
       description,
     },
     alternates: {

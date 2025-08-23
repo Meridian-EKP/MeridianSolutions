@@ -50,14 +50,14 @@ export default function Footer() {
                      }}
                      className="text-2xl font-bold bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 cursor-pointer"
                    >
-                     MeridianDigital
+                     MeridianSolutions
                    </button>
                  ) : (
                    <Link
                      href="/"
                      className="text-2xl font-bold bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 cursor-pointer"
                    >
-                     MeridianDigital
+                     MeridianSolutions
                    </Link>
                  )}
                 <p className="mt-2 text-sm text-muted/80 leading-relaxed">
@@ -117,7 +117,7 @@ export default function Footer() {
           <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-sm text-muted/60">
-                © {currentYear} MeridianDigital. All Rights Reserved.
+                © {currentYear} MeridianSolutions. All Rights Reserved.
               </p>
                              <div className="flex gap-6">
                  <Link 

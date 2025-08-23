@@ -3,12 +3,12 @@ import { MetadataRoute } from 'next'
 /**
  * Dynamic Sitemap Generation
  * 
- * This file generates a sitemap.xml for the MeridianDigital website,
+ * This file generates a sitemap.xml for the MeridianSolutions website,
  * helping search engines discover and index all pages efficiently.
  */
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://meridiandigital.com'
+  const baseUrl = 'https://meridiansolutions.com'
   
   return [
     {

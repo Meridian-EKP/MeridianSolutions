@@ -2,13 +2,13 @@ export default function StructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://meridiandigital.com",
-    "name": "MeridianDigital",
+    "@id": "https://meridiansolutions.com",
+"name": "MeridianSolutions",
     "alternateName": "Meridian Digital",
     "description": "Digital marketing agency specializing in local business growth through conversion-driven websites, local SEO, and data-powered marketing systems.",
-    "url": "https://meridiandigital.com",
+    "url": "https://meridiansolutions.com",
     "telephone": "+1-234-567-8900",
-    "email": "hello@meridiandigital.com",
+    "email": "hello@meridiansolutions.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "123 Business Center Dr",
@@ -36,19 +36,19 @@ export default function StructuredData() {
     },
     "priceRange": "$$",
     "image": [
-      "https://meridiandigital.com/og.png"
+      "https://meridiansolutions.com/og.png"
     ],
     "logo": {
       "@type": "ImageObject",
-      "url": "https://meridiandigital.com/logo.png",
+      "url": "https://meridiansolutions.com/logo.png",
       "width": "200",
       "height": "60"
     },
     "sameAs": [
-      "https://www.facebook.com/meridiandigital",
-      "https://www.linkedin.com/company/meridiandigital",
-      "https://twitter.com/meridiandigital",
-      "https://www.instagram.com/meridiandigital"
+      "https://www.facebook.com/meridiansolutions",
+"https://www.linkedin.com/company/meridiansolutions",
+"https://twitter.com/meridiansolutions",
+"https://www.instagram.com/meridiansolutions"
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -116,7 +116,7 @@ export default function StructuredData() {
           "ratingValue": "5",
           "bestRating": "5"
         },
-        "reviewBody": "MeridianDigital completely transformed our business. We went from 5-10 customers per day to being fully booked weeks in advance."
+        "reviewBody": "MeridianSolutions completely transformed our business. We went from 5-10 customers per day to being fully booked weeks in advance."
       },
       {
         "@type": "Review",

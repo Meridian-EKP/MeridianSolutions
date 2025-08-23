@@ -52,14 +52,14 @@ const Navigation = () => {
                 onClick={() => scrollToSection("#top")}
                 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
               >
-                MeridianDigital
+                MeridianSolutions
               </button>
             ) : (
               <Link
                 href="/"
                 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
               >
-                MeridianDigital
+                MeridianSolutions
               </Link>
             )}
           </div>

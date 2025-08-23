@@ -1,6 +1,6 @@
-# MeridianDigital Website
+# MeridianSolutions Website
 
-A modern, futuristic website for MeridianDigital - a digital marketing agency specializing in local business growth.
+A modern, futuristic website for MeridianSolutions - a digital marketing agency specializing in local business growth.
 
 ## 🚀 Features
 
@@ -189,4 +189,4 @@ Comprehensive validation system with reusable utilities:
 
 ## 📄 License
 
-This project is proprietary to MeridianDigital.
+This project is proprietary to MeridianSolutions.

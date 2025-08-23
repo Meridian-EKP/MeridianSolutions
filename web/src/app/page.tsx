@@ -3,7 +3,7 @@
 /**
  * Main Home Page Component
  * 
- * This component renders the complete MeridianDigital website homepage including:
+ * This component renders the complete MeridianSolutions website homepage including:
  * - Hero section with parallax background
  * - About section with interactive cycle cards
  * - Services section with expandable cards
@@ -252,7 +252,7 @@ export default function Home() {
             <div className="glass-no-shine rounded-3xl p-6 md:p-10 border border-white/10 transition-transform duration-300 hover:scale-105">
               <div className="relative z-10">
                 <p className="text-muted">
-                  MeridianDigital specialises in turning local businesses into digital leaders. We don't just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
+                  MeridianSolutions specialises in turning local businesses into digital leaders. We don't just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
                 </p>
                 <p className="mt-4 text-muted">
                   Every project combines cutting-edge technology with proven marketing psychology to deliver measurable results. Our clients typically see 40-60% increases in qualified leads within 90 days.

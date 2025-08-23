@@ -11,7 +11,7 @@ export const metadata: Metadata = privacyPolicyMetadata;
 /**
  * Privacy Policy Page
  * 
- * This page contains the privacy policy for MeridianDigital, outlining how we collect,
+ * This page contains the privacy policy for MeridianSolutions, outlining how we collect,
  * use, and protect user data in compliance with relevant privacy regulations.
  */
 
@@ -135,7 +135,7 @@ export default function PrivacyPolicy() {
                 please contact us at:
               </p>
               <div className="bg-gray-700/50 rounded-xl p-8 border border-white/10">
-                <p className="font-bold text-white text-xl mb-4">MeridianDigital</p>
+                <p className="font-bold text-white text-xl mb-4">MeridianSolutions</p>
                 <div className="space-y-3">
                   <p className="text-lg">
                     Email: <a href="mailto:edkemppotter@gmail.com" className="text-accent hover:text-accent/80 font-medium">edkemppotter@gmail.com</a>
