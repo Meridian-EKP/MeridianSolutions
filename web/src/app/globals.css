@@ -609,6 +609,63 @@ footer {
 
 /* Removed scroll animations for bug-free experience */
 
+/* Carousel scrollbar hiding */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+/* Ensure horizontal scrolling works properly */
+#case-studies-carousel {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Prevent page scrolling when hovering over carousel */
+.prevent-page-scroll {
+  isolation: isolate;
+}
+
+.prevent-page-scroll:hover {
+  isolation: isolate;
+}
+
+/* Modal animations */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-enter {
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+.backdrop-enter {
+  animation: backdropFadeIn 0.3s ease-out;
+}
+
+
+
 /* Performance optimisations for animations */
 .scroll-animate {
   will-change: opacity, transform;

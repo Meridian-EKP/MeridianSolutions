@@ -20,11 +20,12 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { ArrowRight, Sparkles, Quote, Globe, MapPin, Share2, Search, Target, Megaphone, X, CheckCircle } from "lucide-react";
 
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import CaseStudyModal from "@/components/CaseStudyModal";
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -39,6 +40,20 @@ export default function Home() {
   
   // State for shine direction - tracks which direction the shine effect should animate for each card
   const [shineDirection, setShineDirection] = useState<{[key: number]: string}>({});
+  
+  // State for case study modal
+  const [selectedCaseStudy, setSelectedCaseStudy] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Set initial position to the middle of the duplicated content for infinite scroll
+  useEffect(() => {
+    const container = document.getElementById('case-studies-carousel');
+    if (!container) return;
+
+    // Start in the middle so user can scroll in both directions
+    const cardWidth = container.scrollWidth / 27;
+    container.scrollLeft = cardWidth * 9; // Start in the middle set
+  }, []);
   
   /**
    * Determines the direction of the shine effect based on mouse entry/exit point
@@ -503,60 +518,258 @@ export default function Home() {
       <section id="work" className="relative py-24 md:py-32">
         <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10">
           <div className="case-studies-header max-w-3xl">
-            <h2 className="text-2xl md:text-4xl font-semibold">Real Results for Real Businesses</h2>
-            <p className="mt-3 text-muted text-lg">See how we've transformed local businesses into market leaders with measurable growth.</p>
+            <h2 className="text-2xl md:text-4xl font-semibold">Transformations That Drive Results</h2>
+            <p className="mt-3 text-muted text-lg">Here are three concept projects that demonstrate how we transform your business’s online presence.</p>
           </div>
-          <div className="mt-10 grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Local Fitness Studio",
-                industry: "Health & Fitness",
-                result: "+127% Online Bookings",
-                description: "Complete digital transformation including website redesign, local SEO, and Google Business Profile optimisation.",
-                metrics: ["40% increase in website traffic", "3x more Google reviews", "127% more online class bookings"]
-              },
-              {
-                title: "Family Restaurant",
-                industry: "Food & Dining",
-                result: "+89% Delivery Orders",
-                description: "Multi-platform presence with optimised ordering system, social media strategy, and reputation management.",
-                metrics: ["89% increase in delivery orders", "50% more social media engagement", "4.8-star average rating"]
-              },
-              {
-                title: "Professional Services",
-                industry: "Legal Services",
-                result: "+156% Qualified Leads",
-                description: "Authority-building website, content marketing strategy, and local search dominance campaign.",
-                metrics: ["156% more qualified leads", "Top 3 ranking for 12 keywords", "300% increase in consultation requests"]
-              }
-                        ].map((study, i) => (
-              <div
-                key={study.title}
-                className="case-study-card group relative rounded-2xl p-6 card overflow-hidden cursor-pointer hover:scale-[1.08] hover:shadow-2xl hover:shadow-accent/20 transition-all duration-300 hover:-translate-y-2"
-              >
-                <div className="card-accents" style={accentStyleFor(i)} aria-hidden />
-                <div className="card-sheen" aria-hidden />
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs uppercase tracking-wider text-accent">{study.industry}</span>
-                    <span className="text-lg font-bold text-green-400">{study.result}</span>
+          {/* Carousel Container */}
+          <div 
+            className="mt-10"
+            onMouseEnter={(e) => {
+              document.documentElement.style.overflow = 'hidden';
+              document.body.style.overflow = 'hidden';
+            }}
+            onMouseLeave={(e) => {
+              document.documentElement.style.overflow = 'auto';
+              document.body.style.overflow = 'auto';
+            }}
+          >
+            {/* Carousel Scroll Container */}
+            <div 
+              id="case-studies-carousel"
+              className="flex gap-6 overflow-x-auto overflow-y-hidden scrollbar-hide snap-x snap-mandatory scroll-smooth cursor-grab active:cursor-grabbing prevent-page-scroll"
+              style={{ 
+                scrollbarWidth: 'none', 
+                msOverflowStyle: 'none',
+                scrollBehavior: 'smooth'
+              }}
+              tabIndex={0}
+              onMouseDown={(e) => {
+                const container = e.currentTarget;
+                let isDown = false;
+                let startX = e.pageX - container.offsetLeft;
+                let scrollLeft = container.scrollLeft;
+
+                const handleMouseMove = (e: MouseEvent) => {
+                  if (!isDown) return;
+                  e.preventDefault();
+                  const x = e.pageX - container.offsetLeft;
+                  const walk = (x - startX) * 2;
+                  container.scrollLeft = scrollLeft - walk;
+                };
+
+                const handleMouseUp = () => {
+                  isDown = false;
+                  container.classList.remove('cursor-grabbing');
+                  container.classList.add('cursor-grab');
+                };
+
+                isDown = true;
+                container.classList.remove('cursor-grab');
+                container.classList.add('cursor-grabbing');
+
+                document.addEventListener('mousemove', handleMouseMove);
+                document.addEventListener('mouseup', handleMouseUp);
+              }}
+              onKeyDown={(e) => {
+                const container = e.currentTarget;
+                const cardWidth = container.scrollWidth / 27; // 27 cards (9 × 3) for circular scroll
+                
+                if (e.key === 'ArrowRight') {
+                  e.preventDefault();
+                  container.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                } else if (e.key === 'ArrowLeft') {
+                  e.preventDefault();
+                  container.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+                }
+              }}
+              onWheel={(e) => {
+                // Completely prevent the default wheel behavior
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const container = e.currentTarget;
+                const cardWidth = container.scrollWidth / 27; // 27 cards (9 × 3) for circular scroll
+                
+                // Only handle horizontal scrolling
+                if (e.deltaY !== 0) {
+                  if (e.deltaY > 0) {
+                    // Scroll right
+                    container.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                  } else {
+                    // Scroll left
+                    container.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+                  }
+                }
+              }}
+
+            >
+              {(() => {
+                const caseStudies = [
+                  {
+                    id: 1,
+                    title: "Café Bloom",
+                    industry: "Local Coffee Shop",
+                    result: "From generic to irresistible online presence",
+                    description: "Complete digital transformation including website redesign, local SEO, and Google Business Profile optimisation.",
+                    metrics: ["Menu now accessible online", "Online ordering integrated", "Social media buzz created"],
+                    beforePoints: ["Outdated one-page site", "No menu online", "No online ordering", "Weak social media"],
+                    afterPoints: ["Interactive digital menu", "Online ordering system", "Instagram feed integration", "Modern responsive design"],
+                    detailedDescription: "Café Bloom transformed from a local coffee shop with minimal online presence to a digital-first business with seamless online ordering and local SEO dominance."
+                  },
+                  {
+                    id: 2,
+                    title: "FlowPro Plumbing",
+                    industry: "Plumbing & Heating",
+                    result: "From invisible to fully booked locally",
+                    description: "Multi-platform presence with optimised ordering system, social media strategy, and reputation management.",
+                    metrics: ["Website now mobile-friendly", "Google Business Profile optimized", "Clear call-to-actions driving bookings"],
+                    beforePoints: ["No Google Business Profile", "No reviews", "Hard to contact", "Poor mobile usability"],
+                    afterPoints: ["Optimized Google Business Profile", "Mobile-friendly service pages", "'Call Now' booking buttons", "Customer reviews highlighted"],
+                    detailedDescription: "FlowPro Plumbing went from struggling to get calls to dominating local search results with an optimized online presence and streamlined booking system."
+                  },
+                  {
+                    id: 3,
+                    title: "Pulse Gym",
+                    industry: "Fitness Studio",
+                    result: "From outdated to modern fitness hub",
+                    description: "Authority-building website, content marketing strategy, and local search dominance campaign.",
+                    metrics: ["Easy class scheduling online", "Mobile-first design", "Trust built with reviews and testimonials"],
+                    beforePoints: ["Clunky outdated site", "Class timetable as PDF", "No online booking", "No testimonials"],
+                    afterPoints: ["Mobile-first design", "Class scheduling system", "Integrated booking", "Member testimonials"],
+                    detailedDescription: "Pulse Gym evolved from a basic website to a comprehensive fitness platform with online booking, class schedules, and community engagement features."
+                  },
+                  {
+                    id: 4,
+                    title: "Bella's Kitchen",
+                    industry: "Family Restaurant",
+                    result: "From word-of-mouth only to digital dining destination",
+                    description: "Complete digital presence overhaul with patient portal integration and local SEO dominance.",
+                    metrics: ["Optimized online ordering system", "Engaging social media presence", "Positive reputation management"],
+                    beforePoints: ["Static page with PDF menu", "No delivery system", "No social proof"],
+                    afterPoints: ["Mobile-friendly menu", "Online ordering system", "Reputation management", "Customer review highlights"],
+                    detailedDescription: "Bella's Kitchen expanded from dine-in only to a multi-channel restaurant with delivery integration, social media presence, and online ordering."
+                  },
+                  {
+                    id: 5,
+                    title: "Glow Hair Studio",
+                    industry: "Hair & Beauty Salon",
+                    result: "From walk-ins only to fully booked online",
+                    description: "Stylish website redesign with online booking system and social media integration.",
+                    metrics: ["Seamless online booking system", "Stylish modern web design", "Instagram integration"],
+                    beforePoints: ["Only Facebook page", "No proper website", "No online booking"],
+                    afterPoints: ["Modern stylish website", "Online appointment calendar", "Instagram gallery integration"],
+                    detailedDescription: "Glow Hair Studio modernized their booking process with an integrated online system and social media presence that showcases their work."
+                  },
+                  {
+                    id: 6,
+                    title: "Thompson Legal",
+                    industry: "Law Firm",
+                    result: "From outdated to authoritative and trusted",
+                    description: "Professional website with service scheduling and customer review management system.",
+                    metrics: ["Professional website redesign", "Content built for trust and credibility", "Dominant local search presence"],
+                    beforePoints: ["Outdated WordPress site", "Heavy text", "Poor SEO", "No authority signals"],
+                    afterPoints: ["Professional redesign", "Service pages optimized for local SEO", "Credibility-building blog", "Team profiles"],
+                    detailedDescription: "Thompson Legal transformed their online presence from a basic website to an authoritative legal resource that generates qualified leads consistently."
+                  },
+                  {
+                    id: 7,
+                    title: "SmileBright Dental",
+                    industry: "Dental Clinic",
+                    result: "From confusing to patient-friendly",
+                    description: "Modern ordering system with loyalty program and social media marketing strategy.",
+                    metrics: ["Simple online appointment forms", "Clear service pages", "Improved local discoverability"],
+                    beforePoints: ["Cluttered site", "No appointment form", "Jargon-heavy", "No patient reviews"],
+                    afterPoints: ["Clean patient-first design", "Easy appointment form", "Clear service listings", "Testimonial integration"],
+                    detailedDescription: "SmileBright Dental streamlined their patient onboarding process with online forms and local SEO optimization that attracts new patients."
+                  },
+                  {
+                    id: 8,
+                    title: "BuildRight Contractors",
+                    industry: "Construction Service",
+                    result: "From no portfolio to professional showcase",
+                    description: "E-commerce integration with inventory management and local community marketing.",
+                    metrics: ["Projects displayed visually", "Modern lead capture system", "Strong local search presence"],
+                    beforePoints: ["No portfolio online", "Plain contact page", "No SEO"],
+                    afterPoints: ["Visual project gallery", "Lead capture form", "Optimized local service pages", "Trust-focused design"],
+                    detailedDescription: "BuildRight Contractors built a modern portfolio website that showcases their work and converts visitors into qualified leads."
+                  },
+                  {
+                    id: 9,
+                    title: "Bloom & Co.",
+                    industry: "Florist / Gift Shop",
+                    result: "From shop-only sales to online success",
+                    description: "Professional website with property listings and lead generation optimization.",
+                    metrics: ["E-commerce shop added", "Social media sales channels connected", "Expanded customer reach online"],
+                    beforePoints: ["Shop-only sales", "No e-commerce", "No social integration"],
+                    afterPoints: ["E-commerce website", "Online catalog with checkout", "Instagram + Facebook shop integration"],
+                    detailedDescription: "Bloom & Co. expanded from a local florist to an online gift shop with e-commerce integration and social media sales channels."
+                  }
+                ];
+                
+                // Create a circular carousel by duplicating the cards 3 times for seamless looping
+                const caseStudiesForCarousel = [...caseStudies, ...caseStudies, ...caseStudies];
+                
+                                return caseStudiesForCarousel.map((study, i) => (
+                  <div
+                    key={`${study.title}-${i}`}
+                    className="case-study-card group relative rounded-2xl p-6 card overflow-hidden hover:shadow-2xl hover:shadow-accent/20 transition-all duration-300 flex-shrink-0 w-full md:w-96 lg:w-[420px] snap-center"
+                  >
+                    <div className="card-accents" style={accentStyleFor(i)} aria-hidden />
+                    <div className="card-sheen" aria-hidden />
+                                         <div className="relative z-10">
+                       {/* Industry Badge */}
+                       <div className="inline-flex items-center px-3 py-1 rounded-full bg-accent/10 border border-accent/30 text-xs font-medium text-accent mb-4">
+                         <div className="w-1.5 h-1.5 rounded-full bg-accent mr-2"></div>
+                         {study.industry}
+                       </div>
+                       
+                       {/* Qualitative Outcome */}
+                       <div className="mb-4">
+                         <span className="text-lg font-semibold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent leading-tight">
+                           {study.result}
+                         </span>
+                       </div>
+                      <h3 className="text-xl font-semibold mb-3">{study.title}</h3>
+                      <p className="text-muted text-sm mb-4">{study.description}</p>
+                      <div className="space-y-2 mb-6">
+                        {study.metrics.map((metric, idx) => (
+                          <div key={idx} className="flex items-center text-sm">
+                          <div className="w-2 h-2 rounded-full bg-accent mr-3"></div>
+                          <span className="text-muted">{metric}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <button 
+                      onClick={() => {
+                        setSelectedCaseStudy(study);
+                        setIsModalOpen(true);
+                      }}
+                      className="w-full py-2 px-4 rounded-lg bg-white/5 border border-white/10 hover:border-accent/30 transition-colors text-sm font-medium btn-secondary"
+                    >
+                      View Full Case Study
+                    </button>
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">{study.title}</h3>
-                  <p className="text-muted text-sm mb-4">{study.description}</p>
-                  <div className="space-y-2 mb-6">
-                    {study.metrics.map((metric, idx) => (
-                      <div key={idx} className="flex items-center text-sm">
-                        <div className="w-2 h-2 rounded-full bg-accent mr-3"></div>
-                        <span className="text-muted">{metric}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <button className="w-full py-2 px-4 rounded-lg bg-white/5 border border-white/10 hover:border-accent/30 transition-colors text-sm font-medium btn-secondary">
-                    View Full Case Study
-                  </button>
                 </div>
-              </div>
-            ))}
+                          ));
+              })()}
+            </div>
+            
+            {/* Navigation Arrow - Below the carousel */}
+            <div className="mt-6 flex justify-start">
+              <button
+                onClick={() => {
+                  const container = document.getElementById('case-studies-carousel');
+                  if (container) {
+                    const cardWidth = container.scrollWidth / 27; // 27 cards (9 × 3) for circular scroll
+                    container.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                  }
+                }}
+                className="p-3 rounded-full bg-black/20 border border-accent/30 hover:border-accent/60 hover:bg-accent/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-accent/20 backdrop-blur-sm"
+                aria-label="Next case study"
+              >
+                <ArrowRight className="size-5 text-accent" />
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -606,6 +819,16 @@ export default function Home() {
       </section>
 
       <Footer />
+      
+      {/* Case Study Modal */}
+      <CaseStudyModal
+        caseStudy={selectedCaseStudy}
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false);
+          setSelectedCaseStudy(null);
+        }}
+      />
     </div>
   );
 }
