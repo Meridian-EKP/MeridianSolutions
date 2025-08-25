@@ -255,7 +255,7 @@ export default function Home() {
                   MeridianSolutions specialises in turning local businesses into digital leaders. We don't just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
                 </p>
                 <p className="mt-4 text-muted">
-                  Every project combines cutting-edge technology with proven marketing psychology to deliver measurable results. Our clients typically see 40-60% increases in qualified leads within 90 days.
+                  We craft custom digital packages tailored to your specific business needs and budget. Rather than forcing you into rigid service tiers, we analyse your goals, market position, and resources to design a strategic solution that maximizes your ROI. Our flexible approach ensures you only pay for what you need while getting the exact tools and strategies required to dominate your local market.
                 </p>
                 
                 <div className="mt-6 pt-6 border-t border-white/10">
@@ -348,25 +348,25 @@ export default function Home() {
               desc: "Professional websites designed for performance, conversions, and business growth.",
               fullDesc: "Custom-built using modern frameworks with mobile-first design, SEO optimisation, and conversion psychology.",
               detailedDesc: "We create stunning, high-performance websites that don't just look amazing—they drive real business results. Every site is built with conversion psychology, advanced SEO, and lightning-fast loading speeds.\n\nOur websites are fully responsive, accessible, and optimised for search engines from day one. You'll get a complete digital presence that turns visitors into customers and grows with your business.",
-              pricing: "From £2,497",
+              pricing: "• Basic brochure site: from £500 • Mid-tier site: from £1,200 • E-commerce site: from £2,500",
               benefits: ["Mobile-first responsive design", "Advanced SEO optimisation", "Conversion psychology integration", "Lightning-fast loading speeds", "6 months free support"],
               icon: Globe
             },
             { 
-              title: "Google Business Profile", 
+              title: "Google Business Profile Optimization", 
               desc: "Complete Google Business Profile management for maximum local visibility.",
               fullDesc: "Complete GBP optimisation, review management, and local ranking strategies that get you found first.",
               detailedDesc: "Transform your Google Business Profile into a powerful lead generation machine. We optimise every element to dominate local search results and convert map searches into paying customers.\n\nOur comprehensive GBP strategy includes review management, post scheduling, local keyword optimisation, and ongoing monitoring to ensure you stay ahead of competitors.",
-              pricing: "From £497/month",
+              pricing: "One-time setup from £200 • Ongoing from £100/month",
               benefits: ["Complete profile optimisation", "Review management system", "Local ranking strategies", "Monthly performance reports", "Ongoing competitor monitoring"],
               icon: MapPin
             },
             { 
-              title: "Social Media Management", 
+              title: "Social Media Setup & Management", 
               desc: "Professional social media management that builds brand authority and engagement.",
               fullDesc: "Platform-specific content strategies, community management, and local audience targeting that converts.",
               detailedDesc: "Build authority and drive meaningful engagement with strategic social media management. We create platform-specific content that resonates with your local audience and converts followers into customers.\n\nFrom content creation to community management, we handle everything while maintaining your authentic brand voice and driving measurable business results.",
-              pricing: "From £797/month",
+              pricing: "Setup from £250 • Management from £250/month per platform",
               benefits: ["Platform-specific content strategy", "Daily content creation & posting", "Community management", "Local audience targeting", "Monthly analytics reports"],
               icon: Share2
             },
@@ -375,16 +375,16 @@ export default function Home() {
               desc: "Comprehensive local search optimisation to dominate your market area.",
               fullDesc: "Technical SEO, local citations, keyword targeting, and ongoing optimisation for sustainable growth.",
               detailedDesc: "Dominate local search results with our comprehensive Local SEO strategy. We target high-intent local keywords and optimise your entire digital presence to attract customers who are ready to buy.\n\nOur proven approach includes technical SEO, local citations, Google My Business optimisation, and ongoing content strategy to ensure sustainable, long-term growth.",
-              pricing: "From £697/month",
+              pricing: "Initial setup from £400 • Ongoing from £250/month",
               benefits: ["Local keyword research & targeting", "Technical SEO optimisation", "Local citation building", "Google My Business optimisation", "Monthly ranking reports"],
               icon: Search
             },
             { 
-              title: "Growth Consulting", 
+              title: "Consulting & Strategy", 
               desc: "Expert business consulting with actionable strategies for sustainable growth.",
               fullDesc: "Comprehensive audits, competitive analysis, and custom growth plans tailored to your market.",
               detailedDesc: "Get expert guidance with our comprehensive growth consulting service. We analyse your entire business, identify untapped opportunities, and create a custom roadmap for rapid, sustainable expansion.\n\nOur data-driven approach includes competitive analysis, market research, and actionable strategies that deliver measurable results within 90 days.",
-              pricing: "From £297/session",
+              pricing: "Hourly from £75 • Monthly retainers from £300/month",
               benefits: ["Comprehensive business audit", "Custom growth roadmap", "Competitive analysis", "Market opportunity identification", "90-day action plan"],
               icon: Target
             },
@@ -393,7 +393,7 @@ export default function Home() {
               desc: "Multi-channel marketing campaigns designed for maximum return on investment.",
               fullDesc: "Multi-channel campaigns with advanced tracking, A/B testing, and continuous optimisation.",
               detailedDesc: "Launch high-impact marketing campaigns that deliver immediate, measurable results. We create multi-channel strategies with advanced tracking and continuous optimisation to maximise your ROI.\n\nFrom PPC advertising to email marketing, we handle the entire campaign lifecycle while providing transparent reporting and ongoing optimisation for sustained growth.",
-              pricing: "From £997/month",
+              pricing: "Setup from £300 per campaign • Management from £250/month",
               benefits: ["Multi-channel campaign strategy", "Advanced tracking & analytics", "A/B testing & optimisation", "Monthly performance reviews", "Dedicated campaign manager"],
               icon: Megaphone
             },
@@ -468,7 +468,10 @@ export default function Home() {
 
                   {/* Benefits */}
                   <div className="space-y-3">
-                    <h4 className="font-semibold text-accent">What's Included:</h4>
+                    <h4 className="font-semibold text-accent flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-accent"></span>
+                      What's Included
+                    </h4>
                     <ul className="space-y-2">
                       {card.benefits.map((benefit, idx) => (
                         <li key={idx} className="flex items-center gap-3 text-muted">
@@ -481,13 +484,16 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Investment Box - Outside expandable content to prevent animation issues */}
+              {/* Investment Section - Integrated design without box */}
               {expandedService === i && (
                 <div className="px-6 pb-4">
-                  <div className="p-4 rounded-xl bg-white/5 border border-accent/20">
-                    <div className="flex items-center justify-between">
-                      <span className="text-lg font-semibold text-accent">Investment</span>
-                      <span className="text-lg font-bold">{card.pricing}</span>
+                  <div className="space-y-3">
+                    <h4 className="font-semibold text-accent flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-accent"></span>
+                      Investment Options
+                    </h4>
+                    <div className="text-muted leading-relaxed whitespace-pre-line">
+                      {card.pricing}
                     </div>
                   </div>
                 </div>
@@ -519,7 +525,7 @@ export default function Home() {
         <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10">
           <div className="case-studies-header max-w-3xl">
             <h2 className="text-2xl md:text-4xl font-semibold">Transformations That Drive Results</h2>
-            <p className="mt-3 text-muted text-lg">Here are three concept projects that demonstrate how we transform your business’s online presence.</p>
+            <p className="mt-3 text-muted text-lg">Here are some concept projects that demonstrate how we transform your business’s online presence.</p>
           </div>
           {/* Carousel Container */}
           <div 
