@@ -183,7 +183,7 @@ export default function ContactForm() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     
@@ -334,7 +334,7 @@ export default function ContactForm() {
                 name="phoneCountry"
                 value={formData.phoneCountry}
                 onChange={handleChange}
-                className={`phone-country-select px-4 py-3 rounded-xl bg-white/5 border backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-white/10 hover:bg-white/8 ${
+                className={`phone-country-select px-4 py-3 rounded-xl bg-white/5 border backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-white/10 hover:bg-white/8 cursor-pointer ${
                   errors.phone ? "border-red-500/50" : "border-white/10 focus:border-accent/30"
                 }`}
                 style={{
@@ -415,7 +415,7 @@ export default function ContactForm() {
           type="submit"
           disabled={isSubmitting}
           className={`w-full btn-primary glow-ring rounded-xl py-4 px-6 font-medium transition-all duration-300 ${
-            isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:scale-[1.02]"
+            isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:scale-[1.02] cursor-pointer"
           }`}
         >
           <span className="flex items-center justify-center gap-2">

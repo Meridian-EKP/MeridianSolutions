@@ -284,7 +284,7 @@ export default function Home() {
                 return (
                   <div 
                     key={card.id}
-                    className="card rounded-2xl p-8 text-center cursor-pointer h-[300px] flex flex-col justify-center transform-none relative overflow-hidden border border-white/5 bg-gradient-to-br from-white/[0.02] to-white/[0.08] backdrop-blur-xl hover:bg-white/[0.06] transition-all duration-300"
+                    className="card rounded-2xl p-8 text-center h-[300px] flex flex-col justify-center transform-none relative overflow-hidden border border-white/5 bg-gradient-to-br from-white/[0.02] to-white/[0.08] backdrop-blur-xl hover:bg-white/[0.06] transition-all duration-300"
                     onMouseEnter={(e) => {
                       setHoveredCard(card.id);
                       const direction = getShineDirection(e, e.currentTarget as HTMLElement, true);
@@ -427,7 +427,7 @@ export default function Home() {
                   </div>
                   {expandedService === i ? (
                     <button 
-                      className="p-2 rounded-lg bg-white/5 border border-white/10 hover:border-accent/30 transition-colors"
+                      className="p-2 rounded-lg bg-white/5 border border-white/10 hover:border-accent/30 transition-colors cursor-pointer"
                       onClick={(e) => {
                         e.stopPropagation();
                         setExpandedService(null);
@@ -497,7 +497,7 @@ export default function Home() {
               {expandedService === i && (
                 <div className="px-6 pb-6 pt-4 border-t border-white/10">
                   <button 
-                    className="w-full btn-primary rounded-xl py-3 px-6 font-medium transition-all duration-500 ease-out hover:scale-[1.01] hover:shadow-lg hover:shadow-accent/30"
+                    className="w-full btn-primary rounded-xl py-3 px-6 font-medium transition-all duration-500 ease-out hover:scale-[1.01] hover:shadow-lg hover:shadow-accent/30 cursor-pointer"
                     onClick={(e) => {
                       e.stopPropagation();
                       // Scroll to contact form
@@ -712,7 +712,7 @@ export default function Home() {
                                 return caseStudiesForCarousel.map((study, i) => (
                   <div
                     key={`${study.title}-${i}`}
-                    className="case-study-card group relative rounded-2xl p-6 card overflow-hidden hover:shadow-2xl hover:shadow-accent/20 transition-all duration-300 flex-shrink-0 w-full md:w-96 lg:w-[420px] snap-center"
+                    className="case-study-card group relative rounded-2xl p-6 card overflow-hidden hover:shadow-2xl hover:shadow-accent/20 transition-all duration-300 flex-shrink-0 w-full md:w-96 lg:w-[420px] snap-center select-none"
                   >
                     <div className="card-accents" style={accentStyleFor(i)} aria-hidden />
                     <div className="card-sheen" aria-hidden />
@@ -744,7 +744,7 @@ export default function Home() {
                         setSelectedCaseStudy(study);
                         setIsModalOpen(true);
                       }}
-                      className="w-full py-2 px-4 rounded-lg bg-white/5 border border-white/10 hover:border-accent/30 transition-colors text-sm font-medium btn-secondary"
+                      className="w-full py-2 px-4 rounded-lg bg-white/5 border border-white/10 hover:border-accent/30 transition-colors text-sm font-medium btn-secondary cursor-pointer"
                     >
                       View Full Case Study
                     </button>
@@ -764,7 +764,7 @@ export default function Home() {
                     container.scrollBy({ left: cardWidth, behavior: 'smooth' });
                   }
                 }}
-                className="p-3 rounded-full bg-black/20 border border-accent/30 hover:border-accent/60 hover:bg-accent/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-accent/20 backdrop-blur-sm"
+                className="p-3 rounded-full bg-black/20 border border-accent/30 hover:border-accent/60 hover:bg-accent/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-accent/20 backdrop-blur-sm cursor-pointer"
                 aria-label="Next case study"
               >
                 <ArrowRight className="size-5 text-accent" />

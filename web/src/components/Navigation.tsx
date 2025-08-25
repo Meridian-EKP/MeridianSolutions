@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,40 +49,54 @@ const Navigation = () => {
           {/* Logo/Brand */}
           <div className="flex items-center">
             {isHomePage ? (
-              <button
-                onClick={() => scrollToSection("#top")}
-                className="text-xl md:text-2xl font-bold bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
-              >
-                MeridianSolutions
-              </button>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <button
+                     onClick={() => scrollToSection("#top")}
+                     className="hover:scale-105 transition-transform duration-300 cursor-pointer"
+                   >
+                    <Image
+                      src="/MeridianSolutionsLogo.png"
+                      alt="MeridianSolutions"
+                      width={550}
+                      height={138}
+                      className="h-28 md:h-36 w-auto mt-1"
+                      priority
+                    />
+                  </button>
             ) : (
-              <Link
-                href="/"
-                className="text-xl md:text-2xl font-bold bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
-              >
-                MeridianSolutions
-              </Link>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <Link
+                     href="/"
+                     className="hover:scale-105 transition-transform duration-300 cursor-pointer"
+                   >
+                    <Image
+                      src="/MeridianSolutionsLogo.png"
+                      alt="MeridianSolutions"
+                      width={550}
+                      height={138}
+                      className="h-28 md:h-36 w-auto mt-1"
+                      priority
+                    />
+                  </Link>
             )}
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollToSection(link.href)}
-                className="nav-link relative text-foreground hover:text-accent transition-all duration-300 text-sm font-medium"
-              >
+                             <button
+                 key={link.href}
+                 onClick={() => scrollToSection(link.href)}
+                 className="nav-link relative text-foreground hover:text-accent transition-all duration-300 text-sm font-medium cursor-pointer"
+               >
                 {link.label}
                 <span className="nav-link-glow absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300" />
               </button>
             ))}
             
             {/* CTA Button */}
-            <button
-              onClick={() => scrollToSection("#contact-form")}
-              className="btn-primary px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/30"
-            >
+                         <button
+               onClick={() => scrollToSection("#contact-form")}
+               className="btn-primary px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/30 cursor-pointer"
+             >
               Get Started
             </button>
           </div>
@@ -113,18 +128,18 @@ const Navigation = () => {
           <div className="mx-auto max-w-screen-2xl px-6 py-6">
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className="text-left py-3 px-4 rounded-lg text-foreground hover:text-accent hover:bg-white/5 transition-all duration-300 text-sm font-medium"
-                >
+                                 <button
+                   key={link.href}
+                   onClick={() => scrollToSection(link.href)}
+                   className="text-left py-3 px-4 rounded-lg text-foreground hover:text-accent hover:bg-white/5 transition-all duration-300 text-sm font-medium cursor-pointer"
+                 >
                   {link.label}
                 </button>
               ))}
-              <button
-                onClick={() => scrollToSection("#contact-form")}
-                className="mt-4 btn-primary px-6 py-3 rounded-full font-medium transition-all duration-300"
-              >
+                             <button
+                 onClick={() => scrollToSection("#contact-form")}
+                 className="mt-4 btn-primary px-6 py-3 rounded-full font-medium transition-all duration-300 cursor-pointer"
+               >
                 Get Started
               </button>
             </div>

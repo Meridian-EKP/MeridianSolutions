@@ -381,11 +381,11 @@ body {
 }
 
 .blue-dot {
-  background: radial-gradient(circle, rgba(94, 231, 255, 0.3) 0%, rgba(94, 231, 255, 0.15) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(94, 231, 255, 0.4) 0%, rgba(94, 231, 255, 0.2) 40%, transparent 70%);
 }
 
 .purple-dot {
-  background: radial-gradient(circle, rgba(138, 92, 255, 0.3) 0%, rgba(138, 92, 255, 0.15) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(138, 92, 255, 0.4) 0%, rgba(138, 92, 255, 0.2) 40%, transparent 70%);
 }
 
 /* Dot number labels */
@@ -421,8 +421,8 @@ body {
 }
 
 .pulse-dot {
-  animation: pulse 3s ease-in-out infinite !important;
-  transform-origin: center !important;
+  animation: pulse 3s ease-in-out infinite;
+  transform-origin: center;
 }
 
 /* Ensure footer is truly the last element */

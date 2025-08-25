@@ -65,7 +65,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/40 border border-white/20 hover:border-accent/60 hover:bg-accent/10 transition-all duration-300"
+          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/40 border border-white/20 hover:border-accent/60 hover:bg-accent/10 transition-all duration-300 cursor-pointer"
           aria-label="Close modal"
         >
           <X className="size-5 text-white" />
@@ -151,7 +151,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
               <a 
                 href="#contact-form" 
                 onClick={onClose}
-                className="btn-primary inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium"
+                className="btn-primary inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium cursor-pointer"
               >
                 Book Your Free Digital Health Check
                 <ChevronRight className="size-4" />

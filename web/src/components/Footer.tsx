@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 export default function Footer() {
 
@@ -13,7 +14,7 @@ export default function Footer() {
   const navLinks = [
     { href: "#about", label: "About" },
     { href: "#services", label: "Services" },
-    { href: "#work", label: "Work" },
+    { href: "#work", label: "Case Studies" },
     { href: "#testimonials", label: "Testimonials" },
     { href: "#contact", label: "Contact" }
   ];
@@ -34,51 +35,65 @@ export default function Footer() {
     >
       {/* Main Footer Content */}
       <div className="glass-no-shine border-t border-accent/20 backdrop-blur-xl">
-        <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10 pt-8 pb-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-24">
-            
-                         {/* Column 1: Brand */}
-             <div className="space-y-4">
-               <div>
-                 {isHomePage ? (
-                   <button
-                     onClick={() => {
-                       const element = document.querySelector("#top");
-                       if (element) {
-                         element.scrollIntoView({ behavior: "smooth" });
-                       }
-                     }}
-                     className="text-2xl font-bold bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 cursor-pointer"
-                   >
-                     MeridianSolutions
-                   </button>
-                 ) : (
-                   <Link
-                     href="/"
-                     className="text-2xl font-bold bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 cursor-pointer"
-                   >
-                     MeridianSolutions
-                   </Link>
-                 )}
-                <p className="mt-2 text-sm text-muted/80 leading-relaxed">
-                  The Future of Local Digital Presence
-                </p>
-              </div>
-              <p className="text-xs text-muted/60 leading-relaxed">
-                Transforming local businesses into digital leaders through cutting-edge technology and proven marketing strategies.
-              </p>
+                                   <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10 pt-2 pb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-4">
+              
+                           {/* Column 1: Brand */}
+               <div className="space-y-1">
+                                <div>
+                  {isHomePage ? (
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <button
+                            onClick={() => {
+                              const element = document.querySelector("#top");
+                              if (element) {
+                                element.scrollIntoView({ behavior: "smooth" });
+                              }
+                            }}
+                            className="hover:scale-105 transition-transform duration-300 cursor-pointer"
+                          >
+                            <Image
+                              src="/MeridianSolutionsLogo.png"
+                              alt="MeridianSolutions"
+                              width={1300}
+                              height={325}
+                              className="h-64 w-auto"
+                              priority
+                            />
+                          </button>
+                  ) : (
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <Link
+                            href="/"
+                            className="hover:scale-105 transition-transform duration-300 cursor-pointer"
+                          >
+                            <Image
+                              src="/MeridianSolutionsLogo.png"
+                              alt="MeridianSolutions"
+                              width={1300}
+                              height={325}
+                              className="h-64 w-auto"
+                              priority
+                            />
+                          </Link>
+                  )}
+                                                                                                                                       <p className="mt-0 text-sm text-muted/80 leading-relaxed">
+                     The Future of Local Digital Presence
+                   </p>
+                 </div>
+                 <p className="text-xs text-muted/60 leading-relaxed mt-0">
+                   Transforming local businesses into digital leaders through cutting-edge technology and proven marketing strategies.
+                 </p>
             </div>
 
-            {/* Column 2: Navigation */}
-            <div className="space-y-4 lg:justify-self-end lg:text-right">
-              <h4 className="text-lg font-semibold text-white">Navigation</h4>
+                                                   {/* Column 2: Navigation */}
+              <div className="space-y-2 lg:justify-self-end lg:text-right pt-8">
+                <h4 className="text-lg font-semibold text-white">Navigation</h4>
               <nav>
                 <ul className="space-y-3">
                   {navLinks.map((link) => (
                     <li key={link.href}>
                       <button
                         onClick={() => scrollToSection(link.href)}
-                        className="footer-link text-sm text-muted hover:text-accent transition-all duration-300 relative group"
+                        className="footer-link text-sm text-muted hover:text-accent transition-all duration-300 relative group cursor-pointer"
                       >
                         {link.label}
                         <span className="absolute bottom-0 left-0 w-0 h-px bg-gradient-to-r from-accent to-accent-2 transition-all duration-300 group-hover:w-full"></span>
@@ -89,20 +104,20 @@ export default function Footer() {
               </nav>
             </div>
 
-            {/* Column 3: Contact Info */}
-            <div className="space-y-4 lg:justify-self-end lg:text-right">
-              <h4 className="text-lg font-semibold text-white">Contact</h4>
+                                                   {/* Column 3: Contact Info */}
+              <div className="space-y-2 lg:justify-self-end lg:text-right pt-8">
+                <h4 className="text-lg font-semibold text-white">Contact</h4>
               <div className="space-y-3">
                 <a 
                   href="mailto:edkemppotter@gmail.com"
-                  className="footer-contact-item flex items-center gap-3 text-sm text-muted hover:text-accent transition-all duration-300 group"
+                  className="footer-contact-item flex items-center gap-3 text-sm text-muted hover:text-accent transition-all duration-300 group cursor-pointer"
                 >
                   <Mail className="size-4 text-accent/60 group-hover:text-accent transition-colors duration-300" />
                   <span>edkemppotter@gmail.com</span>
                 </a>
                 <a 
                   href="tel:+447541516344"
-                  className="footer-contact-item flex items-center gap-3 text-sm text-muted hover:text-accent transition-all duration-300 group"
+                  className="footer-contact-item flex items-center gap-3 text-sm text-muted hover:text-accent transition-all duration-300 group cursor-pointer"
                 >
                   <Phone className="size-4 text-accent/60 group-hover:text-accent transition-colors duration-300" />
                   <span>(+44) 7541 516 344</span>
@@ -122,13 +137,13 @@ export default function Footer() {
                              <div className="flex gap-6">
                  <Link 
                    href="/privacy-policy"
-                   className="text-sm text-muted/60 hover:text-accent transition-colors duration-300"
+                   className="text-sm text-muted/60 hover:text-accent transition-colors duration-300 cursor-pointer"
                  >
                    Privacy Policy
                  </Link>
                  <Link 
                    href="/terms-of-service"
-                   className="text-sm text-muted/60 hover:text-accent transition-colors duration-300"
+                   className="text-sm text-muted/60 hover:text-accent transition-colors duration-300 cursor-pointer"
                  >
                    Terms of Service
                  </Link>
