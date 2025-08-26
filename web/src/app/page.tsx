@@ -740,7 +740,11 @@ export default function Home() {
                     </div>
                     <button 
                       onClick={() => {
-                        setSelectedCaseStudy(study);
+                        setSelectedCaseStudy({
+                          title: study.title,
+                          content: study.detailedDescription,
+                          image: undefined
+                        });
                         setIsModalOpen(true);
                       }}
                       className="w-full py-2 px-4 rounded-lg bg-white/5 border border-white/10 hover:border-accent/30 transition-colors text-sm font-medium btn-secondary cursor-pointer"
