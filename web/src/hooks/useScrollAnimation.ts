@@ -58,11 +58,11 @@ export const useScrollAnimation = (
         start,
         end,
         once,
-        toggleActions: once ? "play none none none" : "play none none reverse",
-        onComplete: () => {
-          // Clean up will-change for performance
-          gsap.set(elements, { willChange: "auto" });
-        }
+        toggleActions: once ? "play none none none" : "play none none reverse"
+      },
+      onComplete: () => {
+        // Clean up will-change for performance
+        gsap.set(elements, { willChange: "auto" });
       }
     });
 
@@ -142,10 +142,10 @@ export const useStaggeredScrollAnimation = (
           start,
           end,
           once,
-          toggleActions: once ? "play none none none" : "play none none reverse",
-          onComplete: () => {
-            gsap.set(elements, { willChange: "auto" });
-          }
+          toggleActions: once ? "play none none none" : "play none none reverse"
+        },
+        onComplete: () => {
+          gsap.set(elements, { willChange: "auto" });
         }
       });
 
@@ -217,10 +217,10 @@ export const useFadeInAnimation = (options: ScrollAnimationOptions = {}) => {
         trigger: element,
         start,
         once,
-        toggleActions: once ? "play none none none" : "play none none reverse",
-        onComplete: () => {
-          gsap.set(element, { willChange: "auto" });
-        }
+        toggleActions: once ? "play none none none" : "play none none reverse"
+      },
+      onComplete: () => {
+        gsap.set(element, { willChange: "auto" });
       }
     });
 
