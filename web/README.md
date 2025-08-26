@@ -1,15 +1,15 @@
 # MeridianSolutions Website
 
-A modern, futuristic website for MeridianSolutions - a digital marketing agency specializing in local business growth.
+A modern, futuristic website for MeridianSolutions - a digital marketing agency specialising in local business growth.
 
 ## 🚀 Features
 
 - **Futuristic Design**: Glassmorphism effects, neon accents, and smooth animations
 - **Interactive Elements**: Directional shine effects, expandable service cards, hover animations
 - **Contact Form**: Comprehensive form with validation, spam prevention, and international phone support
-- **Responsive Design**: Optimized for all device sizes
-- **Performance Optimized**: Efficient animations and smooth scrolling
-- **SEO Optimized**: Comprehensive metadata, sitemap, and structured data
+- **Responsive Design**: Optimised for all device sizes
+- **Performance Optimised**: Efficient animations and smooth scrolling
+- **SEO Optimised**: Comprehensive metadata, sitemap, and structured data
 
 ## 📁 Project Structure
 
@@ -25,22 +25,21 @@ web/
 │   │   └── page.tsx           # Main homepage component
 │   ├── components/            # Reusable React components
 │   │   ├── BackgroundGlows.tsx
-│   │   ├── ClientShell.tsx
+│   │   ├── CaseStudyModal.tsx
 │   │   ├── ContactForm.tsx
 │   │   ├── Footer.tsx
 │   │   ├── Navigation.tsx
-│   │   ├── StructuredData.tsx
-│   │   └── TestimonialCarousel.tsx
+│   │   └── StructuredData.tsx
 │   ├── constants/             # Application constants
 │   │   └── countryCodes.ts    # International country codes
 │   ├── types/                 # TypeScript type definitions
 │   │   └── forms.ts           # Form-related interfaces
-│   └── utils/                 # Utility functions
-│       ├── accentStyles.ts    # Accent style generation
-│       ├── shineDirection.ts  # Shine effect direction logic
-│       └── validation.ts      # Form validation utilities
+│   ├── utils/                 # Utility functions
+│   │   ├── accentStyles.ts    # Accent style generation
+│   │   ├── shineDirection.ts  # Shine effect direction logic
+│   │   └── validation.ts      # Form validation utilities
 │   └── lib/                   # Library and configuration files
-│       └── metadata.ts        # Centralized metadata configuration
+│       └── metadata.ts        # Centralised metadata configuration
 ├── public/                    # Static assets
 ├── package.json
 └── README.md
@@ -48,8 +47,8 @@ web/
 ## 🔍 SEO Implementation
 
 ### Metadata Management
-- **Centralized Configuration**: All metadata managed in `src/lib/metadata.ts`
-- **Page-Specific Metadata**: Each page has optimized titles, descriptions, and keywords
+- **Centralised Configuration**: All metadata managed in `src/lib/metadata.ts`
+- **Page-Specific Metadata**: Each page has optimised titles, descriptions, and keywords
 - **Social Media Tags**: Open Graph and Twitter Card support
 - **Canonical URLs**: Proper canonical URL implementation
 
@@ -59,11 +58,10 @@ web/
 - **StructuredData.tsx**: JSON-LD structured data for rich snippets
 
 ### Metadata Features
-- **Homepage**: Optimized for "digital marketing agency" and "local business growth"
+- **Homepage**: Optimised for "digital marketing agency" and "local business growth"
 - **Privacy Policy**: Focused on data protection and GDPR compliance
 - **Terms of Service**: Legal terms and service agreements
 - **Keywords**: Comprehensive keyword targeting for local business marketing
-```
 
 ## 🛠️ Key Components
 
@@ -71,42 +69,26 @@ web/
 - **Hero Section**: Parallax background with CTA buttons
 - **About Section**: "Why Meridian?" with interactive cycle cards
 - **Services Section**: Expandable service cards with detailed information
-- **Case Studies**: Real business results showcase
-- **Testimonials**: Client feedback carousel
+- **Case Studies**: Horizontal carousel with concept projects
+- **CTA Section**: Call-to-action for digital health check
 - **Contact Form**: Free digital health check form
 
 ### Contact Form (`src/components/ContactForm.tsx`)
 - Client-side validation with real-time error display
-- International phone number support
+- International phone number support with country code selection
 - Honeypot spam prevention
 - Loading states and success/error feedback
+- Comprehensive form handling with TypeScript
 
-### Complex Logic Documentation
-
-#### Directional Shine Effects
-The shine effect on cycle cards uses sophisticated mouse tracking to determine entry/exit points:
-- Calculates distances from all four edges
-- Determines closest edge for entry/exit
-- Applies appropriate CSS animation class
-- Located in `src/utils/shineDirection.ts`
-
-#### Accent Style Generation
-Service cards use deterministic pseudo-random generation for unique visual patterns:
-- Uses sine function with large multiplier for distribution
-- Generates three overlapping radial gradients
-- Ensures consistent, unique patterns per card
-- Located in `src/utils/accentStyles.ts`
-
-#### Form Validation
-Comprehensive validation system with reusable utilities:
-- Email validation with regex patterns
-- International phone number validation
-- Honeypot spam detection
-- Located in `src/utils/validation.ts`
+### Case Study Modal (`src/components/CaseStudyModal.tsx`)
+- Detailed case study information display
+- Before/after comparison with bullet points
+- Key improvements and CTA integration
+- Keyboard navigation and accessibility features
 
 ## 🎨 Design System
 
-### Colors
+### Colours
 - **Primary Accent**: `#5ee7ff` (Electric Cyan)
 - **Secondary Accent**: `#8a5cff` (Violet)
 - **Background**: `#070a0f` (Dark Blue-Black)
@@ -117,6 +99,7 @@ Comprehensive validation system with reusable utilities:
 - **Shine Effects**: Directional light sweeps on hover
 - **Parallax**: Subtle background movement on scroll
 - **Hover States**: Scale and glow effects
+- **Manual Glow Dots**: Static positioned animated background elements
 
 ## 🚀 Getting Started
 
@@ -149,7 +132,7 @@ Comprehensive validation system with reusable utilities:
 - Tricky algorithms include step-by-step explanations
 - Future developers can understand the reasoning behind implementation choices
 
-### File Organization
+### File Organisation
 - **Constants**: Reusable data in `/constants`
 - **Types**: TypeScript interfaces in `/types`
 - **Utilities**: Helper functions in `/utils`
@@ -163,21 +146,43 @@ Comprehensive validation system with reusable utilities:
 
 ## 🔧 Technical Notes
 
-### Performance Optimizations
+### Performance Optimisations
 - Removed scroll-triggered animations for better performance
 - Used `transform` and `opacity` for smooth animations
 - Implemented proper z-index layering for visual effects
+- Optimised carousel scrolling with infinite loop implementation
 
 ### Accessibility
 - ARIA labels on interactive elements
 - Keyboard navigation support
 - Proper semantic HTML structure
 - Screen reader friendly content
+- Focus management for modals
 
 ### Browser Compatibility
 - Modern CSS features with fallbacks
 - Progressive enhancement approach
 - Tested on Chrome, Firefox, Safari, Edge
+
+## 🎯 Key Features
+
+### Service Cards
+- Expandable design with smooth animations
+- Custom pricing display with bullet points
+- Integrated investment section without boxes
+- Hover effects and directional shine
+
+### Case Studies Carousel
+- Horizontal scrolling with drag functionality
+- Infinite loop implementation
+- Modal integration for detailed views
+- Text selection prevention during scrolling
+
+### Contact Form
+- International phone number support
+- Real-time validation
+- Spam prevention with honeypot
+- Success/error state handling
 
 ## 🤝 Contributing
 
