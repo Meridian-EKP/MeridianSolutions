@@ -263,7 +263,7 @@ export default function Home() {
                     Your business, your vision, your decisions. We believe in complete transparency and collaboration throughout every project. You maintain full control over what gets implemented, when it happens, and how your brand is represented.
                   </p>
                   <p className="mt-3 text-muted">
-                    Monthly strategy sessions ensure we're always aligned with your goals. We discuss progress, review performance data, and adjust our approach based on your feedback and changing business needs.
+                    Monthly strategy sessions ensure we&apos;re always aligned with your goals. We discuss progress, review performance data, and adjust our approach based on your feedback and changing business needs.
                   </p>
                 </div>
               </div>
@@ -463,7 +463,7 @@ export default function Home() {
                   <div className="space-y-3">
                     <h4 className="font-semibold text-accent flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-accent"></span>
-                      What's Included
+                      What&apos;s Included
                     </h4>
                     <ul className="space-y-2">
                       {card.benefits.map((benefit, idx) => (
