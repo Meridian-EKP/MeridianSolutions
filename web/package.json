@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.7",
-    "@studio-freight/lenis": "^1.0.42",
+    "lenis": "^1.1.17",
     "@types/nodemailer": "^7.0.0",
     "@vercel/og": "^0.8.5",
     "class-variance-authority": "^0.7.1",
