@@ -41,7 +41,17 @@ export default function Home() {
   const [shineDirection, setShineDirection] = useState<{[key: number]: string}>({});
   
   // State for case study modal
-  const [selectedCaseStudy, setSelectedCaseStudy] = useState<{title: string; content: string; image?: string} | null>(null);
+  const [selectedCaseStudy, setSelectedCaseStudy] = useState<{
+    id: number;
+    title: string;
+    industry: string;
+    result: string;
+    description: string;
+    metrics: string[];
+    beforePoints: string[];
+    afterPoints: string[];
+    detailedDescription: string;
+  } | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Set initial position to the middle of the duplicated content for infinite scroll
@@ -740,11 +750,7 @@ export default function Home() {
                     </div>
                     <button 
                       onClick={() => {
-                        setSelectedCaseStudy({
-                          title: study.title,
-                          content: study.detailedDescription,
-                          image: undefined
-                        });
+                        setSelectedCaseStudy(study);
                         setIsModalOpen(true);
                       }}
                       className="w-full py-2 px-4 rounded-lg bg-white/5 border border-white/10 hover:border-accent/30 transition-colors text-sm font-medium btn-secondary cursor-pointer"
