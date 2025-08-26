@@ -8,7 +8,6 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['framer-motion', 'gsap', 'lucide-react'],
   },
-  swcMinify: true,
   compress: true,
   // MeridianSolutions - Digital Marketing Agency Website
 };

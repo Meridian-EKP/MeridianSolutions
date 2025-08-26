@@ -204,7 +204,7 @@ export default function ContactForm() {
           <CheckCircle className="size-16 text-green-500 mx-auto mb-4" />
           <h3 className="text-2xl font-semibold mb-2">Thank You!</h3>
           <p className="text-muted text-lg max-w-md mx-auto">
-            Your request has been received. We'll be in touch shortly to discuss your digital health check and growth strategy.
+            Your request has been received. We&apos;ll be in touch shortly to discuss your digital health check and growth strategy.
           </p>
         </div>
         <button
@@ -226,7 +226,7 @@ export default function ContactForm() {
       <div className="text-center mb-8">
         <h3 className="text-2xl md:text-3xl font-semibold mb-3">Get Your Free Digital Health Check</h3>
         <p className="text-muted">
-          Tell us about your business and we'll create a custom growth strategy for you.
+          Tell us about your business and we&apos;ll create a custom growth strategy for you.
         </p>
       </div>
 

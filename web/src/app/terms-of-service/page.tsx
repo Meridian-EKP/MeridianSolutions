@@ -92,7 +92,7 @@ export default function TermsOfService() {
               </p>
               <ul className="list-disc list-inside space-y-3 ml-4 text-lg">
                 <li>All fees are payable in advance unless otherwise agreed</li>
-                <li>Prices are subject to change with 30 days' notice</li>
+                <li>Prices are subject to change with 30 days&apos; notice</li>
                 <li>Late payments may result in service suspension</li>
                 <li>Refunds are provided according to our refund policy</li>
                 <li>All fees are exclusive of applicable taxes</li>

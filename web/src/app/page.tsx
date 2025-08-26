@@ -19,9 +19,8 @@
  */
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
-import { ArrowRight, Sparkles, Quote, Globe, MapPin, Share2, Search, Target, Megaphone, X, CheckCircle } from "lucide-react";
+import { ArrowRight, Globe, MapPin, Share2, Search, Target, Megaphone, X, CheckCircle } from "lucide-react";
 
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
@@ -42,7 +41,7 @@ export default function Home() {
   const [shineDirection, setShineDirection] = useState<{[key: number]: string}>({});
   
   // State for case study modal
-  const [selectedCaseStudy, setSelectedCaseStudy] = useState<any>(null);
+  const [selectedCaseStudy, setSelectedCaseStudy] = useState<{title: string; content: string; image?: string} | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Set initial position to the middle of the duplicated content for infinite scroll
@@ -252,7 +251,7 @@ export default function Home() {
             <div className="glass-no-shine rounded-3xl p-6 md:p-10 border border-white/10 transition-transform duration-300 hover:scale-105">
               <div className="relative z-10">
                 <p className="text-muted">
-                  MeridianSolutions specialises in turning local businesses into digital leaders. We don't just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
+                  MeridianSolutions specialises in turning local businesses into digital leaders. We don&apos;t just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
                 </p>
                 <p className="mt-4 text-muted">
                   We craft custom digital packages tailored to your specific business needs and budget. Rather than forcing you into rigid service tiers, we analyse your goals, market position, and resources to design a strategic solution that maximizes your ROI. Our flexible approach ensures you only pay for what you need while getting the exact tools and strategies required to dominate your local market.
@@ -274,12 +273,6 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-4">
               {cycleCards.map((card, index) => {
                 const accentClass = ['accent-a', 'accent-b', 'accent-c', 'accent-d'][index];
-                const gradientClass = [
-                  'from-accent to-accent-2',
-                  'from-accent-2 to-accent-3',
-                  'from-accent-3 to-accent',
-                  'from-accent to-accent-2'
-                ][index];
                 
                 return (
                   <div 
@@ -291,7 +284,7 @@ export default function Home() {
                       console.log(`Mouse entered card ${card.id} - Direction: ${direction}`);
                       setShineDirection(prev => ({ ...prev, [card.id]: direction }));
                     }}
-                    onMouseLeave={(e) => {
+                    onMouseLeave={() => {
                       setHoveredCard(null);
                       // Remove exit animation - just clear the shine direction
                       setShineDirection(prev => ({ ...prev, [card.id]: '' }));
@@ -530,11 +523,11 @@ export default function Home() {
           {/* Carousel Container */}
           <div 
             className="mt-10"
-            onMouseEnter={(e) => {
+            onMouseEnter={() => {
               document.documentElement.style.overflow = 'hidden';
               document.body.style.overflow = 'hidden';
             }}
-            onMouseLeave={(e) => {
+            onMouseLeave={() => {
               document.documentElement.style.overflow = 'auto';
               document.body.style.overflow = 'auto';
             }}
@@ -552,8 +545,8 @@ export default function Home() {
               onMouseDown={(e) => {
                 const container = e.currentTarget;
                 let isDown = false;
-                let startX = e.pageX - container.offsetLeft;
-                let scrollLeft = container.scrollLeft;
+                const startX = e.pageX - container.offsetLeft;
+                const scrollLeft = container.scrollLeft;
 
                 const handleMouseMove = (e: MouseEvent) => {
                   if (!isDown) return;

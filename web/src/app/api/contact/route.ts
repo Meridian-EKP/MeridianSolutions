@@ -195,9 +195,9 @@ export async function POST(request: NextRequest) {
       console.error('Email transporter verification failed:', verifyError);
       console.error('Verify error details:', {
         message: verifyError instanceof Error ? verifyError.message : 'Unknown error',
-        code: (verifyError as any)?.code,
-        response: (verifyError as any)?.response,
-        responseCode: (verifyError as any)?.responseCode
+        code: (verifyError as Error & { code?: string })?.code,
+        response: (verifyError as Error & { response?: string })?.response,
+        responseCode: (verifyError as Error & { responseCode?: string })?.responseCode
       });
       return NextResponse.json(
         { 
