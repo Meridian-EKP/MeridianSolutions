@@ -525,7 +525,7 @@ export default function Home() {
         <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10">
           <div className="case-studies-header max-w-3xl">
             <h2 className="text-2xl md:text-4xl font-semibold">Transformations That Drive Results</h2>
-            <p className="mt-3 text-muted text-lg">Here are some concept projects that demonstrate how we transform your business’s online presence.</p>
+            <p className="mt-3 text-muted text-lg">Here are some concept projects that demonstrate how we can transform your business’s online presence.</p>
           </div>
           {/* Carousel Container */}
           <div 
@@ -788,7 +788,7 @@ export default function Home() {
           <div className="glass-no-shine rounded-3xl p-10 md:p-16 transition-transform duration-300 hover:scale-105">
             <h2 className="text-2xl md:text-4xl font-semibold">Ready to Dominate Your Local Market?</h2>
             <p className="mt-4 text-white max-w-3xl mx-auto text-lg">
-              Get your free digital health check and discover exactly how to turn your digital presence into your most powerful growth engine. 
+              Get your free digital health check and discover exactly how to turn your digital presence into your most powerful asset. 
               <span className="font-medium"> No obligation, just actionable insights.</span>
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
