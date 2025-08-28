@@ -504,7 +504,7 @@ export default function Home() {
 
               {/* CTA Button - Outside expandable content to prevent animation issues */}
               {expandedService === i && (
-                                 <div className="px-5 pb-5 pt-3 border-t border-muted/30">
+                                 <div className="px-5 pb-5 pt-3 border-t border-white/10">
                   <button 
                     className="w-full btn-primary rounded-xl py-3 px-6 font-medium transition-all duration-500 ease-out hover:scale-[1.01] hover:shadow-lg hover:shadow-accent/30 cursor-pointer"
                     onClick={(e) => {
