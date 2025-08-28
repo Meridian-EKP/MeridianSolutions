@@ -59,7 +59,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
       {/* Modal */}
       <div 
         ref={modalRef}
-        className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl bg-black/40 border border-white/10 backdrop-blur-xl shadow-2xl shadow-accent/20 modal-enter"
+        className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl bg-black/40 border border-cyan-400/30 backdrop-blur-xl shadow-2xl shadow-accent/20 modal-enter"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -114,7 +114,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
               </div>
 
               {/* After Box */}
-              <div className="relative p-6 rounded-2xl bg-gradient-to-br from-accent/20 to-purple-600/20 border border-white/10 backdrop-blur-sm">
+              <div className="relative p-6 rounded-2xl bg-gradient-to-br from-accent/20 to-purple-600/20 border border-cyan-400/30 backdrop-blur-sm">
                 <div className="flex items-center mb-4">
                   <div className="w-3 h-3 rounded-full bg-green-400 mr-3"></div>
                   <h4 className="text-lg font-semibold text-green-400">After</h4>

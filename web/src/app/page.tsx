@@ -242,7 +242,7 @@ export default function Home() {
                 Get Your Free Digital Health Check
                 <ArrowRight className="size-4" />
               </a>
-              <a href="#services" className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-medium border border-white/10 hover:border-white/20 transition">
+                             <a href="#services" className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-medium border border-cyan-400/30 hover:border-cyan-400/50 transition">
                 See Our Services
           </a>
         </div>
@@ -258,7 +258,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-10 items-start">
           <div className="about-content space-y-6">
             <h2 className="text-2xl md:text-4xl font-semibold">Why Meridian?</h2>
-            <div className="glass-no-shine rounded-3xl p-6 md:p-10 border border-white/10 transition-transform duration-300 hover:scale-105">
+                         <div className="glass-no-shine rounded-3xl p-6 md:p-10 border border-white/10 transition-transform duration-300 hover:scale-105">
               <div className="relative z-10">
                 <p className="text-muted">
                   MeridianSolutions specialises in turning local businesses into digital leaders. We don&apos;t just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
@@ -422,15 +422,15 @@ export default function Home() {
               <div className="relative z-10 p-5 flex flex-col h-full">
                 {/* Header */}
                 <div className="flex items-start gap-3 mb-3">
-                  <div className="p-2 rounded-lg bg-white/5 border border-white/10 group-hover:border-accent/30 transition-colors">
+                                     <div className="p-2 rounded-lg bg-white/5 border border-cyan-400/30 group-hover:border-accent/30 transition-colors">
                     <card.icon className="size-5 text-accent" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-base md:text-lg font-semibold">{card.title}</h3>
                   </div>
                   {expandedService === i ? (
-                    <button 
-                      className="p-2 rounded-lg bg-white/5 border border-white/10 hover:border-accent/30 transition-colors cursor-pointer"
+                                         <button 
+                       className="p-2 rounded-lg bg-white/5 border border-cyan-400/30 hover:border-accent/30 transition-colors cursor-pointer"
                       onClick={(e) => {
                         e.stopPropagation();
                         setExpandedService(null);
@@ -504,7 +504,7 @@ export default function Home() {
 
               {/* CTA Button - Outside expandable content to prevent animation issues */}
               {expandedService === i && (
-                <div className="px-5 pb-5 pt-3 border-t border-white/10">
+                                 <div className="px-5 pb-5 pt-3 border-t border-muted/30">
                   <button 
                     className="w-full btn-primary rounded-xl py-3 px-6 font-medium transition-all duration-500 ease-out hover:scale-[1.01] hover:shadow-lg hover:shadow-accent/30 cursor-pointer"
                     onClick={(e) => {
@@ -753,7 +753,7 @@ export default function Home() {
                          setSelectedCaseStudy(study);
                          setIsModalOpen(true);
                        }}
-                       className="w-full py-2 px-4 rounded-lg bg-white/5 border border-white/10 hover:border-accent/30 transition-colors text-sm font-medium btn-secondary cursor-pointer mt-auto"
+                                               className="w-full py-2 px-4 rounded-lg bg-white/5 border border-white/10 hover:border-accent/30 transition-colors text-sm font-medium btn-secondary cursor-pointer mt-auto"
                      >
                        View Full Case Study
                      </button>
@@ -773,7 +773,7 @@ export default function Home() {
                     container.scrollBy({ left: cardWidth, behavior: 'smooth' });
                   }
                 }}
-                                 className="p-3 rounded-full bg-black/20 border border-white/10 hover:border-accent/60 hover:bg-accent/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-accent/20 backdrop-blur-sm cursor-pointer"
+                                 className="p-3 rounded-full bg-black/20 border border-cyan-400/30 hover:border-accent/60 hover:bg-accent/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-accent/20 backdrop-blur-sm cursor-pointer"
                 aria-label="Next case study"
               >
                 <ArrowRight className="size-5 text-accent" />
@@ -788,7 +788,7 @@ export default function Home() {
       {/* CTA */}
       <section id="contact" className="relative pt-24 md:pt-32 pb-32 md:pb-48 min-h-screen flex items-center">
         <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10 text-center">
-          <div className="glass-no-shine rounded-3xl p-10 md:p-16 transition-transform duration-300 hover:scale-105">
+                     <div className="glass-no-shine rounded-3xl p-10 md:p-16 border border-white/10 transition-transform duration-300 hover:scale-105">
             <h2 className="text-2xl md:text-4xl font-semibold">Ready to Dominate Your Local Market?</h2>
             <p className="mt-4 text-white max-w-3xl mx-auto text-lg">
               Get your free digital health check and discover exactly how to turn your digital presence into your most powerful asset. 
@@ -799,7 +799,7 @@ export default function Home() {
                 Get Your Free Digital Health Check
                 <ArrowRight className="size-5" />
               </a>
-              <a href="tel:+447541516344" className="glass inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-medium border border-white/10 hover:border-white/20 transition">
+                             <a href="tel:+447541516344" className="glass inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-medium border border-cyan-400/30 hover:border-cyan-400/50 transition">
                 Call Now: (+44) 7541 516 344
               </a>
             </div>

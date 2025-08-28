@@ -34,7 +34,7 @@ export default function Footer() {
       className="relative bg-black/20"
     >
       {/* Main Footer Content */}
-      <div className="glass-no-shine border-t border-white/10 backdrop-blur-xl">
+             <div className="glass-no-shine border-t border-cyan-400/30 backdrop-blur-xl">
                                    <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10 pt-2 pb-16">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-4">
               
@@ -128,7 +128,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10">
+                 <div className="border-t border-cyan-400/30">
           <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                              <p className="text-sm text-muted">
