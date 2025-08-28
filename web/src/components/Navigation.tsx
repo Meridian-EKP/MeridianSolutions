@@ -41,7 +41,7 @@ const Navigation = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out font-nav ${
         isScrolled
           ? "h-16 navbar-glass shadow-lg shadow-accent/10"
-          : "h-20 bg-background/95 border-b border-black"
+          : "h-20 navbar-opaque"
       }`}
     >
       <div className="mx-auto max-w-screen-2xl px-6 md:px-10 h-full">
