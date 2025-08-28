@@ -40,9 +40,34 @@ const Navigation = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out font-nav ${
         isScrolled
-          ? "h-16 navbar-glass-enhanced shadow-lg shadow-accent/10"
+          ? "h-16 navbar-glass-force shadow-lg shadow-accent/10"
           : "h-20 navbar-opaque"
       }`}
+      style={
+        isScrolled
+          ? {
+              background: 'rgba(7, 10, 15, 0.85)',
+              backdropFilter: 'blur(20px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+              MozBackdropFilter: 'blur(20px) saturate(180%)',
+              borderBottom: '1px solid rgba(154, 164, 178, 0.3)',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+              transform: 'translateZ(0)',
+              willChange: 'backdrop-filter',
+              WebkitTransform: 'translateZ(0)',
+              MozTransform: 'translateZ(0)',
+              WebkitPerspective: '1000px',
+              MozPerspective: '1000px',
+              perspective: '1000px',
+              WebkitBackfaceVisibility: 'hidden',
+              MozBackfaceVisibility: 'hidden',
+              backfaceVisibility: 'hidden',
+              WebkitTransform3d: 'translateZ(0)',
+              MozTransform3d: 'translateZ(0)',
+              transform3d: 'translateZ(0)',
+            }
+          : {}
+      }
     >
       <div className="mx-auto max-w-screen-2xl px-6 md:px-10 h-full">
         <div className="flex items-center justify-between h-full">
