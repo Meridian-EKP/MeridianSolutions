@@ -85,7 +85,11 @@ const Navigation = () => {
                              <button
                  key={link.href}
                  onClick={() => scrollToSection(link.href)}
-                 className="nav-link relative text-foreground hover:text-accent transition-all duration-300 text-sm font-medium cursor-pointer"
+                 className={`nav-link relative transition-all duration-300 text-sm font-medium cursor-pointer ${
+                   isScrolled 
+                     ? "text-muted hover:text-accent" 
+                     : "text-white hover:text-accent"
+                 }`}
                >
                 {link.label}
                 <span className="nav-link-glow absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300" />
@@ -131,7 +135,11 @@ const Navigation = () => {
                                  <button
                    key={link.href}
                    onClick={() => scrollToSection(link.href)}
-                   className="text-left py-3 px-4 rounded-lg text-foreground hover:text-accent hover:bg-white/5 transition-all duration-300 text-sm font-medium cursor-pointer"
+                   className={`text-left py-3 px-4 rounded-lg hover:text-accent hover:bg-white/5 transition-all duration-300 text-sm font-medium cursor-pointer ${
+                     isScrolled 
+                       ? "text-muted" 
+                       : "text-white"
+                   }`}
                  >
                   {link.label}
                 </button>

@@ -1,4 +1,17 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, * {
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    font-weight: 600;
+  }
+}
 
 :root {
   --background: #070a0f;
@@ -19,23 +32,6 @@
   /* Glass */
   --glass-bg: rgba(255, 255, 255, 0.06);
   --glass-border: rgba(255, 255, 255, 0.12);
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-accent: var(--accent);
-  --color-accent-2: var(--accent-2);
-  --color-accent-3: var(--accent-3);
-  --color-accent-pink: var(--accent-pink);
-  --color-accent-pink-2: var(--accent-pink-2);
-  --color-accent-blue: var(--accent-blue);
-  --color-accent-blue-2: var(--accent-blue-2);
-
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-nav: var(--font-inter);
 }
 
 @media (prefers-color-scheme: light) {
@@ -512,6 +508,71 @@ footer {
   transform: none !important;
 }
 
+/* Cycle cards specific styling */
+.cycle-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.cycle-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.cycle-card-number {
+  font-size: 4rem;
+  font-weight: 300;
+  color: rgba(94, 231, 255, 0.4);
+  line-height: 1;
+  margin-bottom: 2rem;
+}
+
+.cycle-card-title {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 0.75rem;
+}
+
+.cycle-card-subtitle {
+  font-size: 0.875rem;
+  color: rgba(154, 164, 178, 0.8);
+}
+
+.cycle-card-step {
+  font-size: 0.75rem;
+  font-family: var(--font-geist-mono);
+  color: rgba(94, 231, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+.cycle-card-detailed-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.cycle-card-detailed-content {
+  color: rgba(154, 164, 178, 1);
+  line-height: 1.6;
+}
+
 /* Enhanced futuristic card styling */
 .card.card-shine {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -536,6 +597,8 @@ footer {
   align-self: flex-start; /* Keeps cards anchored to top of grid cell */
   display: flex;
   flex-direction: column;
+  min-height: 220px; /* Shorter minimum height */
+  height: fit-content; /* Allow expansion but maintain consistency */
 }
 
 .services-grid {
@@ -546,6 +609,18 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  height: 100%; /* Ensure all grid items take full height */
+}
+
+/* Ensure collapsed cards have consistent height */
+.service-card:not(.expanded) {
+  height: 220px; /* Shorter fixed height for collapsed state */
+}
+
+/* Allow expanded cards to grow naturally */
+.service-card.expanded {
+  height: auto;
+  min-height: 220px;
 }
 
 /* Service card expandable content */
@@ -709,9 +784,18 @@ footer {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
+/* Non-scrolled navigation - fully opaque */
+.bg-background\/95 {
+  background: rgba(7, 10, 15, 0.95) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
 /* Professional futuristic font styling */
 .font-nav {
-  font-family: var(--font-nav);
+  font-family: var(--font-inter), system-ui, sans-serif;
   font-weight: 500;
   letter-spacing: 0.025em;
 }

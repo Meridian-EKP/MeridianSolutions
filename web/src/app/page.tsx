@@ -287,7 +287,7 @@ export default function Home() {
                 return (
                   <div 
                     key={card.id}
-                    className="card rounded-2xl p-8 text-center h-[300px] flex flex-col justify-center transform-none relative overflow-hidden border border-white/5 bg-gradient-to-br from-white/[0.02] to-white/[0.08] backdrop-blur-xl hover:bg-white/[0.06] transition-all duration-300"
+                    className="cycle-card"
                     onMouseEnter={(e) => {
                       setHoveredCard(card.id);
                       const direction = getShineDirection(e, e.currentTarget as HTMLElement, true);
@@ -307,23 +307,23 @@ export default function Home() {
                                     // Detailed view on hover - Clean and minimal
                                     <div className="animate-fade-in text-left">
                                       <div className="mb-6">
-                                        <span className="text-xs font-mono text-accent/60 uppercase tracking-widest">Step {card.id}</span>
+                                        <span className="cycle-card-step">Step {card.id}</span>
                                       </div>
-                                      <h3 className="text-xl font-medium text-white mb-4 leading-tight">{card.detailedTitle}</h3>
-                                      <p className="text-muted leading-relaxed">{card.detailedContent}</p>
+                                      <h3 className="cycle-card-detailed-title">{card.detailedTitle}</h3>
+                                      <p className="cycle-card-detailed-content">{card.detailedContent}</p>
                                     </div>
                                   ) : (
                                     // Default view - Minimal and modern
                                     <div className="animate-fade-in">
                                       {/* Clean number */}
                                       <div className="mb-8">
-                                        <span className="text-6xl font-light text-accent/40 leading-none">{card.id}</span>
+                                        <span className="cycle-card-number">{card.id}</span>
                                       </div>
                                       
                                       {/* Clean title */}
                                       <div className="space-y-3">
-                                        <h3 className="text-lg font-medium text-white">{card.title}</h3>
-                                        <p className="text-sm text-muted/80">{card.subtitle}</p>
+                                        <h3 className="cycle-card-title">{card.title}</h3>
+                                        <p className="cycle-card-subtitle">{card.subtitle}</p>
                                       </div>
                                     </div>
                                   )}
@@ -405,7 +405,7 @@ export default function Home() {
               key={card.title}
               className={`service-card group relative rounded-2xl card overflow-hidden cursor-pointer transition-all duration-300 ease-out ${
                 expandedService === i 
-                  ? 'ring-2 ring-accent/50 shadow-2xl shadow-accent/20' 
+                  ? 'expanded ring-2 ring-accent/50 shadow-2xl shadow-accent/20' 
                   : 'hover:scale-[1.01]'
               }`}
               onClick={() => toggleServiceExpansion(i)}
@@ -418,15 +418,15 @@ export default function Home() {
               <div className="card-accents" style={accentStyleFor(i)} aria-hidden />
               <div className="card-sheen" aria-hidden />
               
-              {/* Main card content with fixed padding */}
-              <div className="relative z-10 p-6">
+              {/* Main card content with tighter padding */}
+              <div className="relative z-10 p-5 flex flex-col h-full">
                 {/* Header */}
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="p-3 rounded-xl bg-white/5 border border-white/10 group-hover:border-accent/30 transition-colors">
-                    <card.icon className="size-6 text-accent" />
+                <div className="flex items-start gap-3 mb-3">
+                  <div className="p-2 rounded-lg bg-white/5 border border-white/10 group-hover:border-accent/30 transition-colors">
+                    <card.icon className="size-5 text-accent" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg md:text-xl font-semibold">{card.title}</h3>
+                    <h3 className="text-base md:text-lg font-semibold">{card.title}</h3>
                   </div>
                   {expandedService === i ? (
                     <button 
@@ -445,12 +445,12 @@ export default function Home() {
                 {/* Collapsed content */}
                 {expandedService !== i && (
                   <>
-                    <div className="relative min-h-[3rem]">
-                      <p className="text-muted opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="relative min-h-[3rem] flex-1">
+                      <p className="text-muted opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-base leading-relaxed">
                         {card.fullDesc}
                       </p>
                     </div>
-                    <div className="mt-5 inline-flex items-center gap-2 text-accent group-hover:translate-x-1 transition-transform">
+                    <div className="mt-auto pt-4 inline-flex items-center gap-2 text-accent group-hover:translate-x-1 transition-transform text-base font-medium">
                       See more <ArrowRight className="size-4" />
                     </div>
                   </>
@@ -459,7 +459,7 @@ export default function Home() {
 
               {/* Expandable content - outside main card content, at true bottom */}
               <div className={`service-card-content ${expandedService === i ? 'expanded' : 'collapsed'}`}>
-                <div className="px-6 pb-6 space-y-2">
+                <div className="px-5 pb-5 space-y-2">
                   {/* Detailed description - Skip first two paragraphs */}
                   <div className="space-y-2">
                     {card.detailedDesc.split('\n\n').slice(2).map((paragraph, idx) => (
@@ -489,7 +489,7 @@ export default function Home() {
 
               {/* Investment Section - Integrated design without box */}
               {expandedService === i && (
-                <div className="px-6 pb-4">
+                <div className="px-5 pb-4">
                   <div className="space-y-3">
                     <h4 className="font-semibold text-accent flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-accent"></span>
@@ -504,7 +504,7 @@ export default function Home() {
 
               {/* CTA Button - Outside expandable content to prevent animation issues */}
               {expandedService === i && (
-                <div className="px-6 pb-6 pt-4 border-t border-white/10">
+                <div className="px-5 pb-5 pt-3 border-t border-white/10">
                   <button 
                     className="w-full btn-primary rounded-xl py-3 px-6 font-medium transition-all duration-500 ease-out hover:scale-[1.01] hover:shadow-lg hover:shadow-accent/30 cursor-pointer"
                     onClick={(e) => {
@@ -618,7 +618,7 @@ export default function Home() {
                     id: 1,
                     title: "Café Bloom",
                     industry: "Local Coffee Shop",
-                    result: "From generic to irresistible online presence",
+                                         result: "From generic to irresistable",
                     description: "Complete digital transformation including website redesign, local SEO, and Google Business Profile optimisation.",
                     metrics: ["Menu now accessible online", "Online ordering integrated", "Social media buzz created"],
                     beforePoints: ["Outdated one-page site", "No menu online", "No online ordering", "Weak social media"],
@@ -719,45 +719,45 @@ export default function Home() {
                 const caseStudiesForCarousel = [...caseStudies, ...caseStudies, ...caseStudies];
                 
                                 return caseStudiesForCarousel.map((study, i) => (
-                  <div
-                    key={`${study.title}-${i}`}
-                    className="case-study-card group relative rounded-2xl p-6 card overflow-hidden hover:shadow-2xl hover:shadow-accent/20 transition-all duration-300 flex-shrink-0 w-full md:w-96 lg:w-[420px] snap-center select-none"
-                  >
-                    <div className="card-accents" style={accentStyleFor(i)} aria-hidden />
-                    <div className="card-sheen" aria-hidden />
-                                         <div className="relative z-10">
-                       {/* Industry Badge */}
-                       <div className="inline-flex items-center px-3 py-1 rounded-full bg-accent/10 border border-accent/30 text-xs font-medium text-accent mb-4">
-                         <div className="w-1.5 h-1.5 rounded-full bg-accent mr-2"></div>
-                         {study.industry}
-                       </div>
-                       
-                       {/* Qualitative Outcome */}
-                       <div className="mb-4">
-                         <span className="text-lg font-semibold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent leading-tight">
-                           {study.result}
-                         </span>
-                       </div>
-                      <h3 className="text-xl font-semibold mb-3">{study.title}</h3>
-                      <p className="text-muted text-sm mb-4">{study.description}</p>
-                      <div className="space-y-2 mb-6">
-                        {study.metrics.map((metric, idx) => (
-                          <div key={idx} className="flex items-center text-sm">
-                          <div className="w-2 h-2 rounded-full bg-accent mr-3"></div>
-                          <span className="text-muted">{metric}</span>
+                                     <div
+                     key={`${study.title}-${i}`}
+                     className="case-study-card group relative rounded-2xl p-6 card overflow-hidden hover:shadow-2xl hover:shadow-accent/20 transition-all duration-300 flex-shrink-0 w-full md:w-96 lg:w-[420px] snap-center select-none flex flex-col h-[400px]"
+                   >
+                     <div className="card-accents" style={accentStyleFor(i)} aria-hidden />
+                     <div className="card-sheen" aria-hidden />
+                     <div className="relative z-10 flex flex-col h-full">
+                        {/* Industry Badge */}
+                        <div className="inline-flex items-center px-3 py-1 rounded-full bg-accent/10 text-sm font-medium text-accent mb-4">
+                          <div className="w-1.5 h-1.5 rounded-full bg-accent mr-2"></div>
+                          {study.industry}
                         </div>
-                      ))}
-                    </div>
-                    <button 
-                      onClick={() => {
-                        setSelectedCaseStudy(study);
-                        setIsModalOpen(true);
-                      }}
-                      className="w-full py-2 px-4 rounded-lg bg-white/5 border border-white/10 hover:border-accent/30 transition-colors text-sm font-medium btn-secondary cursor-pointer"
-                    >
-                      View Full Case Study
-                    </button>
-                  </div>
+                        
+                        {/* Qualitative Outcome */}
+                        <div className="mb-4">
+                          <span className="text-lg font-semibold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent leading-tight">
+                            {study.result}
+                          </span>
+                        </div>
+                       <h3 className="text-xl font-semibold mb-3">{study.title}</h3>
+                       <p className="text-muted text-sm mb-4">{study.description}</p>
+                       <div className="space-y-2 mb-6 flex-1">
+                         {study.metrics.map((metric, idx) => (
+                           <div key={idx} className="flex items-center text-sm">
+                           <div className="w-2 h-2 rounded-full bg-accent mr-3"></div>
+                           <span className="text-muted">{metric}</span>
+                         </div>
+                       ))}
+                     </div>
+                     <button 
+                       onClick={() => {
+                         setSelectedCaseStudy(study);
+                         setIsModalOpen(true);
+                       }}
+                       className="w-full py-2 px-4 rounded-lg bg-white/5 border border-white/10 hover:border-accent/30 transition-colors text-sm font-medium btn-secondary cursor-pointer mt-auto"
+                     >
+                       View Full Case Study
+                     </button>
+                   </div>
                 </div>
                           ));
               })()}
@@ -773,7 +773,7 @@ export default function Home() {
                     container.scrollBy({ left: cardWidth, behavior: 'smooth' });
                   }
                 }}
-                className="p-3 rounded-full bg-black/20 border border-accent/30 hover:border-accent/60 hover:bg-accent/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-accent/20 backdrop-blur-sm cursor-pointer"
+                                 className="p-3 rounded-full bg-black/20 border border-white/10 hover:border-accent/60 hover:bg-accent/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-accent/20 backdrop-blur-sm cursor-pointer"
                 aria-label="Next case study"
               >
                 <ArrowRight className="size-5 text-accent" />

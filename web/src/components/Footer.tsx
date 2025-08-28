@@ -34,7 +34,7 @@ export default function Footer() {
       className="relative bg-black/20"
     >
       {/* Main Footer Content */}
-      <div className="glass-no-shine border-t border-accent/20 backdrop-blur-xl">
+      <div className="glass-no-shine border-t border-white/10 backdrop-blur-xl">
                                    <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10 pt-2 pb-16">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-4">
               
@@ -75,18 +75,18 @@ export default function Footer() {
                             />
                           </Link>
                   )}
-                                                                                                                                       <p className="mt-0 text-sm text-muted/80 leading-relaxed">
+                                                                                                                                       <p className="mt-0 text-sm text-muted leading-relaxed">
                      The Future of Local Digital Presence
                    </p>
                  </div>
-                 <p className="text-xs text-muted/60 leading-relaxed mt-0">
+                 <p className="text-xs text-muted leading-relaxed mt-0">
                    Transforming local businesses into digital leaders through cutting-edge technology and proven marketing strategies.
                  </p>
             </div>
 
                                                    {/* Column 2: Navigation */}
               <div className="space-y-2 lg:justify-self-end lg:text-right pt-8">
-                <h4 className="text-lg font-semibold text-white">Navigation</h4>
+                                 <h4 className="text-lg font-semibold text-white">Navigation</h4>
               <nav>
                 <ul className="space-y-3">
                   {navLinks.map((link) => (
@@ -106,7 +106,7 @@ export default function Footer() {
 
                                                    {/* Column 3: Contact Info */}
               <div className="space-y-2 lg:justify-self-end lg:text-right pt-8">
-                <h4 className="text-lg font-semibold text-white">Contact</h4>
+                                 <h4 className="text-lg font-semibold text-white">Contact</h4>
               <div className="space-y-3">
                 <a 
                   href="mailto:edkemppotter@gmail.com"
@@ -128,22 +128,22 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-accent/10">
+        <div className="border-t border-white/10">
           <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-sm text-muted/60">
-                © {currentYear} MeridianSolutions. All Rights Reserved.
-              </p>
+                             <p className="text-sm text-muted">
+                 © {currentYear} MeridianSolutions. All Rights Reserved.
+               </p>
                              <div className="flex gap-6">
                  <Link 
                    href="/privacy-policy"
-                   className="text-sm text-muted/60 hover:text-accent transition-colors duration-300 cursor-pointer"
+                   className="text-sm text-muted hover:text-accent transition-colors duration-300 cursor-pointer"
                  >
                    Privacy Policy
                  </Link>
                  <Link 
                    href="/terms-of-service"
-                   className="text-sm text-muted/60 hover:text-accent transition-colors duration-300 cursor-pointer"
+                   className="text-sm text-muted hover:text-accent transition-colors duration-300 cursor-pointer"
                  >
                    Terms of Service
                  </Link>
