@@ -68,7 +68,7 @@ export default function PrivacyPolicy() {
                 <li>Provide and improve our digital marketing services</li>
                 <li>Respond to your inquiries and provide customer support</li>
                 <li>Send you marketing communications (with your consent)</li>
-                <li>Analyze website usage and improve user experience</li>
+                <li>Analyse website usage and improve user experience</li>
                 <li>Comply with legal obligations</li>
               </ul>
             </div>
@@ -107,7 +107,7 @@ export default function PrivacyPolicy() {
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">
                 We use cookies and similar tracking technologies to enhance your browsing experience, 
-                analyze website traffic, and understand where our visitors are coming from. 
+                analyse website traffic, and understand where our visitors are coming from. 
                 You can control cookie settings through your browser preferences.
               </p>
             </div>

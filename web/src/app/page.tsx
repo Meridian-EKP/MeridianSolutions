@@ -356,7 +356,7 @@ export default function Home() {
               icon: Globe
             },
             { 
-              title: "Google Business Profile Optimization", 
+              title: "Google Business Profile Optimisation", 
               desc: "Complete Google Business Profile management for maximum local visibility.",
               fullDesc: "Complete GBP optimisation, review management, and local ranking strategies that get you found first.",
               detailedDesc: "Transform your Google Business Profile into a powerful lead generation machine. We optimise every element to dominate local search results and convert map searches into paying customers.\n\nOur comprehensive GBP strategy includes review management, post scheduling, local keyword optimisation, and ongoing monitoring to ensure you stay ahead of competitors.",
@@ -631,10 +631,10 @@ export default function Home() {
                     industry: "Plumbing & Heating",
                     result: "From invisible to fully booked locally",
                     description: "Multi-platform presence with optimised ordering system, social media strategy, and reputation management.",
-                    metrics: ["Website now mobile-friendly", "Google Business Profile optimized", "Clear call-to-actions driving bookings"],
+                    metrics: ["Website now mobile-friendly", "Google Business Profile optimised", "Clear call-to-actions driving bookings"],
                     beforePoints: ["No Google Business Profile", "No reviews", "Hard to contact", "Poor mobile usability"],
-                    afterPoints: ["Optimized Google Business Profile", "Mobile-friendly service pages", "'Call Now' booking buttons", "Customer reviews highlighted"],
-                    detailedDescription: "FlowPro Plumbing went from struggling to get calls to dominating local search results with an optimized online presence and streamlined booking system."
+                    afterPoints: ["Optimised Google Business Profile", "Mobile-friendly service pages", "'Call Now' booking buttons", "Customer reviews highlighted"],
+                                          detailedDescription: "FlowPro Plumbing went from struggling to get calls to dominating local search results with an optimised online presence and streamlined booking system."
                   },
                   {
                     id: 3,
@@ -653,7 +653,7 @@ export default function Home() {
                     industry: "Family Restaurant",
                     result: "From word-of-mouth only to digital dining destination",
                     description: "Complete digital presence overhaul with patient portal integration and local SEO dominance.",
-                    metrics: ["Optimized online ordering system", "Engaging social media presence", "Positive reputation management"],
+                    metrics: ["Optimised online ordering system", "Engaging social media presence", "Positive reputation management"],
                     beforePoints: ["Static page with PDF menu", "No delivery system", "No social proof"],
                     afterPoints: ["Mobile-friendly menu", "Online ordering system", "Reputation management", "Customer review highlights"],
                     detailedDescription: "Bella's Kitchen expanded from dine-in only to a multi-channel restaurant with delivery integration, social media presence, and online ordering."
@@ -677,7 +677,7 @@ export default function Home() {
                     description: "Professional website with service scheduling and customer review management system.",
                     metrics: ["Professional website redesign", "Content built for trust and credibility", "Dominant local search presence"],
                     beforePoints: ["Outdated WordPress site", "Heavy text", "Poor SEO", "No authority signals"],
-                    afterPoints: ["Professional redesign", "Service pages optimized for local SEO", "Credibility-building blog", "Team profiles"],
+                    afterPoints: ["Professional redesign", "Service pages optimised for local SEO", "Credibility-building blog", "Team profiles"],
                     detailedDescription: "Thompson Legal transformed their online presence from a basic website to an authoritative legal resource that generates qualified leads consistently."
                   },
                   {
@@ -685,11 +685,11 @@ export default function Home() {
                     title: "SmileBright Dental",
                     industry: "Dental Clinic",
                     result: "From confusing to patient-friendly",
-                    description: "Modern ordering system with loyalty program and social media marketing strategy.",
+                    description: "Modern ordering system with loyalty programme and social media marketing strategy.",
                     metrics: ["Simple online appointment forms", "Clear service pages", "Improved local discoverability"],
                     beforePoints: ["Cluttered site", "No appointment form", "Jargon-heavy", "No patient reviews"],
                     afterPoints: ["Clean patient-first design", "Easy appointment form", "Clear service listings", "Testimonial integration"],
-                    detailedDescription: "SmileBright Dental streamlined their patient onboarding process with online forms and local SEO optimization that attracts new patients."
+                    detailedDescription: "SmileBright Dental streamlined their patient onboarding process with online forms and local SEO optimisation that attracts new patients."
                   },
                   {
                     id: 8,
@@ -699,7 +699,7 @@ export default function Home() {
                     description: "E-commerce integration with inventory management and local community marketing.",
                     metrics: ["Projects displayed visually", "Modern lead capture system", "Strong local search presence"],
                     beforePoints: ["No portfolio online", "Plain contact page", "No SEO"],
-                    afterPoints: ["Visual project gallery", "Lead capture form", "Optimized local service pages", "Trust-focused design"],
+                    afterPoints: ["Visual project gallery", "Lead capture form", "Optimised local service pages", "Trust-focused design"],
                     detailedDescription: "BuildRight Contractors built a modern portfolio website that showcases their work and converts visitors into qualified leads."
                   },
                   {
@@ -707,7 +707,7 @@ export default function Home() {
                     title: "Bloom & Co.",
                     industry: "Florist / Gift Shop",
                     result: "From shop-only sales to online success",
-                    description: "Professional website with property listings and lead generation optimization.",
+                    description: "Professional website with property listings and lead generation optimisation.",
                     metrics: ["E-commerce shop added", "Social media sales channels connected", "Expanded customer reach online"],
                     beforePoints: ["Shop-only sales", "No e-commerce", "No social integration"],
                     afterPoints: ["E-commerce website", "Online catalog with checkout", "Instagram + Facebook shop integration"],
