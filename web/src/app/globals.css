@@ -784,6 +784,28 @@ footer {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
 }
 
+/* Enhanced glassmorphism for better production compatibility */
+.navbar-glass-enhanced {
+  background: rgba(7, 10, 15, 0.85) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  -moz-backdrop-filter: blur(20px) !important;
+  -ms-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(154, 164, 178, 0.3) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  transform: translateZ(0) !important;
+  will-change: backdrop-filter !important;
+  -webkit-transform: translateZ(0) !important;
+  -moz-transform: translateZ(0) !important;
+  -ms-transform: translateZ(0) !important;
+  -webkit-perspective: 1000px !important;
+  -moz-perspective: 1000px !important;
+  perspective: 1000px !important;
+  -webkit-backface-visibility: hidden !important;
+  -moz-backface-visibility: hidden !important;
+  backface-visibility: hidden !important;
+}
+
 /* Non-scrolled navigation - fully opaque */
 .bg-background\/95 {
   background: rgba(7, 10, 15, 0.95) !important;
