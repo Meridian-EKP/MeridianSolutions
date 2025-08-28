@@ -13,7 +13,6 @@ export default function BackgroundGlows() {
           height: "520px",
           filter: "blur(90px)",
           animationDelay: "0s",
-          animation: "pulse 8.5s ease-in-out infinite",
         }}
       />
       
@@ -26,7 +25,6 @@ export default function BackgroundGlows() {
           height: "380px",
           filter: "blur(75px)",
           animationDelay: "0.5s",
-          animation: "pulse 12.3s ease-in-out infinite",
         }}
       />
       
@@ -39,7 +37,6 @@ export default function BackgroundGlows() {
           height: "520px",
           filter: "blur(105px)",
           animationDelay: "1s",
-          animation: "pulse 7.2s ease-in-out infinite",
         }}
       />
       
@@ -52,7 +49,6 @@ export default function BackgroundGlows() {
           height: "420px",
           filter: "blur(85px)",
           animationDelay: "1.5s",
-          animation: "pulse 15.8s ease-in-out infinite",
         }}
       />
       
@@ -65,7 +61,6 @@ export default function BackgroundGlows() {
           height: "480px",
           filter: "blur(95px)",
           animationDelay: "2s",
-          animation: "pulse 9.4s ease-in-out infinite",
         }}
       />
       
@@ -79,7 +74,6 @@ export default function BackgroundGlows() {
           height: "1400px",
           filter: "blur(100px)",
           animationDelay: "0.25s",
-          animation: "pulse 11.7s ease-in-out infinite",
         }}
       />
       
@@ -92,7 +86,6 @@ export default function BackgroundGlows() {
           height: "340px",
           filter: "blur(70px)",
           animationDelay: "0.75s",
-          animation: "pulse 6.9s ease-in-out infinite",
         }}
       />
       
@@ -105,7 +98,6 @@ export default function BackgroundGlows() {
           height: "460px",
           filter: "blur(90px)",
           animationDelay: "1.25s",
-          animation: "pulse 13.6s ease-in-out infinite",
         }}
       />
       
@@ -118,7 +110,6 @@ export default function BackgroundGlows() {
           height: "400px",
           filter: "blur(80px)",
           animationDelay: "1.75s",
-          animation: "pulse 10.1s ease-in-out infinite",
         }}
       />
       
@@ -131,7 +122,6 @@ export default function BackgroundGlows() {
           height: "440px",
           filter: "blur(88px)",
           animationDelay: "2.25s",
-          animation: "pulse 14.2s ease-in-out infinite",
         }}
       />
     </div>
