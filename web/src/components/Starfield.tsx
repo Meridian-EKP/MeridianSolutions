@@ -484,8 +484,17 @@ const Starfield: React.FC<StarfieldProps> = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
     
-    canvas.width = canvas.clientWidth * (window.devicePixelRatio || 1);
-    canvas.height = canvas.clientHeight * (window.devicePixelRatio || 1);
+    // Get the actual display size of the canvas
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    
+    // Set the canvas size in memory (scaled up for retina displays)
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    
+    // Set the CSS size to match the display size
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
   }, []);
 
   const render = useCallback(() => {
@@ -631,6 +640,8 @@ const Starfield: React.FC<StarfieldProps> = ({
     // Add event listeners
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('touchmove', handleTouchMove, { passive: true });
+    window.addEventListener('resize', resize);
+    window.addEventListener('orientationchange', resize);
 
     // Start animation
     animate();
@@ -642,12 +653,14 @@ const Starfield: React.FC<StarfieldProps> = ({
       }
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('resize', resize);
+      window.removeEventListener('orientationchange', resize);
     };
   }, [particleCount, flareCount, renderFlares, createParticle, createFlare, simpleTriangulation, handleMouseMove, handleTouchMove, animate, resize]);
 
   return (
     <div 
-      className={`fixed inset-0 pointer-events-none ${className}`}
+      className={`absolute inset-0 pointer-events-none ${className}`}
       style={{ width, height }}
     >
       <canvas
