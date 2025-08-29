@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useCallback } from 'react';
+import React, { useEffect, useRef, useCallback, useMemo } from 'react';
 
 interface StarfieldProps {
   width?: string;
@@ -75,7 +75,7 @@ const Starfield: React.FC<StarfieldProps> = ({
   flicker = true,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
   const contextRef = useRef<CanvasRenderingContext2D | null>(null);
   
   // Animation state
@@ -97,7 +97,7 @@ const Starfield: React.FC<StarfieldProps> = ({
   });
 
   // Settings
-  const settings = {
+  const settings = useMemo(() => ({
     motion: 0.05,
     tilt: 0.05,
     particleSizeBase: 1,
@@ -117,7 +117,7 @@ const Starfield: React.FC<StarfieldProps> = ({
     blurSize: 0,
     noiseLength: 1000,
     noiseStrength: 1,
-  };
+  }), []);
 
   // Utility functions
   const random = useCallback((min: number, max: number, float?: boolean): number => {
@@ -339,7 +339,7 @@ const Starfield: React.FC<StarfieldProps> = ({
       },
     };
     return flare;
-  }, [color, position, sizeRatio, settings]);
+  }, [color, position, sizeRatio, settings, random]);
 
   // Link class
   const createLink = useCallback((startVertex: number, numPoints: number): Link => {
@@ -474,11 +474,11 @@ const Starfield: React.FC<StarfieldProps> = ({
       },
     };
     return link;
-  }, [color, position, settings]);
+  }, [color, position, settings, random]);
 
   const startLink = useCallback((vertex: number, length: number) => {
     stateRef.current.links.push(createLink(vertex, length));
-  }, [createLink]);
+  }, [createLink, random]);
 
   const resize = useCallback(() => {
     const canvas = canvasRef.current;
