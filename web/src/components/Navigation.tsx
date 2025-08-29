@@ -40,8 +40,8 @@ const Navigation = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out font-nav ${
         isScrolled
-          ? "h-16 navbar-glass shadow-lg shadow-accent/10"
-          : "h-20 bg-background/95 border-b border-black"
+          ? "h-16 bg-background/90 backdrop-blur-sm border-b border-black shadow-lg shadow-accent/10"
+          : "h-20 bg-background border-b border-black"
       }`}
     >
       <div className="mx-auto max-w-screen-2xl px-6 md:px-10 h-full">
@@ -85,11 +85,11 @@ const Navigation = () => {
                              <button
                  key={link.href}
                  onClick={() => scrollToSection(link.href)}
-                 className={`nav-link relative transition-all duration-300 text-sm font-medium cursor-pointer ${
-                   isScrolled 
-                     ? "text-muted hover:text-accent" 
-                     : "text-white hover:text-accent"
-                 }`}
+                                   className={`nav-link relative transition-all duration-300 text-sm font-medium cursor-pointer ${
+                    isScrolled 
+                      ? "text-muted hover:text-accent" 
+                      : "text-white hover:text-accent"
+                  }`}
                >
                 {link.label}
                 <span className="nav-link-glow absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300" />
@@ -135,11 +135,11 @@ const Navigation = () => {
                                  <button
                    key={link.href}
                    onClick={() => scrollToSection(link.href)}
-                   className={`text-left py-3 px-4 rounded-lg hover:text-accent hover:bg-white/5 transition-all duration-300 text-sm font-medium cursor-pointer ${
-                     isScrolled 
-                       ? "text-muted" 
-                       : "text-white"
-                   }`}
+                                       className={`text-left py-3 px-4 rounded-lg hover:text-accent hover:bg-white/5 transition-all duration-300 text-sm font-medium cursor-pointer ${
+                      isScrolled 
+                        ? "text-white" 
+                        : "text-muted"
+                    }`}
                  >
                   {link.label}
                 </button>

@@ -25,6 +25,7 @@ import { ArrowRight, Globe, MapPin, Share2, Search, Target, Megaphone, X, CheckC
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import CaseStudyModal from "@/components/CaseStudyModal";
+import Starfield from "@/components/Starfield";
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -53,7 +54,7 @@ export default function Home() {
     detailedDescription: string;
   } | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  
   // Set initial position to the middle of the duplicated content for infinite scroll
   useEffect(() => {
     const container = document.getElementById('case-studies-carousel');
@@ -220,8 +221,20 @@ export default function Home() {
 
   return (
     <div id="top" className="page-container relative overflow-x-clip">
-      {/* HERO */}
-      <section ref={heroRef} className="relative min-h-[100svh] flex items-center pt-20">
+             {/* HERO */}
+       <section ref={heroRef} className="relative h-[70vh] flex items-center pt-20 border border-white/10 rounded-3xl mx-[150px] my-[150px] overflow-hidden">
+        {/* Starfield Background - Only covers the hero section */}
+        <Starfield 
+          className="absolute inset-0 z-0"
+          particleCount={20}
+          flareCount={5}
+          color="#5ee7ff"
+          linkChance={10}
+          renderParticles={true}
+          renderFlares={true}
+          renderLinks={true}
+          flicker={true}
+        />
         <div className="absolute inset-0 pointer-events-none">
           <motion.div style={{ y: yParallax }} className="h-full w-full">
             <div className="absolute inset-0 gradient-mesh" aria-hidden />
