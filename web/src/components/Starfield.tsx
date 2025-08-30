@@ -573,9 +573,9 @@ const Starfield: React.FC<StarfieldProps> = ({
     }
 
     // Render constellations
-    // Much rarer constellation spawning
+    // Moderate constellation spawning for consistent visibility
     const constellationChance = random(0, 1000);
-    if (constellationChance >= 995) { // 0.5% chance per frame (much rarer)
+    if (constellationChance >= 985) { // 1.5% chance per frame (more frequent but not overwhelming)
       const constellation = createConstellation();
       stateRef.current.constellations.push(constellation);
     }
