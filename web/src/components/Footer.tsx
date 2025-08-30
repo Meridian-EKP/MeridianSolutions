@@ -41,39 +41,39 @@ export default function Footer() {
                            {/* Column 1: Brand */}
                <div className="space-y-1">
                                 <div>
-                  {isHomePage ? (
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <button
-                            onClick={() => {
-                              const element = document.querySelector("#top");
-                              if (element) {
-                                element.scrollIntoView({ behavior: "smooth" });
-                              }
-                            }}
-                            className="hover:scale-105 transition-transform duration-300 cursor-pointer"
-                          >
-                            <Image
-                              src="/MeridianSolutionsLogoOneLine.png"
-                              alt="MeridianSolutions"
-                              width={1300}
-                              height={325}
-                              className="h-64 w-auto"
-                              priority
-                            />
-                          </button>
-                  ) : (
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <Link
-                            href="/"
-                            className="hover:scale-105 transition-transform duration-300 cursor-pointer"
-                          >
-                            <Image
-                              src="/MeridianSolutionsLogoOneLine.png"
-                              alt="MeridianSolutions"
-                              width={1300}
-                              height={325}
-                              className="h-64 w-auto"
-                              priority
-                            />
-                          </Link>
+                                     {isHomePage ? (
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <button
+                             onClick={() => {
+                               const element = document.querySelector("#top");
+                               if (element) {
+                                 element.scrollIntoView({ behavior: "smooth" });
+                               }
+                             }}
+                             className="hover:scale-105 transition-transform duration-300 cursor-pointer"
+                           >
+                             <Image
+                               src="/MeridianSolutionsLogoOneLine.png"
+                               alt="MeridianSolutions"
+                               width={1300}
+                               height={325}
+                               className="h-56 w-auto -ml-4"
+                               priority
+                             />
+                           </button>
+                   ) : (
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <Link
+                              href="/"
+                              className="hover:scale-105 transition-transform duration-300 cursor-pointer"
+                            >
+                              <Image
+                                src="/MeridianSolutionsLogoOneLine.png"
+                                alt="MeridianSolutions"
+                                width={1300}
+                                height={325}
+                                className="h-56 w-auto -ml-4"
+                                priority
+                              />
+                            </Link>
                   )}
                                                                                                                                        <p className="mt-0 text-sm text-muted leading-relaxed">
                      The Future of Local Digital Presence
