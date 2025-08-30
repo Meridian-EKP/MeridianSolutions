@@ -37,13 +37,13 @@ const Navigation = () => {
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out font-nav ${
-        isScrolled
-          ? "h-16 bg-background/90 backdrop-blur-sm border-b border-black shadow-lg shadow-accent/10"
-          : "h-20 bg-background border-b border-black"
-      }`}
-    >
+         <nav
+       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out font-nav ${
+         isScrolled
+           ? "h-16 bg-background/90 backdrop-blur-sm border-b border-muted/30 shadow-lg shadow-accent/10"
+           : "h-20 bg-background border-b border-black"
+       }`}
+     >
       <div className="mx-auto max-w-screen-2xl px-6 md:px-10 h-full">
         <div className="flex items-center justify-between h-full">
           {/* Logo/Brand */}
