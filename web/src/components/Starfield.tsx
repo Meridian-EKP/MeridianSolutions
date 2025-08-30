@@ -139,9 +139,12 @@ const Starfield: React.FC<StarfieldProps> = ({
     const canvas = canvasRef.current;
     if (!canvas) return { x: 0, y: 0 };
     
+    // Ensure z has a minimum value to prevent static stars
+    const effectiveZ = Math.max(z, 0.1);
+    
     return {
-      x: (x * canvas.width) + ((((canvas.width / 2) - stateRef.current.mouse.x + ((stateRef.current.nPos.x - 0.5) * settings.noiseStrength)) * z) * settings.motion),
-      y: (y * canvas.height) + ((((canvas.height / 2) - stateRef.current.mouse.y + ((stateRef.current.nPos.y - 0.5) * settings.noiseStrength)) * z) * settings.motion),
+      x: (x * canvas.width) + ((((canvas.width / 2) - stateRef.current.mouse.x + ((stateRef.current.nPos.x - 0.5) * settings.noiseStrength)) * effectiveZ) * settings.motion),
+      y: (y * canvas.height) + ((((canvas.height / 2) - stateRef.current.mouse.y + ((stateRef.current.nPos.y - 0.5) * settings.noiseStrength)) * effectiveZ) * settings.motion),
     };
   }, [settings.motion, settings.noiseStrength]);
 
@@ -267,7 +270,7 @@ const Starfield: React.FC<StarfieldProps> = ({
     const particle: Particle = {
       x: random(-0.1, 1.1, true),
       y: random(-0.1, 1.1, true),
-      z: random(0, 4),
+      z: random(0.1, 4, true), // Ensure minimum z value to prevent static stars
       color,
       opacity: random(0.1, 1, true),
       flicker: 0,
@@ -323,7 +326,7 @@ const Starfield: React.FC<StarfieldProps> = ({
     const flare: Flare = {
       x: random(-0.25, 1.25, true),
       y: random(-0.25, 1.25, true),
-      z: random(0, 2),
+      z: random(0.1, 2, true), // Ensure minimum z value to prevent static flares
       color,
       opacity: random(0.001, 0.01, true),
       render: function() {
@@ -499,6 +502,13 @@ const Starfield: React.FC<StarfieldProps> = ({
     // Set the CSS size to match the display size
     canvas.style.width = rect.width + 'px';
     canvas.style.height = rect.height + 'px';
+    
+    // Reset the context transform and scale properly
+    const ctx = contextRef.current;
+    if (ctx) {
+      ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
+      ctx.scale(dpr, dpr); // Apply device pixel ratio scaling
+    }
   }, []);
 
   const render = useCallback(() => {
@@ -648,6 +658,9 @@ const Starfield: React.FC<StarfieldProps> = ({
     document.addEventListener('touchmove', handleTouchMove, { passive: true });
     window.addEventListener('resize', resize);
     window.addEventListener('orientationchange', resize);
+    
+    // Force resize after a short delay to ensure proper sizing
+    setTimeout(resize, 100);
 
     // Start animation
     animate();
