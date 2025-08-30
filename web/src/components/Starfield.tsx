@@ -555,9 +555,14 @@ const Starfield: React.FC<StarfieldProps> = ({
     }
 
     // Render constellations
-    if (random(0, 200) === 200) { // 1 in 200 chance per frame to create new constellation
-      const constellation = createConstellation();
-      stateRef.current.constellations.push(constellation);
+    // More dynamic constellation spawning - can create 1-2 at a time
+    const constellationChance = random(0, 100);
+    if (constellationChance >= 95) { // 5% chance per frame (much more frequent than 1 in 200)
+      const constellationCount = random(1, 2); // Can spawn 1 or 2 constellations
+      for (let i = 0; i < constellationCount; i++) {
+        const constellation = createConstellation();
+        stateRef.current.constellations.push(constellation);
+      }
     }
 
     // Render existing constellations
