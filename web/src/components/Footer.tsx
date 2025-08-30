@@ -51,14 +51,14 @@ export default function Footer() {
                              }}
                              className="hover:scale-105 transition-transform duration-300 cursor-pointer"
                            >
-                             <Image
-                               src="/MeridianSolutionsLogoOneLine.png"
-                               alt="MeridianSolutions"
-                               width={1300}
-                               height={325}
-                               className="h-56 w-auto -ml-4"
-                               priority
-                             />
+                                                            <Image
+                                 src="/MeridianSolutionsLogoOneLine.png"
+                                 alt="MeridianSolutions"
+                                 width={1300}
+                                 height={325}
+                                 className="h-40 w-auto -ml-4"
+                                 priority
+                               />
                            </button>
                    ) : (
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <Link
@@ -70,7 +70,7 @@ export default function Footer() {
                                 alt="MeridianSolutions"
                                 width={1300}
                                 height={325}
-                                className="h-56 w-auto -ml-4"
+                                className="h-40 w-auto -ml-4"
                                 priority
                               />
                             </Link>

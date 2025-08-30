@@ -48,34 +48,34 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-full">
           {/* Logo/Brand */}
           <div className="flex items-center">
-                        {isHomePage ? (
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <button
-                      onClick={() => scrollToSection("#top")}
-                      className="hover:scale-105 transition-transform duration-300 cursor-pointer"
-                    >
-                     <Image
-                       src="/MeridianSolutionsLogoOneLine.png"
-                       alt="MeridianSolutions"
-                       width={550}
-                       height={138}
-                       className="h-24 md:h-32 w-auto -mt-1 -ml-8"
-                       priority
-                     />
-                   </button>
-            ) : (
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <Link
-                      href="/"
-                      className="hover:scale-105 transition-transform duration-300 cursor-pointer"
-                    >
-                     <Image
-                       src="/MeridianSolutionsLogoOneLine.png"
-                       alt="MeridianSolutions"
-                       width={550}
-                       height={138}
-                       className="h-24 md:h-32 w-auto -mt-1 -ml-8"
-                       priority
-                     />
-                   </Link>
+                                                 {isHomePage ? (
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <button
+                       onClick={() => scrollToSection("#top")}
+                       className="hover:scale-105 transition-transform duration-300 cursor-pointer"
+                     >
+                      <Image
+                        src="/MeridianSolutionsLogoOneLine.png"
+                        alt="MeridianSolutions"
+                        width={550}
+                        height={138}
+                        className="h-20 md:h-28 w-auto -mt-1 -ml-8"
+                        priority
+                      />
+                    </button>
+             ) : (
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <Link
+                        href="/"
+                        className="hover:scale-105 transition-transform duration-300 cursor-pointer"
+                      >
+                       <Image
+                         src="/MeridianSolutionsLogoOneLine.png"
+                         alt="MeridianSolutions"
+                         width={550}
+                         height={138}
+                         className="h-20 md:h-28 w-auto -mt-1 -ml-8"
+                         priority
+                       />
+                     </Link>
             )}
           </div>
 
