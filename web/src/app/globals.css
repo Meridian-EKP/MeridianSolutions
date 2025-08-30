@@ -298,6 +298,62 @@ body {
   left: 100%;
 }
 
+/* Starfield border with sophisticated glow effect */
+.starfield-border {
+  position: relative;
+  border: 1px solid rgba(94, 231, 255, 0.15);
+  box-shadow: 
+    0 0 30px rgba(94, 231, 255, 0.08),
+    inset 0 0 30px rgba(94, 231, 255, 0.02);
+  transition: all 0.3s ease;
+  animation: starfield-glow 4s ease-in-out infinite;
+}
+
+@keyframes starfield-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 30px rgba(94, 231, 255, 0.08),
+      inset 0 0 30px rgba(94, 231, 255, 0.02);
+  }
+  50% {
+    box-shadow: 
+      0 0 40px rgba(94, 231, 255, 0.12),
+      inset 0 0 40px rgba(94, 231, 255, 0.04);
+  }
+}
+
+.starfield-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(94, 231, 255, 0.3),
+    rgba(94, 231, 255, 0.1),
+    rgba(94, 231, 255, 0.05),
+    transparent
+  );
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.starfield-border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(94, 231, 255, 0.1) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  opacity: 0.6;
+}
+
 /* Button variants with shine */
 .btn-secondary {
   position: relative;

@@ -222,7 +222,7 @@ export default function Home() {
   return (
     <div id="top" className="page-container relative overflow-x-clip">
              {/* HERO */}
-       <section ref={heroRef} className="relative h-[70vh] flex items-center pt-20 border border-white/10 rounded-3xl mx-4 md:mx-10 lg:mx-[150px] my-4 md:my-10 lg:my-[150px] overflow-hidden">
+       <section ref={heroRef} className="relative h-[70vh] flex items-center pt-20 starfield-border rounded-3xl mx-4 md:mx-10 lg:mx-[150px] my-4 md:my-10 lg:my-[150px] overflow-hidden">
         {/* Starfield Background - Only covers the hero section */}
         <Starfield 
           className="absolute inset-0 z-0"
