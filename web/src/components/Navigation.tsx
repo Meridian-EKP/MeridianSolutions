@@ -53,14 +53,14 @@ const Navigation = () => {
                        onClick={() => scrollToSection("#top")}
                        className="hover:scale-105 transition-transform duration-300 cursor-pointer"
                      >
-                      <Image
-                        src="/MeridianSolutionsLogoOneLine.png"
-                        alt="MeridianSolutions"
-                        width={550}
-                        height={138}
-                        className="h-20 md:h-28 w-auto -mt-1 -ml-8"
-                        priority
-                      />
+                                              <Image
+                          src="/MeridianSolutionsLogoOneLine.png"
+                          alt="MeridianSolutions"
+                          width={550}
+                          height={138}
+                          className="max-h-20 md:max-h-28 w-auto -mt-1 -ml-8"
+                          priority
+                        />
                     </button>
              ) : (
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <Link
@@ -72,7 +72,7 @@ const Navigation = () => {
                          alt="MeridianSolutions"
                          width={550}
                          height={138}
-                         className="h-20 md:h-28 w-auto -mt-1 -ml-8"
+                         className="max-h-20 md:max-h-28 w-auto -mt-1 -ml-8"
                          priority
                        />
                      </Link>
