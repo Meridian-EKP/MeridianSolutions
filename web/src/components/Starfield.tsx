@@ -491,8 +491,11 @@ const Starfield: React.FC<StarfieldProps> = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
     
-    // Get the actual display size of the canvas
-    const rect = canvas.getBoundingClientRect();
+    // Get the container size (the div that contains the canvas)
+    const container = canvas.parentElement;
+    if (!container) return;
+    
+    const rect = container.getBoundingClientRect();
     const dpr = window.devicePixelRatio || 1;
     
     // Set the canvas size in memory (scaled up for retina displays)
@@ -508,6 +511,12 @@ const Starfield: React.FC<StarfieldProps> = ({
     if (ctx) {
       ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
       ctx.scale(dpr, dpr); // Apply device pixel ratio scaling
+    }
+    
+    // Update mouse position to center if not set
+    if (stateRef.current.mouse.x === 0 && stateRef.current.mouse.y === 0) {
+      stateRef.current.mouse.x = rect.width / 2;
+      stateRef.current.mouse.y = rect.height / 2;
     }
   }, []);
 
@@ -592,8 +601,11 @@ const Starfield: React.FC<StarfieldProps> = ({
     if (!canvas) return;
     
     const rect = canvas.getBoundingClientRect();
-    stateRef.current.mouse.x = e.clientX - rect.left;
-    stateRef.current.mouse.y = e.clientY - rect.top;
+    const dpr = window.devicePixelRatio || 1;
+    
+    // Account for device pixel ratio in mouse position
+    stateRef.current.mouse.x = (e.clientX - rect.left) / dpr;
+    stateRef.current.mouse.y = (e.clientY - rect.top) / dpr;
   }, []);
 
   const handleTouchMove = useCallback((e: TouchEvent) => {
@@ -601,9 +613,12 @@ const Starfield: React.FC<StarfieldProps> = ({
     if (!canvas || e.touches.length === 0) return;
     
     const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
     const touch = e.touches[0];
-    stateRef.current.mouse.x = touch.clientX - rect.left;
-    stateRef.current.mouse.y = touch.clientY - rect.top;
+    
+    // Account for device pixel ratio in touch position
+    stateRef.current.mouse.x = (touch.clientX - rect.left) / dpr;
+    stateRef.current.mouse.y = (touch.clientY - rect.top) / dpr;
   }, []);
 
   useEffect(() => {
@@ -617,8 +632,14 @@ const Starfield: React.FC<StarfieldProps> = ({
 
     // Initialize canvas
     resize();
-    stateRef.current.mouse.x = canvas.clientWidth / 2;
-    stateRef.current.mouse.y = canvas.clientHeight / 2;
+    
+    // Set initial mouse position to center
+    const container = canvas.parentElement;
+    if (container) {
+      const rect = container.getBoundingClientRect();
+      stateRef.current.mouse.x = rect.width / 2;
+      stateRef.current.mouse.y = rect.height / 2;
+    }
 
     // Create particles
     for (let i = 0; i < particleCount; i++) {
@@ -656,8 +677,22 @@ const Starfield: React.FC<StarfieldProps> = ({
     // Add event listeners
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('touchmove', handleTouchMove, { passive: true });
-    window.addEventListener('resize', resize);
-    window.addEventListener('orientationchange', resize);
+    
+    // Enhanced resize handling
+    let resizeTimeout: NodeJS.Timeout;
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        resize();
+        // Force a complete redraw after resize
+        if (contextRef.current) {
+          contextRef.current.clearRect(0, 0, canvas.width, canvas.height);
+        }
+      }, 100);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
     
     // Force resize after a short delay to ensure proper sizing
     setTimeout(resize, 100);
@@ -672,8 +707,9 @@ const Starfield: React.FC<StarfieldProps> = ({
       }
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('resize', resize);
-      window.removeEventListener('orientationchange', resize);
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+      clearTimeout(resizeTimeout);
     };
   }, [particleCount, flareCount, renderFlares, createParticle, createFlare, simpleTriangulation, handleMouseMove, handleTouchMove, animate, resize]);
 
@@ -685,7 +721,11 @@ const Starfield: React.FC<StarfieldProps> = ({
       <canvas
         ref={canvasRef}
         className="block w-full h-full"
-        style={{ display: 'block' }}
+        style={{ 
+          display: 'block',
+          width: '100%',
+          height: '100%'
+        }}
       />
     </div>
   );
