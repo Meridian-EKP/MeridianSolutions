@@ -181,18 +181,11 @@ const Starfield: React.FC<StarfieldProps> = ({
       stars.push(starIndex);
     }
     
-    // Create path between stars
-    const path: [number, number][] = [];
-    for (let i = 0; i < stars.length; i++) {
-      const star = stateRef.current.particles[stars[i]];
-      const pos = position(star.x, star.y, star.z);
-      path.push([pos.x, pos.y]);
-    }
-    
+    // Don't create static path - we'll calculate positions dynamically in render
     const constellation: Constellation = {
       id: stateRef.current.constellationId++,
       stars,
-      path,
+      path: [], // Will be calculated dynamically
       progress: 0,
       fade: 0,
       duration: random(3000, 6000), // 3-6 seconds
@@ -224,6 +217,18 @@ const Starfield: React.FC<StarfieldProps> = ({
         
         if (alpha <= 0) return;
         
+        // Calculate current star positions dynamically
+        const currentPath: [number, number][] = [];
+        for (let i = 0; i < this.stars.length; i++) {
+          const star = stateRef.current.particles[this.stars[i]];
+          if (star) {
+            const pos = position(star.x, star.y, star.z);
+            currentPath.push([pos.x, pos.y]);
+          }
+        }
+        
+        if (currentPath.length < 2) return;
+        
         // Draw constellation line
         ctx.save();
         ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
@@ -233,9 +238,9 @@ const Starfield: React.FC<StarfieldProps> = ({
         ctx.shadowBlur = 3;
         
         ctx.beginPath();
-        for (let i = 0; i < this.path.length - 1; i++) {
-          const current = this.path[i];
-          const next = this.path[i + 1];
+        for (let i = 0; i < currentPath.length - 1; i++) {
+          const current = currentPath[i];
+          const next = currentPath[i + 1];
           
           // Calculate progress along this segment
           const segmentProgress = Math.max(0, Math.min(1, (this.progress - i * 0.2) / 0.2));
@@ -255,7 +260,7 @@ const Starfield: React.FC<StarfieldProps> = ({
       }
     };
     
-    return constellation;
+        return constellation;
   }, [position, random]);
 
   // Particle class
@@ -312,7 +317,7 @@ const Starfield: React.FC<StarfieldProps> = ({
       },
     };
     return particle;
-  }, [color, flicker, position, sizeRatio, settings]);
+  }, [color, flicker, position, sizeRatio, settings, random]);
 
   // Flare class
   const createFlare = useCallback((): Flare => {
@@ -478,7 +483,7 @@ const Starfield: React.FC<StarfieldProps> = ({
 
   const startLink = useCallback((vertex: number, length: number) => {
     stateRef.current.links.push(createLink(vertex, length));
-  }, [createLink, random]);
+  }, [createLink]);
 
   const resize = useCallback(() => {
     const canvas = canvasRef.current;
