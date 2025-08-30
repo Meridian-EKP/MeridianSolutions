@@ -226,7 +226,7 @@ export default function Home() {
         {/* Starfield Background - Only covers the hero section */}
         <Starfield 
           className="absolute inset-0 z-0"
-          particleCount={15}
+          particleCount={18}
           flareCount={3}
           color="#5ee7ff"
           linkChance={15}
