@@ -52,7 +52,7 @@ export default function Footer() {
                             className="hover:scale-105 transition-transform duration-300 cursor-pointer"
                           >
                             <Image
-                              src="/MeridianSolutionsLogo.png"
+                              src="/MeridianSolutionsLogoOneLine.png"
                               alt="MeridianSolutions"
                               width={1300}
                               height={325}
@@ -66,7 +66,7 @@ export default function Footer() {
                             className="hover:scale-105 transition-transform duration-300 cursor-pointer"
                           >
                             <Image
-                              src="/MeridianSolutionsLogo.png"
+                              src="/MeridianSolutionsLogoOneLine.png"
                               alt="MeridianSolutions"
                               width={1300}
                               height={325}

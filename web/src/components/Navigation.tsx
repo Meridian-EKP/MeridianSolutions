@@ -54,7 +54,7 @@ const Navigation = () => {
                      className="hover:scale-105 transition-transform duration-300 cursor-pointer"
                    >
                     <Image
-                      src="/MeridianSolutionsLogo.png"
+                      src="/MeridianSolutionsLogoOneLine.png"
                       alt="MeridianSolutions"
                       width={550}
                       height={138}
@@ -68,7 +68,7 @@ const Navigation = () => {
                      className="hover:scale-105 transition-transform duration-300 cursor-pointer"
                    >
                     <Image
-                      src="/MeridianSolutionsLogo.png"
+                      src="/MeridianSolutionsLogoOneLine.png"
                       alt="MeridianSolutions"
                       width={550}
                       height={138}
