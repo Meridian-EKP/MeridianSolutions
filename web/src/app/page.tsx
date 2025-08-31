@@ -222,14 +222,14 @@ export default function Home() {
   return (
     <div id="top" className="page-container relative overflow-x-clip">
              {/* HERO */}
-       <section ref={heroRef} className="relative h-[70vh] flex items-center pt-20 starfield-border rounded-3xl mx-4 md:mx-10 lg:mx-[150px] my-4 md:my-10 lg:my-[150px] overflow-hidden">
+       <section ref={heroRef} className="relative h-[60vh] md:h-[70vh] flex items-center pt-20 starfield-border rounded-3xl mx-4 md:mx-10 lg:mx-[150px] my-4 md:my-10 lg:my-[150px] overflow-hidden bg-black/20">
         {/* Starfield Background - Only covers the hero section */}
         <Starfield 
-          className="absolute inset-0 z-0"
-          particleCount={25}
-          flareCount={3}
+          className="absolute inset-0 z-0 rounded-3xl overflow-hidden"
+          particleCount={20}
+          flareCount={2}
           color="#5ee7ff"
-          linkChance={15}
+          linkChance={20}
           renderParticles={true}
           renderFlares={true}
           renderLinks={true}
