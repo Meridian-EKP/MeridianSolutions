@@ -190,7 +190,7 @@ const Starfield: React.FC<StarfieldProps> = ({
       path: [], // Will be calculated dynamically each frame
       progress: 0,
       fade: 0,
-      duration: random(3000, 6000), // 3-6 seconds
+      duration: random(4500, 6000), // 4.5-6 seconds (reduced fastest speed by half)
       startTime: Date.now(),
       finished: false,
       render: function() {
