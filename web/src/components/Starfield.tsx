@@ -97,27 +97,32 @@ const Starfield: React.FC<StarfieldProps> = ({
   });
 
   // Settings
-  const settings = useMemo(() => ({
-    motion: 0.05,
-    tilt: 0.05,
-    particleSizeBase: 1,
-    particleSizeMultiplier: 0.5,
-    flareSizeBase: 100,
-    flareSizeMultiplier: 100,
-    lineWidth: 1,
-    linkLengthMin: 5,
-    linkLengthMax: 7,
-    linkOpacity: 0.25,
-    linkFade: 90,
-    linkSpeed: 1,
-    glareAngle: -60,
-    glareOpacityMultiplier: 0.05,
-    renderParticleGlare: true,
-    flickerSmoothing: 15,
-    blurSize: 0,
-    noiseLength: 1000,
-    noiseStrength: 1,
-  }), []);
+  const settings = useMemo(() => {
+    // Detect mobile viewport
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    
+    return {
+      motion: isMobile ? 0.01 : 0.05, // Much slower motion on mobile to keep stars in view
+      tilt: isMobile ? 0.01 : 0.05, // Much less tilt on mobile to keep stars in view
+      particleSizeBase: 1, // Keep particle size at 1 for both mobile and desktop
+      particleSizeMultiplier: isMobile ? 0.3 : 0.5, // Much smaller multiplier for closer stars on mobile
+      flareSizeBase: isMobile ? 80 : 100, // Smaller flares on mobile
+      flareSizeMultiplier: isMobile ? 80 : 100, // Smaller flares on mobile
+      lineWidth: 1, // Keep line width at 1 for both mobile and desktop
+      linkLengthMin: isMobile ? 3 : 5, // Shorter links on mobile
+      linkLengthMax: isMobile ? 5 : 7, // Shorter links on mobile
+      linkOpacity: isMobile ? 0.4 : 0.25, // More visible links on mobile
+      linkFade: isMobile ? 60 : 90, // Faster fade on mobile
+      linkSpeed: isMobile ? 0.8 : 1, // Slower link speed on mobile
+      glareAngle: -60,
+      glareOpacityMultiplier: isMobile ? 0.08 : 0.05, // More glare on mobile
+      renderParticleGlare: true,
+      flickerSmoothing: isMobile ? 10 : 15, // Less flicker smoothing on mobile
+      blurSize: 0,
+      noiseLength: isMobile ? 500 : 1000, // Shorter noise on mobile
+      noiseStrength: isMobile ? 1.5 : 1, // Stronger noise on mobile
+    };
+  }, []);
 
   // Utility functions
   const random = useCallback((min: number, max: number, float?: boolean): number => {
@@ -172,7 +177,10 @@ const Starfield: React.FC<StarfieldProps> = ({
 
   // Create constellation
   const createConstellation = useCallback((): Constellation => {
-    const starCount = random(3, 6);
+    // Detect mobile viewport for better constellation visibility
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    
+    const starCount = isMobile ? random(3, 4) : random(3, 6); // Fewer stars on mobile for better visibility
     const stars: number[] = [];
     
     // Select random stars for the constellation
@@ -190,7 +198,7 @@ const Starfield: React.FC<StarfieldProps> = ({
       path: [], // Will be calculated dynamically each frame
       progress: 0,
       fade: 0,
-      duration: random(4500, 6000), // 4.5-6 seconds (reduced fastest speed by half)
+      duration: isMobile ? random(8000, 12000) : random(4500, 6000), // Much slower on mobile to see the lines properly
       startTime: Date.now(),
       finished: false,
       render: function() {
@@ -201,7 +209,9 @@ const Starfield: React.FC<StarfieldProps> = ({
         this.progress = Math.min(elapsed / this.duration, 1);
         
         if (this.progress >= 1) {
-          this.fade += 0.02; // Fade out speed
+          // Detect mobile viewport for fade speed
+          const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+          this.fade += isMobile ? 0.05 : 0.02; // Faster fade on mobile to match desktop timing
           if (this.fade >= 1) {
             this.finished = true;
             return;
@@ -233,7 +243,7 @@ const Starfield: React.FC<StarfieldProps> = ({
         
         // Draw constellation line
         ctx.save();
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)'; // Force white color for constellation lines
         ctx.lineWidth = 1.5;
         ctx.globalAlpha = alpha;
         ctx.shadowColor = 'rgba(255, 255, 255, 0.5)';
@@ -267,10 +277,13 @@ const Starfield: React.FC<StarfieldProps> = ({
 
   // Particle class
   const createParticle = useCallback((): Particle => {
+    // Detect mobile viewport for denser particle distribution
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    
     const particle: Particle = {
-      x: random(-0.1, 1.1, true),
-      y: random(-0.1, 1.1, true),
-      z: random(0.1, 4, true), // Ensure minimum z value to prevent static stars
+      x: isMobile ? random(0.05, 0.95, true) : random(-0.1, 1.1, true), // Better coverage across mobile starfield
+      y: isMobile ? random(0.05, 0.95, true) : random(-0.1, 1.1, true), // Better coverage across mobile starfield
+      z: isMobile ? random(0.1, 1.5, true) : random(0.1, 4, true), // Even closer stars on mobile for better visibility
       color,
       opacity: random(0.1, 1, true),
       flicker: 0,
@@ -460,28 +473,29 @@ const Starfield: React.FC<StarfieldProps> = ({
             break;
         }
       },
-      drawLine: function(points: [number, number][], alpha?: number) {
+            drawLine: function(points: [number, number][], alpha?: number) {
         const ctx = contextRef.current;
         if (!ctx) return;
-
+        
         const opacity = typeof alpha === 'number' ? alpha : settings.linkOpacity;
         if (points.length > 1 && opacity > 0) {
+          ctx.save(); // Save context state
           ctx.globalAlpha = opacity;
           ctx.beginPath();
           for (let i = 0; i < points.length - 1; i++) {
             ctx.moveTo(points[i][0], points[i][1]);
             ctx.lineTo(points[i + 1][0], points[i + 1][1]);
           }
-          ctx.strokeStyle = color;
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)'; // Force white color for regular links
           ctx.lineWidth = settings.lineWidth;
           ctx.stroke();
           ctx.closePath();
-          ctx.globalAlpha = 1;
+          ctx.restore(); // Restore context state to prevent color bleeding
         }
       },
     };
     return link;
-  }, [color, position, settings, random]);
+  }, [position, settings, random]);
 
   const startLink = useCallback((vertex: number, length: number) => {
     stateRef.current.links.push(createLink(vertex, length));
@@ -574,8 +588,10 @@ const Starfield: React.FC<StarfieldProps> = ({
 
     // Render constellations
     // Moderate constellation spawning for consistent visibility
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
     const constellationChance = random(0, 1000);
-    if (constellationChance >= 985) { // 1.5% chance per frame (more frequent but not overwhelming)
+    const spawnThreshold = isMobile ? 980 : 985; // More frequent on mobile (2% vs 1.5%)
+    if (constellationChance >= spawnThreshold) {
       const constellation = createConstellation();
       stateRef.current.constellations.push(constellation);
     }

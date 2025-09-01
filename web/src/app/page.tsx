@@ -222,11 +222,11 @@ export default function Home() {
   return (
     <div id="top" className="page-container relative overflow-x-clip">
              {/* HERO */}
-       <section ref={heroRef} className="relative h-[calc(100vh-6rem)] md:h-[70vh] flex items-center pt-12 md:pt-20 starfield-border rounded-3xl mx-4 md:mx-10 lg:mx-[150px] mt-32 md:my-10 lg:my-[150px] mb-4 md:mb-10 lg:mb-[150px] overflow-hidden bg-black/20">
+       <section ref={heroRef} className="relative h-[calc(100vh-11rem)] md:h-[70vh] flex items-start md:items-center pt-8 md:pt-20 starfield-border rounded-3xl mx-4 md:mx-10 lg:mx-[150px] mt-32 md:my-10 lg:my-[150px] mb-4 md:mb-10 lg:mb-[150px] overflow-hidden bg-black/20">
         {/* Starfield Background - Only covers the hero section */}
         <Starfield 
           className="absolute inset-0 z-0 rounded-3xl overflow-hidden"
-          particleCount={20}
+          particleCount={50}
           flareCount={2}
           color="#5ee7ff"
           linkChance={20}

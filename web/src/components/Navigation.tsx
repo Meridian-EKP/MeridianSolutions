@@ -16,6 +16,8 @@ const Navigation = () => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       setIsScrolled(scrollTop > 50);
+      // Close mobile menu when scrolling
+      setIsMobileMenuOpen(false);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -38,8 +40,10 @@ const Navigation = () => {
 
   return (
                    <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out font-nav ${
-          isScrolled
+        className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ease-out font-nav ${
+          isMobileMenuOpen
+            ? "h-20 bg-background border-b border-black"
+            : isScrolled
             ? "h-16 bg-background/90 backdrop-blur-sm border-b border-white/10 shadow-lg shadow-accent/10"
             : "h-20 bg-background border-b border-black"
         }`}
@@ -58,7 +62,7 @@ const Navigation = () => {
                           alt="MeridianSolutions"
                           width={550}
                           height={138}
-                          className="max-h-20 md:max-h-28 w-auto -mt-1 -ml-8"
+                          className="max-h-20 md:max-h-28 w-auto -mt-1 -ml-2 md:-ml-8"
                           priority
                         />
                     </button>
@@ -72,7 +76,7 @@ const Navigation = () => {
                          alt="MeridianSolutions"
                          width={550}
                          height={138}
-                         className="max-h-20 md:max-h-28 w-auto -mt-1 -ml-8"
+                         className="max-h-20 md:max-h-28 w-auto -mt-1 -ml-2 md:-ml-8"
                          priority
                        />
                      </Link>
@@ -105,52 +109,81 @@ const Navigation = () => {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Morphs into X */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg glass border border-black hover:border-accent/30 transition-colors"
-            aria-label="Toggle mobile menu"
+            className="lg:hidden p-2 rounded-lg glass border border-black hover:border-accent/30 transition-all duration-300"
+            aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
           >
-            {isMobileMenuOpen ? (
-              <X className="size-5 text-accent" />
-            ) : (
-              <Menu className="size-5 text-accent" />
-            )}
+            <div className="relative w-5 h-5">
+              <Menu 
+                className={`absolute inset-0 size-5 text-accent transition-all duration-300 ${
+                  isMobileMenuOpen ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
+                }`} 
+              />
+              <X 
+                className={`absolute inset-0 size-5 text-accent transition-all duration-300 ${
+                  isMobileMenuOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
+                }`} 
+              />
+            </div>
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Below Taskbar */}
       <div
-        className={`lg:hidden absolute top-full left-0 right-0 transition-all duration-300 ease-out ${
+        className={`lg:hidden fixed left-0 right-0 z-30 transition-all duration-300 ease-out ${
           isMobileMenuOpen
-            ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 -translate-y-4 pointer-events-none"
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
         }`}
+        style={{ 
+          top: '80px',
+          height: 'calc(100vh - 80px)',
+          minHeight: 'calc(100vh - 80px)'
+        }}
       >
-        <div className="navbar-glass border-t border-black shadow-xl shadow-black/20">
-          <div className="mx-auto max-w-screen-2xl px-6 py-6">
-            <div className="flex flex-col space-y-4">
-              {navLinks.map((link) => (
-                                 <button
-                   key={link.href}
-                   onClick={() => scrollToSection(link.href)}
-                                       className={`text-left py-3 px-4 rounded-lg hover:text-accent hover:bg-white/5 transition-all duration-300 text-sm font-medium cursor-pointer ${
-                      isScrolled 
-                        ? "text-white" 
-                        : "text-muted"
-                    }`}
-                 >
-                  {link.label}
-                </button>
-              ))}
-                             <button
-                 onClick={() => scrollToSection("#contact-form")}
-                 className="mt-4 btn-primary px-6 py-3 rounded-full font-medium transition-all duration-300 cursor-pointer"
-               >
-                Get Started
+        {/* Backdrop */}
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-md" />
+        
+        {/* Menu Content */}
+        <div className="relative h-full flex flex-col items-center justify-start z-40 pt-16" style={{ minHeight: 'calc(100vh - 80px)' }}>
+          {/* Navigation Links and Get Started - Equal Spacing */}
+          <div className="flex flex-col items-center space-y-8">
+            {navLinks.map((link, index) => (
+              <button
+                key={link.href}
+                onClick={() => scrollToSection(link.href)}
+                className={`group relative text-2xl font-medium text-white hover:text-accent transition-all duration-500 cursor-pointer transform ${
+                  isMobileMenuOpen 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}
+                style={{ 
+                  animationDelay: `${index * 0.15}s`,
+                  transitionDelay: `${index * 0.15}s`
+                }}
+              >
+                <span className="relative z-10">{link.label}</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-accent/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300" />
               </button>
-            </div>
+            ))}
+            
+            {/* Get Started Button - Same Text Size, Equal Spacing with Animation */}
+            <button
+              onClick={() => scrollToSection("#contact-form")}
+              className={`btn-primary px-9 py-3 rounded-full text-2xl font-medium transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-accent/30 cursor-pointer transform ${
+                isMobileMenuOpen 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-8'
+              }`}
+              style={{ 
+                transitionDelay: `${navLinks.length * 0.15 + 0.1}s`
+              }}
+            >
+              Get Started
+            </button>
           </div>
         </div>
       </div>
