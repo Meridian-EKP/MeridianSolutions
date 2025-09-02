@@ -225,7 +225,7 @@ export default function Home() {
   return (
     <div id="top" className="page-container relative overflow-x-clip">
              {/* HERO */}
-       <section ref={heroRef} className="relative h-[calc(100vh-12rem)] md:h-[70vh] flex items-start md:items-center pt-8 md:pt-20 starfield-border rounded-3xl mx-4 md:mx-10 lg:mx-[150px] mt-32 md:my-10 lg:my-[150px] mb-4 md:mb-10 lg:mb-[150px] overflow-hidden bg-black/20">
+       <section ref={heroRef} className="relative h-[calc(100vh-12rem-20px)] md:h-[70vh] flex items-start md:items-center pt-8 md:pt-20 starfield-border rounded-3xl mx-4 md:mx-10 lg:mx-[150px] mt-32 md:my-10 lg:my-[150px] mb-4 md:mb-10 lg:mb-[150px] overflow-hidden bg-black/20">
         {/* Starfield Background - Only covers the hero section */}
         <Starfield 
           className="absolute inset-0 z-0 rounded-3xl overflow-hidden"
@@ -282,23 +282,23 @@ export default function Home() {
                      MeridianSolutions specialises in turning local businesses into digital leaders. We don&apos;t just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
                    </p>
                                        <div className="mt-4 flex items-center">
-                      <button 
-                        onClick={() => {
-                          if (expandedAbout >= 1) {
-                            // If expanded, collapse everything
-                            setExpandedAbout(0);
-                          } else {
-                            // If collapsed, expand to first level
-                            setExpandedAbout(1);
-                          }
-                        }}
-                        className="text-accent hover:text-accent/80 transition-all duration-300 group cursor-pointer"
-                        aria-label="Expand or collapse about section"
-                      >
-                        <span className={`inline-block transition-transform duration-300 ${expandedAbout >= 1 ? 'rotate-90' : 'rotate-0'}`}>
-                          ❯
-                        </span>
-                      </button>
+                                              <button 
+                          onClick={() => {
+                            if (expandedAbout >= 1) {
+                              // If expanded, collapse everything
+                              setExpandedAbout(0);
+                            } else {
+                              // If collapsed, expand to first level
+                              setExpandedAbout(1);
+                            }
+                          }}
+                          className="text-accent hover:text-accent/80 transition-all duration-300 group cursor-pointer"
+                          aria-label="Expand or collapse about section"
+                        >
+                          <span className={`inline-block transition-transform duration-300 ${expandedAbout >= 1 ? 'rotate-90' : 'rotate-0'}`}>
+                            ❯
+                          </span>
+                        </button>
                     </div>
                  </div>
                  
@@ -310,23 +310,23 @@ export default function Home() {
                         We craft custom digital packages tailored to your specific business needs and budget. Rather than forcing you into rigid service tiers, we analyse your goals, market position, and resources to design a strategic solution that maximizes your ROI. Our flexible approach ensures you only pay for what you need while getting the exact tools and strategies required to dominate your local market.
                       </p>
                       <div className="mt-4 flex items-center">
-                        <button 
-                          onClick={() => {
-                            if (expandedAbout >= 2) {
-                              // If fully expanded, collapse to first level
-                              setExpandedAbout(1);
-                            } else {
-                              // If not fully expanded, expand to second level
-                              setExpandedAbout(2);
-                            }
-                          }}
-                          className="text-accent hover:text-accent/80 transition-all duration-300 group cursor-pointer"
-                          aria-label="Expand or collapse about section further"
-                        >
-                          <span className={`inline-block transition-transform duration-300 ${expandedAbout >= 2 ? 'rotate-90' : 'rotate-0'}`}>
-                            ❯
-                          </span>
-                        </button>
+                                                                           <button 
+                            onClick={() => {
+                              if (expandedAbout >= 2) {
+                                // If fully expanded, collapse to first level
+                                setExpandedAbout(1);
+                              } else {
+                                // If not fully expanded, expand to second level
+                                setExpandedAbout(2);
+                              }
+                            }}
+                            className="text-accent hover:text-accent/80 transition-all duration-300 group cursor-pointer"
+                            aria-label="Expand or collapse about section further"
+                          >
+                            <span className={`inline-block transition-transform duration-300 ${expandedAbout >= 2 ? 'rotate-90' : 'rotate-0'}`}>
+                              ❯
+                            </span>
+                          </button>
                       </div>
                     </div>
                   </div>
@@ -342,19 +342,19 @@ export default function Home() {
                         Monthly strategy sessions ensure we&apos;re always aligned with your goals. We discuss progress, review performance data, and adjust our approach based on your feedback and changing business needs.
                       </p>
                       <div className="mt-4 flex items-center">
-                        <button 
-                          onClick={() => {
-                            setExpandedAbout(0);
-                            // Smooth scroll to about section when collapsing from bottom
-                            document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-                          }}
-                          className="text-accent hover:text-accent/80 transition-all duration-300 group cursor-pointer"
-                          aria-label="Collapse entire card"
-                        >
-                          <span className="inline-block transition-transform duration-300 -rotate-90">
-                            ❯
-                          </span>
-                        </button>
+                                                                           <button 
+                            onClick={() => {
+                              setExpandedAbout(0);
+                              // Smooth scroll to about section when collapsing from bottom
+                              document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                            }}
+                            className="text-accent hover:text-accent/80 transition-all duration-300 group cursor-pointer"
+                            aria-label="Collapse entire card"
+                          >
+                            <span className="inline-block transition-transform duration-300 -rotate-90">
+                              ❯
+                            </span>
+                          </button>
                       </div>
                     </div>
                   </div>
@@ -389,7 +389,7 @@ export default function Home() {
                 return (
                   <div 
                     key={card.id}
-                    className="cycle-card"
+                    className="cycle-card relative"
                     onMouseEnter={(e) => {
                       setHoveredCard(card.id);
                       const direction = getShineDirection(e, e.currentTarget as HTMLElement, true);
@@ -404,31 +404,51 @@ export default function Home() {
                   >
                     <div className={`card-accents ${accentClass}`} aria-hidden />
                     <div className={`card-sheen ${shineDirection[card.id] || ''}`} aria-hidden />
+                    
                     <div className="relative z-10">
-                                                        {hoveredCard === card.id ? (
-                                    // Detailed view on hover - Clean and minimal
-                                    <div className="animate-fade-in text-left">
-                                      <div className="mb-6">
-                                        <span className="cycle-card-step">Step {card.id}</span>
-                                      </div>
-                                      <h3 className="cycle-card-detailed-title">{card.detailedTitle}</h3>
-                                      <p className="cycle-card-detailed-content">{card.detailedContent}</p>
-                                    </div>
-                                  ) : (
-                                    // Default view - Minimal and modern
-                                    <div className="animate-fade-in">
-                                      {/* Clean number */}
-                                      <div className="mb-8">
-                                        <span className="cycle-card-number">{card.id}</span>
-                                      </div>
-                                      
-                                      {/* Clean title */}
-                                      <div className="space-y-3">
-                                        <h3 className="cycle-card-title">{card.title}</h3>
-                                        <p className="cycle-card-subtitle">{card.subtitle}</p>
-                                      </div>
-                                    </div>
-                                  )}
+                      {/* Desktop view - hover effects */}
+                      <div className="hidden md:block">
+                        {hoveredCard === card.id ? (
+                          // Detailed view on hover - Clean and minimal
+                          <div className="animate-fade-in text-left">
+                            <div className="mb-6">
+                              <span className="cycle-card-step">Step {card.id}</span>
+                            </div>
+                            <h3 className="cycle-card-detailed-title">{card.detailedTitle}</h3>
+                            <p className="cycle-card-detailed-content">{card.detailedContent}</p>
+                          </div>
+                        ) : (
+                          // Default view - Minimal and modern
+                          <div className="animate-fade-in">
+                            {/* Clean number */}
+                            <div className="mb-8">
+                              <span className="cycle-card-number">{card.id}</span>
+                            </div>
+                            
+                            {/* Clean title */}
+                            <div className="space-y-3">
+                              <h3 className="cycle-card-title">{card.title}</h3>
+                              <p className="cycle-card-subtitle">{card.subtitle}</p>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                      
+                      {/* Mobile view - default view only */}
+                      <div className="md:hidden">
+                        <div className="animate-fade-in">
+                          {/* Clean number */}
+                          <div className="mb-6">
+                            <span className="cycle-card-number">{card.id}</span>
+                          </div>
+                          
+                          {/* Clean title */}
+                          <div className="space-y-2">
+                            <h3 className="cycle-card-title">{card.title}</h3>
+                            <p className="cycle-card-subtitle">{card.subtitle}</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 );

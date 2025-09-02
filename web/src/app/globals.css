@@ -601,6 +601,14 @@ footer {
   overflow: hidden;
 }
 
+/* Mobile-specific cycle card adjustments */
+@media (max-width: 767px) {
+  .cycle-card {
+    height: 200px;
+    padding: 1.5rem;
+  }
+}
+
 .cycle-card:hover {
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.1);
