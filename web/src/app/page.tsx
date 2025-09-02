@@ -20,7 +20,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { ArrowRight, Globe, MapPin, Share2, Search, Target, Megaphone, X, CheckCircle } from "lucide-react";
+import { ArrowRight, Globe, MapPin, Share2, Search, Target, Megaphone, X, CheckCircle, ChevronDown } from "lucide-react";
 
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
@@ -32,14 +32,17 @@ export default function Home() {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const yParallax = useTransform(scrollYProgress, [0, 1], ["0px", "-120px"]);
   
-  // State for expanded service card
-  const [expandedService, setExpandedService] = useState<number | null>(null);
-  
-  // State for hovered cycle card
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  
-  // State for shine direction - tracks which direction the shine effect should animate for each card
-  const [shineDirection, setShineDirection] = useState<{[key: number]: string}>({});
+     // State for expanded service card
+   const [expandedService, setExpandedService] = useState<number | null>(null);
+   
+   // State for expanded about section (mobile only)
+   const [expandedAbout, setExpandedAbout] = useState<number>(0);
+   
+   // State for hovered cycle card
+   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+   
+   // State for shine direction - tracks which direction the shine effect should animate for each card
+   const [shineDirection, setShineDirection] = useState<{[key: number]: string}>({});
   
   // State for case study modal
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<{
@@ -222,7 +225,7 @@ export default function Home() {
   return (
     <div id="top" className="page-container relative overflow-x-clip">
              {/* HERO */}
-       <section ref={heroRef} className="relative h-[calc(100vh-11rem)] md:h-[70vh] flex items-start md:items-center pt-8 md:pt-20 starfield-border rounded-3xl mx-4 md:mx-10 lg:mx-[150px] mt-32 md:my-10 lg:my-[150px] mb-4 md:mb-10 lg:mb-[150px] overflow-hidden bg-black/20">
+       <section ref={heroRef} className="relative h-[calc(100vh-12rem)] md:h-[70vh] flex items-start md:items-center pt-8 md:pt-20 starfield-border rounded-3xl mx-4 md:mx-10 lg:mx-[150px] mt-32 md:my-10 lg:my-[150px] mb-4 md:mb-10 lg:mb-[150px] overflow-hidden bg-black/20">
         {/* Starfield Background - Only covers the hero section */}
         <Starfield 
           className="absolute inset-0 z-0 rounded-3xl overflow-hidden"
@@ -265,33 +268,119 @@ export default function Home() {
 
 
 
-      {/* ABOUT */}
-      <section id="about" className="relative py-24 md:py-32">
-        <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10">
-          <div className="grid md:grid-cols-2 gap-10 items-start">
-          <div className="about-content space-y-6">
-            <h2 className="text-2xl md:text-4xl font-semibold">Why Meridian?</h2>
-                         <div className="glass-no-shine rounded-3xl p-6 md:p-10 border border-white/10 transition-transform duration-300 hover:scale-105">
-              <div className="relative z-10">
-                <p className="text-muted">
-                  MeridianSolutions specialises in turning local businesses into digital leaders. We don&apos;t just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
-                </p>
-                <p className="mt-4 text-muted">
-                  We craft custom digital packages tailored to your specific business needs and budget. Rather than forcing you into rigid service tiers, we analyse your goals, market position, and resources to design a strategic solution that maximizes your ROI. Our flexible approach ensures you only pay for what you need while getting the exact tools and strategies required to dominate your local market.
-                </p>
-                
-                <div className="mt-6 pt-6 border-t border-white/10">
-                  <h3 className="text-lg font-semibold text-accent mb-3">You Stay in Control</h3>
-                  <p className="text-muted">
-                    Your business, your vision, your decisions. We believe in complete transparency and collaboration throughout every project. You maintain full control over what gets implemented, when it happens, and how your brand is represented.
-                  </p>
-                  <p className="mt-3 text-muted">
-                    Monthly strategy sessions ensure we&apos;re always aligned with your goals. We discuss progress, review performance data, and adjust our approach based on your feedback and changing business needs.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+             {/* ABOUT */}
+       <section id="about" className="relative py-24 md:py-32">
+         <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10">
+           <div className="grid md:grid-cols-2 gap-10 items-start">
+           <div className="about-content space-y-6">
+             <h2 className="text-2xl md:text-4xl font-semibold">Why Meridian?</h2>
+             <div className="glass-no-shine rounded-3xl p-6 md:p-10 border border-white/10 transition-transform duration-300 hover:scale-105">
+               <div className="relative z-10">
+                 {/* Collapsed content for mobile */}
+                 <div className="md:hidden">
+                   <p className="text-muted">
+                     MeridianSolutions specialises in turning local businesses into digital leaders. We don&apos;t just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
+                   </p>
+                                       <div className="mt-4 flex items-center">
+                      <button 
+                        onClick={() => {
+                          if (expandedAbout >= 1) {
+                            // If expanded, collapse everything
+                            setExpandedAbout(0);
+                          } else {
+                            // If collapsed, expand to first level
+                            setExpandedAbout(1);
+                          }
+                        }}
+                        className="text-accent hover:text-accent/80 transition-all duration-300 group cursor-pointer"
+                        aria-label="Expand or collapse about section"
+                      >
+                        <span className={`inline-block transition-transform duration-300 ${expandedAbout >= 1 ? 'rotate-90' : 'rotate-0'}`}>
+                          ❯
+                        </span>
+                      </button>
+                    </div>
+                 </div>
+                 
+                                   {/* First expanded view for mobile */}
+                  <div className={`md:hidden ${expandedAbout >= 1 ? 'block' : 'hidden'}`}>
+                    <div className="mt-6">
+                      <h3 className="text-lg font-semibold text-accent mb-3">Your Personal Package</h3>
+                      <p className="text-muted">
+                        We craft custom digital packages tailored to your specific business needs and budget. Rather than forcing you into rigid service tiers, we analyse your goals, market position, and resources to design a strategic solution that maximizes your ROI. Our flexible approach ensures you only pay for what you need while getting the exact tools and strategies required to dominate your local market.
+                      </p>
+                      <div className="mt-4 flex items-center">
+                        <button 
+                          onClick={() => {
+                            if (expandedAbout >= 2) {
+                              // If fully expanded, collapse to first level
+                              setExpandedAbout(1);
+                            } else {
+                              // If not fully expanded, expand to second level
+                              setExpandedAbout(2);
+                            }
+                          }}
+                          className="text-accent hover:text-accent/80 transition-all duration-300 group cursor-pointer"
+                          aria-label="Expand or collapse about section further"
+                        >
+                          <span className={`inline-block transition-transform duration-300 ${expandedAbout >= 2 ? 'rotate-90' : 'rotate-0'}`}>
+                            ❯
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Second expanded view for mobile */}
+                  <div className={`md:hidden ${expandedAbout >= 2 ? 'block' : 'hidden'}`}>
+                    <div className="mt-6">
+                      <h3 className="text-lg font-semibold text-accent mb-3">You Stay in Control</h3>
+                      <p className="text-muted">
+                        Your business, your vision, your decisions. We believe in complete transparency and collaboration throughout every project. You maintain full control over what gets implemented, when it happens, and how your brand is represented.
+                      </p>
+                      <p className="mt-3 text-muted">
+                        Monthly strategy sessions ensure we&apos;re always aligned with your goals. We discuss progress, review performance data, and adjust our approach based on your feedback and changing business needs.
+                      </p>
+                      <div className="mt-4 flex items-center">
+                        <button 
+                          onClick={() => {
+                            setExpandedAbout(0);
+                            // Smooth scroll to about section when collapsing from bottom
+                            document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                          }}
+                          className="text-accent hover:text-accent/80 transition-all duration-300 group cursor-pointer"
+                          aria-label="Collapse entire card"
+                        >
+                          <span className="inline-block transition-transform duration-300 -rotate-90">
+                            ❯
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                 
+                 {/* Desktop view - always visible */}
+                 <div className="hidden md:block">
+                   <p className="text-muted">
+                     MeridianSolutions specialises in turning local businesses into digital leaders. We don&apos;t just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
+                   </p>
+                   <p className="mt-4 text-muted">
+                     We craft custom digital packages tailored to your specific business needs and budget. Rather than forcing you into rigid service tiers, we analyse your goals, market position, and resources to design a strategic solution that maximizes your ROI. Our flexible approach ensures you only pay for what you need while getting the exact tools and strategies required to dominate your local market.
+                   </p>
+                   
+                   <div className="mt-6 pt-6 border-t border-white/10">
+                     <h3 className="text-lg font-semibold text-accent mb-3">You Stay in Control</h3>
+                     <p className="text-muted">
+                       Your business, your vision, your decisions. We believe in complete transparency and collaboration throughout every project. You maintain full control over what gets implemented, when it happens, and how your brand is represented.
+                     </p>
+                     <p className="mt-3 text-muted">
+                       Monthly strategy sessions ensure we&apos;re always aligned with your goals. We discuss progress, review performance data, and adjust our approach based on your feedback and changing business needs.
+                     </p>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
           <div className="about-image">
             <div className="grid grid-cols-2 gap-4">
               {cycleCards.map((card, index) => {
@@ -463,9 +552,13 @@ export default function Home() {
                         {card.fullDesc}
                       </p>
                     </div>
-                    <div className="mt-auto pt-4 inline-flex items-center gap-2 text-accent group-hover:translate-x-1 transition-transform text-base font-medium">
-                      See more <ArrowRight className="size-4" />
-                    </div>
+                                         <div className="mt-auto pt-2 flex items-center">
+                       <div className="text-accent group-hover:text-accent/80 transition-all duration-300">
+                         <span className={`inline-block transition-transform duration-300 ${expandedService === i ? 'rotate-90' : 'rotate-0'}`}>
+                           ❯
+                         </span>
+                       </div>
+                     </div>
                   </>
                 )}
               </div>
