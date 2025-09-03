@@ -23,6 +23,7 @@ import { ArrowRight, CheckCircle, AlertCircle } from "lucide-react";
 interface FormData {
   name: string;
   businessName: string;
+  website: string;
   email: string;
   phoneCountry: string;
   phone: string;
@@ -66,6 +67,7 @@ export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     businessName: "",
+    website: "",
     email: "",
     phoneCountry: "+1", // Default to US
     phone: "",
@@ -161,6 +163,7 @@ export default function ContactForm() {
         setFormData({
           name: "",
           businessName: "",
+          website: "",
           email: "",
           phoneCountry: "+1",
           phone: "",
@@ -297,85 +300,105 @@ export default function ContactForm() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-2">
-              Email Address *
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className={`w-full px-4 py-3 rounded-xl bg-white/5 border backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-white/10 hover:bg-white/8 ${
-                errors.email ? "border-red-500/50" : "border-white/10 focus:border-accent/30"
-              }`}
-              style={{
-                background: 'rgba(255, 255, 255, 0.05)',
-                backdropFilter: 'blur(12px)'
-              }}
-              placeholder="john@yourbusiness.com"
-            />
-            {errors.email && (
-              <div className="flex items-center gap-1 mt-1 text-red-400 text-sm">
-                <AlertCircle className="size-4" />
-                {errors.email}
-              </div>
-            )}
-          </div>
-
-          <div>
-            <label htmlFor="phone" className="block text-sm font-medium mb-2">
-              Phone Number *
-            </label>
-            <div className="flex gap-3">
-              <select
-                name="phoneCountry"
-                value={formData.phoneCountry}
-                onChange={handleChange}
-                className={`phone-country-select px-4 py-3 rounded-xl bg-white/5 border backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-white/10 hover:bg-white/8 cursor-pointer ${
-                  errors.phone ? "border-red-500/50" : "border-white/10 focus:border-accent/30"
-                }`}
-                style={{
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  backdropFilter: 'blur(12px)',
-                  minWidth: '120px'
-                }}
-              >
-                {countryCodes.map((country) => (
-                  <option 
-                    key={country.code} 
-                    value={country.code}
-                  >
-                    {country.flag} {country.code} {country.country}
-                  </option>
-                ))}
-              </select>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className={`flex-1 px-4 py-3 rounded-xl bg-white/5 border backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-white/10 hover:bg-white/8 ${
-                  errors.phone ? "border-red-500/50" : "border-white/10 focus:border-accent/30"
-                }`}
-                style={{
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  backdropFilter: 'blur(12px)'
-                }}
-                placeholder="123 456 7890"
-              />
-            </div>
-            {errors.phone && (
-              <div className="flex items-center gap-1 mt-1 text-red-400 text-sm">
-                <AlertCircle className="size-4" />
-                {errors.phone}
-              </div>
-            )}
-          </div>
+                 {/* Website field - optional */}
+         <div>
+           <label htmlFor="website" className="block text-sm font-medium mb-2">
+             Website Address
+           </label>
+          <input
+            type="url"
+            id="website"
+            name="website"
+            value={formData.website}
+            onChange={handleChange}
+            className="w-full px-4 py-3 rounded-xl bg-white/5 border backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-white/10 hover:bg-white/8 border-white/10 focus:border-accent/30"
+            style={{
+              background: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(12px)'
+            }}
+            placeholder="https://www.yourbusiness.com"
+          />
         </div>
+
+                 {/* Email field - full width like website */}
+         <div>
+           <label htmlFor="email" className="block text-sm font-medium mb-2">
+             Email Address *
+           </label>
+           <input
+             type="email"
+             id="email"
+             name="email"
+             value={formData.email}
+             onChange={handleChange}
+             className={`w-full px-4 py-3 rounded-xl bg-white/5 border backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-white/10 hover:bg-white/8 ${
+               errors.email ? "border-red-500/50" : "border-white/10 focus:border-accent/30"
+             }`}
+             style={{
+               background: 'rgba(255, 255, 255, 0.05)',
+               backdropFilter: 'blur(12px)'
+             }}
+             placeholder="john@yourbusiness.com"
+           />
+           {errors.email && (
+             <div className="flex items-center gap-1 mt-1 text-red-400 text-sm">
+               <AlertCircle className="size-4" />
+               {errors.email}
+             </div>
+           )}
+         </div>
+
+         {/* Phone field - full width like website */}
+         <div>
+           <label htmlFor="phone" className="block text-sm font-medium mb-2">
+             Phone Number *
+           </label>
+           <div className="flex gap-3">
+             <select
+               name="phoneCountry"
+               value={formData.phoneCountry}
+               onChange={handleChange}
+               className={`phone-country-select px-4 py-3 rounded-xl bg-white/5 border backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-white/10 hover:bg-white/8 cursor-pointer ${
+                 errors.phone ? "border-red-500/50" : "border-white/10 focus:border-accent/30"
+               }`}
+               style={{
+                 background: 'rgba(255, 255, 255, 0.05)',
+                 backdropFilter: 'blur(12px)',
+                 minWidth: '100px'
+               }}
+             >
+               {countryCodes.map((country) => (
+                 <option 
+                   key={country.code} 
+                   value={country.code}
+                 >
+                   {country.flag} {country.code} {country.country}
+                 </option>
+               ))}
+             </select>
+             <input
+               type="tel"
+               id="phone"
+               name="phone"
+               value={formData.phone}
+               onChange={handleChange}
+               className={`flex-1 px-4 py-3 rounded-xl bg-white/5 border backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-white/10 hover:bg-white/8 ${
+                 errors.phone ? "border-red-500/50" : "border-white/10 focus:border-accent/30"
+               }`}
+               style={{
+                 background: 'rgba(255, 255, 255, 0.05)',
+                 backdropFilter: 'blur(12px)'
+               }}
+               placeholder="123 456 7890"
+             />
+           </div>
+           {errors.phone && (
+             <div className="flex items-center gap-1 mt-1 text-red-400 text-sm">
+               <AlertCircle className="size-4" />
+               {errors.phone}
+             </div>
+           )}
+         </div>
 
         <div>
           <label htmlFor="message" className="block text-sm font-medium mb-2">

@@ -706,6 +706,21 @@ footer {
   min-height: 220px;
 }
 
+/* Mobile-specific service card adjustments */
+@media (max-width: 767px) {
+  .service-card {
+    min-height: 80px; /* Even smaller height for mobile */
+  }
+  
+  .service-card:not(.expanded) {
+    height: 80px; /* Much smaller fixed height for mobile collapsed state */
+  }
+  
+  .service-card.expanded {
+    min-height: 80px; /* Smaller minimum height for mobile expanded state */
+  }
+}
+
 /* Service card expandable content */
 .service-card-content {
   overflow: hidden;

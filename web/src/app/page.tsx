@@ -544,15 +544,23 @@ export default function Home() {
               <div className="relative z-10 p-5 flex flex-col h-full">
                 {/* Header */}
                 <div className="flex items-start gap-3 mb-3">
-                                     <div className="p-2 rounded-lg bg-white/5 border border-cyan-400/30 group-hover:border-accent/30 transition-colors">
+                  <div className="p-2 rounded-lg bg-white/5 border border-cyan-400/30 group-hover:border-accent/30 transition-colors">
                     <card.icon className="size-5 text-accent" />
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 flex items-center justify-between">
                     <h3 className="text-base md:text-lg font-semibold">{card.title}</h3>
+                    {/* Mobile: Show expand arrow inline with title */}
+                    {expandedService !== i && (
+                      <div className="md:hidden text-accent transition-all duration-300">
+                        <span className="inline-block transition-transform duration-300">
+                          ❯
+                        </span>
+                      </div>
+                    )}
                   </div>
                   {expandedService === i ? (
-                                         <button 
-                       className="p-2 rounded-lg bg-white/5 border border-cyan-400/30 hover:border-accent/30 transition-colors cursor-pointer"
+                    <button 
+                      className="p-2 rounded-lg bg-white/5 border border-cyan-400/30 hover:border-accent/30 transition-colors cursor-pointer"
                       onClick={(e) => {
                         e.stopPropagation();
                         setExpandedService(null);
@@ -567,18 +575,21 @@ export default function Home() {
                 {/* Collapsed content */}
                 {expandedService !== i && (
                   <>
-                    <div className="relative min-h-[3rem] flex-1">
+                    {/* Desktop: Show description on hover */}
+                    <div className="hidden md:block relative min-h-[3rem] flex-1">
                       <p className="text-muted opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-base leading-relaxed">
                         {card.fullDesc}
                       </p>
                     </div>
-                                         <div className="mt-auto pt-2 flex items-center">
-                       <div className="text-accent group-hover:text-accent/80 transition-all duration-300">
-                         <span className={`inline-block transition-transform duration-300 ${expandedService === i ? 'rotate-90' : 'rotate-0'}`}>
-                           ❯
-                         </span>
-                       </div>
-                     </div>
+                    
+                    {/* Desktop: Show expand arrow on hover */}
+                    <div className="hidden md:block mt-auto pt-2 flex items-center">
+                      <div className="text-accent group-hover:text-accent/80 transition-all duration-300">
+                        <span className={`inline-block transition-transform duration-300 ${expandedService === i ? 'rotate-90' : 'rotate-0'}`}>
+                          ❯
+                        </span>
+                      </div>
+                    </div>
                   </>
                 )}
               </div>
