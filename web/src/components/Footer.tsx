@@ -56,7 +56,7 @@ export default function Footer() {
                                  alt="MeridianSolutions"
                                  width={1300}
                                  height={325}
-                                 className="h-40 w-auto -ml-4"
+                                 className="h-20 md:h-40 w-auto -ml-4"
                                  priority
                                />
                            </button>
@@ -70,7 +70,7 @@ export default function Footer() {
                                 alt="MeridianSolutions"
                                 width={1300}
                                 height={325}
-                                className="h-40 w-auto -ml-4"
+                                className="h-20 md:h-40 w-auto -ml-4"
                                 priority
                               />
                             </Link>
@@ -84,46 +84,91 @@ export default function Footer() {
                  </p>
             </div>
 
-                                                   {/* Column 2: Navigation */}
-              <div className="space-y-2 lg:justify-self-end lg:text-right pt-8">
-                                 <h4 className="text-lg font-semibold text-white">Navigation</h4>
-              <nav>
-                <ul className="space-y-3">
-                  {navLinks.map((link) => (
-                    <li key={link.href}>
-                      <button
-                        onClick={() => scrollToSection(link.href)}
-                        className="footer-link text-sm text-muted hover:text-accent transition-all duration-300 relative group cursor-pointer"
-                      >
-                        {link.label}
-                        <span className="absolute bottom-0 left-0 w-0 h-px bg-gradient-to-r from-accent to-accent-2 transition-all duration-300 group-hover:w-full"></span>
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </div>
+                                                   {/* Mobile: Navigation and Contact side by side */}
+                                                   <div className="md:hidden grid grid-cols-2 gap-6">
+                                                     {/* Column 2: Navigation */}
+                                                     <div className="space-y-2">
+                                                       <h4 className="text-lg font-semibold text-white">Navigation</h4>
+                                                       <nav>
+                                                         <ul className="space-y-3">
+                                                           {navLinks.map((link) => (
+                                                             <li key={link.href}>
+                                                               <button
+                                                                 onClick={() => scrollToSection(link.href)}
+                                                                 className="footer-link text-sm text-muted hover:text-accent transition-all duration-300 relative group cursor-pointer"
+                                                               >
+                                                                 {link.label}
+                                                                 <span className="absolute bottom-0 left-0 w-0 h-px bg-gradient-to-r from-accent to-accent-2 transition-all duration-300 group-hover:w-full"></span>
+                                                               </button>
+                                                             </li>
+                                                           ))}
+                                                         </ul>
+                                                       </nav>
+                                                     </div>
 
-                                                   {/* Column 3: Contact Info */}
-              <div className="space-y-2 lg:justify-self-end lg:text-right pt-8">
-                                 <h4 className="text-lg font-semibold text-white">Contact</h4>
-              <div className="space-y-3">
-                <a 
-                  href="mailto:edkemppotter@gmail.com"
-                  className="footer-contact-item flex items-center gap-3 text-sm text-muted hover:text-accent transition-all duration-300 group cursor-pointer"
-                >
-                  <Mail className="size-4 text-accent/60 group-hover:text-accent transition-colors duration-300" />
-                  <span>edkemppotter@gmail.com</span>
-                </a>
-                <a 
-                  href="tel:+447541516344"
-                  className="footer-contact-item flex items-center gap-3 text-sm text-muted hover:text-accent transition-all duration-300 group cursor-pointer"
-                >
-                  <Phone className="size-4 text-accent/60 group-hover:text-accent transition-colors duration-300" />
-                  <span>(+44) 7541 516 344</span>
-                </a>
-              </div>
-            </div>
+                                                     {/* Column 3: Contact Info */}
+                                                     <div className="space-y-2">
+                                                       <h4 className="text-lg font-semibold text-white">Contact</h4>
+                                                       <div className="space-y-3">
+                                                         <a 
+                                                           href="mailto:edkemppotter@gmail.com"
+                                                           className="footer-contact-item text-sm text-muted hover:text-accent transition-all duration-300 group cursor-pointer block"
+                                                         >
+                                                           edkemppotter@gmail.com
+                                                         </a>
+                                                         <a 
+                                                           href="tel:+447541516344"
+                                                           className="footer-contact-item text-sm text-muted hover:text-accent transition-all duration-300 group cursor-pointer block"
+                                                         >
+                                                           (+44) 7541 516 344
+                                                         </a>
+                                                       </div>
+                                                     </div>
+                                                   </div>
+
+                                                   {/* Desktop: Navigation and Contact separate columns */}
+                                                   <div className="hidden md:block space-y-2 lg:justify-self-end lg:text-right pt-8">
+                                                     {/* Column 2: Navigation */}
+                                                     <h4 className="text-lg font-semibold text-white">Navigation</h4>
+                                                     <nav>
+                                                       <ul className="space-y-3">
+                                                         {navLinks.map((link) => (
+                                                           <li key={link.href}>
+                                                             <button
+                                                               onClick={() => scrollToSection(link.href)}
+                                                               className="footer-link text-sm text-muted hover:text-accent transition-all duration-300 relative group cursor-pointer"
+                                                             >
+                                                               {link.label}
+                                                               <span className="absolute bottom-0 left-0 w-0 h-px bg-gradient-to-r from-accent to-accent-2 transition-all duration-300 group-hover:w-full"></span>
+                                                             </button>
+                                                           </li>
+                                                         ))}
+                                                       </ul>
+                                                     </nav>
+                                                   </div>
+
+                                                   <div className="hidden md:block space-y-2 lg:justify-self-end lg:text-right pt-8">
+                                                     {/* Column 3: Contact Info */}
+                                                     <div className="space-y-2">
+                                                       <h4 className="text-lg font-semibold text-white">Contact</h4>
+                                                       <div className="space-y-3">
+                                                         <a 
+                                                           href="mailto:edkemppotter@gmail.com"
+                                                           className="footer-contact-item flex items-center gap-3 text-sm text-muted hover:text-accent transition-all duration-300 group cursor-pointer"
+                                                         >
+                                                           <Mail className="size-4 text-accent/60 group-hover:text-accent transition-colors duration-300" />
+                                                           <span>edkemppotter@gmail.com</span>
+                                                         </a>
+                                                         <a 
+                                                           href="tel:+447541516344"
+                                                           className="footer-contact-item flex items-center gap-3 text-sm text-muted hover:text-accent transition-all duration-300 group cursor-pointer"
+                                                         >
+                                                           <Phone className="size-4 text-accent/60 group-hover:text-accent transition-colors duration-300" />
+                                                           <span>(+44) 7541 516 344</span>
+                                                         </a>
+                                                       </div>
+                                                     </div>
+                                                   </div>
           </div>
         </div>
 

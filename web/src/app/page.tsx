@@ -460,7 +460,7 @@ export default function Home() {
       </section>
 
             {/* SERVICES */}
-      <section id="services" className="relative py-24 md:py-32">
+      <section id="services" className="relative pt-12 md:pt-32 pb-24 md:pb-32">
         <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10">
           <div className="max-w-3xl">
             <h2 className="text-2xl md:text-4xl font-semibold">Complete Digital Growth Solutions</h2>
@@ -650,7 +650,7 @@ export default function Home() {
       </section>
 
       {/* CASE STUDIES */}
-      <section id="work" className="relative py-24 md:py-32">
+      <section id="work" className="relative pt-24 md:pt-32 pb-8 md:pb-32">
         <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10">
           <div className="case-studies-header max-w-3xl">
             <h2 className="text-2xl md:text-4xl font-semibold">Transformations That Drive Results</h2>
@@ -912,7 +912,7 @@ export default function Home() {
 
 
       {/* CTA */}
-      <section id="contact" className="relative pt-24 md:pt-32 pb-32 md:pb-48 min-h-screen flex items-center">
+      <section id="contact" className="relative pt-24 md:pt-2 pb-32 md:pb-48 min-h-screen flex items-center">
         <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10 text-center">
                      <div className="glass-no-shine rounded-3xl p-10 md:p-16 border border-white/10 transition-transform duration-300 hover:scale-105">
             <h2 className="text-2xl md:text-4xl font-semibold">Ready to Dominate Your Local Market?</h2>
