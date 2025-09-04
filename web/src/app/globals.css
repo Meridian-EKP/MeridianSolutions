@@ -675,13 +675,17 @@ footer {
 
 
 
-/* Service card expansion - grow from bottom */
+/* Service card expansion - smooth height animation */
 .service-card {
   align-self: flex-start; /* Keeps cards anchored to top of grid cell */
   display: flex;
   flex-direction: column;
-  min-height: 220px; /* Shorter minimum height */
-  height: fit-content; /* Allow expansion but maintain consistency */
+  max-height: 220px; /* Fixed max-height for collapsed state */
+  transition: max-height 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: max-height;
+  overflow: hidden; /* Prevent color bleeding outside cards */
 }
 
 .services-grid {
@@ -697,57 +701,53 @@ footer {
 
 /* Ensure collapsed cards have consistent height */
 .service-card:not(.expanded) {
-  height: 220px; /* Shorter fixed height for collapsed state */
+  max-height: 220px; /* Fixed max-height for collapsed state */
 }
 
-/* Allow expanded cards to grow naturally */
+/* Allow expanded cards to grow smoothly */
 .service-card.expanded {
-  height: auto;
-  min-height: 220px;
+  max-height: 800px; /* Large max-height for smooth animation */
+}
+
+/* Collapsing state - animate height back to collapsed size */
+.service-card.collapsing {
+  max-height: 220px; /* Animate back to collapsed height */
 }
 
 /* Mobile-specific service card adjustments */
 @media (max-width: 767px) {
   .service-card {
-    min-height: 80px; /* Even smaller height for mobile */
+    max-height: 80px; /* Fixed max-height for mobile collapsed state */
   }
   
   .service-card:not(.expanded) {
-    height: 80px; /* Much smaller fixed height for mobile collapsed state */
+    max-height: 80px; /* Fixed max-height for mobile collapsed state */
   }
   
   .service-card.expanded {
-    min-height: 80px; /* Smaller minimum height for mobile expanded state */
+    max-height: 700px; /* Large max-height for mobile smooth animation */
+  }
+  
+  .service-card.collapsing {
+    max-height: 80px; /* Animate back to collapsed height on mobile */
   }
 }
 
-/* Service card expandable content */
+/* Service card expandable content - always visible, smooth height animation */
 .service-card-content {
-  overflow: hidden;
-  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: max-height, opacity;
+  overflow: hidden; /* Prevent content bleeding outside cards */
+  margin-top: 0; /* Remove top margin to eliminate gaps */
+  /* Content is always visible, no opacity/transform changes */
 }
 
-.service-card-content.collapsed {
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+/* Smooth transitions for all interactive elements */
+.service-card * {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.service-card-content.expanded {
-  max-height: 800px;
-  opacity: 1;
-  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-/* Collapsed content fade animation */
-.service-card .text-muted {
-  transition: opacity 0.3s ease-in-out;
-}
 
-.service-card .inline-flex {
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
+/* Focus styles for accessibility */
 
 /* Focus styles for accessibility */
 *:focus-visible {

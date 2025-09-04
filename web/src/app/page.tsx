@@ -58,6 +58,8 @@ export default function Home() {
   } | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   
+
+  
   // Set initial position to the middle of the duplicated content for infinite scroll
   useEffect(() => {
     const container = document.getElementById('case-studies-carousel');
@@ -146,10 +148,30 @@ export default function Home() {
     }
   ];
   
-  // Handle service card expansion
+  // Handle service card expansion with smooth height animation
   const toggleServiceExpansion = (index: number) => {
-    setExpandedService(expandedService === index ? null : index);
+    if (expandedService === index) {
+      // Collapsing - wait for height animation to complete before removing content
+      const cardElement = document.querySelector(`[data-service-index="${index}"]`);
+      if (cardElement) {
+        // Add collapsing class to start height animation
+        cardElement.classList.add('collapsing');
+        
+        // Wait for height animation to complete before removing content
+        setTimeout(() => {
+          setExpandedService(null);
+          cardElement.classList.remove('collapsing');
+        }, 600); // Match the CSS transition duration
+      } else {
+        setExpandedService(null);
+      }
+    } else {
+      // Expanding - smooth transition
+      setExpandedService(index);
+    }
   };
+  
+
   
   // Handle keyboard navigation
   const handleServiceKeyDown = (event: React.KeyboardEvent, index: number) => {
@@ -525,7 +547,8 @@ export default function Home() {
                     ].map((card, i) => (
             <div
               key={card.title}
-              className={`service-card group relative rounded-2xl card overflow-hidden cursor-pointer transition-all duration-300 ease-out ${
+              data-service-index={i}
+              className={`service-card group relative rounded-2xl card overflow-hidden cursor-pointer transition-all duration-400 ease-out ${
                 expandedService === i 
                   ? 'expanded ring-2 ring-accent/50 shadow-2xl shadow-accent/20' 
                   : 'hover:scale-[1.01]'
@@ -541,7 +564,7 @@ export default function Home() {
               <div className="card-sheen" aria-hidden />
               
               {/* Main card content with tighter padding */}
-              <div className="relative z-10 p-5 flex flex-col h-full">
+              <div className="relative z-10 p-5 flex flex-col">
                 {/* Header */}
                 <div className="flex items-start gap-3 mb-3">
                   <div className="p-2 rounded-lg bg-white/5 border border-cyan-400/30 group-hover:border-accent/30 transition-colors">
@@ -549,27 +572,15 @@ export default function Home() {
                   </div>
                   <div className="flex-1 flex items-center justify-between">
                     <h3 className="text-base md:text-lg font-semibold">{card.title}</h3>
-                    {/* Mobile: Show expand arrow inline with title */}
-                    {expandedService !== i && (
-                      <div className="md:hidden text-accent transition-all duration-300">
-                        <span className="inline-block transition-transform duration-300">
-                          ❯
-                        </span>
-                      </div>
-                    )}
+                    {/* Mobile: Show expand arrow inline with title - always visible, rotates smoothly */}
+                    <div className="md:hidden text-accent transition-all duration-300">
+                      <span className={`inline-block transition-transform duration-300 ${
+                        expandedService === i ? 'rotate-90' : 'rotate-0'
+                      }`}>
+                        ❯
+                      </span>
+                    </div>
                   </div>
-                  {expandedService === i ? (
-                    <button 
-                      className="p-2 rounded-lg bg-white/5 border border-cyan-400/30 hover:border-accent/30 transition-colors cursor-pointer"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setExpandedService(null);
-                      }}
-                      aria-label="Close expanded view"
-                    >
-                      <X className="size-4" />
-                    </button>
-                  ) : null}
                 </div>
 
                 {/* Collapsed content */}
@@ -582,10 +593,12 @@ export default function Home() {
                       </p>
                     </div>
                     
-                    {/* Desktop: Show expand arrow on hover */}
+                    {/* Desktop: Show expand arrow on hover - always visible, rotates smoothly */}
                     <div className="hidden md:block mt-auto pt-2 flex items-center">
                       <div className="text-accent group-hover:text-accent/80 transition-all duration-300">
-                        <span className={`inline-block transition-transform duration-300 ${expandedService === i ? 'rotate-90' : 'rotate-0'}`}>
+                        <span className={`inline-block transition-transform duration-300 ${
+                          expandedService === i ? 'rotate-90' : 'rotate-0'
+                        }`}>
                           ❯
                         </span>
                       </div>
@@ -595,12 +608,18 @@ export default function Home() {
               </div>
 
               {/* Expandable content - outside main card content, at true bottom */}
-              <div className={`service-card-content ${expandedService === i ? 'expanded' : 'collapsed'}`}>
-                <div className="px-5 pb-5 space-y-2">
+              {expandedService === i && (
+                <div className="px-5 pb-5 space-y-2 pt-0">
                   {/* Detailed description - Skip first two paragraphs */}
                   <div className="space-y-2">
                     {card.detailedDesc.split('\n\n').slice(2).map((paragraph, idx) => (
-                      <p key={idx} className="text-muted leading-relaxed">
+                      <p 
+                        key={idx} 
+                        className="text-muted leading-relaxed"
+                        style={{
+                          transitionDelay: `${idx * 0.1}s`
+                        }}
+                      >
                         {paragraph}
                       </p>
                     ))}
@@ -614,7 +633,13 @@ export default function Home() {
                     </h4>
                     <ul className="space-y-2">
                       {card.benefits.map((benefit, idx) => (
-                        <li key={idx} className="flex items-center gap-3 text-muted">
+                        <li 
+                          key={idx} 
+                          className="flex items-center gap-3 text-muted"
+                          style={{
+                            transitionDelay: `${(idx + 3) * 0.1}s`
+                          }}
+                        >
                           <CheckCircle className="size-4 text-green-400 flex-shrink-0" />
                           <span>{benefit}</span>
                         </li>
@@ -622,12 +647,17 @@ export default function Home() {
                     </ul>
                   </div>
                 </div>
-              </div>
+              )}
 
               {/* Investment Section - Integrated design without box */}
               {expandedService === i && (
-                <div className="px-5 pb-4">
-                  <div className="space-y-3">
+                <div 
+                  className="px-5 pb-4 pt-0"
+                  style={{
+                    transitionDelay: '0.2s'
+                  }}
+                >
+                  <div className="space-y-2">
                     <h4 className="font-semibold text-accent flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-accent"></span>
                       Investment Options
@@ -641,7 +671,12 @@ export default function Home() {
 
               {/* CTA Button - Outside expandable content to prevent animation issues */}
               {expandedService === i && (
-                                 <div className="px-5 pb-5 pt-3 border-t border-white/10">
+                <div 
+                  className="px-5 pb-5 pt-2 border-t border-white/10"
+                  style={{
+                    transitionDelay: '0.3s'
+                  }}
+                >
                   <button 
                     className="w-full btn-primary rounded-xl py-3 px-6 font-medium transition-all duration-500 ease-out hover:scale-[1.01] hover:shadow-lg hover:shadow-accent/30 cursor-pointer"
                     onClick={(e) => {
@@ -892,7 +927,8 @@ export default function Home() {
                        }}
                                                className="w-full py-2 px-4 rounded-lg bg-white/5 border border-white/10 hover:border-accent/30 transition-colors text-sm font-medium btn-secondary cursor-pointer mt-auto"
                      >
-                       View Full Case Study
+                       <span className="md:hidden">View Before & After</span>
+                       <span className="hidden md:inline">View Full Case Study</span>
                      </button>
                    </div>
                 </div>

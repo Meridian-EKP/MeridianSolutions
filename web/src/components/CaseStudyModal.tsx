@@ -48,7 +48,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
   if (!isOpen || !caseStudy) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pt-24 pb-8 md:pt-4">
       {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-black/60 backdrop-blur-sm backdrop-enter"
@@ -59,7 +59,7 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
       {/* Modal */}
       <div 
         ref={modalRef}
-        className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl bg-black/40 border border-cyan-400/30 backdrop-blur-xl shadow-2xl shadow-accent/20 modal-enter"
+        className="relative w-full max-w-4xl max-h-[85vh] md:max-h-[90vh] overflow-y-auto rounded-3xl bg-black/40 border border-cyan-400/30 backdrop-blur-xl shadow-2xl shadow-accent/20 modal-enter"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -68,11 +68,64 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
           className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/40 border border-white/20 hover:border-accent/60 hover:bg-accent/10 transition-all duration-300 cursor-pointer"
           aria-label="Close modal"
         >
-          <X className="size-5 text-white" />
+          <X className="size-5 text-accent" />
         </button>
 
-        {/* Content */}
-        <div className="p-8">
+        {/* Mobile Content - Simplified */}
+        <div className="md:hidden p-6">
+          {/* Before/After Comparison */}
+          <div className="mb-10">
+            <h3 className="text-lg font-semibold mb-6">What Changed</h3>
+            <div className="grid grid-cols-1 gap-6">
+              {/* Before Box */}
+              <div className="relative p-5 rounded-2xl bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/10 backdrop-blur-sm">
+                <div className="flex items-center mb-4">
+                  <div className="w-3 h-3 rounded-full bg-red-400 mr-3"></div>
+                  <h4 className="text-base font-semibold text-red-400">Before</h4>
+                </div>
+                <div className="space-y-3">
+                  {caseStudy.beforePoints.map((point, index) => (
+                    <div key={index} className="flex items-start">
+                      <div className="w-1.5 h-1.5 rounded-full bg-red-400/60 mr-3 mt-2 flex-shrink-0"></div>
+                      <span className="text-muted text-sm leading-relaxed">{point}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* After Box */}
+              <div className="relative p-5 rounded-2xl bg-gradient-to-br from-accent/20 to-purple-600/20 border border-cyan-400/30 backdrop-blur-sm">
+                <div className="flex items-center mb-4">
+                  <div className="w-3 h-3 rounded-full bg-green-400 mr-3"></div>
+                  <h4 className="text-base font-semibold text-green-400">After</h4>
+                </div>
+                <div className="space-y-3">
+                  {caseStudy.afterPoints.map((point, index) => (
+                    <div key={index} className="flex items-start">
+                      <div className="w-1.5 h-1.5 rounded-full bg-green-400/60 mr-3 mt-2 flex-shrink-0"></div>
+                      <span className="text-white text-sm leading-relaxed">{point}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center mt-8">
+            <a 
+              href="#contact-form" 
+              onClick={onClose}
+              className="btn-primary inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium cursor-pointer w-full"
+            >
+              Book Your Free Digital Health Check
+              <ChevronRight className="size-4" />
+            </a>
+          </div>
+        </div>
+
+        {/* Desktop Content - Full */}
+        <div className="hidden md:block p-8">
           {/* Header */}
           <div className="mb-6">
             {/* Industry Badge */}
