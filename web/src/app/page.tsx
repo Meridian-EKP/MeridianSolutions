@@ -25,7 +25,8 @@ import { ArrowRight, Globe, MapPin, Share2, Search, Target, Megaphone, X, CheckC
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import CaseStudyModal from "@/components/CaseStudyModal";
-import Starfield from "@/components/Starfield";
+import MobileStarfield from "@/components/MobileStarfield";
+import DesktopStarfield from "@/components/DesktopStarfield";
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -248,9 +249,22 @@ export default function Home() {
     <div id="top" className="page-container relative overflow-x-clip">
              {/* HERO */}
        <section ref={heroRef} className="relative h-[calc(100vh-12rem-20px)] md:h-[70vh] flex items-start md:items-center pt-8 md:pt-20 starfield-border rounded-3xl mx-4 md:mx-10 lg:mx-[150px] mt-32 md:my-10 lg:my-[150px] mb-4 md:mb-10 lg:mb-[150px] overflow-hidden bg-black/20">
-        {/* Starfield Background - Only covers the hero section */}
-        <Starfield 
-          className="absolute inset-0 z-0 rounded-3xl overflow-hidden"
+        {/* Mobile Starfield Background - Only visible on mobile */}
+        <MobileStarfield 
+          className="absolute inset-0 z-0 rounded-3xl overflow-hidden md:hidden"
+          particleCount={50}
+          flareCount={2}
+          color="#5ee7ff"
+          linkChance={20}
+          renderParticles={true}
+          renderFlares={true}
+          renderLinks={true}
+          flicker={true}
+        />
+        
+        {/* Desktop Starfield Background - Only visible on desktop */}
+        <DesktopStarfield 
+          className="absolute inset-0 z-0 rounded-3xl overflow-hidden hidden md:block"
           particleCount={50}
           flareCount={2}
           color="#5ee7ff"
