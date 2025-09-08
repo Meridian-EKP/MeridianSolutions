@@ -251,7 +251,7 @@ export default function Home() {
        <section ref={heroRef} className="relative h-[calc(100vh-12rem-20px)] md:h-[70vh] flex items-start md:items-center pt-8 md:pt-20 starfield-border rounded-3xl mx-4 md:mx-10 lg:mx-[150px] mt-32 md:my-10 lg:my-[150px] mb-4 md:mb-10 lg:mb-[150px] overflow-hidden bg-black/20">
         {/* Mobile Starfield Background - Only visible on mobile */}
         <MobileStarfield 
-          className="absolute inset-0 z-0 rounded-3xl overflow-hidden md:hidden"
+          className="absolute top-2 left-2 right-2 bottom-16 z-0 rounded-3xl overflow-hidden md:hidden"
           particleCount={50}
           flareCount={2}
           color="#5ee7ff"
@@ -282,7 +282,7 @@ export default function Home() {
 
         <div className="relative z-10 mx-auto w-full max-w-screen-2xl px-6 md:px-10">
           <div className="max-w-3xl">
-            <h1 className="mt-4 text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05]">
+            <h1 className="mt-8 md:mt-4 text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05]">
               We Build Digital Solutions That Bring You Results
             </h1>
             <p className="mt-6 text-muted max-w-2xl text-base md:text-lg">
