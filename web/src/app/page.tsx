@@ -282,22 +282,36 @@ export default function Home() {
 
         <div className="relative z-10 mx-auto w-full max-w-screen-2xl px-6 md:px-10">
           <div className="max-w-3xl">
-
             <h1 className="mt-4 text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05]">
               We Build Digital Solutions That Bring You Results
             </h1>
             <p className="mt-6 text-muted max-w-2xl text-base md:text-lg">
               Create complete digital strategies that turn your digital presence into your strongest sales channel. Get more leads, customers, and revenue with our proven modern approach.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            
+            {/* Desktop buttons - original positioning */}
+            <div className="mt-8 hidden md:flex flex-wrap gap-4">
               <a href="#contact-form" className="btn-primary glow-ring inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-medium">
                 Get Your Free Digital Health Check
                 <ArrowRight className="size-4" />
               </a>
-                             <a href="#services" className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-medium border border-cyan-400/30 hover:border-cyan-400/50 transition">
+              <a href="#services" className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-medium border border-cyan-400/30 hover:border-cyan-400/50 transition">
                 See Our Services
-          </a>
+              </a>
+            </div>
+          </div>
         </div>
+        
+        {/* Mobile buttons - positioned with full flexibility */}
+        <div className="absolute bottom-8 left-6 right-6 z-20 md:hidden">
+          <div className="flex flex-wrap gap-4 justify-start ml-4">
+            <a href="#contact-form" className="btn-primary glow-ring inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium">
+              Get Your Free Digital Health Check
+              <ArrowRight className="size-4" />
+            </a>
+            <a href="#services" className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium border border-cyan-400/30 hover:border-cyan-400/50 transition">
+              See Our Services
+            </a>
           </div>
         </div>
       </section>
@@ -939,7 +953,7 @@ export default function Home() {
                          setSelectedCaseStudy(study);
                          setIsModalOpen(true);
                        }}
-                                               className="w-full py-2 px-4 rounded-lg bg-white/5 border border-white/10 hover:border-accent/30 transition-colors text-sm font-medium btn-secondary cursor-pointer mt-auto"
+                                               className="w-full py-2 px-4 rounded-lg bg-white/5 border border-white/10 hover:border-accent/30 transition-colors text-sm font-medium btn-secondary btn-secondary-no-shine-mobile cursor-pointer mt-auto"
                      >
                        <span className="md:hidden">View Before & After</span>
                        <span className="hidden md:inline">View Full Case Study</span>
@@ -986,7 +1000,7 @@ export default function Home() {
                 Get Your Free Digital Health Check
                 <ArrowRight className="size-5" />
               </a>
-                             <a href="tel:+447541516344" className="glass inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-medium border border-cyan-400/30 hover:border-cyan-400/50 transition">
+                             <a href="tel:+447541516344" className="glass btn-primary-no-shine-mobile inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-medium border border-cyan-400/30 hover:border-cyan-400/50 transition">
                 Call Now: (+44) 7541 516 344
               </a>
             </div>

@@ -112,7 +112,7 @@ const Navigation = () => {
           {/* Mobile Menu Button - Morphs into X */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg glass border border-black hover:border-accent/30 transition-all duration-300"
+            className="lg:hidden p-2 rounded-lg glass glass-no-shine-mobile border border-black hover:border-accent/30 transition-all duration-300"
             aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
           >
             <div className="relative w-5 h-5">

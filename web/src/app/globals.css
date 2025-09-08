@@ -975,6 +975,33 @@ footer {
   transform: translateY(-1px) scale(1.02);
 }
 
+/* Mobile-specific button classes without shine effects */
+@media (max-width: 767px) {
+  .btn-primary-no-shine-mobile::after {
+    display: none !important;
+  }
+  
+  .btn-primary-no-shine-mobile:hover::after {
+    display: none !important;
+  }
+  
+  .btn-secondary-no-shine-mobile::before {
+    display: none !important;
+  }
+  
+  .btn-secondary-no-shine-mobile:hover::before {
+    display: none !important;
+  }
+  
+  .glass-no-shine-mobile::before {
+    display: none !important;
+  }
+  
+  .glass-no-shine-mobile:hover::before {
+    display: none !important;
+  }
+}
+
 /* Mobile menu animations */
 @keyframes fadeInUp {
   from {

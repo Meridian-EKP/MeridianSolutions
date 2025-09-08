@@ -57,11 +57,11 @@ export default function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudy
       />
       
       {/* Modal */}
-      <div 
-        ref={modalRef}
+              <div 
+          ref={modalRef}
         className="relative w-full max-w-4xl max-h-[85vh] md:max-h-[90vh] overflow-y-auto rounded-3xl bg-black/40 border border-cyan-400/30 backdrop-blur-xl shadow-2xl shadow-accent/20 modal-enter"
-        onClick={(e) => e.stopPropagation()}
-      >
+          onClick={(e) => e.stopPropagation()}
+        >
         {/* Close Button */}
         <button
           onClick={onClose}
