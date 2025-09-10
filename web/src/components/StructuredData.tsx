@@ -74,8 +74,8 @@ export default function StructuredData() {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Google Business Profile Optimisation",
-            "description": "Complete optimisation of Google Business Profile for local search"
+            "name": "Business Profile Optimisation",
+            "description": "Complete optimisation of Business Profile for local search"
           }
         },
         {

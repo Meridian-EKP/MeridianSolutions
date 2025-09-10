@@ -528,10 +528,10 @@ export default function Home() {
               icon: Globe
             },
             { 
-              title: "Google Business Profile Optimisation", 
-              desc: "Complete Google Business Profile management for maximum local visibility.",
+              title: "Business Profile Optimisation", 
+              desc: "Complete Business Profile management for maximum local visibility.",
               fullDesc: "Complete GBP optimisation, review management, and local ranking strategies that get you found first.",
-              detailedDesc: "Transform your Google Business Profile into a powerful lead generation machine. We optimise every element to dominate local search results and convert map searches into paying customers.\n\nOur comprehensive GBP strategy includes review management, post scheduling, local keyword optimisation, and ongoing monitoring to ensure you stay ahead of competitors.",
+              detailedDesc: "Transform your Business Profile into a powerful lead generation machine. We optimise every element to dominate local search results and convert map searches into paying customers.\n\nOur comprehensive Business Profile strategy includes review management, post scheduling, local keyword optimisation, and ongoing monitoring to ensure you stay ahead of competitors.",
               pricing: "One-time setup from £200 • Ongoing from £100/month",
               benefits: ["Complete profile optimisation", "Review management system", "Local ranking strategies", "Monthly performance reports", "Ongoing competitor monitoring"],
               icon: MapPin
@@ -819,7 +819,7 @@ export default function Home() {
                     title: "Café Bloom",
                     industry: "Local Coffee Shop",
                                          result: "From generic to irresistable",
-                    description: "Complete digital transformation including website redesign, local SEO, and Google Business Profile optimisation.",
+                    description: "Complete digital transformation including website redesign, local SEO, and Business Profile optimisation.",
                     metrics: ["Menu now accessible online", "Online ordering integrated", "Social media buzz created"],
                     beforePoints: ["Outdated one-page site", "No menu online", "No online ordering", "Weak social media"],
                     afterPoints: ["Interactive digital menu", "Online ordering system", "Instagram feed integration", "Modern responsive design"],
@@ -831,9 +831,9 @@ export default function Home() {
                     industry: "Plumbing & Heating",
                     result: "From invisible to fully booked locally",
                     description: "Multi-platform presence with optimised ordering system, social media strategy, and reputation management.",
-                    metrics: ["Website now mobile-friendly", "Google Business Profile optimised", "Clear call-to-actions driving bookings"],
-                    beforePoints: ["No Google Business Profile", "No reviews", "Hard to contact", "Poor mobile usability"],
-                    afterPoints: ["Optimised Google Business Profile", "Mobile-friendly service pages", "'Call Now' booking buttons", "Customer reviews highlighted"],
+                    metrics: ["Website now mobile-friendly", "Business Profile optimised", "Clear call-to-actions driving bookings"],
+                    beforePoints: ["No Business Profile", "No reviews", "Hard to contact", "Poor mobile usability"],
+                    afterPoints: ["Optimised Business Profile", "Mobile-friendly service pages", "'Call Now' booking buttons", "Customer reviews highlighted"],
                                           detailedDescription: "FlowPro Plumbing went from struggling to get calls to dominating local search results with an optimised online presence and streamlined booking system."
                   },
                   {

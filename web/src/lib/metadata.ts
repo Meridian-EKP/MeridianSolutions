@@ -25,7 +25,7 @@ export const baseMetadata: Metadata = {
     "local business marketing",
     "website development",
     "local SEO",
-    "Google Business Profile optimisation",
+    "Business Profile optimisation",
     "digital marketing agency",
     "small business websites",
     "local search marketing",
