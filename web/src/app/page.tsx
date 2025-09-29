@@ -252,7 +252,7 @@ export default function Home() {
         {/* Mobile Starfield Background - Only visible on mobile */}
         <MobileStarfield 
           className="absolute top-2 left-2 right-2 bottom-16 z-0 rounded-3xl overflow-hidden md:hidden"
-          particleCount={50}
+          particleCount={150}
           flareCount={2}
           color="#5ee7ff"
           linkChance={20}

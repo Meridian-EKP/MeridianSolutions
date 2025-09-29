@@ -99,12 +99,12 @@ const MobileStarfield: React.FC<MobileStarfieldProps> = ({
   // Mobile-optimized settings
   const settings = useMemo(() => {
     return {
-      motion: 0.01, // Much slower motion on mobile to keep stars in view
+      motion: 0.01, // Increased motion for more dynamic stars on mobile
       tilt: 0.01, // Much less tilt on mobile to keep stars in view
       particleSizeBase: 1, // Keep particle size at 1
-      particleSizeMultiplier: 0.3, // Much smaller multiplier for closer stars on mobile
-      flareSizeBase: 80, // Smaller flares on mobile
-      flareSizeMultiplier: 80, // Smaller flares on mobile
+      particleSizeMultiplier: 0.3, // Larger multiplier for more visible stars on mobile
+      flareSizeBase: 20, // Much smaller flares on mobile
+      flareSizeMultiplier: 20, // Much smaller flares on mobile
       lineWidth: 1, // Keep line width at 1
       linkLengthMin: 3, // Shorter links on mobile
       linkLengthMax: 5, // Shorter links on mobile
@@ -112,7 +112,7 @@ const MobileStarfield: React.FC<MobileStarfieldProps> = ({
       linkFade: 60, // Faster fade on mobile
       linkSpeed: 0.8, // Slower link speed on mobile
       glareAngle: -60,
-      glareOpacityMultiplier: 0.08, // More glare on mobile
+      glareOpacityMultiplier: 0.08, // More prominent glare on mobile
       renderParticleGlare: true,
       flickerSmoothing: 10, // Less flicker smoothing on mobile
       blurSize: 0,
@@ -270,9 +270,9 @@ const MobileStarfield: React.FC<MobileStarfieldProps> = ({
   // Particle class
   const createParticle = useCallback((): Particle => {
     const particle: Particle = {
-      x: random(0.05, 0.95, true), // Better coverage across mobile starfield
-      y: random(0.05, 0.95, true), // Better coverage across mobile starfield
-      z: random(0.1, 1.5, true), // Even closer stars on mobile for better visibility
+      x: random(-0.1, 1.1, true), // Full coverage across mobile starfield
+      y: random(-0.1, 1.1, true), // Full coverage across mobile starfield
+      z: random(0.1, 3, true), // Wider z range for more visible stars on mobile
       color,
       opacity: random(0.1, 1, true),
       flicker: 0,
@@ -307,7 +307,7 @@ const MobileStarfield: React.FC<MobileStarfieldProps> = ({
           ctx.ellipse(
             pos.x, 
             pos.y, 
-            r * 100, 
+            r * 30, 
             r, 
             (settings.glareAngle - ((stateRef.current.nPos.x - 0.5) * settings.noiseStrength * settings.motion)) * (Math.PI / 180), 
             0, 
