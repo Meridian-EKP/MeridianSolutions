@@ -15,8 +15,8 @@ export default function Footer() {
     { href: "#about", label: "About" },
     { href: "#services", label: "Services" },
     { href: "#work", label: "Case Studies" },
-    { href: "#testimonials", label: "Testimonials" },
-    { href: "#contact", label: "Contact" }
+    { href: "#contact", label: "Contact" },
+    { href: "#contact-form", label: "Digital Health Check" }
   ];
 
 
