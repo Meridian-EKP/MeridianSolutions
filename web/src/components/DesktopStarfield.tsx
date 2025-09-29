@@ -23,6 +23,7 @@ interface Particle {
   color: string;
   opacity: number;
   flicker: number;
+  glareLength: number;
   neighbors: number[];
   render: () => void;
 }
@@ -112,7 +113,7 @@ const DesktopStarfield: React.FC<DesktopStarfieldProps> = ({
       linkFade: 90, // Normal fade on desktop
       linkSpeed: 1, // Normal link speed on desktop
       glareAngle: -60,
-      glareOpacityMultiplier: 0.05, // Normal glare on desktop
+      glareOpacityMultiplier: 0.08, // Same glare as mobile
       renderParticleGlare: true,
       flickerSmoothing: 15, // Normal flicker smoothing on desktop
       blurSize: 0,
@@ -276,6 +277,7 @@ const DesktopStarfield: React.FC<DesktopStarfieldProps> = ({
       color,
       opacity: random(0.1, 1, true),
       flicker: 0,
+      glareLength: random(20, 80, true), // Random glare length between 20 and 80
       neighbors: [],
       render: function() {
         const pos = position(this.x, this.y, this.z);
@@ -307,7 +309,7 @@ const DesktopStarfield: React.FC<DesktopStarfieldProps> = ({
           ctx.ellipse(
             pos.x, 
             pos.y, 
-            r * 100, 
+            r * this.glareLength, 
             r, 
             (settings.glareAngle - ((stateRef.current.nPos.x - 0.5) * settings.noiseStrength * settings.motion)) * (Math.PI / 180), 
             0, 
