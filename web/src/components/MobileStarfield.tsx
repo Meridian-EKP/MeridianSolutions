@@ -118,6 +118,9 @@ const MobileStarfield: React.FC<MobileStarfieldProps> = ({
       blurSize: 0,
       noiseLength: 500, // Shorter noise on mobile
       noiseStrength: 1.5, // Stronger noise on mobile
+      // Maximum normalized distance (0..1 in canvas units) per constellation segment
+      // Example: 0.18 ≈ 18% of canvas size
+      constellationMaxSegmentNorm: 0.75,
     };
   }, []);
 
@@ -140,13 +143,18 @@ const MobileStarfield: React.FC<MobileStarfieldProps> = ({
   const position = useCallback((x: number, y: number, z: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return { x: 0, y: 0 };
-    
+
+    // Work in CSS pixel space because the context is scaled by devicePixelRatio
+    const dpr = (typeof window !== 'undefined' && window.devicePixelRatio) ? window.devicePixelRatio : 1;
+    const cssWidth = canvas.width / dpr;
+    const cssHeight = canvas.height / dpr;
+
     // Ensure z has a minimum value to prevent static stars
     const effectiveZ = Math.max(z, 0.1);
-    
+
     return {
-      x: (x * canvas.width) + ((((canvas.width / 2) - stateRef.current.mouse.x + ((stateRef.current.nPos.x - 0.5) * settings.noiseStrength)) * effectiveZ) * settings.motion),
-      y: (y * canvas.height) + ((((canvas.height / 2) - stateRef.current.mouse.y + ((stateRef.current.nPos.y - 0.5) * settings.noiseStrength)) * effectiveZ) * settings.motion),
+      x: (x * cssWidth) + ((((cssWidth / 2) - stateRef.current.mouse.x + ((stateRef.current.nPos.x - 0.5) * settings.noiseStrength)) * effectiveZ) * settings.motion),
+      y: (y * cssHeight) + ((((cssHeight / 2) - stateRef.current.mouse.y + ((stateRef.current.nPos.y - 0.5) * settings.noiseStrength)) * effectiveZ) * settings.motion),
     };
   }, [settings.motion, settings.noiseStrength]);
 
@@ -174,25 +182,69 @@ const MobileStarfield: React.FC<MobileStarfieldProps> = ({
 
   // Create constellation
   const createConstellation = useCallback((): Constellation => {
-    const starCount = 3; // Strict 3 stars for mobile constellation lines
+    const starCount = random(4, 6); // 4 to 6 stars for mobile constellation lines
     const stars: number[] = [];
-    
-    // Select random stars for the constellation
-    for (let i = 0; i < starCount; i++) {
-      let starIndex;
-      do {
-        starIndex = random(0, stateRef.current.particles.length - 1);
-      } while (stars.includes(starIndex));
-      stars.push(starIndex);
+
+    // Helper to measure normalized distance in star space (x,y in 0..1)
+    const distNorm = (a: Particle, b: Particle) => {
+      const dx = a.x - b.x;
+      const dy = a.y - b.y;
+      return Math.sqrt(dx * dx + dy * dy);
+    };
+
+    // Find a start star that has at least one neighbor within maxNorm
+    const maxNorm = settings.constellationMaxSegmentNorm;
+    let attempts = 0;
+    let startIndex = -1;
+    while (attempts < 20) {
+      const candidate = random(0, stateRef.current.particles.length - 1);
+      const cStar = stateRef.current.particles[candidate];
+      let hasNeighbor = false;
+      for (let i = 0; i < stateRef.current.particles.length; i++) {
+        if (i === candidate) continue;
+        const p = stateRef.current.particles[i];
+        const d = distNorm(cStar, p);
+        if (d > 0 && d <= maxNorm) { hasNeighbor = true; break; }
+      }
+      if (hasNeighbor) { startIndex = candidate; break; }
+      attempts++;
     }
-    
+    if (startIndex !== -1) stars.push(startIndex);
+
+    // Iteratively pick nearest valid neighbors within a max normalized distance
+    while (stars.length > 0 && stars.length < starCount) {
+      const last = stateRef.current.particles[stars[stars.length - 1]];
+      if (!last) break;
+
+      // Build candidate list of neighbors not yet used, within maxNorm
+      const candidates: Array<{ idx: number; d: number }> = [];
+      for (let i = 0; i < stateRef.current.particles.length; i++) {
+        if (stars.includes(i)) continue;
+        const p = stateRef.current.particles[i];
+        const d = distNorm(last, p);
+        if (d > 0 && d <= maxNorm) {
+          candidates.push({ idx: i, d });
+        }
+      }
+
+      if (candidates.length === 0) {
+        // No nearby stars left; stop extending constellation
+        break;
+      }
+
+      // Prefer the closest candidate or a small random among the closest few
+      candidates.sort((a, b) => a.d - b.d);
+      const pick = candidates[Math.min(random(0, 2), candidates.length - 1)].idx;
+      stars.push(pick);
+    }
+
     const constellation: Constellation = {
       id: stateRef.current.constellationId++,
       stars,
       path: [], // Will be calculated dynamically each frame
       progress: 0,
       fade: 0,
-      duration: random(12000, 15000), // More consistent speed for mobile constellation lines
+      duration: random(4500, 6000), // Much faster overall speed for mobile constellation lines
       startTime: Date.now(),
       finished: false,
       render: function() {
@@ -245,14 +297,14 @@ const MobileStarfield: React.FC<MobileStarfieldProps> = ({
         for (let i = 0; i < currentPath.length - 1; i++) {
           const current = currentPath[i];
           const next = currentPath[i + 1];
-          
+
           // Calculate progress along this segment
-          const segmentProgress = Math.max(0, Math.min(1, (this.progress - i * 0.2) / 0.2));
-          
+          const segmentProgress = Math.max(0, Math.min(1, (this.progress - i * 0.1) / 0.1));
+
           if (segmentProgress > 0) {
             const endX = current[0] + (next[0] - current[0]) * segmentProgress;
             const endY = current[1] + (next[1] - current[1]) * segmentProgress;
-            
+
             if (i === 0) {
               ctx.moveTo(current[0], current[1]);
             }
@@ -576,10 +628,11 @@ const MobileStarfield: React.FC<MobileStarfieldProps> = ({
     }
 
     // Render constellations
-    // Reduced constellation spawning for mobile
+    // Reduced constellation spawning for mobile with active cap of 2
     const constellationChance = random(0, 1000);
     const spawnThreshold = 990; // 1% spawn rate on mobile for fewer constellations
-    if (constellationChance >= spawnThreshold) {
+    const activeCount = stateRef.current.constellations.reduce((count, c) => count + (c && !c.finished ? 1 : 0), 0);
+    if (activeCount < 2 && constellationChance >= spawnThreshold) {
       const constellation = createConstellation();
       stateRef.current.constellations.push(constellation);
     }
@@ -678,9 +731,7 @@ const MobileStarfield: React.FC<MobileStarfieldProps> = ({
       }
     }
 
-    // Add event listeners
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('touchmove', handleTouchMove, { passive: true });
+    // Mobile: do not track pointer to avoid unexpected parallax shifts
     
     // Enhanced resize handling
     let resizeTimeout: NodeJS.Timeout;
@@ -709,8 +760,7 @@ const MobileStarfield: React.FC<MobileStarfieldProps> = ({
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('touchmove', handleTouchMove);
+      // No pointer listeners to remove for mobile
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('orientationchange', handleResize);
       clearTimeout(resizeTimeout);

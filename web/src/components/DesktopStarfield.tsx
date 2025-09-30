@@ -175,7 +175,7 @@ const DesktopStarfield: React.FC<DesktopStarfieldProps> = ({
 
   // Create constellation
   const createConstellation = useCallback((): Constellation => {
-    const starCount = random(3, 6); // Normal star count for desktop
+    const starCount = random(3, 4); // Reduced star count per constellation on desktop
     const stars: number[] = [];
     
     // Select random stars for the constellation
@@ -578,10 +578,11 @@ const DesktopStarfield: React.FC<DesktopStarfieldProps> = ({
     }
 
     // Render constellations
-    // Normal constellation spawning for desktop
+    // Normal constellation spawning for desktop with active cap of 2
     const constellationChance = random(0, 1000);
     const spawnThreshold = 985; // Normal frequency on desktop (1.5%)
-    if (constellationChance >= spawnThreshold) {
+    const activeCount = stateRef.current.constellations.reduce((count, c) => count + (c && !c.finished ? 1 : 0), 0);
+    if (activeCount < 2 && constellationChance >= spawnThreshold) {
       const constellation = createConstellation();
       stateRef.current.constellations.push(constellation);
     }

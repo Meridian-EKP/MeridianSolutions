@@ -252,13 +252,13 @@ export default function Home() {
         {/* Mobile Starfield Background - Only visible on mobile */}
         <MobileStarfield 
           className="absolute top-2 left-2 right-2 bottom-16 z-0 rounded-3xl overflow-hidden md:hidden"
-          particleCount={150}
+          particleCount={65}
           flareCount={2}
           color="#5ee7ff"
           linkChance={20}
           renderParticles={true}
           renderFlares={true}
-          renderLinks={true}
+          renderLinks={false}
           flicker={true}
         />
         
