@@ -321,14 +321,15 @@ export default function Home() {
              {/* ABOUT */}
        <section id="about" className="relative py-24 md:py-32">
          <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10">
-           <div className="grid md:grid-cols-2 gap-10 items-start">
-           <div className="about-content space-y-6">
+          <div className="grid md:grid-cols-2 gap-10 items-start md:items-center">
+          <div className="about-content space-y-6 lg:-mt-16">
              <h2 className="text-2xl md:text-4xl font-semibold">Why Meridian?</h2>
              <div className="glass-no-shine rounded-3xl p-6 md:p-10 border border-white/10 transition-transform duration-300 hover:scale-105">
                <div className="relative z-10">
                  {/* Collapsed content for mobile */}
-                 <div className="md:hidden">
-                   <p className="text-muted">
+                <div className="md:hidden">
+                  <h3 className="text-lg font-semibold text-accent mb-3">We Drive Growth</h3>
+                  <p className="text-muted">
                      MeridianSolutions specialises in turning local businesses into digital leaders. We don&apos;t just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
                    </p>
                                        <div className="mt-4 flex items-center">
@@ -410,8 +411,9 @@ export default function Home() {
                   </div>
                  
                  {/* Desktop view - always visible */}
-                 <div className="hidden md:block">
-                   <p className="text-muted">
+                <div className="hidden md:block">
+                  <h3 className="text-lg font-semibold text-accent mb-3">We Drive Growth</h3>
+                  <p className="text-muted">
                      MeridianSolutions specialises in turning local businesses into digital leaders. We don&apos;t just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
                    </p>
                    <p className="mt-4 text-muted">
