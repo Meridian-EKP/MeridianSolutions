@@ -80,7 +80,7 @@ export default function Footer() {
                    </p>
                  </div>
                  <p className="text-xs text-muted leading-relaxed mt-0">
-                   Transforming local businesses into digital leaders through cutting-edge technology and proven marketing strategies.
+                   Transforming local businesses into digital leaders through modern technology and proven marketing strategies.
                  </p>
             </div>
 
