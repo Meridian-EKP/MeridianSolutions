@@ -150,7 +150,7 @@ const Navigation = () => {
         {/* Menu Content */}
         <div className="relative h-full flex flex-col items-center justify-start z-40" style={{ minHeight: 'calc(100vh - 80px)', paddingBottom: 'calc(env(safe-area-inset-bottom) + 120px)' }}>
           {/* Navigation Links and Get Started - distributed to fill vertical space */}
-          <div className="flex flex-col items-center justify-between w-full gap-3" style={{ marginTop: '20vh', minHeight: '55vh' }}>
+          <div className="flex flex-col items-center justify-between w-full gap-3" style={{ marginTop: '14vh', minHeight: '55vh' }}>
             {navLinks.map((link, index) => (
               <button
                 key={link.href}
