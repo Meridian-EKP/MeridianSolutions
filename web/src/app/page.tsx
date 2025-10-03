@@ -797,19 +797,22 @@ export default function Home() {
                 // Completely prevent the default wheel behavior
                 e.preventDefault();
                 e.stopPropagation();
-                
+
                 const container = e.currentTarget;
                 const cardWidth = container.scrollWidth / 27; // 27 cards (9 × 3) for circular scroll
-                
-                // Only handle horizontal scrolling
+
+                // Heuristic: small pixel deltas indicate trackpad (deltaMode 0 and small deltaY)
+                const isTrackpad = e.deltaMode === 0 && Math.abs(e.deltaY) < 50;
+
                 if (e.deltaY !== 0) {
-                  if (e.deltaY > 0) {
-                    // Scroll right
-                    container.scrollBy({ left: cardWidth, behavior: 'smooth' });
-                  } else {
-                    // Scroll left
-                    container.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-                  }
+                  const direction = e.deltaY > 0 ? 1 : -1; // default: wheel down => right
+                  const effectiveDirection = isTrackpad ? -direction : direction; // flip only on trackpad
+                  container.scrollBy({ left: effectiveDirection * cardWidth, behavior: 'smooth' });
+                } else if (Math.abs(e.deltaX) > 0) {
+                  // Handle horizontal gestures as well (primarily trackpads)
+                  const directionX = e.deltaX > 0 ? 1 : -1;
+                  const effectiveDirectionX = isTrackpad ? -directionX : directionX;
+                  container.scrollBy({ left: effectiveDirectionX * cardWidth, behavior: 'smooth' });
                 }
               }}
 
@@ -989,7 +992,7 @@ export default function Home() {
 
 
       {/* CTA */}
-      <section id="contact" className="relative pt-24 md:pt-2 pb-32 md:pb-48 min-h-screen flex items-center">
+      <section id="contact" className="relative pt-24 md:pt-2 pb-16 md:pb-24 min-h-screen flex items-center">
         <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10 text-center">
                      <div className="glass-no-shine rounded-3xl p-10 md:p-16 border border-white/10 transition-transform duration-300 hover:scale-105">
             <h2 className="text-2xl md:text-4xl font-semibold">Ready to Dominate Your Local Market?</h2>
@@ -1024,7 +1027,7 @@ export default function Home() {
       </div>
 
       {/* CONTACT FORM */}
-      <section id="contact-form" className="relative pt-24 md:pt-32 pb-32 md:pb-48 bg-black/20 min-h-screen">
+      <section id="contact-form" className="relative pt-16 md:pt-24 pb-32 md:pb-48 min-h-screen">
         <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10">
           <ContactForm />
         </div>

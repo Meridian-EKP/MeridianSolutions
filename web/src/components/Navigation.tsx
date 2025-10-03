@@ -148,14 +148,14 @@ const Navigation = () => {
         <div className="absolute inset-0 bg-black/60 backdrop-blur-md" />
         
         {/* Menu Content */}
-        <div className="relative h-full flex flex-col items-center justify-start z-40 pt-16" style={{ minHeight: 'calc(100vh - 80px)' }}>
-          {/* Navigation Links and Get Started - Equal Spacing */}
-          <div className="flex flex-col items-center space-y-8">
+        <div className="relative h-full flex flex-col items-center justify-start z-40" style={{ minHeight: 'calc(100vh - 80px)', paddingBottom: 'calc(env(safe-area-inset-bottom) + 120px)' }}>
+          {/* Navigation Links and Get Started - distributed to fill vertical space */}
+          <div className="flex flex-col items-center justify-between w-full gap-3" style={{ marginTop: '20vh', minHeight: '55vh' }}>
             {navLinks.map((link, index) => (
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className={`group relative text-2xl font-medium text-white hover:text-accent transition-all duration-500 cursor-pointer transform ${
+                className={`group relative text-3xl font-medium text-white hover:text-accent transition-all duration-500 cursor-pointer transform ${
                   isMobileMenuOpen 
                     ? 'opacity-100 translate-y-0' 
                     : 'opacity-0 translate-y-8'
@@ -173,7 +173,7 @@ const Navigation = () => {
             {/* Get Started Button - Same Text Size, Equal Spacing with Animation */}
             <button
               onClick={() => scrollToSection("#contact-form")}
-              className={`btn-primary px-9 py-3 rounded-full text-2xl font-medium transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-accent/30 cursor-pointer transform ${
+              className={`btn-primary px-9 py-3 rounded-full text-3xl font-medium transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-accent/30 cursor-pointer transform ${
                 isMobileMenuOpen 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-8'
