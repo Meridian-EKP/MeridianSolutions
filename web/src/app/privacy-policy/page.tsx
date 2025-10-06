@@ -16,12 +16,12 @@ export const metadata: Metadata = privacyPolicyMetadata;
  */
 
 export default function PrivacyPolicy() {
-  const currentDate = new Date().toLocaleDateString('en-GB');
+  const lastUpdated = "15/09/2025";
   
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-black">
       {/* Header */}
-      <div className="relative pt-24 pb-12 border-b border-white/10 bg-gradient-to-b from-gray-900 to-gray-800/50">
+      <div className="relative pt-24 pb-12 border-b border-white/10 bg-gradient-to-b from-black to-black/70">
         <div className="mx-auto w-full max-w-4xl px-6 md:px-10">
           <Link 
             href="/"
@@ -33,7 +33,7 @@ export default function PrivacyPolicy() {
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
             Privacy Policy
           </h1>
-          <p className="text-gray-400 text-lg">Last updated: {currentDate}</p>
+          <p className="text-gray-400 text-lg">Last updated: {lastUpdated}</p>
         </div>
       </div>
 
@@ -41,7 +41,7 @@ export default function PrivacyPolicy() {
       <div className="mx-auto w-full max-w-4xl px-6 md:px-10 py-16">
         <div className="space-y-12">
           
-          <section className="bg-gray-800/40 rounded-2xl p-8 md:p-12 border border-white/10">
+          <section className="glass-no-shine rounded-2xl p-8 md:p-12 border border-white/10">
             <h2 className="text-2xl font-bold mb-6 text-white">1. Information We Collect</h2>
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">
@@ -60,7 +60,7 @@ export default function PrivacyPolicy() {
             </div>
           </section>
 
-          <section className="bg-gray-800/40 rounded-2xl p-8 md:p-12 border border-white/10">
+          <section className="glass-no-shine rounded-2xl p-8 md:p-12 border border-white/10">
             <h2 className="text-2xl font-bold mb-6 text-white">2. How We Use Your Information</h2>
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">We use the information we collect to:</p>
@@ -74,7 +74,7 @@ export default function PrivacyPolicy() {
             </div>
           </section>
 
-          <section className="bg-gray-800/40 rounded-2xl p-8 md:p-12 border border-white/10">
+          <section className="glass-no-shine rounded-2xl p-8 md:p-12 border border-white/10">
             <h2 className="text-2xl font-bold mb-6 text-white">3. Information Sharing</h2>
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">
@@ -90,7 +90,7 @@ export default function PrivacyPolicy() {
             </div>
           </section>
 
-          <section className="bg-gray-800/40 rounded-2xl p-8 md:p-12 border border-white/10">
+          <section className="glass-no-shine rounded-2xl p-8 md:p-12 border border-white/10">
             <h2 className="text-2xl font-bold mb-6 text-white">4. Data Security</h2>
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">
@@ -102,7 +102,7 @@ export default function PrivacyPolicy() {
             </div>
           </section>
 
-          <section className="bg-gray-800/40 rounded-2xl p-8 md:p-12 border border-white/10">
+          <section className="glass-no-shine rounded-2xl p-8 md:p-12 border border-white/10">
             <h2 className="text-2xl font-bold mb-6 text-white">5. Cookies and Tracking</h2>
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">
@@ -113,7 +113,7 @@ export default function PrivacyPolicy() {
             </div>
           </section>
 
-          <section className="bg-gray-800/40 rounded-2xl p-8 md:p-12 border border-white/10">
+          <section className="glass-no-shine rounded-2xl p-8 md:p-12 border border-white/10">
             <h2 className="text-2xl font-bold mb-6 text-white">6. Your Rights</h2>
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">You have the right to:</p>
@@ -134,7 +134,7 @@ export default function PrivacyPolicy() {
                 If you have any questions about this Privacy Policy or our data practices, 
                 please contact us at:
               </p>
-              <div className="bg-gray-700/50 rounded-xl p-8 border border-white/10">
+              <div className="glass-no-shine rounded-xl p-8 border border-white/10">
                 <p className="font-bold text-white text-xl mb-4">MeridianSolutions</p>
                 <div className="space-y-3">
                   <p className="text-lg">

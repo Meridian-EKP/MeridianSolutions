@@ -16,12 +16,12 @@ export const metadata: Metadata = termsOfServiceMetadata;
  */
 
 export default function TermsOfService() {
-  const currentDate = new Date().toLocaleDateString('en-GB');
+  const lastUpdated = "15/09/2025";
   
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-black">
       {/* Header */}
-      <div className="relative pt-24 pb-12 border-b border-white/10 bg-gradient-to-b from-gray-900 to-gray-800/50">
+      <div className="relative pt-24 pb-12 border-b border-white/10 bg-gradient-to-b from-black to-black/70">
         <div className="mx-auto w-full max-w-4xl px-6 md:px-10">
           <Link 
             href="/"
@@ -33,7 +33,7 @@ export default function TermsOfService() {
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
             Terms of Service
           </h1>
-          <p className="text-gray-400 text-lg">Last updated: {currentDate}</p>
+          <p className="text-gray-400 text-lg">Last updated: {lastUpdated}</p>
         </div>
       </div>
 
@@ -41,7 +41,7 @@ export default function TermsOfService() {
       <div className="mx-auto w-full max-w-4xl px-6 md:px-10 py-16">
         <div className="space-y-12">
           
-          <section className="bg-gray-800/40 rounded-2xl p-8 md:p-12 border border-white/10">
+          <section className="glass-no-shine rounded-2xl p-8 md:p-12 border border-white/10">
             <h2 className="text-2xl font-bold mb-6 text-white">1. Acceptance of Terms</h2>
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">
@@ -52,7 +52,7 @@ export default function TermsOfService() {
             </div>
           </section>
 
-          <section className="bg-gray-800/40 rounded-2xl p-8 md:p-12 border border-white/10">
+          <section className="glass-no-shine rounded-2xl p-8 md:p-12 border border-white/10">
             <h2 className="text-2xl font-bold mb-6 text-white">2. Description of Service</h2>
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">
@@ -69,7 +69,7 @@ export default function TermsOfService() {
             </div>
           </section>
 
-          <section className="bg-gray-800/40 rounded-2xl p-8 md:p-12 border border-white/10">
+          <section className="glass-no-shine rounded-2xl p-8 md:p-12 border border-white/10">
             <h2 className="text-2xl font-bold mb-6 text-white">3. User Responsibilities</h2>
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">When using our services, you agree to:</p>
@@ -84,7 +84,7 @@ export default function TermsOfService() {
             </div>
           </section>
 
-          <section className="bg-gray-800/40 rounded-2xl p-8 md:p-12 border border-white/10">
+          <section className="glass-no-shine rounded-2xl p-8 md:p-12 border border-white/10">
             <h2 className="text-2xl font-bold mb-6 text-white">4. Payment Terms</h2>
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">
@@ -100,7 +100,7 @@ export default function TermsOfService() {
             </div>
           </section>
 
-          <section className="bg-gray-800/40 rounded-2xl p-8 md:p-12 border border-white/10">
+          <section className="glass-no-shine rounded-2xl p-8 md:p-12 border border-white/10">
             <h2 className="text-2xl font-bold mb-6 text-white">5. Intellectual Property</h2>
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">
@@ -112,7 +112,7 @@ export default function TermsOfService() {
             </div>
           </section>
 
-          <section className="bg-gray-800/40 rounded-2xl p-8 md:p-12 border border-white/10">
+          <section className="glass-no-shine rounded-2xl p-8 md:p-12 border border-white/10">
             <h2 className="text-2xl font-bold mb-6 text-white">6. Limitation of Liability</h2>
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">
@@ -124,7 +124,7 @@ export default function TermsOfService() {
             </div>
           </section>
 
-          <section className="bg-gray-800/40 rounded-2xl p-8 md:p-12 border border-white/10">
+          <section className="glass-no-shine rounded-2xl p-8 md:p-12 border border-white/10">
             <h2 className="text-2xl font-bold mb-6 text-white">7. Service Availability</h2>
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">
@@ -135,7 +135,7 @@ export default function TermsOfService() {
             </div>
           </section>
 
-          <section className="bg-gray-800/40 rounded-2xl p-8 md:p-12 border border-white/10">
+          <section className="glass-no-shine rounded-2xl p-8 md:p-12 border border-white/10">
             <h2 className="text-2xl font-bold mb-6 text-white">8. Termination</h2>
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">
@@ -150,7 +150,7 @@ export default function TermsOfService() {
             </div>
           </section>
 
-          <section className="bg-gray-800/40 rounded-2xl p-8 md:p-12 border border-white/10">
+          <section className="glass-no-shine rounded-2xl p-8 md:p-12 border border-white/10">
             <h2 className="text-2xl font-bold mb-6 text-white">9. Governing Law</h2>
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">
@@ -161,7 +161,7 @@ export default function TermsOfService() {
             </div>
           </section>
 
-          <section className="bg-gray-800/40 rounded-2xl p-8 md:p-12 border border-white/10">
+          <section className="glass-no-shine rounded-2xl p-8 md:p-12 border border-white/10">
             <h2 className="text-2xl font-bold mb-6 text-white">10. Changes to Terms</h2>
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">
@@ -172,22 +172,25 @@ export default function TermsOfService() {
             </div>
           </section>
 
-          <section className="bg-gray-800/40 rounded-2xl p-8 md:p-12 border border-white/10">
+          <section className="glass-no-shine rounded-2xl p-8 md:p-12 border border-white/10">
             <h2 className="text-2xl font-bold mb-6 text-white">11. Contact Information</h2>
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">
                 If you have any questions about these Terms of Service, please contact us:
               </p>
-              <div className="bg-gray-700/50 rounded-xl p-8 border border-white/10">
-                <p className="font-bold text-white text-xl mb-4">MeridianSolutions</p>
-                <div className="space-y-3">
-                  <p className="text-lg">
-                    Email: <a href="mailto:edkemppotter@gmail.com" className="text-accent hover:text-accent/80 font-medium">edkemppotter@gmail.com</a>
-                  </p>
-                  <p className="text-lg">
-                    Phone: <a href="tel:+447541516344" className="text-accent hover:text-accent/80 font-medium">(+44) 7541 516 344</a>
-                  </p>
-                </div>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                <a 
+                  href="mailto:edkemppotter@gmail.com"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:border-accent/40 text-white transition-colors"
+                >
+                  <span className="text-base">edkemppotter@gmail.com</span>
+                </a>
+                <a 
+                  href="tel:+447541516344"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:border-accent/40 text-white transition-colors"
+                >
+                  <span className="text-base">(+44) 7541 516 344</span>
+                </a>
               </div>
             </div>
           </section>

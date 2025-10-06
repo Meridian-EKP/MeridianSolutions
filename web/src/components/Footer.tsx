@@ -22,9 +22,20 @@ export default function Footer() {
 
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    const element = document.querySelector(href) as HTMLElement | null;
+    if (!element) return;
+
+    const isMobileViewport = typeof window !== 'undefined' && window.innerWidth < 1024; // Tailwind lg breakpoint
+    const isServices = href === '#services';
+    const isContactForm = href === '#contact-form';
+
+    if (isMobileViewport && (isServices || isContactForm)) {
+      const rect = element.getBoundingClientRect();
+      const absoluteTop = rect.top + window.pageYOffset;
+      const offset = isServices ? -48 : -32; // mirror Navigation.tsx offsets
+      window.scrollTo({ top: absoluteTop + offset, behavior: 'smooth' });
+    } else {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 

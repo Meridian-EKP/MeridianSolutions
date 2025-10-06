@@ -31,11 +31,28 @@ const Navigation = () => {
   ];
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
+    const element = document.querySelector(href) as HTMLElement | null;
+    if (!element) return;
+
+    // Adjust scroll position for mobile to avoid header overlap (especially for Services)
+    const isMobileViewport = typeof window !== 'undefined' && window.innerWidth < 1024; // Tailwind lg breakpoint
+    const needsServicesOffset = href === "#services" && isMobileViewport;
+    const needsContactFormOffset = href === "#contact-form" && isMobileViewport;
+    if (needsServicesOffset) {
+      const rect = element.getBoundingClientRect();
+      const absoluteTop = rect.top + window.pageYOffset;
+      const offset = -48; // mid-point offset for ideal title visibility
+      window.scrollTo({ top: absoluteTop + offset, behavior: 'smooth' });
+    } else if (needsContactFormOffset) {
+      const rect = element.getBoundingClientRect();
+      const absoluteTop = rect.top + window.pageYOffset;
+      const offset = -32; // slight lift so CTA isn't too close to task bar
+      window.scrollTo({ top: absoluteTop + offset, behavior: 'smooth' });
+    } else {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+
+    setIsMobileMenuOpen(false);
   };
 
   return (
