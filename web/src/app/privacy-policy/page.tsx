@@ -138,7 +138,7 @@ export default function PrivacyPolicy() {
                 <p className="font-bold text-white text-xl mb-4">MeridianSolutions</p>
                 <div className="space-y-3">
                   <p className="text-lg">
-                    Email: <a href="mailto:edkemppotter@gmail.com" className="text-accent hover:text-accent/80 font-medium">edkemppotter@gmail.com</a>
+                    Email: <a href="mailto:Ed@meridiansolutions.xyz" className="text-accent hover:text-accent/80 font-medium">Ed@meridiansolutions.xyz</a>
                   </p>
                   <p className="text-lg">
                     Phone: <a href="tel:+447541516344" className="text-accent hover:text-accent/80 font-medium">(+44) 7541 516 344</a>

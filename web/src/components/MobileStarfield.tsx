@@ -119,7 +119,7 @@ const MobileStarfield: React.FC<MobileStarfieldProps> = ({
       noiseLength: 500, // Shorter noise on mobile
       noiseStrength: 1.5, // Stronger noise on mobile
       // Maximum normalized distance (0..1 in canvas units) per constellation segment
-      // Example: 0.18 ≈ 18% of canvas size
+      // Example: 0.17 ≈ 17% of canvas size
       constellationMaxSegmentNorm: 0.75,
     };
   }, []);

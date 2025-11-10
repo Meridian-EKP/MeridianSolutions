@@ -229,7 +229,7 @@ Source: MeridianSolutions Contact Form
     // Send email
     const mailOptions = {
       from: `"MeridianSolutions Contact Form" <${process.env.EMAIL_USER}>`,
-      to: 'edkemppotter@gmail.com',
+      to: 'Ed@meridiansolutions.xyz',
       subject: 'New Digital Health Check Request',
       text: emailText,
       html: emailHTML,

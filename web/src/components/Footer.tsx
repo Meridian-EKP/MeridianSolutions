@@ -122,10 +122,10 @@ export default function Footer() {
                                                        <h4 className="text-lg font-semibold text-white">Contact</h4>
                                                        <div className="space-y-3">
                                                          <a 
-                                                           href="mailto:edkemppotter@gmail.com"
+                                                           href="mailto:Ed@meridiansolutions.xyz"
                                                            className="footer-contact-item text-sm text-muted hover:text-accent transition-all duration-300 group cursor-pointer block"
                                                          >
-                                                           edkemppotter@gmail.com
+                                                           Ed@meridiansolutions.xyz
                                                          </a>
                                                          <a 
                                                            href="tel:+447541516344"
@@ -164,11 +164,11 @@ export default function Footer() {
                                                        <h4 className="text-lg font-semibold text-white">Contact</h4>
                                                        <div className="space-y-3">
                                                          <a 
-                                                           href="mailto:edkemppotter@gmail.com"
+                                                           href="mailto:Ed@meridiansolutions.xyz"
                                                            className="footer-contact-item flex items-center gap-3 text-sm text-muted hover:text-accent transition-all duration-300 group cursor-pointer"
                                                          >
                                                            <Mail className="size-4 text-accent/60 group-hover:text-accent transition-colors duration-300" />
-                                                           <span>edkemppotter@gmail.com</span>
+                                                           <span>Ed@meridiansolutions.xyz</span>
                                                          </a>
                                                          <a 
                                                            href="tel:+447541516344"
