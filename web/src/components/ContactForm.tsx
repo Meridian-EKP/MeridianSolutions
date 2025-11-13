@@ -437,7 +437,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`w-full btn-primary glow-ring rounded-xl py-4 px-6 font-medium transition-all duration-300 ${
+          className={`w-full btn-gradient-animated rounded-xl py-4 px-6 font-medium transition-all duration-300 ${
             isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:scale-[1.02] cursor-pointer"
           }`}
         >

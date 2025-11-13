@@ -291,7 +291,7 @@ export default function Home() {
             
             {/* Desktop buttons - original positioning */}
             <div className="mt-8 hidden md:flex flex-wrap gap-4">
-              <a href="#contact-form" className="btn-primary glow-ring inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-medium">
+              <a href="#contact-form" className="btn-gradient-animated inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-medium">
                 Get Your Free Digital Health Check
                 <ArrowRight className="size-4" />
               </a>
@@ -305,7 +305,7 @@ export default function Home() {
         {/* Mobile buttons - positioned with full flexibility */}
         <div className="absolute bottom-8 left-6 right-6 z-20 md:hidden">
           <div className="flex flex-wrap gap-4 justify-start ml-4">
-            <a href="#contact-form" className="btn-primary glow-ring inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium">
+            <a href="#contact-form" className="btn-gradient-animated inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium">
               Get Your Free Digital Health Check
               <ArrowRight className="size-4" />
             </a>
@@ -1001,12 +1001,12 @@ export default function Home() {
               <span className="font-medium"> No obligation, just actionable insights.</span>
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#contact-form" className="btn-primary inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-medium">
+              <a href="#contact-form" className="btn-gradient-animated inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-medium">
                 Get Your Free Digital Health Check
                 <ArrowRight className="size-5" />
               </a>
-                             <a href="tel:+447541516344" className="glass btn-primary-no-shine-mobile inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-medium border border-cyan-400/30 hover:border-cyan-400/50 transition">
-                Call Now: (+44) 7541 516 344
+              <a href="mailto:Ed@meridiansolutions.com" className="glass btn-primary-no-shine-mobile inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-medium border border-cyan-400/30 hover:border-cyan-400/50 transition">
+                Email: Ed@meridiansolutions.com
               </a>
             </div>
             <p className="mt-4 text-sm text-muted">✓ 30-minute strategy session ✓ Custom growth roadmap ✓ No sales pressure</p>

@@ -118,10 +118,10 @@ const Navigation = () => {
             ))}
             
             {/* CTA Button */}
-                         <button
-               onClick={() => scrollToSection("#contact-form")}
-               className="btn-primary px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/30 cursor-pointer"
-             >
+            <button
+              onClick={() => scrollToSection("#contact-form")}
+              className="btn-gradient-animated px-6 py-2 text-sm font-medium"
+            >
               Get Started
             </button>
           </div>
@@ -190,7 +190,7 @@ const Navigation = () => {
             {/* Get Started Button - Same Text Size, Equal Spacing with Animation */}
             <button
               onClick={() => scrollToSection("#contact-form")}
-              className={`btn-primary px-9 py-3 rounded-full text-3xl font-medium transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-accent/30 cursor-pointer transform ${
+              className={`btn-gradient-animated px-9 py-3 text-3xl font-medium transform ${
                 isMobileMenuOpen 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-8'
