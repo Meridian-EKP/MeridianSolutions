@@ -1106,3 +1106,17 @@ footer {
   filter: blur(20px);
   opacity: 1;
 }
+
+/* Tone down animated gradient buttons on mobile - use simpler, non-glowing style */
+@media (max-width: 767px) {
+  .btn-gradient-animated {
+    background: linear-gradient(90deg, #5ee7ff 0%, #8a5cff 100%);
+    background-size: 100%;
+    background-position: 0%;
+  }
+
+  .btn-gradient-animated::before,
+  .btn-gradient-animated::after {
+    display: none !important;
+  }
+}

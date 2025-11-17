@@ -24,6 +24,7 @@ interface FormData {
   name: string;
   businessName: string;
   website: string;
+  noWebsite: boolean;
   email: string;
   phoneCountry: string;
   phone: string;
@@ -68,6 +69,7 @@ export default function ContactForm() {
     name: "",
     businessName: "",
     website: "",
+    noWebsite: false,
     email: "",
     phoneCountry: "+1", // Default to US
     phone: "",
@@ -164,6 +166,7 @@ export default function ContactForm() {
           name: "",
           businessName: "",
           website: "",
+          noWebsite: false,
           email: "",
           phoneCountry: "+1",
           phone: "",
@@ -191,6 +194,19 @@ export default function ContactForm() {
     setFormData(prev => ({ ...prev, [name]: value }));
     
     // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: "" }));
+    }
+  };
+
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: checked,
+      ...(name === "noWebsite" && checked ? { website: "" } : {})
+    }));
+    
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: "" }));
     }
@@ -301,23 +317,39 @@ export default function ContactForm() {
         </div>
 
                  {/* Website field - optional */}
-         <div>
-           <label htmlFor="website" className="block text-sm font-medium mb-2">
-             Website Address
-           </label>
+        <div>
+          <label htmlFor="website" className="block text-sm font-medium mb-2">
+            Website Address
+          </label>
           <input
             type="url"
             id="website"
             name="website"
             value={formData.website}
             onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl bg-white/5 border backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-white/10 hover:bg-white/8 border-white/10 focus:border-accent/30"
+            disabled={formData.noWebsite}
+            className={`w-full px-4 py-3 rounded-xl bg-white/5 border backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-white/10 hover:bg-white/8 ${
+              formData.noWebsite ? "opacity-60 cursor-not-allowed border-white/5" : "border-white/10 focus:border-accent/30"
+            }`}
             style={{
               background: 'rgba(255, 255, 255, 0.05)',
               backdropFilter: 'blur(12px)'
             }}
             placeholder="https://www.yourbusiness.com"
           />
+          <div className="mt-2 flex items-center gap-2">
+            <input
+              type="checkbox"
+              id="noWebsite"
+              name="noWebsite"
+              checked={formData.noWebsite}
+              onChange={handleCheckboxChange}
+              className="h-4 w-4 rounded border-white/20 bg-white/5 text-accent focus:ring-accent/40 cursor-pointer"
+            />
+            <label htmlFor="noWebsite" className="text-sm text-muted cursor-pointer select-none">
+              I do not have a website
+            </label>
+          </div>
         </div>
 
                  {/* Email field - full width like website */}
