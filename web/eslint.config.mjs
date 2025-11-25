@@ -1,4 +1,4 @@
-// MeridianSolutions - Digital Marketing Agency Website
+// Meridian Labs - Digital Marketing Agency Website
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";

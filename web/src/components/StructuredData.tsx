@@ -3,12 +3,12 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": "https://meridiansolutions.com",
-"name": "MeridianSolutions",
+"name": "Meridian Labs Group LTD",
     "alternateName": "Meridian Digital",
     "description": "Digital marketing agency specialising in local business growth through conversion-driven websites, local SEO, and data-powered marketing systems.",
     "url": "https://meridiansolutions.com",
     "telephone": "+1-234-567-8900",
-    "email": "hello@meridiansolutions.com",
+    "email": "hello@meridianlabsgroup.xyz",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "123 Business Centre Dr",
@@ -116,7 +116,7 @@ export default function StructuredData() {
           "ratingValue": "5",
           "bestRating": "5"
         },
-        "reviewBody": "MeridianSolutions completely transformed our business. We went from 5-10 customers per day to being fully booked weeks in advance."
+        "reviewBody": "Meridian Labs completely transformed our business. We went from 5-10 customers per day to being fully booked weeks in advance."
       },
       {
         "@type": "Review",

@@ -62,14 +62,14 @@ export default function Footer() {
                              }}
                              className="hover:scale-105 transition-transform duration-300 cursor-pointer"
                            >
-                                                            <Image
-                                 src="/MeridianSolutionsLogoOneLine.png"
-                                 alt="MeridianSolutions"
-                                 width={1300}
-                                 height={325}
-                                 className="h-20 md:h-40 w-auto -ml-4"
-                                 priority
-                               />
+                              <Image
+                                src="/MeridianLabsLogoOneLine.png"
+                                alt="Meridian Labs"
+                                width={1300}
+                                height={325}
+                                className="h-20 md:h-40 w-auto -ml-4"
+                                priority
+                              />
                            </button>
                    ) : (
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <Link
@@ -77,8 +77,8 @@ export default function Footer() {
                               className="hover:scale-105 transition-transform duration-300 cursor-pointer"
                             >
                               <Image
-                                src="/MeridianSolutionsLogoOneLine.png"
-                                alt="MeridianSolutions"
+                                src="/MeridianLabsLogoOneLine.png"
+                                alt="Meridian Labs"
                                 width={1300}
                                 height={325}
                                 className="h-20 md:h-40 w-auto -ml-4"
@@ -122,10 +122,10 @@ export default function Footer() {
                                                        <h4 className="text-lg font-semibold text-white">Contact</h4>
                                                        <div className="space-y-3">
                                                          <a 
-                                                           href="mailto:Ed@meridiansolutions.xyz"
+                                                         href="mailto:hello@meridianlabsgroup.xyz"
                                                            className="footer-contact-item text-sm text-muted hover:text-accent transition-all duration-300 group cursor-pointer block"
                                                          >
-                                                           Ed@meridiansolutions.xyz
+                                                           hello@meridianlabsgroup.xyz
                                                          </a>
                                                          <a 
                                                            href="tel:+447541516344"
@@ -164,11 +164,11 @@ export default function Footer() {
                                                        <h4 className="text-lg font-semibold text-white">Contact</h4>
                                                        <div className="space-y-3">
                                                          <a 
-                                                           href="mailto:Ed@meridiansolutions.xyz"
+                                                           href="mailto:hello@meridianlabsgroup.xyz"
                                                            className="footer-contact-item flex items-center gap-3 text-sm text-muted hover:text-accent transition-all duration-300 group cursor-pointer"
                                                          >
                                                            <Mail className="size-4 text-accent/60 group-hover:text-accent transition-colors duration-300" />
-                                                           <span>Ed@meridiansolutions.xyz</span>
+                                                           <span>hello@meridianlabsgroup.xyz</span>
                                                          </a>
                                                          <a 
                                                            href="tel:+447541516344"
@@ -188,7 +188,7 @@ export default function Footer() {
           <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                              <p className="text-sm text-muted">
-                 © {currentYear} MeridianSolutions. All Rights Reserved.
+                 © {currentYear} Meridian Labs Group LTD. All Rights Reserved.
                </p>
                              <div className="flex gap-6">
                  <Link 

@@ -1,6 +1,6 @@
-# MeridianSolutions Website
+# Meridian Labs Website
 
-A modern, futuristic website for MeridianSolutions - a digital marketing agency specialising in local business growth.
+A modern, futuristic website for Meridian Labs - a digital marketing agency specialising in local business growth.
 
 ## 🚀 Features
 
@@ -194,4 +194,4 @@ web/
 
 ## 📄 License
 
-This project is proprietary to MeridianSolutions.
+This project is proprietary to Meridian Labs Group LTD.

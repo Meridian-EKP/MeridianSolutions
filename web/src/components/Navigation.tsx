@@ -75,8 +75,8 @@ const Navigation = () => {
                        className="hover:scale-105 transition-transform duration-300 cursor-pointer"
                      >
                                               <Image
-                          src="/MeridianSolutionsLogoOneLine.png"
-                          alt="MeridianSolutions"
+                          src="/MeridianLabsLogoOneLine.png"
+                          alt="Meridian Labs"
                           width={550}
                           height={138}
                           className="max-h-20 md:max-h-28 w-auto -mt-1 -ml-2 md:-ml-8"
@@ -89,8 +89,8 @@ const Navigation = () => {
                         className="hover:scale-105 transition-transform duration-300 cursor-pointer"
                       >
                        <Image
-                         src="/MeridianSolutionsLogoOneLine.png"
-                         alt="MeridianSolutions"
+                         src="/MeridianLabsLogoOneLine.png"
+                         alt="Meridian Labs"
                          width={550}
                          height={138}
                          className="max-h-20 md:max-h-28 w-auto -mt-1 -ml-2 md:-ml-8"

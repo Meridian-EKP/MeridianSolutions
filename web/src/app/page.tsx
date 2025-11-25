@@ -3,7 +3,7 @@
 /**
  * Main Home Page Component
  * 
- * This component renders the complete MeridianSolutions website homepage including:
+ * This component renders the complete Meridian Labs website homepage including:
  * - Hero section with parallax background
  * - About section with interactive cycle cards
  * - Services section with expandable cards
@@ -283,7 +283,7 @@ export default function Home() {
         <div className="relative z-10 mx-auto w-full max-w-screen-2xl px-6 md:px-10">
           <div className="max-w-3xl">
             <h1 className="mt-8 md:mt-4 text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05]">
-              We Build Digital Solutions That Bring You Results
+              We Treat Your Online Presence Like a Lab, Not a Lottery
             </h1>
             <p className="mt-6 text-muted max-w-2xl text-base md:text-lg">
               Create complete digital strategies that turn your digital presence into your strongest sales channel. Get more leads, customers, and revenue with our proven modern approach.
@@ -330,7 +330,7 @@ export default function Home() {
                 <div className="md:hidden">
                   <h3 className="text-lg font-semibold text-accent mb-3">We Drive Growth</h3>
                   <p className="text-muted">
-                     MeridianSolutions specialises in turning local businesses into digital leaders. We don&apos;t just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
+                     Meridian Labs specialises in turning local businesses into digital leaders. We don&apos;t just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
                    </p>
                                        <div className="mt-4 flex items-center">
                                               <button 
@@ -414,7 +414,7 @@ export default function Home() {
                 <div className="hidden md:block">
                   <h3 className="text-lg font-semibold text-accent mb-3">We Drive Growth</h3>
                   <p className="text-muted">
-                     MeridianSolutions specialises in turning local businesses into digital leaders. We don&apos;t just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
+                     Meridian Labs specialises in turning local businesses into digital leaders. We don&apos;t just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
                    </p>
                    <p className="mt-4 text-muted">
                      We craft custom digital packages tailored to your specific business needs and budget. Rather than forcing you into rigid service tiers, we analyse your goals, market position, and resources to design a strategic solution that maximizes your ROI. Our flexible approach ensures you only pay for what you need while getting the exact tools and strategies required to dominate your local market.
@@ -995,7 +995,7 @@ export default function Home() {
       <section id="contact" className="relative pt-24 md:pt-2 pb-16 md:pb-24 min-h-screen flex items-center">
         <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10 text-center">
                      <div className="glass-no-shine rounded-3xl p-10 md:p-16 border border-white/10 transition-transform duration-300 hover:scale-105">
-            <h2 className="text-2xl md:text-4xl font-semibold">Ready to Dominate Your Local Market?</h2>
+            <h2 className="text-2xl md:text-4xl font-semibold">Ready for the next step?</h2>
             <p className="mt-4 text-white max-w-3xl mx-auto text-lg">
               Get your free digital health check and discover exactly how to turn your digital presence into your most powerful asset. 
               <span className="font-medium"> No obligation, just actionable insights.</span>
@@ -1005,8 +1005,8 @@ export default function Home() {
                 Get Your Free Digital Health Check
                 <ArrowRight className="size-5" />
               </a>
-              <a href="mailto:Ed@meridiansolutions.com" className="glass btn-primary-no-shine-mobile inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-medium border border-cyan-400/30 hover:border-cyan-400/50 transition">
-                Email: Ed@meridiansolutions.com
+              <a href="mailto:hello@meridianlabsgroup.xyz" className="glass btn-primary-no-shine-mobile inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-medium border border-cyan-400/30 hover:border-cyan-400/50 transition">
+                Email: hello@meridianlabsgroup.xyz
               </a>
             </div>
             <p className="mt-4 text-sm text-muted">✓ 30-minute strategy session ✓ Custom growth roadmap ✓ No sales pressure</p>

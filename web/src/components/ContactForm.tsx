@@ -322,7 +322,7 @@ export default function ContactForm() {
             Website Address
           </label>
           <input
-            type="url"
+            type="text"
             id="website"
             name="website"
             value={formData.website}
@@ -335,17 +335,23 @@ export default function ContactForm() {
               background: 'rgba(255, 255, 255, 0.05)',
               backdropFilter: 'blur(12px)'
             }}
-            placeholder="https://www.yourbusiness.com"
+            placeholder="yourbusiness.com"
           />
-          <div className="mt-2 flex items-center gap-2">
+          <div className="mt-2 lab-checkbox-container">
             <input
               type="checkbox"
               id="noWebsite"
               name="noWebsite"
               checked={formData.noWebsite}
               onChange={handleCheckboxChange}
-              className="h-4 w-4 rounded border-white/20 bg-white/5 text-accent focus:ring-accent/40 cursor-pointer"
+              className="lab-checkbox-input"
             />
+            <label htmlFor="noWebsite" className="lab-checkbox-visual" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 18 18" role="presentation">
+                <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z" />
+                <polyline points="1 9 7 14 15 4" />
+              </svg>
+            </label>
             <label htmlFor="noWebsite" className="text-sm text-muted cursor-pointer select-none">
               I do not have a website
             </label>

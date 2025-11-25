@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    // MeridianSolutions - Digital Marketing Agency Website
+    // Meridian Labs - Digital Marketing Agency Website
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

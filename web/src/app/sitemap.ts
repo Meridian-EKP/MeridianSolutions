@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next'
 /**
  * Dynamic Sitemap Generation
  * 
- * This file generates a sitemap.xml for the MeridianSolutions website,
+ * This file generates a sitemap.xml for the Meridian Labs website,
  * helping search engines discover and index all pages efficiently.
  */
 

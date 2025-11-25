@@ -11,7 +11,7 @@ export const metadata: Metadata = privacyPolicyMetadata;
 /**
  * Privacy Policy Page
  * 
- * This page contains the privacy policy for MeridianSolutions, outlining how we collect,
+ * This page contains the privacy policy for Meridian Labs, outlining how we collect,
  * use, and protect user data in compliance with relevant privacy regulations.
  */
 
@@ -135,10 +135,10 @@ export default function PrivacyPolicy() {
                 please contact us at:
               </p>
               <div className="glass-no-shine rounded-xl p-8 border border-white/10">
-                <p className="font-bold text-white text-xl mb-4">MeridianSolutions</p>
+                <p className="font-bold text-white text-xl mb-4">Meridian Labs Group LTD</p>
                 <div className="space-y-3">
                   <p className="text-lg">
-                    Email: <a href="mailto:Ed@meridiansolutions.xyz" className="text-accent hover:text-accent/80 font-medium">Ed@meridiansolutions.xyz</a>
+                Email: <a href="mailto:hello@meridianlabsgroup.xyz" className="text-accent hover:text-accent/80 font-medium">hello@meridianlabsgroup.xyz</a>
                   </p>
                   <p className="text-lg">
                     Phone: <a href="tel:+447541516344" className="text-accent hover:text-accent/80 font-medium">(+44) 7541 516 344</a>

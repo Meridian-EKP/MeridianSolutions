@@ -1120,3 +1120,90 @@ footer {
     display: none !important;
   }
 }
+
+/* Custom checkbox styling for the "I do not have a website" option */
+.lab-checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  position: relative;
+}
+
+.lab-checkbox-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lab-checkbox-visual {
+  cursor: pointer;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  -webkit-tap-highlight-color: transparent;
+  transform: translate3d(0, 0, 0);
+}
+
+.lab-checkbox-visual::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(34, 50, 84, 0.03);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.lab-checkbox-visual svg {
+  position: relative;
+  z-index: 1;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #c8ccd4;
+  stroke-width: 1.5;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.2s ease;
+}
+
+.lab-checkbox-visual svg path {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 0;
+}
+
+.lab-checkbox-visual svg polyline {
+  stroke-dasharray: 22;
+  stroke-dashoffset: 66;
+}
+
+.lab-checkbox-visual:hover::before {
+  opacity: 1;
+}
+
+.lab-checkbox-visual:hover svg {
+  stroke: #4285f4;
+}
+
+.lab-checkbox-input:focus-visible + .lab-checkbox-visual {
+  outline: 2px solid #4285f4;
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.lab-checkbox-input:checked + .lab-checkbox-visual svg {
+  stroke: #4285f4;
+}
+
+.lab-checkbox-input:checked + .lab-checkbox-visual svg path {
+  stroke-dashoffset: 60;
+  transition: all 0.3s linear;
+}
+
+.lab-checkbox-input:checked + .lab-checkbox-visual svg polyline {
+  stroke-dashoffset: 42;
+  transition: all 0.2s linear;
+  transition-delay: 0.15s;
+}
