@@ -481,10 +481,9 @@ export default function ContactForm() {
         >
           <span className="flex items-center justify-center gap-2">
             {isSubmitting ? (
-              <>
-                <div className="animate-spin rounded-full h-5 w-5 border-2 border-white/30 border-t-white"></div>
-                Sending...
-              </>
+              <div className="loader submission-loader">
+                <div className="justify-content-center jimu-primary-loading"></div>
+              </div>
             ) : (
               <>
                 Get My Free Digital Health Check
