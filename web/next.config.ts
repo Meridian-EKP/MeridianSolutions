@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['framer-motion', 'gsap', 'lucide-react'],
   },
   compress: true,
-  // Meridian Labs - Digital Marketing Agency Website
+  // The Meridian Agency - Digital Marketing Agency Website
 };
 
 export default nextConfig;

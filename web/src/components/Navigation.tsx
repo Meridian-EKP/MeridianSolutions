@@ -76,7 +76,7 @@ const Navigation = () => {
                      >
                                               <Image
                           src="/MeridianLabsLogoOneLine.png"
-                          alt="Meridian Labs"
+                          alt="The Meridian Agency"
                           width={550}
                           height={138}
                           className="max-h-20 md:max-h-28 w-auto -mt-1 -ml-2 md:-ml-8"
@@ -90,7 +90,7 @@ const Navigation = () => {
                       >
                        <Image
                          src="/MeridianLabsLogoOneLine.png"
-                         alt="Meridian Labs"
+                         alt="The Meridian Agency"
                          width={550}
                          height={138}
                          className="max-h-20 md:max-h-28 w-auto -mt-1 -ml-2 md:-ml-8"

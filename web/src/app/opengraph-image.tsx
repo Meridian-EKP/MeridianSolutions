@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Meridian Labs";
+export const alt = "The Meridian Agency";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -21,7 +21,7 @@ export default async function Image() {
           fontWeight: 700,
         }}
       >
-        Meridian Labs
+        The Meridian Agency
       </div>
     ),
     { ...size }

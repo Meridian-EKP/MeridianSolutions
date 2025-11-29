@@ -3,7 +3,7 @@
 /**
  * Main Home Page Component
  * 
- * This component renders the complete Meridian Labs website homepage including:
+ * This component renders the complete The Meridian Agency website homepage including:
  * - Hero section with parallax background
  * - About section with interactive cycle cards
  * - Services section with expandable cards
@@ -283,7 +283,7 @@ export default function Home() {
         <div className="relative z-10 mx-auto w-full max-w-screen-2xl px-6 md:px-10">
           <div className="max-w-3xl">
             <h1 className="mt-8 md:mt-4 text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05]">
-              We Treat Your Online Presence Like a Lab, Not a Lottery
+              We Build Digital Solutions That Bring You Results
             </h1>
             <p className="mt-6 text-muted max-w-2xl text-base md:text-lg">
               Create complete digital strategies that turn your digital presence into your strongest sales channel. Get more leads, customers, and revenue with our proven modern approach.
@@ -330,7 +330,7 @@ export default function Home() {
                 <div className="md:hidden">
                   <h3 className="text-lg font-semibold text-accent mb-3">We Drive Growth</h3>
                   <p className="text-muted">
-                     Meridian Labs specialises in turning local businesses into digital leaders. We don&apos;t just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
+                     The Meridian Agency specialises in turning local businesses into digital leaders. We don&apos;t just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
                    </p>
                                        <div className="mt-4 flex items-center">
                                               <button 
@@ -414,7 +414,7 @@ export default function Home() {
                 <div className="hidden md:block">
                   <h3 className="text-lg font-semibold text-accent mb-3">We Drive Growth</h3>
                   <p className="text-muted">
-                     Meridian Labs specialises in turning local businesses into digital leaders. We don&apos;t just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
+                     The Meridian Agency specialises in turning local businesses into digital leaders. We don&apos;t just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
                    </p>
                    <p className="mt-4 text-muted">
                      We craft custom digital packages tailored to your specific business needs and budget. Rather than forcing you into rigid service tiers, we analyse your goals, market position, and resources to design a strategic solution that maximizes your ROI. Our flexible approach ensures you only pay for what you need while getting the exact tools and strategies required to dominate your local market.

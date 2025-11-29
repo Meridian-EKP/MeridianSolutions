@@ -1,6 +1,6 @@
-# Meridian Labs Website
+# The Meridian Agency Website
 
-A modern, futuristic website for Meridian Labs - a digital marketing agency specialising in local business growth.
+A modern, futuristic website for The Meridian Agency - a digital marketing agency specialising in local business growth.
 
 ## 🚀 Features
 
@@ -194,4 +194,4 @@ web/
 
 ## 📄 License
 
-This project is proprietary to Meridian Labs Group LTD.
+This project is proprietary to The Meridian Agency.

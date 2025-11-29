@@ -3,7 +3,7 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": "https://meridiansolutions.com",
-"name": "Meridian Labs Group LTD",
+"name": "The Meridian Agency",
     "alternateName": "Meridian Digital",
     "description": "Digital marketing agency specialising in local business growth through conversion-driven websites, local SEO, and data-powered marketing systems.",
     "url": "https://meridiansolutions.com",
@@ -116,7 +116,7 @@ export default function StructuredData() {
           "ratingValue": "5",
           "bestRating": "5"
         },
-        "reviewBody": "Meridian Labs completely transformed our business. We went from 5-10 customers per day to being fully booked weeks in advance."
+        "reviewBody": "The Meridian Agency completely transformed our business. We went from 5-10 customers per day to being fully booked weeks in advance."
       },
       {
         "@type": "Review",

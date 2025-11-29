@@ -103,7 +103,7 @@ const createEmailHTML = (data: FormData): string => {
         <div class="container">
             <div class="header">
                 <h2>New Digital Health Check Request</h2>
-                <p>A new potential client has submitted a request through Meridian Labs website.</p>
+                <p>A new potential client has submitted a request through The Meridian Agency website.</p>
             </div>
             <div class="content">
                 <div class="field">
@@ -137,7 +137,7 @@ const createEmailHTML = (data: FormData): string => {
                 
                 <div class="footer">
                     <p><strong>Submitted:</strong> ${new Date().toLocaleString()}</p>
-                    <p><strong>Source:</strong> Meridian Labs Contact Form</p>
+                    <p><strong>Source:</strong> The Meridian Agency Contact Form</p>
                 </div>
             </div>
         </div>
@@ -223,12 +223,12 @@ Business Goals:
 ${data.message}
 
 Submitted: ${new Date().toLocaleString()}
-Source: Meridian Labs Contact Form
+Source: The Meridian Agency Contact Form
     `;
 
     // Send email
     const mailOptions = {
-      from: `"Meridian Labs Contact Form" <${process.env.EMAIL_USER}>`,
+      from: `"The Meridian Agency Contact Form" <${process.env.EMAIL_USER}>`,
       to: 'hello@meridianlabsgroup.xyz',
       subject: 'New Digital Health Check Request',
       text: emailText,

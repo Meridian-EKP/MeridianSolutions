@@ -11,7 +11,7 @@ export const metadata: Metadata = termsOfServiceMetadata;
 /**
  * Terms of Service Page
  * 
- * This page contains the terms of service for Meridian Labs, outlining the terms
+ * This page contains the terms of service for The Meridian Agency, outlining the terms
  * and conditions for using our services and website.
  */
 
@@ -45,7 +45,7 @@ export default function TermsOfService() {
             <h2 className="text-2xl font-bold mb-6 text-white">1. Acceptance of Terms</h2>
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">
-                By accessing and using the Meridian Labs website and services, you accept and agree 
+                By accessing and using The Meridian Agency website and services, you accept and agree 
                 to be bound by the terms and provision of this agreement. If you do not agree to 
                 abide by the above, please do not use this service.
               </p>
@@ -56,7 +56,7 @@ export default function TermsOfService() {
             <h2 className="text-2xl font-bold mb-6 text-white">2. Description of Service</h2>
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">
-                Meridian Labs provides digital marketing services including but not limited to:
+                The Meridian Agency provides digital marketing services including but not limited to:
               </p>
               <ul className="list-disc list-inside space-y-3 ml-4 text-lg">
                 <li>Website design and development</li>
@@ -105,7 +105,7 @@ export default function TermsOfService() {
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">
                 All content on this website, including text, graphics, logos, and software, 
-                is the property of Meridian Labs Group LTD and is protected by copyright laws. 
+                is the property of The Meridian Agency and is protected by copyright laws. 
                 You may not reproduce, distribute, or create derivative works without our 
                 express written consent.
               </p>
@@ -116,7 +116,7 @@ export default function TermsOfService() {
             <h2 className="text-2xl font-bold mb-6 text-white">6. Limitation of Liability</h2>
             <div className="space-y-6 text-gray-300 leading-relaxed">
               <p className="text-lg">
-                Meridian Labs Group LTD shall not be liable for any indirect, incidental, special, 
+                The Meridian Agency shall not be liable for any indirect, incidental, special, 
                 consequential, or punitive damages, including but not limited to loss of profits, 
                 data, or use, incurred by you or any third party, whether in an action in contract 
                 or tort, even if we have been advised of the possibility of such damages.

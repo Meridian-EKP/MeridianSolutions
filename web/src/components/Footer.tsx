@@ -64,7 +64,7 @@ export default function Footer() {
                            >
                               <Image
                                 src="/MeridianLabsLogoOneLine.png"
-                                alt="Meridian Labs"
+                                alt="The Meridian Agency"
                                 width={1300}
                                 height={325}
                                 className="h-20 md:h-40 w-auto -ml-4"
@@ -78,7 +78,7 @@ export default function Footer() {
                             >
                               <Image
                                 src="/MeridianLabsLogoOneLine.png"
-                                alt="Meridian Labs"
+                                alt="The Meridian Agency"
                                 width={1300}
                                 height={325}
                                 className="h-20 md:h-40 w-auto -ml-4"
@@ -188,7 +188,7 @@ export default function Footer() {
           <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                              <p className="text-sm text-muted">
-                 © {currentYear} Meridian Labs Group LTD. All Rights Reserved.
+                 © {currentYear} The Meridian Agency. All Rights Reserved.
                </p>
                              <div className="flex gap-6">
                  <Link 

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 /**
  * Centralized Metadata Configuration
  * 
- * This file contains all metadata configurations for the Meridian Labs website.
+ * This file contains all metadata configurations for The Meridian Agency website.
  * It provides consistent SEO optimization across all pages with proper titles,
  * descriptions, and social media tags.
  */
@@ -16,8 +16,8 @@ const baseUrl = "https://meridiansolutions.com";
 export const baseMetadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-      default: "Meridian Labs - Innovative Service Agency",
-  template: "%s | Meridian Labs",
+      default: "The Meridian Agency - Innovative Service Agency",
+  template: "%s | The Meridian Agency",
   },
   description:
     "Complete digital growth solutions for local businesses. Website development, SEO, PPC, and marketing campaigns that turn your digital presence into your strongest sales channel. Get more leads, customers, and revenue with our proven modern approach.",
@@ -39,9 +39,9 @@ export const baseMetadata: Metadata = {
     "lead generation",
     "customer acquisition"
   ],
-  authors: [{ name: "Meridian Labs" }],
-  creator: "Meridian Labs",
-  publisher: "Meridian Labs",
+  authors: [{ name: "The Meridian Agency" }],
+  creator: "The Meridian Agency",
+  publisher: "The Meridian Agency",
   formatDetection: {
     email: false,
     address: false,
@@ -77,24 +77,24 @@ export const homeMetadata: Metadata = {
     canonical: baseUrl,
   },
   openGraph: {
-    title: "Meridian Labs - Innovative Service Agency",
+    title: "The Meridian Agency - Innovative Service Agency",
     description:
       "Complete digital growth solutions for local businesses. Website development, SEO, PPC, and marketing campaigns that turn your digital presence into your strongest sales channel. Proven results for local businesses.",
     url: baseUrl,
-    siteName: "Meridian Labs",
+    siteName: "The Meridian Agency",
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Meridian Labs - Complete Digital Growth Solutions for Local Businesses",
+        alt: "The Meridian Agency - Complete Digital Growth Solutions for Local Businesses",
         type: "image/png",
       },
       {
         url: "/og-square.png",
         width: 600,
         height: 600,
-        alt: "Meridian Labs Logo",
+        alt: "The Meridian Agency Logo",
         type: "image/png",
       }
     ],
@@ -107,7 +107,7 @@ export const homeMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Meridian Labs - Innovative Service Agency",
+    title: "The Meridian Agency - Innovative Service Agency",
     description:
       "Complete digital growth solutions for local businesses. Website development, SEO, PPC, and marketing campaigns. Get more leads, customers, and revenue with our proven approach.",
     images: ["/og.png"],
@@ -122,25 +122,25 @@ export const homeMetadata: Metadata = {
 export const privacyPolicyMetadata: Metadata = {
   ...baseMetadata,
   title: "Privacy Policy",
-  description: "Learn how Meridian Labs collects, uses, and protects your personal information. Our privacy policy outlines data practices, security measures, and your rights regarding personal data.",
+  description: "Learn how The Meridian Agency collects, uses, and protects your personal information. Our privacy policy outlines data practices, security measures, and your rights regarding personal data.",
   keywords: [
     "privacy policy",
     "data protection",
     "personal information",
     "GDPR compliance",
     "data security",
-    "Meridian Labs privacy",
+    "The Meridian Agency privacy",
     "user data protection",
     "privacy rights"
   ],
   openGraph: {
-    title: "Privacy Policy | Meridian Labs",
-    description: "Learn how Meridian Labs collects, uses, and protects your personal information. Our privacy policy outlines data practices, security measures, and your rights.",
+    title: "Privacy Policy | The Meridian Agency",
+    description: "Learn how The Meridian Agency collects, uses, and protects your personal information. Our privacy policy outlines data practices, security measures, and your rights.",
     url: `${baseUrl}/privacy-policy`,
   },
   twitter: {
-    title: "Privacy Policy | Meridian Labs",
-    description: "Learn how Meridian Labs collects, uses, and protects your personal information. Our privacy policy outlines data practices, security measures, and your rights.",
+    title: "Privacy Policy | The Meridian Agency",
+    description: "Learn how The Meridian Agency collects, uses, and protects your personal information. Our privacy policy outlines data practices, security measures, and your rights.",
   },
   alternates: {
     canonical: `${baseUrl}/privacy-policy`,
@@ -153,25 +153,25 @@ export const privacyPolicyMetadata: Metadata = {
 export const termsOfServiceMetadata: Metadata = {
   ...baseMetadata,
   title: "Terms of Service",
-  description: "Read Meridian Labs's terms of service and conditions for using our digital marketing services. Learn about our service agreements, payment terms, and user responsibilities.",
+  description: "Read The Meridian Agency's terms of service and conditions for using our digital marketing services. Learn about our service agreements, payment terms, and user responsibilities.",
   keywords: [
     "terms of service",
     "terms and conditions",
     "service agreement",
     "digital marketing terms",
-    "Meridian Labs terms",
+    "The Meridian Agency terms",
     "user agreement",
     "service conditions",
     "legal terms"
   ],
   openGraph: {
-    title: "Terms of Service | Meridian Labs",
-    description: "Read Meridian Labs's terms of service and conditions for using our digital marketing services. Learn about our service agreements, payment terms, and user responsibilities.",
+    title: "Terms of Service | The Meridian Agency",
+    description: "Read The Meridian Agency's terms of service and conditions for using our digital marketing services. Learn about our service agreements, payment terms, and user responsibilities.",
     url: `${baseUrl}/terms-of-service`,
   },
   twitter: {
-    title: "Terms of Service | Meridian Labs",
-    description: "Read Meridian Labs's terms of service and conditions for using our digital marketing services. Learn about our service agreements, payment terms, and user responsibilities.",
+    title: "Terms of Service | The Meridian Agency",
+    description: "Read The Meridian Agency's terms of service and conditions for using our digital marketing services. Learn about our service agreements, payment terms, and user responsibilities.",
   },
   alternates: {
     canonical: `${baseUrl}/terms-of-service`,
@@ -193,12 +193,12 @@ export function generatePageMetadata(
     description,
     keywords: [...baseMetadata.keywords!, ...keywords],
     openGraph: {
-      title: `${title} | Meridian Labs`,
+      title: `${title} | The Meridian Agency`,
       description,
       url: `${baseUrl}${path}`,
     },
     twitter: {
-      title: `${title} | Meridian Labs`,
+      title: `${title} | The Meridian Agency`,
       description,
     },
     alternates: {
