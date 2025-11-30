@@ -101,7 +101,7 @@ export const homeMetadata: Metadata = {
     locale: "en_GB",
     type: "website",
     countryName: "United Kingdom",
-    emails: ["hello@meridianlabsgroup.xyz"],
+    emails: ["Hello@TheMeridianAgency.xyz"],
     phoneNumbers: ["+447541516344"],
     ttl: 604800, // 7 days cache
   },

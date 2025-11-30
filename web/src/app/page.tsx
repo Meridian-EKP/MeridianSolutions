@@ -20,7 +20,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { ArrowRight, Globe, MapPin, Share2, Search, Target, Megaphone, X, CheckCircle, ChevronDown } from "lucide-react";
+import { ArrowRight, Globe, MapPin, Share2, Search, Target, Megaphone, X, CheckCircle, ChevronDown, Smartphone } from "lucide-react";
 
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
@@ -530,12 +530,12 @@ export default function Home() {
               icon: Globe
             },
             { 
-              title: "Business Profile Optimisation", 
-              desc: "Complete Business Profile management for maximum local visibility.",
-              fullDesc: "Complete GBP optimisation, review management, and local ranking strategies that get you found first.",
-              detailedDesc: "Transform your Business Profile into a powerful lead generation machine. We optimise every element to dominate local search results and convert map searches into paying customers.\n\nOur comprehensive Business Profile strategy includes review management, post scheduling, local keyword optimisation, and ongoing monitoring to ensure you stay ahead of competitors.",
-              pricing: "One-time setup from £200 • Ongoing from £100/month",
-              benefits: ["Complete profile optimisation", "Review management system", "Local ranking strategies", "Monthly performance reports", "Ongoing competitor monitoring"],
+              title: "Local Search & Business Profile Optimization", 
+              desc: "We make sure your business shows up when local customers are searching, and that your profiles look trustworthy and up to date.",
+              fullDesc: "Complete local search optimization and Business Profile management for maximum local visibility.",
+              detailedDesc: "We make sure your business shows up when local customers are searching, and that your profiles look trustworthy and up to date.\n\nOur comprehensive approach combines Business Profile optimization with local SEO strategies to ensure you're found by the right customers at the right time.",
+              pricing: "Typical investment: one-off projects from £250–£600, with optional monthly check-ins or updates if needed.",
+              benefits: ["Optimisation of Google Business Profile", "Consistent details across key directories", "Keyword improvements for website and business descriptions", "Guidance on reviews: how to ask, how to respond, how to showcase", "Basic local search audit with clear recommendations", "Tracking key metrics (views, calls, direction requests)"],
               icon: MapPin
             },
             { 
@@ -548,13 +548,13 @@ export default function Home() {
               icon: Share2
             },
             { 
-              title: "Local SEO", 
-              desc: "Comprehensive local search optimisation to dominate your market area.",
-              fullDesc: "Technical SEO, local citations, keyword targeting, and ongoing optimisation for sustainable growth.",
-              detailedDesc: "Dominate local search results with our comprehensive Local SEO strategy. We target high-intent local keywords and optimise your entire digital presence to attract customers who are ready to buy.\n\nOur proven approach includes technical SEO, local citations, Google My Business optimisation, and ongoing content strategy to ensure sustainable, long-term growth.",
-              pricing: "Initial setup from £400 • Ongoing from £250/month",
-              benefits: ["Local keyword research & targeting", "Technical SEO optimisation", "Local citation building", "Google My Business optimisation", "Monthly ranking reports"],
-              icon: Search
+              title: "App Development", 
+              desc: "Simple, focused web or mobile apps that solve real problems like bookings, customer portals, or internal tools.",
+              fullDesc: "Custom web or mobile app development focused on solving specific business problems.",
+              detailedDesc: "Simple, focused web or mobile apps that solve real problems like bookings, customer portals, or internal tools.\n\nWe build lightweight, purpose-driven applications that integrate seamlessly with your existing tools and workflows.",
+              pricing: "Typical investment: from £1,200+ for simple tools, with pricing based on complexity and required features.",
+              benefits: ["Initial consultation to decide whether an app is the right solution", "Planning of a lightweight app around a clear problem", "Design and build of web or mobile app", "Integration with your existing tools (email, forms)", "Basic onboarding and walkthrough", "Ongoing support and improvements available as a separate option"],
+              icon: Smartphone
             },
             { 
               title: "Consulting & Strategy", 
@@ -1005,8 +1005,8 @@ export default function Home() {
                 Get Your Free Digital Health Check
                 <ArrowRight className="size-5" />
               </a>
-              <a href="mailto:hello@meridianlabsgroup.xyz" className="glass btn-primary-no-shine-mobile inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-medium border border-cyan-400/30 hover:border-cyan-400/50 transition">
-                Email: hello@meridianlabsgroup.xyz
+              <a href="mailto:Hello@TheMeridianAgency.xyz" className="glass btn-primary-no-shine-mobile inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-medium border border-cyan-400/30 hover:border-cyan-400/50 transition">
+                Email: Hello@TheMeridianAgency.xyz
               </a>
             </div>
             <p className="mt-4 text-sm text-muted">✓ 30-minute strategy session ✓ Custom growth roadmap ✓ No sales pressure</p>

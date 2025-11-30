@@ -229,7 +229,7 @@ Source: The Meridian Agency Contact Form
     // Send email
     const mailOptions = {
       from: `"The Meridian Agency Contact Form" <${process.env.EMAIL_USER}>`,
-      to: 'hello@meridianlabsgroup.xyz',
+      to: 'Hello@TheMeridianAgency.xyz',
       subject: 'New Digital Health Check Request',
       text: emailText,
       html: emailHTML,

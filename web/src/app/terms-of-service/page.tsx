@@ -180,10 +180,10 @@ export default function TermsOfService() {
               </p>
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
                 <a 
-                  href="mailto:hello@meridianlabsgroup.xyz"
+                  href="mailto:Hello@TheMeridianAgency.xyz"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:border-accent/40 text-white transition-colors"
                 >
-                  <span className="text-base">hello@meridianlabsgroup.xyz</span>
+                  <span className="text-base">Hello@TheMeridianAgency.xyz</span>
                 </a>
                 <a 
                   href="tel:+447541516344"

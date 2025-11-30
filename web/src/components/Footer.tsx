@@ -122,10 +122,10 @@ export default function Footer() {
                                                        <h4 className="text-lg font-semibold text-white">Contact</h4>
                                                        <div className="space-y-3">
                                                          <a 
-                                                         href="mailto:hello@meridianlabsgroup.xyz"
+                                                         href="mailto:Hello@TheMeridianAgency.xyz"
                                                            className="footer-contact-item text-sm text-muted hover:text-accent transition-all duration-300 group cursor-pointer block"
                                                          >
-                                                           hello@meridianlabsgroup.xyz
+                                                           Hello@TheMeridianAgency.xyz
                                                          </a>
                                                          <a 
                                                            href="tel:+447541516344"
@@ -164,11 +164,11 @@ export default function Footer() {
                                                        <h4 className="text-lg font-semibold text-white">Contact</h4>
                                                        <div className="space-y-3">
                                                          <a 
-                                                           href="mailto:hello@meridianlabsgroup.xyz"
+                                                           href="mailto:Hello@TheMeridianAgency.xyz"
                                                            className="footer-contact-item flex items-center gap-3 text-sm text-muted hover:text-accent transition-all duration-300 group cursor-pointer"
                                                          >
                                                            <Mail className="size-4 text-accent/60 group-hover:text-accent transition-colors duration-300" />
-                                                           <span>hello@meridianlabsgroup.xyz</span>
+                                                           <span>Hello@TheMeridianAgency.xyz</span>
                                                          </a>
                                                          <a 
                                                            href="tel:+447541516344"

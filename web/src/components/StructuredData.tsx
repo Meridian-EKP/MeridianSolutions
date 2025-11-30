@@ -8,7 +8,7 @@ export default function StructuredData() {
     "description": "Digital marketing agency specialising in local business growth through conversion-driven websites, local SEO, and data-powered marketing systems.",
     "url": "https://meridiansolutions.com",
     "telephone": "+1-234-567-8900",
-    "email": "hello@meridianlabsgroup.xyz",
+    "email": "Hello@TheMeridianAgency.xyz",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "123 Business Centre Dr",
