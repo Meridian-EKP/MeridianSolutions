@@ -27,14 +27,15 @@ import Footer from "@/components/Footer";
 import CaseStudyModal from "@/components/CaseStudyModal";
 import MobileStarfield from "@/components/MobileStarfield";
 import DesktopStarfield from "@/components/DesktopStarfield";
+import Link from "next/link";
+import Image from "next/image";
+import { services } from "@/constants/services";
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const yParallax = useTransform(scrollYProgress, [0, 1], ["0px", "-120px"]);
   
-     // State for expanded service card
-   const [expandedService, setExpandedService] = useState<number | null>(null);
    
    // State for expanded about section (mobile only)
    const [expandedAbout, setExpandedAbout] = useState<number>(0);
@@ -149,41 +150,6 @@ export default function Home() {
     }
   ];
   
-  // Handle service card expansion with smooth height animation
-  const toggleServiceExpansion = (index: number) => {
-    if (expandedService === index) {
-      // Collapsing - wait for height animation to complete before removing content
-      const cardElement = document.querySelector(`[data-service-index="${index}"]`);
-      if (cardElement) {
-        // Add collapsing class to start height animation
-        cardElement.classList.add('collapsing');
-        
-        // Wait for height animation to complete before removing content
-        setTimeout(() => {
-          setExpandedService(null);
-          cardElement.classList.remove('collapsing');
-        }, 600); // Match the CSS transition duration
-      } else {
-        setExpandedService(null);
-      }
-    } else {
-      // Expanding - smooth transition
-      setExpandedService(index);
-    }
-  };
-  
-
-  
-  // Handle keyboard navigation
-  const handleServiceKeyDown = (event: React.KeyboardEvent, index: number) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      toggleServiceExpansion(index);
-    }
-    if (event.key === 'Escape' && expandedService === index) {
-      setExpandedService(null);
-    }
-  };
 
   // Removed all scroll animations for clean, bug-free experience
 
@@ -519,220 +485,138 @@ export default function Home() {
             <p className="mt-3 text-muted text-lg">Everything your local business needs to dominate your market and drive consistent growth.</p>
           </div>
         <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 services-grid">
-          {[
-            { 
-              title: "Website Development", 
-              desc: "Professional websites designed for performance, conversions, and business growth.",
-              fullDesc: "Custom-built using modern frameworks with mobile-first design, SEO optimisation, and conversion psychology.",
-              detailedDesc: "We create stunning, high-performance websites that don't just look amazing—they drive real business results. Every site is built with conversion psychology, advanced SEO, and lightning-fast loading speeds.\n\nOur websites are fully responsive, accessible, and optimised for search engines from day one. You'll get a complete digital presence that turns visitors into customers and grows with your business.",
-              pricing: "• Basic brochure site: from £500 • Mid-tier site: from £1,200 • E-commerce site: from £2,500",
-              benefits: ["Mobile-first responsive design", "Advanced SEO optimisation", "Conversion psychology integration", "Lightning-fast loading speeds", "6 months free support"],
-              icon: Globe
-            },
-            { 
-              title: "Local Search & Business Profile Optimization", 
-              desc: "We make sure your business shows up when local customers are searching, and that your profiles look trustworthy and up to date.",
-              fullDesc: "Complete local search optimization and Business Profile management for maximum local visibility.",
-              detailedDesc: "We make sure your business shows up when local customers are searching, and that your profiles look trustworthy and up to date.\n\nOur comprehensive approach combines Business Profile optimization with local SEO strategies to ensure you're found by the right customers at the right time.",
-              pricing: "Typical investment: one-off projects from £250–£600, with optional monthly check-ins or updates if needed.",
-              benefits: ["Optimisation of Google Business Profile", "Consistent details across key directories", "Keyword improvements for website and business descriptions", "Guidance on reviews: how to ask, how to respond, how to showcase", "Basic local search audit with clear recommendations", "Tracking key metrics (views, calls, direction requests)"],
-              icon: MapPin
-            },
-            { 
-              title: "Social Media Setup & Management", 
-              desc: "Professional social media management that builds brand authority and engagement.",
-              fullDesc: "Platform-specific content strategies, community management, and local audience targeting that converts.",
-              detailedDesc: "Build authority and drive meaningful engagement with strategic social media management. We create platform-specific content that resonates with your local audience and converts followers into customers.\n\nFrom content creation to community management, we handle everything while maintaining your authentic brand voice and driving measurable business results.",
-              pricing: "Setup from £250 • Management from £250/month per platform",
-              benefits: ["Platform-specific content strategy", "Daily content creation & posting", "Community management", "Local audience targeting", "Monthly analytics reports"],
-              icon: Share2
-            },
-            { 
-              title: "App Development", 
-              desc: "Simple, focused web or mobile apps that solve real problems like bookings, customer portals, or internal tools.",
-              fullDesc: "Custom web or mobile app development focused on solving specific business problems.",
-              detailedDesc: "Simple, focused web or mobile apps that solve real problems like bookings, customer portals, or internal tools.\n\nWe build lightweight, purpose-driven applications that integrate seamlessly with your existing tools and workflows.",
-              pricing: "Typical investment: from £1,200+ for simple tools, with pricing based on complexity and required features.",
-              benefits: ["Initial consultation to decide whether an app is the right solution", "Planning of a lightweight app around a clear problem", "Design and build of web or mobile app", "Integration with your existing tools (email, forms)", "Basic onboarding and walkthrough", "Ongoing support and improvements available as a separate option"],
-              icon: Smartphone
-            },
-            { 
-              title: "Consulting & Strategy", 
-              desc: "Expert business consulting with actionable strategies for sustainable growth.",
-              fullDesc: "Comprehensive audits, competitive analysis, and custom growth plans tailored to your market.",
-              detailedDesc: "Get expert guidance with our comprehensive growth consulting service. We analyse your entire business, identify untapped opportunities, and create a custom roadmap for rapid, sustainable expansion.\n\nOur data-driven approach includes competitive analysis, market research, and actionable strategies that deliver measurable results within 90 days.",
-              pricing: "Hourly from £75 • Monthly retainers from £300/month",
-              benefits: ["Comprehensive business audit", "Custom growth roadmap", "Competitive analysis", "Market opportunity identification", "90-day action plan"],
-              icon: Target
-            },
-            { 
-              title: "Marketing Campaigns", 
-              desc: "Multi-channel marketing campaigns designed for maximum return on investment.",
-              fullDesc: "Multi-channel campaigns with advanced tracking, A/B testing, and continuous optimisation.",
-              detailedDesc: "Launch high-impact marketing campaigns that deliver immediate, measurable results. We create multi-channel strategies with advanced tracking and continuous optimisation to maximise your ROI.\n\nFrom PPC advertising to email marketing, we handle the entire campaign lifecycle while providing transparent reporting and ongoing optimisation for sustained growth.",
-              pricing: "Setup from £300 per campaign • Management from £250/month",
-              benefits: ["Multi-channel campaign strategy", "Advanced tracking & analytics", "A/B testing & optimisation", "Monthly performance reviews", "Dedicated campaign manager"],
-              icon: Megaphone
-            },
-                    ].map((card, i) => (
-            <div
-              key={card.title}
-              data-service-index={i}
-              className={`service-card group relative rounded-2xl card overflow-hidden cursor-pointer transition-all duration-400 ease-out ${
-                expandedService === i 
-                  ? 'expanded ring-2 ring-accent/50 shadow-2xl shadow-accent/20' 
-                  : 'hover:scale-[1.01]'
-              }`}
-              onClick={() => toggleServiceExpansion(i)}
-              onKeyDown={(e) => handleServiceKeyDown(e, i)}
-              tabIndex={0}
-              role="button"
-              aria-expanded={expandedService === i}
-              aria-label={`${card.title} service details`}
-            >
-              <div className="card-accents" style={accentStyleFor(i)} aria-hidden />
-              <div className="card-sheen" aria-hidden />
-              
-              {/* Main card content with tighter padding */}
-              <div className="relative z-10 p-5 flex flex-col">
-                {/* Header */}
-                <div className="flex items-start gap-3 mb-3">
-                  <div className="p-2 rounded-lg bg-white/5 border border-cyan-400/30 group-hover:border-accent/30 transition-colors">
-                    <card.icon className="size-5 text-accent" />
+          {services.map((service, i) => {
+            const Icon = service.icon;
+            return (
+              <Link
+                key={service.slug}
+                href={`/services/${service.slug}`}
+                className="service-card group relative rounded-2xl card overflow-hidden transition-all duration-400 ease-out hover:scale-[1.01] hover:shadow-2xl hover:shadow-accent/20"
+              >
+                <div className="card-accents" style={accentStyleFor(i)} aria-hidden />
+                <div className="card-sheen" aria-hidden />
+                
+                {/* Main card content */}
+                <div className="relative z-10 p-5 flex flex-col h-full">
+                  {/* Header */}
+                  <div className="flex items-center justify-center md:items-start md:justify-start gap-3">
+                    <div className="p-2 rounded-lg bg-white/5 border border-cyan-400/30 group-hover:border-accent/30 transition-colors flex-shrink-0">
+                      <Icon className="size-5 text-accent" />
+                    </div>
+                    <div className="flex-1 text-center md:text-left">
+                      <h3 className="text-base md:text-lg font-semibold leading-[1.5rem]">{service.title}</h3>
+                    </div>
                   </div>
-                  <div className="flex-1 flex items-center justify-between">
-                    <h3 className="text-base md:text-lg font-semibold">{card.title}</h3>
-                    {/* Mobile: Show expand arrow inline with title - always visible, rotates smoothly */}
-                    <div className="md:hidden text-accent transition-all duration-300">
-                      <span className={`inline-block transition-transform duration-300 ${
-                        expandedService === i ? 'rotate-90' : 'rotate-0'
-                      }`}>
-                        ❯
-                      </span>
+
+                  {/* Description - Hidden on mobile */}
+                  <div className="hidden md:block flex-1 mb-4">
+                    <p className="text-muted text-sm md:text-base leading-relaxed">
+                      {service.fullDesc}
+                    </p>
+                  </div>
+
+                  {/* CTA Link - Hidden on mobile */}
+                  <div className="hidden md:flex mt-auto pt-4 border-t border-white/10">
+                    <div className="flex items-center gap-2 text-accent text-sm font-medium group-hover:gap-3 transition-all duration-300">
+                      <span>Learn More</span>
+                      <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform duration-300" />
                     </div>
                   </div>
                 </div>
-
-                {/* Collapsed content */}
-                {expandedService !== i && (
-                  <>
-                    {/* Desktop: Show description on hover */}
-                    <div className="hidden md:block relative min-h-[3rem] flex-1">
-                      <p className="text-muted opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-base leading-relaxed">
-                        {card.fullDesc}
-                      </p>
-                    </div>
-                    
-                    {/* Desktop: Show expand arrow on hover - always visible, rotates smoothly */}
-                    <div className="hidden md:block mt-auto pt-2 flex items-center">
-                      <div className="text-accent group-hover:text-accent/80 transition-all duration-300">
-                        <span className={`inline-block transition-transform duration-300 ${
-                          expandedService === i ? 'rotate-90' : 'rotate-0'
-                        }`}>
-                          ❯
-                        </span>
-                      </div>
-                    </div>
-                  </>
-                )}
-              </div>
-
-              {/* Expandable content - outside main card content, at true bottom */}
-              {expandedService === i && (
-                <div className="px-5 pb-5 space-y-2 pt-0">
-                  {/* Detailed description - Skip first two paragraphs */}
-                  <div className="space-y-2">
-                    {card.detailedDesc.split('\n\n').slice(2).map((paragraph, idx) => (
-                      <p 
-                        key={idx} 
-                        className="text-muted leading-relaxed"
-                        style={{
-                          transitionDelay: `${idx * 0.1}s`
-                        }}
-                      >
-                        {paragraph}
-                      </p>
-                    ))}
-                  </div>
-
-                  {/* Benefits */}
-                  <div className="space-y-3">
-                    <h4 className="font-semibold text-accent flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-accent"></span>
-                      What&apos;s Included
-                    </h4>
-                    <ul className="space-y-2">
-                      {card.benefits.map((benefit, idx) => (
-                        <li 
-                          key={idx} 
-                          className="flex items-center gap-3 text-muted"
-                          style={{
-                            transitionDelay: `${(idx + 3) * 0.1}s`
-                          }}
-                        >
-                          <CheckCircle className="size-4 text-green-400 flex-shrink-0" />
-                          <span>{benefit}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              )}
-
-              {/* Investment Section - Integrated design without box */}
-              {expandedService === i && (
-                <div 
-                  className="px-5 pb-4 pt-0"
-                  style={{
-                    transitionDelay: '0.2s'
-                  }}
-                >
-                  <div className="space-y-2">
-                    <h4 className="font-semibold text-accent flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-accent"></span>
-                      Investment Options
-                    </h4>
-                    <div className="text-muted leading-relaxed whitespace-pre-line">
-                      {card.pricing}
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* CTA Button - Outside expandable content to prevent animation issues */}
-              {expandedService === i && (
-                <div 
-                  className="px-5 pb-5 pt-2 border-t border-white/10"
-                  style={{
-                    transitionDelay: '0.3s'
-                  }}
-                >
-                  <button 
-                    className="w-full btn-primary rounded-xl py-3 px-6 font-medium transition-all duration-500 ease-out hover:scale-[1.01] hover:shadow-lg hover:shadow-accent/30 cursor-pointer"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      // Scroll to contact form
-                      document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                  >
-                    Book Now - {card.title}
-                  </button>
-                </div>
-              )}
-            </div>
-          ))}
+              </Link>
+            );
+          })}
         </div>
         </div>
       </section>
 
-      {/* CASE STUDIES */}
+      {/* MEET THE TEAM */}
+      <section id="team" className="relative pt-24 md:pt-32 pb-8 md:pb-32">
+        <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10">
+          <div className="team-header max-w-3xl">
+            <h2 className="text-2xl md:text-4xl font-semibold">About Me</h2>
+            <p className="mt-3 text-muted text-lg">Get to know the person behind your digital transformation.</p>
+          </div>
+          
+          {/* Team Grid */}
+          <div className="mt-10 grid md:grid-cols-2 gap-6">
+            {/* Left Card - Profile */}
+            <div className="team-card group relative rounded-2xl p-8 card overflow-hidden hover:shadow-2xl hover:shadow-accent/20 transition-all duration-300 hover:scale-[1.02]">
+              <div className="card-accents" style={accentStyleFor(0)} aria-hidden />
+              <div className="card-sheen" aria-hidden />
+              
+              <div className="relative z-10 flex flex-col justify-between h-full min-h-[280px]">
+                {/* Avatar and Info Side by Side */}
+                <div className="flex items-center gap-6">
+                  {/* Profile Picture */}
+                  <div className="w-64 h-64 rounded-full border-2 border-accent/30 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                    <Image
+                      src="/MeridianPP.jpeg"
+                      alt="Ed Kemp-Potter"
+                      width={256}
+                      height={256}
+                      quality={100}
+                      priority
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  
+                  {/* Name & Role */}
+                  <div>
+                    <h3 className="text-xl font-semibold mb-1">
+                      Ed<br />Kemp-Potter
+                    </h3>
+                    <p className="text-sm text-accent font-medium">Director & Founder</p>
+                  </div>
+                </div>
+                
+                {/* Expertise Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {["Project Management", "Business Strategy", "Consulting", "Client Relationship", "Business Development", "Programming"].map((skill, idx) => (
+                    <span 
+                      key={idx}
+                      className="px-3 py-1 rounded-full bg-accent/10 text-xs font-medium text-accent border border-accent/20"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Right Card - Story */}
+            <div className="glass-no-shine rounded-3xl p-6 md:p-10 border border-white/10 transition-transform duration-300 hover:scale-105">
+              <div className="relative z-10">
+                <h3 className="text-lg font-semibold text-accent mb-3">My Story</h3>
+                <div className="space-y-3 text-muted leading-relaxed">
+                  <p>
+                    I started The Meridian Agency with a simple mission: help local businesses thrive in the digital age without the complexity and confusion that often comes with it.
+                  </p>
+                  <p>
+                    With a Computer Science degree specialising in AI, I bring a unique blend of technical expertise and strategic thinking to every project. This foundation allows me to understand both the technical possibilities and the practical business needs.
+                  </p>
+                  <p>
+                    Today, I'm passionate about creating digital solutions that don't just look good—they work. Every project is a chance to help a business reach its full potential.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 
+      ===============================================
+      COMMENTED OUT: CASE STUDIES SECTION
+      Preserved for potential future use
+      ===============================================
+      
       <section id="work" className="relative pt-24 md:pt-32 pb-8 md:pb-32">
         <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10">
           <div className="case-studies-header max-w-3xl">
             <h2 className="text-2xl md:text-4xl font-semibold">Transformations That Drive Results</h2>
-            <p className="mt-3 text-muted text-lg">Here are some concept projects that demonstrate how we can transform your business’s online presence.</p>
+            <p className="mt-3 text-muted text-lg">Here are some concept projects that demonstrate how we can transform your business's online presence.</p>
           </div>
-          {/* Carousel Container */}
           <div 
             className="mt-10"
             onMouseEnter={() => {
@@ -744,7 +628,6 @@ export default function Home() {
               document.body.style.overflow = 'auto';
             }}
           >
-            {/* Carousel Scroll Container */}
             <div 
               id="case-studies-carousel"
               className="flex gap-6 overflow-x-auto overflow-y-hidden scrollbar-hide snap-x snap-mandatory scroll-smooth cursor-grab active:cursor-grabbing prevent-page-scroll"
@@ -783,7 +666,7 @@ export default function Home() {
               }}
               onKeyDown={(e) => {
                 const container = e.currentTarget;
-                const cardWidth = container.scrollWidth / 27; // 27 cards (9 × 3) for circular scroll
+                const cardWidth = container.scrollWidth / 27;
                 
                 if (e.key === 'ArrowRight') {
                   e.preventDefault();
@@ -794,28 +677,24 @@ export default function Home() {
                 }
               }}
               onWheel={(e) => {
-                // Completely prevent the default wheel behavior
                 e.preventDefault();
                 e.stopPropagation();
 
                 const container = e.currentTarget;
-                const cardWidth = container.scrollWidth / 27; // 27 cards (9 × 3) for circular scroll
+                const cardWidth = container.scrollWidth / 27;
 
-                // Heuristic: small pixel deltas indicate trackpad (deltaMode 0 and small deltaY)
                 const isTrackpad = e.deltaMode === 0 && Math.abs(e.deltaY) < 50;
 
                 if (e.deltaY !== 0) {
-                  const direction = e.deltaY > 0 ? 1 : -1; // default: wheel down => right
-                  const effectiveDirection = isTrackpad ? -direction : direction; // flip only on trackpad
+                  const direction = e.deltaY > 0 ? 1 : -1;
+                  const effectiveDirection = isTrackpad ? -direction : direction;
                   container.scrollBy({ left: effectiveDirection * cardWidth, behavior: 'smooth' });
                 } else if (Math.abs(e.deltaX) > 0) {
-                  // Handle horizontal gestures as well (primarily trackpads)
                   const directionX = e.deltaX > 0 ? 1 : -1;
                   const effectiveDirectionX = isTrackpad ? -directionX : directionX;
                   container.scrollBy({ left: effectiveDirectionX * cardWidth, behavior: 'smooth' });
                 }
               }}
-
             >
               {(() => {
                 const caseStudies = [
@@ -823,7 +702,7 @@ export default function Home() {
                     id: 1,
                     title: "Café Bloom",
                     industry: "Local Coffee Shop",
-                                         result: "From generic to irresistable",
+                    result: "From generic to irresistable",
                     description: "Complete digital transformation including website redesign, local SEO, and Business Profile optimisation.",
                     metrics: ["Menu now accessible online", "Online ordering integrated", "Social media buzz created"],
                     beforePoints: ["Outdated one-page site", "No menu online", "No online ordering", "Weak social media"],
@@ -839,7 +718,7 @@ export default function Home() {
                     metrics: ["Website now mobile-friendly", "Business Profile optimised", "Clear call-to-actions driving bookings"],
                     beforePoints: ["No Business Profile", "No reviews", "Hard to contact", "Poor mobile usability"],
                     afterPoints: ["Optimised Business Profile", "Mobile-friendly service pages", "'Call Now' booking buttons", "Customer reviews highlighted"],
-                                          detailedDescription: "FlowPro Plumbing went from struggling to get calls to dominating local search results with an optimised online presence and streamlined booking system."
+                    detailedDescription: "FlowPro Plumbing went from struggling to get calls to dominating local search results with an optimised online presence and streamlined booking system."
                   },
                   {
                     id: 3,
@@ -920,66 +799,62 @@ export default function Home() {
                   }
                 ];
                 
-                // Create a circular carousel by duplicating the cards 3 times for seamless looping
                 const caseStudiesForCarousel = [...caseStudies, ...caseStudies, ...caseStudies];
                 
-                                return caseStudiesForCarousel.map((study, i) => (
-                                     <div
-                     key={`${study.title}-${i}`}
-                     className="case-study-card group relative rounded-2xl p-6 card overflow-hidden hover:shadow-2xl hover:shadow-accent/20 transition-all duration-300 flex-shrink-0 w-full md:w-96 lg:w-[420px] snap-center select-none flex flex-col h-[400px]"
-                   >
-                     <div className="card-accents" style={accentStyleFor(i)} aria-hidden />
-                     <div className="card-sheen" aria-hidden />
-                     <div className="relative z-10 flex flex-col h-full">
-                        {/* Industry Badge */}
-                        <div className="inline-flex items-center px-3 py-1 rounded-full bg-accent/10 text-sm font-medium text-accent mb-4">
-                          <div className="w-1.5 h-1.5 rounded-full bg-accent mr-2"></div>
-                          {study.industry}
-                        </div>
-                        
-                        {/* Qualitative Outcome */}
-                        <div className="mb-4">
-                          <span className="text-lg font-semibold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent leading-tight">
-                            {study.result}
-                          </span>
-                        </div>
-                       <h3 className="text-xl font-semibold mb-3">{study.title}</h3>
-                       <p className="text-muted text-sm mb-4">{study.description}</p>
-                       <div className="space-y-2 mb-6 flex-1">
-                         {study.metrics.map((metric, idx) => (
-                           <div key={idx} className="flex items-center text-sm">
-                           <div className="w-2 h-2 rounded-full bg-accent mr-3"></div>
-                           <span className="text-muted">{metric}</span>
-                         </div>
-                       ))}
-                     </div>
-                     <button 
-                       onClick={() => {
-                         setSelectedCaseStudy(study);
-                         setIsModalOpen(true);
-                       }}
-                                               className="w-full py-2 px-4 rounded-lg bg-white/5 border border-white/10 hover:border-accent/30 transition-colors text-sm font-medium btn-secondary btn-secondary-no-shine-mobile cursor-pointer mt-auto"
-                     >
-                       <span className="md:hidden">View Before & After</span>
-                       <span className="hidden md:inline">View Full Case Study</span>
-                     </button>
-                   </div>
-                </div>
-                          ));
+                return caseStudiesForCarousel.map((study, i) => (
+                  <div
+                    key={`${study.title}-${i}`}
+                    className="case-study-card group relative rounded-2xl p-6 card overflow-hidden hover:shadow-2xl hover:shadow-accent/20 transition-all duration-300 flex-shrink-0 w-full md:w-96 lg:w-[420px] snap-center select-none flex flex-col h-[400px]"
+                  >
+                    <div className="card-accents" style={accentStyleFor(i)} aria-hidden />
+                    <div className="card-sheen" aria-hidden />
+                    <div className="relative z-10 flex flex-col h-full">
+                      <div className="inline-flex items-center px-3 py-1 rounded-full bg-accent/10 text-sm font-medium text-accent mb-4">
+                        <div className="w-1.5 h-1.5 rounded-full bg-accent mr-2"></div>
+                        {study.industry}
+                      </div>
+                      
+                      <div className="mb-4">
+                        <span className="text-lg font-semibold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent leading-tight">
+                          {study.result}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-semibold mb-3">{study.title}</h3>
+                      <p className="text-muted text-sm mb-4">{study.description}</p>
+                      <div className="space-y-2 mb-6 flex-1">
+                        {study.metrics.map((metric, idx) => (
+                          <div key={idx} className="flex items-center text-sm">
+                            <div className="w-2 h-2 rounded-full bg-accent mr-3"></div>
+                            <span className="text-muted">{metric}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <button 
+                        onClick={() => {
+                          setSelectedCaseStudy(study);
+                          setIsModalOpen(true);
+                        }}
+                        className="w-full py-2 px-4 rounded-lg bg-white/5 border border-white/10 hover:border-accent/30 transition-colors text-sm font-medium btn-secondary btn-secondary-no-shine-mobile cursor-pointer mt-auto"
+                      >
+                        <span className="md:hidden">View Before & After</span>
+                        <span className="hidden md:inline">View Full Case Study</span>
+                      </button>
+                    </div>
+                  </div>
+                ));
               })()}
             </div>
             
-            {/* Navigation Arrow - Below the carousel */}
             <div className="mt-6 flex justify-start">
               <button
                 onClick={() => {
                   const container = document.getElementById('case-studies-carousel');
                   if (container) {
-                    const cardWidth = container.scrollWidth / 27; // 27 cards (9 × 3) for circular scroll
+                    const cardWidth = container.scrollWidth / 27;
                     container.scrollBy({ left: cardWidth, behavior: 'smooth' });
                   }
                 }}
-                                 className="p-3 rounded-full bg-black/20 border border-cyan-400/30 hover:border-accent/60 hover:bg-accent/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-accent/20 backdrop-blur-sm cursor-pointer"
+                className="p-3 rounded-full bg-black/20 border border-cyan-400/30 hover:border-accent/60 hover:bg-accent/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-accent/20 backdrop-blur-sm cursor-pointer"
                 aria-label="Next case study"
               >
                 <ArrowRight className="size-5 text-accent" />
@@ -988,8 +863,11 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-
+      
+      ===============================================
+      END OF COMMENTED SECTION
+      ===============================================
+      */}
 
       {/* CTA */}
       <section id="contact" className="relative pt-24 md:pt-2 pb-16 md:pb-24 min-h-screen flex items-center">

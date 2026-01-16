@@ -71,7 +71,7 @@ export default function ContactForm() {
     website: "",
     noWebsite: false,
     email: "",
-    phoneCountry: "+1", // Default to US
+    phoneCountry: "+44", // Default to UK
     phone: "",
     message: "",
     honeypot: "", // Hidden honeypot field
@@ -124,7 +124,7 @@ export default function ContactForm() {
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = "Please tell us about your business goals";
+      newErrors.message = "Please tell us about your main goals";
     }
 
     // Honeypot validation - if this field is filled, it's likely spam
@@ -168,7 +168,7 @@ export default function ContactForm() {
           website: "",
           noWebsite: false,
           email: "",
-          phoneCountry: "+1",
+          phoneCountry: "+44",
           phone: "",
           message: "",
           honeypot: "",
@@ -278,7 +278,7 @@ export default function ContactForm() {
                 background: 'rgba(255, 255, 255, 0.05)',
                 backdropFilter: 'blur(12px)'
               }}
-              placeholder="John Smith"
+              placeholder="Your Name"
             />
             {errors.name && (
               <div className="flex items-center gap-1 mt-1 text-red-400 text-sm">
@@ -376,7 +376,7 @@ export default function ContactForm() {
                background: 'rgba(255, 255, 255, 0.05)',
                backdropFilter: 'blur(12px)'
              }}
-             placeholder="john@yourbusiness.com"
+             placeholder="your.email@business.com"
            />
            {errors.email && (
              <div className="flex items-center gap-1 mt-1 text-red-400 text-sm">
@@ -440,7 +440,7 @@ export default function ContactForm() {
 
         <div>
           <label htmlFor="message" className="block text-sm font-medium mb-2">
-            Tell us about your business goals *
+            What are your main goals? *
           </label>
           <textarea
             id="message"
@@ -455,7 +455,7 @@ export default function ContactForm() {
               background: 'rgba(255, 255, 255, 0.05)',
               backdropFilter: 'blur(12px)'
             }}
-            placeholder="What are your main business challenges? What growth goals do you have? Any specific areas you'd like us to focus on?"
+            placeholder="e.g., get more local customers, improve website, increase social media presence"
           />
           {errors.message && (
             <div className="flex items-center gap-1 mt-1 text-red-400 text-sm">

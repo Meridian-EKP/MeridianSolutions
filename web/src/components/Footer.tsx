@@ -12,9 +12,9 @@ export default function Footer() {
   const isHomePage = pathname === "/";
 
   const navLinks = [
-    { href: "#about", label: "About" },
+    { href: "#about", label: "Why Meridian" },
     { href: "#services", label: "Services" },
-    { href: "#work", label: "Case Studies" },
+    { href: "#team", label: "About Me" },
     { href: "#contact", label: "Contact" },
     { href: "#contact-form", label: "Digital Health Check" }
   ];
@@ -188,7 +188,7 @@ export default function Footer() {
           <div className="mx-auto w-full max-w-screen-2xl px-6 md:px-10 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                              <p className="text-sm text-muted">
-                 © {currentYear} The Meridian Agency. All Rights Reserved.
+                © 2025-2026 The Meridian Agency. All Rights Reserved.
                </p>
                              <div className="flex gap-6">
                  <Link 

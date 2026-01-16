@@ -25,8 +25,9 @@ const Navigation = () => {
   }, []);
 
   const navLinks = [
-    { href: "#about", label: "About" },
+    { href: "#about", label: "Why Meridian" },
     { href: "#services", label: "Services" },
+    { href: "#team", label: "About Me" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -101,7 +102,7 @@ const Navigation = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-4">
             {navLinks.map((link) => (
                              <button
                  key={link.href}
