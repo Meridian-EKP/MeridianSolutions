@@ -596,7 +596,7 @@ export default function Home() {
                     With a Computer Science degree specialising in AI, I bring a unique blend of technical expertise and strategic thinking to every project. This foundation allows me to understand both the technical possibilities and the practical business needs.
                   </p>
                   <p>
-                    Today, I'm passionate about creating digital solutions that don't just look good—they work. Every project is a chance to help a business reach its full potential.
+                    Today, I&apos;m passionate about creating digital solutions that don&apos;t just look good—they work. Every project is a chance to help a business reach its full potential.
                   </p>
                 </div>
               </div>

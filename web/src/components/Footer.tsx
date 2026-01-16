@@ -6,8 +6,6 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 
 export default function Footer() {
-
-  const currentYear = new Date().getFullYear();
   const pathname = usePathname();
   const isHomePage = pathname === "/";
 

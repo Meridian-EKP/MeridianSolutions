@@ -317,7 +317,7 @@ const MobileStarfield: React.FC<MobileStarfieldProps> = ({
     };
     
     return constellation;
-  }, [position, random]);
+  }, [position, random, settings.constellationMaxSegmentNorm]);
 
   // Particle class
   const createParticle = useCallback((): Particle => {
