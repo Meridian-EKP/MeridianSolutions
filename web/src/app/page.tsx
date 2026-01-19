@@ -547,9 +547,9 @@ export default function Home() {
               
               <div className="relative z-10 flex flex-col justify-between h-full min-h-[280px]">
                 {/* Avatar and Info Side by Side */}
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-4 md:gap-6 mb-6 md:mb-0">
                   {/* Profile Picture */}
-                  <div className="w-64 h-64 rounded-full border-2 border-accent/30 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                  <div className="w-32 h-32 md:w-64 md:h-64 rounded-full border-2 border-accent/30 flex items-center justify-center flex-shrink-0 overflow-hidden">
                     <Image
                       src="/MeridianPP.jpeg"
                       alt="Ed Kemp-Potter"
@@ -562,16 +562,16 @@ export default function Home() {
                   </div>
                   
                   {/* Name & Role */}
-                  <div>
-                    <h3 className="text-xl font-semibold mb-1">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg md:text-xl font-semibold mb-1">
                       Ed<br />Kemp-Potter
                     </h3>
-                    <p className="text-sm text-accent font-medium">Director & Founder</p>
+                    <p className="text-xs md:text-sm text-accent font-medium">Director & Founder</p>
                   </div>
                 </div>
                 
                 {/* Expertise Tags */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mt-auto pt-4">
                   {["Project Management", "Business Strategy", "Consulting", "Client Relationship", "Business Development", "Programming"].map((skill, idx) => (
                     <span 
                       key={idx}
