@@ -58,15 +58,19 @@ const Navigation = () => {
 
   return (
                    <nav
-        className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ease-out font-nav ${
+        className={`fixed z-[60] font-nav ${
           isMobileMenuOpen
-            ? "h-20 bg-background border-b border-black"
+            ? isScrolled
+              ? "top-0 left-0 right-0 md:top-0 md:left-0 md:right-0 h-20 rounded-b-2xl md:rounded-none bg-white/5 md:bg-background backdrop-blur-xl md:backdrop-blur-sm border-b border-white/10 md:border-black transition-all duration-300 ease-out"
+              : "top-0 left-0 right-0 h-20 bg-background border-b border-black transition-none"
             : isScrolled
-            ? "h-16 bg-background/90 backdrop-blur-sm border-b border-white/10 shadow-lg shadow-accent/10"
-            : "h-20 bg-background border-b border-black"
+            ? "top-4 left-4 right-4 md:top-0 md:left-0 md:right-0 h-16 rounded-2xl md:rounded-none bg-white/5 md:bg-background/90 backdrop-blur-xl md:backdrop-blur-sm border border-white/10 md:border-b md:border-white/10 shadow-lg md:shadow-lg md:shadow-accent/10 transition-all duration-500 ease-out"
+            : "top-0 left-0 right-0 h-20 bg-background border-b border-black transition-all duration-500 ease-out"
         }`}
       >
-      <div className="mx-auto max-w-screen-2xl px-6 md:px-10 h-full">
+      <div className={`mx-auto max-w-screen-2xl h-full transition-all duration-500 ease-out ${
+        isScrolled && !isMobileMenuOpen ? "px-6 md:px-10" : "px-6 md:px-10"
+      }`}>
         <div className="flex items-center justify-between h-full">
           {/* Logo/Brand */}
           <div className="flex items-center">
@@ -149,59 +153,44 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* Mobile Menu - Below Taskbar */}
+      {/* Mobile Menu - Compact Top Third Design */}
       <div
         className={`lg:hidden fixed left-0 right-0 z-30 ${
           isMobileMenuOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+            ? "block"
+            : "hidden"
         }`}
         style={{ 
           top: '80px',
-          height: 'calc(100vh - 80px)',
-          minHeight: 'calc(100vh - 80px)'
+          maxHeight: '33vh',
         }}
       >
-        {/* Backdrop */}
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-md" />
-        
-        {/* Menu Content */}
-        <div className="relative h-full flex flex-col items-center justify-start z-40" style={{ minHeight: 'calc(100vh - 80px)', paddingBottom: 'calc(env(safe-area-inset-bottom) + 120px)' }}>
-          {/* Navigation Links and Get Started - distributed to fill vertical space */}
-          <div className="flex flex-col items-center justify-between w-full gap-3" style={{ marginTop: '14vh', minHeight: '55vh' }}>
+        {/* Menu Container */}
+        <div className="bg-background border-b border-black rounded-b-2xl overflow-hidden">
+          <div className="flex flex-col">
             {navLinks.map((link, index) => (
-              <button
-                key={link.href}
-                onClick={() => scrollToSection(link.href)}
-                className={`group relative text-3xl font-medium text-white hover:text-accent transition-all duration-500 cursor-pointer transform ${
-                  isMobileMenuOpen 
-                    ? 'opacity-100 translate-y-0' 
-                    : 'opacity-0 translate-y-8'
-                }`}
-                style={{ 
-                  animationDelay: `${index * 0.15}s`,
-                  transitionDelay: `${index * 0.15}s`
-                }}
-              >
-                <span className="relative z-10">{link.label}</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-accent/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300" />
-              </button>
+              <div key={link.href}>
+                <button
+                  onClick={() => scrollToSection(link.href)}
+                  className="w-full text-left px-6 py-4 text-base font-medium text-white hover:text-accent transition-colors duration-200 flex items-center"
+                >
+                  <span>{link.label}</span>
+                </button>
+                {index < navLinks.length - 1 && (
+                  <div className="h-px bg-gradient-to-r from-white/10 to-transparent mx-6" />
+                )}
+              </div>
             ))}
             
-            {/* Get Started Button - Same Text Size, Equal Spacing with Animation */}
-            <button
-              onClick={() => scrollToSection("#contact-form")}
-              className={`btn-gradient-animated px-9 py-3 text-3xl font-medium transform ${
-                isMobileMenuOpen 
-                  ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-8'
-              }`}
-              style={{ 
-                transitionDelay: `${navLinks.length * 0.15 + 0.1}s`
-              }}
-            >
-              Get Started
-            </button>
+            {/* Get Started Button */}
+            <div className="px-6 py-4 border-t border-white/10">
+              <button
+                onClick={() => scrollToSection("#contact-form")}
+                className="w-full btn-gradient-animated px-4 py-2.5 text-sm font-medium rounded-lg"
+              >
+                Get Started
+              </button>
+            </div>
           </div>
         </div>
       </div>

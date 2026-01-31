@@ -541,10 +541,7 @@ export default function Home() {
           {/* Team Grid */}
           <div className="mt-10 grid md:grid-cols-2 gap-6">
             {/* Left Card - Profile */}
-            <div className="team-card group relative rounded-2xl p-8 card overflow-hidden hover:shadow-2xl hover:shadow-accent/20 transition-all duration-300 hover:scale-[1.02]">
-              <div className="card-accents" style={accentStyleFor(0)} aria-hidden />
-              <div className="card-sheen" aria-hidden />
-              
+            <div className="team-card group relative rounded-2xl p-8 glass-no-shine border border-white/10 overflow-hidden transition-transform duration-300 hover:scale-105">
               <div className="relative z-10 flex flex-col justify-between h-full min-h-[280px]">
                 {/* Avatar and Info Side by Side */}
                 <div className="flex items-center gap-4 md:gap-6 mb-6 md:mb-0">
