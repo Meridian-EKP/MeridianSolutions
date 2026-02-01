@@ -24,10 +24,10 @@ export const services: Service[] = [
   },
   { 
     slug: "local-search-optimization",
-    title: "Local Search & Business Profile Optimization", 
+    title: "Local Search & Business Profile Optimisation", 
     desc: "We make sure your business shows up when local customers are searching, and that your profiles look trustworthy and up to date.",
-    fullDesc: "Complete local search optimization and Business Profile management for maximum local visibility.",
-    detailedDesc: "We make sure your business shows up when local customers are searching, and that your profiles look trustworthy and up to date.\n\nOur comprehensive approach combines Business Profile optimization with local SEO strategies to ensure you're found by the right customers at the right time.",
+    fullDesc: "Complete local search optimisation and Business Profile management for maximum local visibility.",
+    detailedDesc: "We make sure your business shows up when local customers are searching, and that your profiles look trustworthy and up to date.\n\nOur comprehensive approach combines Business Profile optimisation with local SEO strategies to ensure you're found by the right customers at the right time.",
     pricing: "Typical investment: one-off projects from £250–£600, with optional monthly check-ins or updates if needed.",
     benefits: ["Optimisation of Google Business Profile", "Consistent details across key directories", "Keyword improvements for website and business descriptions", "Guidance on reviews: how to ask, how to respond, how to showcase", "Basic local search audit with clear recommendations", "Tracking key metrics (views, calls, direction requests)"],
     icon: MapPin

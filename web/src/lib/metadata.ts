@@ -4,7 +4,7 @@ import type { Metadata } from "next";
  * Centralized Metadata Configuration
  * 
  * This file contains all metadata configurations for The Meridian Agency website.
- * It provides consistent SEO optimization across all pages with proper titles,
+ * It provides consistent SEO optimisation across all pages with proper titles,
  * descriptions, and social media tags.
  */
 

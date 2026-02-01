@@ -348,7 +348,7 @@ export default function Home() {
                     <div className="mt-6">
                       <h3 className="text-lg font-semibold text-accent mb-3">Your Personal Package</h3>
                       <p className="text-muted">
-                        We craft custom digital packages tailored to your specific business needs and budget. Rather than forcing you into rigid service tiers, we analyse your goals, market position, and resources to design a strategic solution that maximizes your ROI. Our flexible approach ensures you only pay for what you need while getting the exact tools and strategies required to dominate your local market.
+                        We craft custom digital packages tailored to your specific business needs and budget. Rather than forcing you into rigid service tiers, we analyse your goals, market position, and resources to design a strategic solution that maximises your ROI. Our flexible approach ensures you only pay for what you need while getting the exact tools and strategies required to dominate your local market.
                       </p>
                       <div className="mt-4 flex items-center">
                                                                            <button 
@@ -407,7 +407,7 @@ export default function Home() {
                      The Meridian Agency specialises in turning local businesses into digital leaders. We don&apos;t just build websites—we create complete growth ecosystems that attract, convert, and retain your ideal customers.
                    </p>
                    <p className="mt-4 text-muted">
-                     We craft custom digital packages tailored to your specific business needs and budget. Rather than forcing you into rigid service tiers, we analyse your goals, market position, and resources to design a strategic solution that maximizes your ROI. Our flexible approach ensures you only pay for what you need while getting the exact tools and strategies required to dominate your local market.
+                     We craft custom digital packages tailored to your specific business needs and budget. Rather than forcing you into rigid service tiers, we analyse your goals, market position, and resources to design a strategic solution that maximises your ROI. Our flexible approach ensures you only pay for what you need while getting the exact tools and strategies required to dominate your local market.
                    </p>
                    
                    <div className="mt-6 pt-6 border-t border-white/10">
