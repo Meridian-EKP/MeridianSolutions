@@ -61,7 +61,7 @@ const Navigation = () => {
         className={`fixed z-[60] font-nav ${
           isMobileMenuOpen
             ? isScrolled
-              ? "top-0 left-0 right-0 md:top-0 md:left-0 md:right-0 h-20 rounded-b-2xl md:rounded-none bg-white/5 md:bg-background backdrop-blur-xl md:backdrop-blur-sm border-b border-white/10 md:border-black transition-all duration-300 ease-out"
+              ? "top-0 left-0 right-0 md:top-0 md:left-0 md:right-0 h-20 md:rounded-none bg-white/5 md:bg-background backdrop-blur-xl md:backdrop-blur-sm border-b border-white/10 md:border-black transition-all duration-300 ease-out"
               : "top-0 left-0 right-0 h-20 bg-background border-b border-black transition-none"
             : isScrolled
             ? "top-4 left-4 right-4 md:top-0 md:left-0 md:right-0 h-16 rounded-2xl md:rounded-none bg-white/5 md:bg-background/90 backdrop-blur-xl md:backdrop-blur-sm border border-white/10 md:border-b md:border-white/10 shadow-lg md:shadow-lg md:shadow-accent/10 transition-all duration-500 ease-out"

@@ -153,6 +153,30 @@ export default function Home() {
 
   // Removed all scroll animations for clean, bug-free experience
 
+  // Smooth scroll to section with header offset (matching Navigation component behavior)
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (!element) return;
+    
+    const isMobileViewport = typeof window !== 'undefined' && window.innerWidth < 1024;
+    const needsServicesOffset = sectionId === "services" && isMobileViewport;
+    const needsContactFormOffset = sectionId === "contact-form" && isMobileViewport;
+    
+    if (needsServicesOffset) {
+      const rect = element.getBoundingClientRect();
+      const absoluteTop = rect.top + window.pageYOffset;
+      const offset = -48; // Same as Navigation component
+      window.scrollTo({ top: absoluteTop + offset, behavior: 'smooth' });
+    } else if (needsContactFormOffset) {
+      const rect = element.getBoundingClientRect();
+      const absoluteTop = rect.top + window.pageYOffset;
+      const offset = -32; // Same as Navigation component
+      window.scrollTo({ top: absoluteTop + offset, behavior: 'smooth' });
+    } else {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   /**
    * Generates deterministic accent styles for service cards
    * 
@@ -257,13 +281,13 @@ export default function Home() {
             
             {/* Desktop buttons - original positioning */}
             <div className="mt-8 hidden md:flex flex-wrap gap-4">
-              <a href="#contact-form" className="btn-gradient-animated inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-medium">
+              <button onClick={() => scrollToSection('contact-form')} className="btn-gradient-animated inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-medium">
                 Get Your Free Digital Health Check
                 <ArrowRight className="size-4" />
-              </a>
-              <a href="#services" className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-medium border border-cyan-400/30 hover:border-cyan-400/50 transition">
+              </button>
+              <button onClick={() => scrollToSection('services')} className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm md:text-base font-medium border border-cyan-400/30 hover:border-cyan-400/50 transition">
                 See Our Services
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -271,13 +295,13 @@ export default function Home() {
         {/* Mobile buttons - positioned with full flexibility */}
         <div className="absolute bottom-8 left-6 right-6 z-20 md:hidden">
           <div className="flex flex-wrap gap-4 justify-start ml-4">
-            <a href="#contact-form" className="btn-gradient-animated inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium">
+            <button onClick={() => scrollToSection('contact-form')} className="btn-gradient-animated inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium">
               Get Your Free Digital Health Check
               <ArrowRight className="size-4" />
-            </a>
-            <a href="#services" className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium border border-cyan-400/30 hover:border-cyan-400/50 transition">
+            </button>
+            <button onClick={() => scrollToSection('services')} className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium border border-cyan-400/30 hover:border-cyan-400/50 transition">
               See Our Services
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -876,10 +900,10 @@ export default function Home() {
               <span className="font-medium"> No obligation, just actionable insights.</span>
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#contact-form" className="btn-gradient-animated inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-medium">
+              <button onClick={() => scrollToSection('contact-form')} className="btn-gradient-animated inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-medium">
                 Get Your Free Digital Health Check
                 <ArrowRight className="size-5" />
-              </a>
+              </button>
               <a href="mailto:Hello@TheMeridianAgency.xyz" className="glass btn-primary-no-shine-mobile inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-medium border border-cyan-400/30 hover:border-cyan-400/50 transition">
                 Email: Hello@TheMeridianAgency.xyz
               </a>

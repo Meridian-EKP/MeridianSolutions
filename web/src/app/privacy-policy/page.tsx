@@ -1,12 +1,8 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { privacyPolicyMetadata } from "@/lib/metadata";
-
-/**
- * Privacy Policy Page Metadata
- */
-export const metadata: Metadata = privacyPolicyMetadata;
+import Footer from "@/components/Footer";
 
 /**
  * Privacy Policy Page
@@ -19,17 +15,46 @@ export default function PrivacyPolicy() {
   const lastUpdated = "15/09/2025";
   
   return (
-    <div className="min-h-screen bg-black">
+    <div className="page-container relative overflow-x-clip min-h-screen">
+      {/* Mobile: Fixed Back Button - Top Left (stays visible while scrolling) */}
+      <Link
+        href="/"
+        className="fixed top-24 left-6 z-[100] md:hidden inline-flex items-center gap-2 px-4 py-3 rounded-full transition-all duration-300 group"
+        style={{ 
+          position: 'fixed',
+          background: 'rgba(255, 255, 255, 0.03)',
+          backdropFilter: 'blur(4px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(4px) saturate(180%)',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05) inset',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.border = '1px solid rgba(94, 231, 255, 0.3)';
+          e.currentTarget.style.boxShadow = '0 8px 32px rgba(94, 231, 255, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05) inset';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.border = '1px solid rgba(255, 255, 255, 0.08)';
+          e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05) inset';
+        }}
+      >
+        <ArrowLeft className="size-4 text-accent group-hover:-translate-x-1 transition-transform duration-300" />
+        <span className="text-sm font-medium text-white">Back</span>
+      </Link>
+
+      {/* Desktop: Back Button */}
+      <div className="hidden md:block mx-auto w-full max-w-screen-2xl px-6 md:px-10 pt-24 md:pt-32 pb-8">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-muted hover:text-accent transition-colors duration-300 group"
+        >
+          <ArrowLeft className="size-4 group-hover:-translate-x-1 transition-transform duration-300" />
+          <span>Back to Home</span>
+        </Link>
+      </div>
+
       {/* Header */}
-      <div className="relative pt-24 pb-12 border-b border-white/10 bg-gradient-to-b from-black to-black/70">
+      <div className="relative pt-40 md:pt-8 pb-12 border-b border-white/10 bg-gradient-to-b from-black to-black/70">
         <div className="mx-auto w-full max-w-4xl px-6 md:px-10">
-          <Link 
-            href="/"
-            className="inline-flex items-center gap-2 text-accent hover:text-accent/80 transition-colors mb-8"
-          >
-            <ArrowLeft className="size-4" />
-            Back to Home
-          </Link>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
             Privacy Policy
           </h1>
@@ -157,6 +182,8 @@ export default function PrivacyPolicy() {
           </div>
         </div>
       </div>
+      
+      <Footer />
     </div>
   );
 }
