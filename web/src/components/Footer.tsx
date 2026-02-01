@@ -65,7 +65,7 @@ export default function Footer() {
                                 alt="The Meridian Agency"
                                 width={1300}
                                 height={325}
-                                className="h-20 md:h-40 w-auto -ml-4"
+                                className="h-20 md:h-40 w-auto max-w-full -ml-4 object-contain"
                                 priority
                               />
                            </button>
@@ -79,7 +79,7 @@ export default function Footer() {
                                 alt="The Meridian Agency"
                                 width={1300}
                                 height={325}
-                                className="h-20 md:h-40 w-auto -ml-4"
+                                className="h-20 md:h-40 w-auto max-w-full -ml-4 object-contain"
                                 priority
                               />
                             </Link>
