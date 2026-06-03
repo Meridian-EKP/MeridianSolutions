@@ -516,21 +516,21 @@ export default function Home() {
                 key={service.slug}
                 href={`/services/${service.slug}`}
                 className="service-card group relative rounded-2xl card overflow-hidden transition-all duration-400 ease-out hover:scale-[1.01] hover:shadow-2xl hover:shadow-accent/20"
-              >
-                <div className="card-accents" style={accentStyleFor(i)} aria-hidden />
-                <div className="card-sheen" aria-hidden />
-                
+            >
+              <div className="card-accents" style={accentStyleFor(i)} aria-hidden />
+              <div className="card-sheen" aria-hidden />
+              
                 {/* Main card content */}
                 <div className="relative z-10 p-5 flex flex-col h-full">
-                  {/* Header */}
+                {/* Header */}
                   <div className="flex items-center justify-center md:items-start md:justify-start gap-3">
-                    <div className="p-2 rounded-lg bg-white/5 border border-cyan-400/30 group-hover:border-accent/30 transition-colors flex-shrink-0">
+                  <div className="p-2 rounded-lg bg-white/5 border border-cyan-400/30 group-hover:border-accent/30 transition-colors flex-shrink-0">
                       <Icon className="size-5 text-accent" />
-                    </div>
+                  </div>
                     <div className="flex-1 text-center md:text-left">
                       <h3 className="text-base md:text-lg font-semibold leading-[1.5rem]">{service.title}</h3>
+                      </div>
                     </div>
-                  </div>
 
                   {/* Description - Hidden on mobile */}
                   <div className="hidden md:block flex-1 mb-4">
@@ -544,7 +544,7 @@ export default function Home() {
                     <div className="flex items-center gap-2 text-accent text-sm font-medium group-hover:gap-3 transition-all duration-300">
                       <span>Learn More</span>
                       <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform duration-300" />
-                    </div>
+                </div>
                   </div>
                 </div>
               </Link>
@@ -560,7 +560,7 @@ export default function Home() {
           <div className="team-header max-w-3xl">
             <h2 className="text-2xl md:text-4xl font-semibold">About Me</h2>
             <p className="mt-3 text-muted text-lg">Get to know the person behind your digital transformation.</p>
-          </div>
+                    </div>
           
           {/* Team Grid */}
           <div className="mt-10 grid md:grid-cols-2 gap-6">
@@ -580,8 +580,8 @@ export default function Home() {
                       priority
                       className="w-full h-full object-cover"
                     />
-                  </div>
-                  
+              </div>
+
                   {/* Name & Role */}
                   <div className="flex-1 min-w-0">
                     <h3 className="text-lg md:text-xl font-semibold mb-1">
@@ -589,21 +589,21 @@ export default function Home() {
                     </h3>
                     <p className="text-xs md:text-sm text-accent font-medium">Director & Founder</p>
                   </div>
-                </div>
-                
+                  </div>
+
                 {/* Expertise Tags */}
                 <div className="flex flex-wrap gap-2 mt-auto pt-4">
                   {["Project Management", "Business Strategy", "Consulting", "Client Relationship", "Business Development", "Programming"].map((skill, idx) => (
                     <span 
-                      key={idx}
+                          key={idx} 
                       className="px-3 py-1 rounded-full bg-accent/10 text-xs font-medium text-accent border border-accent/20"
-                    >
+                        >
                       {skill}
                     </span>
-                  ))}
+                      ))}
+                  </div>
                 </div>
-              </div>
-            </div>
+                    </div>
 
             {/* Right Card - Story */}
             <div className="glass-no-shine rounded-3xl p-6 md:p-10 border border-white/10 transition-transform duration-300 hover:scale-105">
@@ -620,9 +620,9 @@ export default function Home() {
                     Today, I&apos;m passionate about creating digital solutions that don&apos;t just look good—they work. Every project is a chance to help a business reach its full potential.
                   </p>
                 </div>
-              </div>
             </div>
-          </div>
+            </div>
+        </div>
         </div>
       </section>
 
@@ -723,7 +723,7 @@ export default function Home() {
                     id: 1,
                     title: "Café Bloom",
                     industry: "Local Coffee Shop",
-                    result: "From generic to irresistable",
+                                         result: "From generic to irresistable",
                     description: "Complete digital transformation including website redesign, local SEO, and Business Profile optimisation.",
                     metrics: ["Menu now accessible online", "Online ordering integrated", "Social media buzz created"],
                     beforePoints: ["Outdated one-page site", "No menu online", "No online ordering", "Weak social media"],
@@ -739,7 +739,7 @@ export default function Home() {
                     metrics: ["Website now mobile-friendly", "Business Profile optimised", "Clear call-to-actions driving bookings"],
                     beforePoints: ["No Business Profile", "No reviews", "Hard to contact", "Poor mobile usability"],
                     afterPoints: ["Optimised Business Profile", "Mobile-friendly service pages", "'Call Now' booking buttons", "Customer reviews highlighted"],
-                    detailedDescription: "FlowPro Plumbing went from struggling to get calls to dominating local search results with an optimised online presence and streamlined booking system."
+                                          detailedDescription: "FlowPro Plumbing went from struggling to get calls to dominating local search results with an optimised online presence and streamlined booking system."
                   },
                   {
                     id: 3,
@@ -822,47 +822,47 @@ export default function Home() {
                 
                 const caseStudiesForCarousel = [...caseStudies, ...caseStudies, ...caseStudies];
                 
-                return caseStudiesForCarousel.map((study, i) => (
-                  <div
-                    key={`${study.title}-${i}`}
-                    className="case-study-card group relative rounded-2xl p-6 card overflow-hidden hover:shadow-2xl hover:shadow-accent/20 transition-all duration-300 flex-shrink-0 w-full md:w-96 lg:w-[420px] snap-center select-none flex flex-col h-[400px]"
-                  >
-                    <div className="card-accents" style={accentStyleFor(i)} aria-hidden />
-                    <div className="card-sheen" aria-hidden />
-                    <div className="relative z-10 flex flex-col h-full">
-                      <div className="inline-flex items-center px-3 py-1 rounded-full bg-accent/10 text-sm font-medium text-accent mb-4">
-                        <div className="w-1.5 h-1.5 rounded-full bg-accent mr-2"></div>
-                        {study.industry}
-                      </div>
-                      
-                      <div className="mb-4">
-                        <span className="text-lg font-semibold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent leading-tight">
-                          {study.result}
-                        </span>
-                      </div>
-                      <h3 className="text-xl font-semibold mb-3">{study.title}</h3>
-                      <p className="text-muted text-sm mb-4">{study.description}</p>
-                      <div className="space-y-2 mb-6 flex-1">
-                        {study.metrics.map((metric, idx) => (
-                          <div key={idx} className="flex items-center text-sm">
-                            <div className="w-2 h-2 rounded-full bg-accent mr-3"></div>
-                            <span className="text-muted">{metric}</span>
-                          </div>
-                        ))}
-                      </div>
-                      <button 
-                        onClick={() => {
-                          setSelectedCaseStudy(study);
-                          setIsModalOpen(true);
-                        }}
-                        className="w-full py-2 px-4 rounded-lg bg-white/5 border border-white/10 hover:border-accent/30 transition-colors text-sm font-medium btn-secondary btn-secondary-no-shine-mobile cursor-pointer mt-auto"
-                      >
-                        <span className="md:hidden">View Before & After</span>
-                        <span className="hidden md:inline">View Full Case Study</span>
-                      </button>
-                    </div>
-                  </div>
-                ));
+                                return caseStudiesForCarousel.map((study, i) => (
+                                     <div
+                     key={`${study.title}-${i}`}
+                     className="case-study-card group relative rounded-2xl p-6 card overflow-hidden hover:shadow-2xl hover:shadow-accent/20 transition-all duration-300 flex-shrink-0 w-full md:w-96 lg:w-[420px] snap-center select-none flex flex-col h-[400px]"
+                   >
+                     <div className="card-accents" style={accentStyleFor(i)} aria-hidden />
+                     <div className="card-sheen" aria-hidden />
+                     <div className="relative z-10 flex flex-col h-full">
+                        <div className="inline-flex items-center px-3 py-1 rounded-full bg-accent/10 text-sm font-medium text-accent mb-4">
+                          <div className="w-1.5 h-1.5 rounded-full bg-accent mr-2"></div>
+                          {study.industry}
+                        </div>
+                        
+                        <div className="mb-4">
+                          <span className="text-lg font-semibold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent leading-tight">
+                            {study.result}
+                          </span>
+                        </div>
+                       <h3 className="text-xl font-semibold mb-3">{study.title}</h3>
+                       <p className="text-muted text-sm mb-4">{study.description}</p>
+                       <div className="space-y-2 mb-6 flex-1">
+                         {study.metrics.map((metric, idx) => (
+                           <div key={idx} className="flex items-center text-sm">
+                           <div className="w-2 h-2 rounded-full bg-accent mr-3"></div>
+                           <span className="text-muted">{metric}</span>
+                         </div>
+                       ))}
+                     </div>
+                     <button 
+                       onClick={() => {
+                         setSelectedCaseStudy(study);
+                         setIsModalOpen(true);
+                       }}
+                                               className="w-full py-2 px-4 rounded-lg bg-white/5 border border-white/10 hover:border-accent/30 transition-colors text-sm font-medium btn-secondary btn-secondary-no-shine-mobile cursor-pointer mt-auto"
+                     >
+                       <span className="md:hidden">View Before & After</span>
+                       <span className="hidden md:inline">View Full Case Study</span>
+                     </button>
+                   </div>
+                </div>
+                          ));
               })()}
             </div>
             
@@ -875,7 +875,7 @@ export default function Home() {
                     container.scrollBy({ left: cardWidth, behavior: 'smooth' });
                   }
                 }}
-                className="p-3 rounded-full bg-black/20 border border-cyan-400/30 hover:border-accent/60 hover:bg-accent/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-accent/20 backdrop-blur-sm cursor-pointer"
+                                 className="p-3 rounded-full bg-black/20 border border-cyan-400/30 hover:border-accent/60 hover:bg-accent/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-accent/20 backdrop-blur-sm cursor-pointer"
                 aria-label="Next case study"
               >
                 <ArrowRight className="size-5 text-accent" />
@@ -884,7 +884,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      
+
       ===============================================
       END OF COMMENTED SECTION
       ===============================================
