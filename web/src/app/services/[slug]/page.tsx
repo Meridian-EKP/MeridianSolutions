@@ -110,11 +110,48 @@ export default function ServicePage({ params }: ServicePageProps) {
             <div className="glass-no-shine rounded-3xl p-8 md:p-12 border border-white/10 mb-8">
               <h2 className="text-2xl md:text-3xl font-semibold mb-6 flex items-center gap-3">
                 <span className="w-3 h-3 rounded-full bg-accent"></span>
-                Investment Options
+                {service.tiers ? "Plans & Pricing" : "Investment Options"}
               </h2>
-              <div className="text-muted text-base md:text-lg leading-relaxed whitespace-pre-line">
-                {service.pricing}
-              </div>
+
+              {service.tiers ? (
+                <div className="grid gap-6 md:grid-cols-2">
+                  {service.tiers.map((tier) => (
+                    <div
+                      key={tier.name}
+                      className={`relative rounded-2xl p-6 md:p-8 border transition-colors ${
+                        tier.highlighted
+                          ? "border-cyan-400/40 bg-white/[0.04]"
+                          : "border-white/10 bg-white/[0.02]"
+                      }`}
+                    >
+                      {tier.highlighted && (
+                        <span className="absolute -top-3 left-6 px-3 py-1 rounded-full text-xs font-medium bg-accent text-black">
+                          Most Popular
+                        </span>
+                      )}
+                      <h3 className="text-xl md:text-2xl font-semibold">{tier.name}</h3>
+                      <div className="mt-3 flex items-baseline gap-2">
+                        <span className="text-3xl md:text-4xl font-semibold text-white">{tier.price}</span>
+                        {tier.priceNote && (
+                          <span className="text-sm text-muted">{tier.priceNote}</span>
+                        )}
+                      </div>
+                      <ul className="mt-6 space-y-3">
+                        {tier.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-start gap-3 text-muted">
+                            <CheckCircle className="size-5 text-green-400 flex-shrink-0 mt-0.5" />
+                            <span className="text-base">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-muted text-base md:text-lg leading-relaxed whitespace-pre-line">
+                  {service.pricing}
+                </div>
+              )}
             </div>
 
             {/* CTA Button */}

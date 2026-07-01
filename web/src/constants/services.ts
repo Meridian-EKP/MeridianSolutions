@@ -1,4 +1,12 @@
-import { Globe, MapPin, Share2, Smartphone, Target, Megaphone, LucideIcon } from "lucide-react";
+import { Globe, MapPin, Link2, Smartphone, Target, Megaphone, LucideIcon } from "lucide-react";
+
+export interface ServiceTier {
+  name: string;
+  price: string;
+  priceNote?: string;
+  features: string[];
+  highlighted?: boolean;
+}
 
 export interface Service {
   slug: string;
@@ -8,6 +16,7 @@ export interface Service {
   detailedDesc: string;
   pricing: string;
   benefits: string[];
+  tiers?: ServiceTier[];
   icon: LucideIcon;
 }
 
@@ -33,14 +42,29 @@ export const services: Service[] = [
     icon: MapPin
   },
   { 
-    slug: "social-media-management",
-    title: "Social Media Setup & Management", 
-    desc: "Professional social media management that builds brand authority and engagement.",
-    fullDesc: "Platform-specific content strategies, community management, and local audience targeting that converts.",
-    detailedDesc: "Build authority and drive meaningful engagement with strategic social media management. We create platform-specific content that resonates with your local audience and converts followers into customers.\n\nFrom content creation to community management, we handle everything while maintaining your authentic brand voice and driving measurable business results.",
-    pricing: "Setup from £100 • Management from £50/month per platform",
-    benefits: ["Platform-specific content strategy", "Daily content creation & posting", "Community management", "Local audience targeting", "Monthly analytics reports"],
-    icon: Share2
+    slug: "link-in-bio-setup",
+    title: "Link in Bio Setup", 
+    desc: "One simple link that houses all your links, socials, and content in a clean, branded page.",
+    fullDesc: "A single, customisable link-in-bio page that connects your audience to everything that matters, with analytics on higher tiers.",
+    detailedDesc: "Turn the single link in your bio into a powerful hub. We build you a clean, fast, mobile-first page that brings all your important links, socials, and content together in one branded place.\n\nStart free with a fully functional page, then upgrade to Pro for advanced customisation and analytics so you can see exactly what your audience is clicking and grow from there.",
+    pricing: "Free plan available • Pro from £5/month (save 20% with annual billing)",
+    benefits: ["Mobile-first, fast-loading page", "Your links, socials & content in one place", "Custom branding to match your business", "Simple to update whenever you need", "Analytics to track clicks and engagement (Pro)"],
+    tiers: [
+      {
+        name: "Free",
+        price: "£0",
+        priceNote: "forever",
+        features: ["1 page", "Basic customisation", "1–5 links"]
+      },
+      {
+        name: "Pro",
+        price: "£5",
+        priceNote: "per month · save 20% annually (£48/year)",
+        highlighted: true,
+        features: ["Everything in Free", "Unlimited links", "Higher customisation", "Analytics & click tracking"]
+      }
+    ],
+    icon: Link2
   },
   { 
     slug: "app-development",
