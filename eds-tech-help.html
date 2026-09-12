@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ed's Tech Help — Friendly local technology help</title>
+<meta name="description" content="Friendly, patient technology help for computers, phones, Wi-Fi, printers and everyday devices. Local, no jargon, help at home. Call Ed on 07541 516344.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF7F2;
+    --bg-alt:#F1EAE0;
+    --surface:#FFFFFF;
+    --ink:#2E2A25;
+    --ink-muted:#6B6259;
+    --accent:#3D6B5C;
+    --accent-dark:#2C4E43;
+    --accent-tint:#E7EFEC;
+    --cta:#E0912E;
+    --cta-dark:#C67A1E;
+    --border:#E4DDD1;
+    --radius:14px;
+    --radius-lg:20px;
+    --max:1120px;
+    --shadow:0 4px 18px rgba(46,42,37,0.07);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:auto;}
+  body{
+    margin:0;
+    font-family:'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    font-size:18px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:var(--accent-dark);}
+  h1,h2,h3{
+    font-weight:700;
+    line-height:1.2;
+    margin:0 0 0.5em 0;
+    color:var(--ink);
+  }
+  p{margin:0 0 1em 0;}
+  .container{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 24px;
+  }
+  section{padding:64px 0;}
+  .section-alt{background:var(--bg-alt);}
+  .section-surface{background:var(--surface);}
+  .eyebrow-free-heading{margin-bottom:16px;}
+  .lede{
+    font-size:1.15rem;
+    color:var(--ink-muted);
+    max-width:640px;
+  }
+  .center{text-align:center;margin-left:auto;margin-right:auto;}
+
+  /* Focus visibility */
+  a:focus-visible, button:focus-visible, summary:focus-visible{
+    outline:3px solid var(--accent-dark);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+
+  /* Buttons */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    font-family:inherit;
+    font-weight:700;
+    font-size:1.08rem;
+    text-decoration:none;
+    padding:16px 28px;
+    border-radius:var(--radius);
+    min-height:56px;
+    border:2px solid transparent;
+    cursor:pointer;
+    transition:background-color .15s ease, border-color .15s ease, transform .05s ease;
+  }
+  .btn:active{transform:scale(0.98);}
+  .btn-call{
+    background:var(--cta);
+    color:#fff;
+  }
+  .btn-call:hover{background:var(--cta-dark);}
+  .btn-secondary{
+    background:transparent;
+    color:var(--accent-dark);
+    border-color:var(--accent-dark);
+  }
+  .btn-secondary:hover{background:var(--accent-tint);}
+  .btn-block{width:100%;}
+
+  .phone-icon{flex-shrink:0;}
+
+  /* Header */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(250,247,242,0.96);
+    border-bottom:1px solid var(--border);
+    backdrop-filter:none;
+  }
+  .nav-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 24px;
+    max-width:var(--max);
+    margin:0 auto;
+    gap:16px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    color:var(--ink);
+    font-weight:700;
+    font-size:1.25rem;
+  }
+  .brand svg{color:var(--accent);}
+  nav.primary-nav{
+    display:flex;
+    align-items:center;
+    gap:28px;
+  }
+  nav.primary-nav a{
+    color:var(--ink);
+    text-decoration:none;
+    font-weight:700;
+    font-size:1rem;
+  }
+  nav.primary-nav a:hover{color:var(--accent-dark);}
+  .header-actions{display:flex;align-items:center;gap:14px;}
+  .header-call-btn{white-space:nowrap;}
+  .header-call-btn span.short{display:none;}
+  .menu-toggle{
+    display:none;
+    background:none;
+    border:2px solid var(--border);
+    border-radius:10px;
+    padding:8px 10px;
+    cursor:pointer;
+  }
+  .mobile-nav{display:none;}
+
+  @media (max-width:860px){
+    nav.primary-nav{display:none;}
+    .menu-toggle{display:inline-flex;align-items:center;}
+    .header-call-btn span.full{display:none;}
+    .header-call-btn span.short{display:inline;}
+    .mobile-nav{
+      display:none;
+      flex-direction:column;
+      gap:2px;
+      padding:8px 24px 18px 24px;
+      border-top:1px solid var(--border);
+      background:var(--bg);
+    }
+    .mobile-nav.open{display:flex;}
+    .mobile-nav a{
+      color:var(--ink);
+      text-decoration:none;
+      font-weight:700;
+      padding:14px 6px;
+      border-bottom:1px solid var(--border);
+    }
+  }
+
+  /* Hero */
+  .hero{
+    padding:56px 0 64px 0;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 4vw + 1rem, 3.2rem);
+    letter-spacing:-0.01em;
+  }
+  .hero-copy p{
+    font-size:1.2rem;
+    color:var(--ink-muted);
+    max-width:52ch;
+  }
+  .hero-ctas{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-top:28px;
+  }
+  .hero-photo{
+    background:var(--surface);
+    border-radius:var(--radius-lg);
+    border:1px solid var(--border);
+    padding:18px;
+    box-shadow:var(--shadow);
+  }
+  .hero-photo-frame{
+    aspect-ratio:4/5;
+    border-radius:12px;
+    background:var(--accent-tint);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    position:relative;
+  }
+  .hero-photo-caption{
+    text-align:center;
+    font-size:0.95rem;
+    color:var(--ink-muted);
+    margin-top:12px;
+    margin-bottom:0;
+  }
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-photo{order:-1;max-width:280px;margin:0 auto;}
+  }
+
+  /* Trust strip */
+  .trust-strip{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+  }
+  .trust-item{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:22px;
+  }
+  .trust-item svg{color:var(--accent);}
+  .trust-item strong{font-size:1.05rem;}
+  @media (max-width:860px){
+    .trust-strip{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:520px){
+    .trust-strip{grid-template-columns:1fr;}
+  }
+
+  /* Services grid */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+    margin-top:36px;
+  }
+  .service-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:26px 22px;
+  }
+  .service-card svg{color:var(--accent);margin-bottom:14px;}
+  .service-card h3{font-size:1.15rem;margin-bottom:8px;}
+  .service-card p{color:var(--ink-muted);font-size:1rem;margin-bottom:0;}
+  @media (max-width:960px){
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:560px){
+    .services-grid{grid-template-columns:1fr;}
+  }
+
+  /* Not sure what's wrong */
+  .reassure{
+    background:var(--accent);
+    color:#fff;
+    border-radius:var(--radius-lg);
+    padding:48px 40px;
+    text-align:center;
+  }
+  .reassure h2{color:#fff;}
+  .reassure p{color:#EAF2EF;font-size:1.15rem;max-width:56ch;margin-left:auto;margin-right:auto;}
+  .reassure .btn-call{background:var(--cta);}
+  .reassure .btn-call:hover{background:var(--cta-dark);}
+  @media (max-width:560px){
+    .reassure{padding:36px 22px;}
+  }
+
+  /* How it works */
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+    margin-top:36px;
+  }
+  .step{
+    position:relative;
+    padding:30px 24px 24px 24px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+  }
+  .step-number{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:var(--accent-tint);
+    color:var(--accent-dark);
+    font-weight:700;
+    font-size:1.1rem;
+    margin-bottom:14px;
+  }
+  .step h3{font-size:1.15rem;margin-bottom:8px;}
+  .step p{color:var(--ink-muted);margin-bottom:0;}
+  @media (max-width:860px){
+    .steps{grid-template-columns:1fr;}
+  }
+
+  /* About */
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.8fr 1.2fr;
+    gap:48px;
+    align-items:center;
+  }
+  .about-photo{
+    background:var(--bg-alt);
+    border-radius:var(--radius-lg);
+    border:1px solid var(--border);
+    aspect-ratio:1/1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  @media (max-width:860px){
+    .about-grid{grid-template-columns:1fr;}
+    .about-photo{max-width:260px;margin:0 auto;}
+  }
+
+  /* Family section */
+  .family-section{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:44px;
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    align-items:center;
+    gap:28px;
+  }
+  .family-section svg{color:var(--accent);flex-shrink:0;}
+  @media (max-width:760px){
+    .family-section{grid-template-columns:1fr;text-align:center;padding:32px 24px;}
+    .family-section svg{margin:0 auto;}
+  }
+
+  /* Reviews placeholder */
+  .reviews-box{
+    text-align:center;
+    border:2px dashed var(--border);
+    border-radius:var(--radius-lg);
+    padding:44px 28px;
+    background:var(--surface);
+  }
+  .reviews-box svg{color:var(--accent);margin-bottom:12px;}
+  .reviews-box p{color:var(--ink-muted);margin-bottom:0;}
+
+  /* FAQ */
+  .faq-list{
+    max-width:760px;
+    margin:36px auto 0 auto;
+  }
+  details{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:18px 22px;
+    margin-bottom:14px;
+  }
+  details summary{
+    font-weight:700;
+    font-size:1.08rem;
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+  }
+  details summary::-webkit-details-marker{display:none;}
+  details summary .chev{
+    flex-shrink:0;
+    color:var(--accent);
+    transition:transform .15s ease;
+  }
+  details[open] summary .chev{transform:rotate(180deg);}
+  details p{
+    margin:14px 0 0 0;
+    color:var(--ink-muted);
+  }
+
+  /* Final CTA */
+  .final-cta{
+    text-align:center;
+    background:var(--bg-alt);
+  }
+  .final-cta .phone-display{
+    font-size:clamp(1.8rem, 4vw, 2.6rem);
+    font-weight:700;
+    color:var(--accent-dark);
+    margin:18px 0 26px 0;
+  }
+
+  /* Footer */
+  footer{
+    background:var(--ink);
+    color:#EFEAE2;
+    padding:36px 0;
+    text-align:center;
+    font-size:0.95rem;
+  }
+  footer a{color:#EFEAE2;font-weight:700;}
+
+  /* Sticky mobile call bar */
+  .sticky-call{
+    display:none;
+    position:fixed;
+    left:0;right:0;bottom:0;
+    z-index:60;
+    background:var(--cta);
+    padding:12px 16px;
+    padding-bottom:calc(12px + env(safe-area-inset-bottom));
+    box-shadow:0 -4px 14px rgba(0,0,0,0.15);
+  }
+  .sticky-call a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:700;
+    font-size:1.1rem;
+  }
+  @media (max-width:700px){
+    .sticky-call{display:block;}
+    body{padding-bottom:74px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="#top" class="brand">
+      <svg width="34" height="34" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M24 6c-8.8 0-16 6.7-16 15 0 4 1.6 7.6 4.3 10.3L11 40l8.4-3.2c1.4.3 2.9.5 4.6.5 8.8 0 16-6.7 16-15S32.8 6 24 6z"/>
+        <path d="M17 22c1.5-3 4-4.5 7-4.5s5.5 1.5 7 4.5" />
+        <circle cx="19" cy="24.5" r="1.4" fill="currentColor" stroke="none"/>
+        <circle cx="29" cy="24.5" r="1.4" fill="currentColor" stroke="none"/>
+      </svg>
+      Ed's Tech Help
+    </a>
+
+    <nav class="primary-nav" aria-label="Main">
+      <a href="#top">Home</a>
+      <a href="#help-with">What I Can Help With</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#about">About Ed</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="tel:07541516344" class="btn btn-call header-call-btn">
+        <svg class="phone-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1.1.5 1.1 1.1V20c0 .6-.5 1.1-1.1 1.1C10.6 21.1 2.9 13.4 2.9 3.8 2.9 3.2 3.4 2.7 4 2.7h3.4c.6 0 1.1.5 1.1 1.1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z"/></svg>
+        <span class="full">Call Ed — 07541 516344</span>
+        <span class="short" aria-hidden="true">Call Ed</span>
+      </a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="mobileNav" id="menuToggle" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+    <a href="#top">Home</a>
+    <a href="#help-with">What I Can Help With</a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#about">About Ed</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1>Technology help, without the headache.</h1>
+        <p>Friendly local help with computers, phones, Wi-Fi, printers and everyday technology. I can come to you and help get things working again — without the confusing jargon.</p>
+        <div class="hero-ctas">
+          <a href="tel:07541516344" class="btn btn-call">
+            <svg class="phone-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1.1.5 1.1 1.1V20c0 .6-.5 1.1-1.1 1.1C10.6 21.1 2.9 13.4 2.9 3.8 2.9 3.2 3.4 2.7 4 2.7h3.4c.6 0 1.1.5 1.1 1.1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z"/></svg>
+            Call Ed — 07541 516344
+          </a>
+          <a href="#help-with" class="btn btn-secondary">See what I can help with</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="hero-photo-frame">
+          <!-- Swap this placeholder for a genuine photo of Ed -->
+          <svg width="120" height="120" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)" aria-hidden="true">
+            <circle cx="24" cy="16" r="8"/>
+            <path d="M8 40c1.5-8.5 8-13 16-13s14.5 4.5 16 13"/>
+          </svg>
+        </div>
+        <p class="hero-photo-caption">A friendly local face — this space is ready for a real photo of Ed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <section class="section-alt" style="padding-top:40px;padding-bottom:40px;">
+    <div class="container">
+      <div class="trust-strip">
+        <div class="trust-item">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v9h14v-9"/></svg>
+          <strong>Local &amp; Friendly</strong>
+        </div>
+        <div class="trust-item">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <strong>Patient &amp; No Jargon</strong>
+        </div>
+        <div class="trust-item">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-5H10v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/></svg>
+          <strong>Help at Home</strong>
+        </div>
+        <div class="trust-item">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>
+          <strong>Practical Solutions</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I CAN HELP WITH -->
+  <section id="help-with" class="section-surface">
+    <div class="container">
+      <h2>What I can help with</h2>
+      <p class="lede">If it plugs in, connects to the internet, or has a screen — there's a good chance I can help.</p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M2 20h20"/></svg>
+          <h3>Computer &amp; Laptop Help</h3>
+          <p>Slow computers, software problems, general troubleshooting and everyday computer issues.</p>
+        </div>
+        <div class="service-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2"/><line x1="11" y1="18.5" x2="13" y2="18.5"/></svg>
+          <h3>Phone &amp; Tablet Help</h3>
+          <p>Help setting up, using and troubleshooting smartphones and tablets.</p>
+        </div>
+        <div class="service-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9c6-5 14-5 20 0"/><path d="M5.5 12.8c4-3 9-3 13 0"/><path d="M9 16.5c2-1.5 4-1.5 6 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>
+          <h3>Wi-Fi &amp; Internet</h3>
+          <p>Connection problems, Wi-Fi setup and basic home network troubleshooting.</p>
+        </div>
+        <div class="service-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="4" y="9" width="16" height="8" rx="1.5"/><rect x="7" y="15" width="10" height="6"/></svg>
+          <h3>Printers &amp; Devices</h3>
+          <p>Printer setup, connection problems and other household technology.</p>
+        </div>
+        <div class="service-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
+          <h3>Email &amp; Accounts</h3>
+          <p>Help accessing email, setting up accounts and resolving common problems.</p>
+        </div>
+        <div class="service-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v8l9 5 9-5V8"/><line x1="12" y1="13" x2="12" y2="21"/></svg>
+          <h3>New Device Setup</h3>
+          <p>Help setting up a new computer, phone, tablet or other device.</p>
+        </div>
+        <div class="service-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="15" rx="1.5"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5.5-5-6 6"/></svg>
+          <h3>Data &amp; Photos</h3>
+          <p>Help transferring photos and files between devices and setting up backups.</p>
+        </div>
+        <div class="service-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.6 1 .6 1.6v.1h6v-.1c0-.6.1-1.2.6-1.6A6 6 0 0 0 12 3z"/></svg>
+          <h3>Technology Lessons</h3>
+          <p>One-to-one help for people who simply want to understand how to use their technology with confidence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOT SURE WHAT'S WRONG -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="reassure">
+        <h2>Not sure what you need help with? That's okay.</h2>
+        <p>You don't need to know what's wrong before you call. Tell me what isn't working and I'll help figure it out.</p>
+        <a href="tel:07541516344" class="btn btn-call">
+          <svg class="phone-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1.1.5 1.1 1.1V20c0 .6-.5 1.1-1.1 1.1C10.6 21.1 2.9 13.4 2.9 3.8 2.9 3.2 3.4 2.7 4 2.7h3.4c.6 0 1.1.5 1.1 1.1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z"/></svg>
+          Call Ed
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works" class="section-surface">
+    <div class="container">
+      <h2>How it works</h2>
+      <p class="lede">No complicated booking systems. Just give me a call.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Give me a call</h3>
+          <p>Tell me what's happening and I'll work out how I can help.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>I'll come to you</h3>
+          <p>For problems that are easier to solve in person, I can provide help at home.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>We sort it out</h3>
+          <p>I'll explain what's happening in straightforward language and get your technology working properly wherever possible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT ED -->
+  <section id="about" class="section-alt">
+    <div class="container about-grid">
+      <div class="about-photo">
+        <!-- Swap this placeholder for a genuine photo of Ed -->
+        <svg width="110" height="110" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)" aria-hidden="true">
+          <circle cx="24" cy="16" r="8"/>
+          <path d="M8 40c1.5-8.5 8-13 16-13s14.5 4.5 16 13"/>
+        </svg>
+      </div>
+      <div>
+        <h2>Hi, I'm Ed.</h2>
+        <p>I'm a local technology support provider with a background in Computer Science, and I genuinely enjoy helping people solve technology problems. Some of it is second nature to me — but I know it doesn't feel that way for everyone, and that's exactly where I come in.</p>
+        <p>I'm someone you can call when technology is getting frustrating. No confusing terms, no being made to feel silly for asking — just straightforward help from someone local.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR PARENTS AND RELATIVES -->
+  <section class="section-surface">
+    <div class="container">
+      <div class="family-section">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="8" cy="8" r="3"/>
+          <circle cx="17" cy="8" r="2.4"/>
+          <path d="M3 20c0-3.3 2.2-5.5 5-5.5s5 2.2 5 5.5"/>
+          <path d="M14 20c0-2.6 1.6-4.5 3.5-4.5S21 17.4 21 20"/>
+        </svg>
+        <div>
+          <h2 style="margin-bottom:8px;">Looking for help for a parent or relative?</h2>
+          <p style="margin-bottom:0;color:var(--ink-muted);">I can provide patient, friendly technology help for people who may not feel confident using computers, phones or other devices — so you have the peace of mind that someone local is on hand to help.</p>
+        </div>
+        <a href="tel:07541516344" class="btn btn-call">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS PLACEHOLDER -->
+  <section class="section-alt">
+    <div class="container">
+      <!-- Replace this box with real Google reviews once they're available -->
+      <div class="reviews-box">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6 6.6.6-5 4.4 1.5 6.5L12 16.8 6 19.5l1.5-6.5-5-4.4 6.6-.6z"/></svg>
+        <p>Customer reviews are on their way — check back soon.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-surface">
+    <div class="container">
+      <h2 class="center">Common questions</h2>
+      <div class="faq-list">
+        <details>
+          <summary>What areas do you cover? <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <p>I cover the local area. Give me a call and let me know where you are — I can tell you straight away whether I'm able to help.</p>
+        </details>
+        <details>
+          <summary>Can you come to my home? <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <p>Yes. For problems that are easier to sort out in person, I'm happy to come to you.</p>
+        </details>
+        <details>
+          <summary>What if I don't know what's wrong? <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <p>That's completely fine. Just tell me what's happening in your own words and I'll help work out what's going on.</p>
+        </details>
+        <details>
+          <summary>Can you help with phones and tablets as well as computers? <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <p>Yes — phones, tablets, computers, printers and most everyday technology.</p>
+        </details>
+        <details>
+          <summary>Can you help someone who isn't confident with technology? <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <p>Absolutely — that's who I help most. I go at your pace and explain things clearly, without any jargon.</p>
+        </details>
+        <details>
+          <summary>Do I need to know anything technical before calling? <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <p>Not at all. Just call and describe the problem however makes sense to you.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="contact" class="final-cta">
+    <div class="container">
+      <h2>Need a hand with technology?</h2>
+      <p class="lede center">Give Ed a call and explain what's going wrong.</p>
+      <div class="phone-display">07541 516344</div>
+      <a href="tel:07541516344" class="btn btn-call">
+        <svg class="phone-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1.1.5 1.1 1.1V20c0 .6-.5 1.1-1.1 1.1C10.6 21.1 2.9 13.4 2.9 3.8 2.9 3.2 3.4 2.7 4 2.7h3.4c.6 0 1.1.5 1.1 1.1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z"/></svg>
+        Call Ed Now
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p style="margin-bottom:6px;"><strong>Ed's Tech Help</strong></p>
+    <p style="margin-bottom:0;">Call or text <a href="tel:07541516344">07541 516344</a> · &copy; <span id="year"></span> Ed's Tech Help</p>
+  </div>
+</footer>
+
+<div class="sticky-call">
+  <a href="tel:07541516344">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1.1.5 1.1 1.1V20c0 .6-.5 1.1-1.1 1.1C10.6 21.1 2.9 13.4 2.9 3.8 2.9 3.2 3.4 2.7 4 2.7h3.4c.6 0 1.1.5 1.1 1.1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z"/></svg>
+    Call Ed: 07541 516344
+  </a>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var toggle = document.getElementById('menuToggle');
+  var mobileNav = document.getElementById('mobileNav');
+  toggle.addEventListener('click', function(){
+    var isOpen = mobileNav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  mobileNav.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){
+      mobileNav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+</body>
+</html>
