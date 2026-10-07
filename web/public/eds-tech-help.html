@@ -364,16 +364,45 @@
     .family-section svg{margin:0 auto;}
   }
 
-  /* Reviews placeholder */
-  .reviews-box{
-    text-align:center;
-    border:2px dashed var(--border);
-    border-radius:var(--radius-lg);
-    padding:44px 28px;
-    background:var(--surface);
+  /* Reviews */
+  .reviews-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+    margin-top:32px;
   }
-  .reviews-box svg{color:var(--accent);margin-bottom:12px;}
-  .reviews-box p{color:var(--ink-muted);margin-bottom:0;}
+  .review-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:28px 26px;
+  }
+  .review-stars{
+    display:flex;
+    gap:4px;
+    color:var(--cta);
+    margin-bottom:14px;
+  }
+  .review-quote{
+    font-size:1.08rem;
+    color:var(--ink);
+    margin-bottom:16px;
+  }
+  .review-source{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:4px;
+    padding:7px 14px 7px 10px;
+    background:var(--bg-alt);
+    border-radius:999px;
+    font-weight:700;
+    color:var(--ink-muted);
+    font-size:0.92rem;
+  }
+  @media (max-width:760px){
+    .reviews-grid{grid-template-columns:1fr;}
+  }
 
   /* FAQ */
   .faq-list{
@@ -677,10 +706,46 @@
   <!-- REVIEWS PLACEHOLDER -->
   <section class="section-alt">
     <div class="container">
-      <!-- Replace this box with real Google reviews once they're available -->
-      <div class="reviews-box">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6 6.6.6-5 4.4 1.5 6.5L12 16.8 6 19.5l1.5-6.5-5-4.4 6.6-.6z"/></svg>
-        <p>Customer reviews are on their way — check back soon.</p>
+      <h2 class="center">What people say</h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6 6.6.6-5 4.4 1.5 6.5L12 16.8 6 19.5l1.5-6.5-5-4.4 6.6-.6z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6 6.6.6-5 4.4 1.5 6.5L12 16.8 6 19.5l1.5-6.5-5-4.4 6.6-.6z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6 6.6.6-5 4.4 1.5 6.5L12 16.8 6 19.5l1.5-6.5-5-4.4 6.6-.6z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6 6.6.6-5 4.4 1.5 6.5L12 16.8 6 19.5l1.5-6.5-5-4.4 6.6-.6z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6 6.6.6-5 4.4 1.5 6.5L12 16.8 6 19.5l1.5-6.5-5-4.4 6.6-.6z"/></svg>
+          </div>
+          <p class="review-quote">"So patient and polite, explained everything clearly, and didn't rush to make sure my grandmother understood — set up her new PC without any fuss."</p>
+          <span class="review-source">
+            <svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.9 32.9 29.4 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 8 3l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z"/>
+              <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16 19 13 24 13c3.1 0 5.8 1.1 8 3l5.7-5.7C34.6 6.1 29.6 4 24 4c-7.3 0-13.6 4.1-17 10.1z"/>
+              <path fill="#4CAF50" d="M24 44c5.5 0 10.5-2.1 14.3-5.6l-6.6-5.4C29.7 34.9 27 36 24 36c-5.3 0-9.8-3.4-11.4-8.1l-6.6 5C9.2 39.7 16 44 24 44z"/>
+              <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-1.1 3.1-3.4 5.6-6.3 7l6.6 5.4C38.9 38 44 32.7 44 24c0-1.3-.1-2.7-.4-3.5z"/>
+            </svg>
+            Google review
+          </span>
+        </div>
+        <div class="review-card">
+          <div class="review-stars" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6 6.6.6-5 4.4 1.5 6.5L12 16.8 6 19.5l1.5-6.5-5-4.4 6.6-.6z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6 6.6.6-5 4.4 1.5 6.5L12 16.8 6 19.5l1.5-6.5-5-4.4 6.6-.6z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6 6.6.6-5 4.4 1.5 6.5L12 16.8 6 19.5l1.5-6.5-5-4.4 6.6-.6z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6 6.6.6-5 4.4 1.5 6.5L12 16.8 6 19.5l1.5-6.5-5-4.4 6.6-.6z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6 6.6.6-5 4.4 1.5 6.5L12 16.8 6 19.5l1.5-6.5-5-4.4 6.6-.6z"/></svg>
+          </div>
+          <p class="review-quote">"Fixed an issue I'd had for months, with a really clear explanation of what was wrong. I'll certainly be going back to him in future."</p>
+          <span class="review-source">
+            <svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.9 32.9 29.4 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 8 3l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z"/>
+              <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16 19 13 24 13c3.1 0 5.8 1.1 8 3l5.7-5.7C34.6 6.1 29.6 4 24 4c-7.3 0-13.6 4.1-17 10.1z"/>
+              <path fill="#4CAF50" d="M24 44c5.5 0 10.5-2.1 14.3-5.6l-6.6-5.4C29.7 34.9 27 36 24 36c-5.3 0-9.8-3.4-11.4-8.1l-6.6 5C9.2 39.7 16 44 24 44z"/>
+              <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-1.1 3.1-3.4 5.6-6.3 7l6.6 5.4C38.9 38 44 32.7 44 24c0-1.3-.1-2.7-.4-3.5z"/>
+            </svg>
+            Google review
+          </span>
+        </div>
       </div>
     </div>
   </section>
