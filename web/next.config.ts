@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['framer-motion', 'gsap', 'lucide-react'],
   },
   compress: true,
+  // Serve the standalone Ed's Tech Help page (public/eds-tech-help.html) at /eds-tech-help
+  async rewrites() {
+    return [
+      { source: "/eds-tech-help", destination: "/eds-tech-help.html" },
+    ];
+  },
   // The Meridian Agency - Digital Marketing Agency Website
 };
 
